@@ -1,7 +1,4 @@
-import 'package:chopper/chopper.dart';
-import 'package:flutterhub/features/repositories/domain/entities/models.dart';
-
-part "search_service.chopper.dart";
+part of 'rest_service.dart';
 
 @ChopperApi(baseUrl: "/search")
 abstract class SearchService extends ChopperService {

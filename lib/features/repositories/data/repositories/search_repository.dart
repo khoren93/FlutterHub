@@ -1,4 +1,4 @@
-import 'package:flutterhub/features/repositories/data/datasources/restapi/search_service.dart';
+import 'package:flutterhub/features/repositories/data/datasources/restapi/rest_service.dart';
 
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/search_repository.dart';

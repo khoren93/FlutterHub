@@ -1,10 +1,11 @@
 part of 'repositories_cubit.dart';
 
-abstract class RepositoriesState extends Equatable {
-  const RepositoriesState();
+@freezed
+class RepositoriesState with _$RepositoriesState {
+  const factory RepositoriesState.loading() = CharacterStateLoading;
+  const factory RepositoriesState.loaded() = CharacterStateLoaded;
+  const factory RepositoriesState.error() = CharacterStateError;
 
-  @override
-  List<Object> get props => [];
+  factory RepositoriesState.fromJson(Map<String, dynamic> json) =>
+      _$RepositoriesStateFromJson(json);
 }
-
-class RepositoriesInitial extends RepositoriesState {}

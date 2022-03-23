@@ -1,4 +1,4 @@
-import 'package:flutterhub/features/repositories/data/datasources/restapi/users_service.dart';
+import 'package:flutterhub/features/repositories/data/datasources/restapi/rest_service.dart';
 
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/users_repository.dart';

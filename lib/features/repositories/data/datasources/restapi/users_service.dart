@@ -1,7 +1,4 @@
-import 'package:chopper/chopper.dart';
-import 'package:flutterhub/features/repositories/domain/entities/models.dart';
-
-part "users_service.chopper.dart";
+part of 'rest_service.dart';
 
 @ChopperApi(baseUrl: "/users")
 abstract class UsersService extends ChopperService {
