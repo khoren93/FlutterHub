@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/models.dart';
-import '../repositories/user_repository.dart';
+import '../repositories/search_repository.dart';
 
 class SearchUsersParams {
   SearchUsersParams(this.query, this.page);
@@ -14,14 +14,17 @@ class SearchUsersParams {
 
 class SearchUsersUsecase extends UseCase<UserSearch, SearchUsersParams> {
   SearchUsersUsecase(this._repository);
-  final UserRepository _repository;
+  final SearchRepository _repository;
 
   @override
   Future<Either<Failure, UserSearch>> call(SearchUsersParams params) async {
     try {
-      return right(
-        await _repository.searchUsers(params.query, params.page),
-      );
+      final result = await _repository.searchUsers(params.query, params.page);
+      if (result != null) {
+        return right(result);
+      } else {
+        return left(ServerFailure());
+      }
     } catch (e) {
       debugPrint(e.toString());
       return Left(ServerFailure());

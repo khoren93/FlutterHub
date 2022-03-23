@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutterhub/features/repositories/domain/repositories/user_repository.dart';
+import '../repositories/users_repository.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecases/usecase.dart';
@@ -13,14 +13,17 @@ class GetUserParams {
 
 class GetUserUsecase extends UseCase<User, GetUserParams> {
   GetUserUsecase(this._repository);
-  final UserRepository _repository;
+  final UsersRepository _repository;
 
   @override
   Future<Either<Failure, User>> call(GetUserParams params) async {
     try {
-      return right(
-        await _repository.user(params.owner),
-      );
+      final result = await _repository.user(params.owner);
+      if (result != null) {
+        return right(result);
+      } else {
+        return left(ServerFailure());
+      }
     } catch (e) {
       debugPrint(e.toString());
       return Left(ServerFailure());
