@@ -8,13 +8,21 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
+  freezed_annotation: ^1.1.0
+  json_annotation: ^4.4.0
 
 dev_dependencies:
+  build_runner: ^2.1.8
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
+  freezed: ^1.1.1
+  json_serializable: ^6.1.5
 
 flutter:
   uses-material-design: true
