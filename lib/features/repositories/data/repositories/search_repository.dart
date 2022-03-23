@@ -9,7 +9,8 @@ class SearchRepositoryImpl implements SearchRepository {
 
   @override
   Future<RepositorySearch?> searchRepositories(String query, int page) async {
-    return (await _restService.searchRepositories(query, page)).body;
+    final result = await _restService.searchRepositories(query, page);
+    return result.body;
   }
 
   @override

@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/di/di.dart';
+import 'package:flutterhub/features/repositories/presentation/cubit/repository/repository_cubit.dart';
+import 'package:flutterhub/features/repositories/presentation/cubit/user/user_cubit.dart';
+import 'package:flutterhub/features/repositories/presentation/pages/search_page.dart';
 
-void main() {
+import 'features/repositories/presentation/cubit/search/search_cubit.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initDI();
   runApp(const MyApp());
 }
 
@@ -9,34 +18,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: const Center(
-        child: Text(''),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => di<SearchCubit>()),
+        BlocProvider(create: (_) => di<RepositoryCubit>()),
+        BlocProvider(create: (_) => di<UserCubit>()),
+      ],
+      child: MaterialApp(
+        title: 'FlutterHub',
+        home: SearchPage(),
       ),
     );
   }
