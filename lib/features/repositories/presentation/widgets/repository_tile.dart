@@ -23,7 +23,8 @@ class RepositoryTile extends StatelessWidget {
           height: 40,
         ),
         title: Text(item.name ?? ''),
-        subtitle: Text(item.description ?? ''),
+        subtitle:
+            item.description != null ? Text(item.description ?? '') : null,
         onTap: () {
           onTap?.call(item);
         },

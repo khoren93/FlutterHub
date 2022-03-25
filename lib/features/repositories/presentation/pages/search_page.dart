@@ -84,29 +84,32 @@ class _SearchPageState extends State<SearchPage>
     );
   }
 
-  Widget _buildUsersList(BuildContext context) {
-    return BlocBuilder<SearchCubit, SearchState>(
+  Widget _buildRepositoriesList(BuildContext context) {
+    return BlocBuilder<SearchRepositoryCubit, SearchRepositoryState>(
       builder: (context, state) {
         return SmartRefresher(
-          controller: _userRefreshController,
+          controller: _repositoryRefreshController,
           onRefresh: () {
-            context.read<SearchCubit>().searchUser('Khoren');
+            context.read<SearchRepositoryCubit>().searchRepository('Swifthub');
           },
           child: state.when(
             loading: () => Container(),
-            loaded: (repositories, users, repositoriesHasNextPage,
-                usersHasNextPage) {
-              _userRefreshController.refreshCompleted();
+            loaded: (items, hasNextPage) {
+              _repositoryRefreshController.refreshCompleted();
               return ListView.builder(
-                itemCount: users.length,
-                itemBuilder: (context, index) => UserTile(
-                  item: users[index],
-                  onTap: _onUserSelect,
+                itemCount: items.length,
+                itemBuilder: (context, index) => RepositoryTile(
+                  item: items[index],
+                  onTap: _onRepositorySelect,
                 ),
               );
             },
+            empty: () {
+              _userRefreshController.refreshCompleted();
+              return emptyRepositoriesWidget();
+            },
             error: (message, url) {
-              _userRefreshController.refreshFailed();
+              _repositoryRefreshController.refreshFailed();
               return serverFailureWidget(message, url);
             },
           ),
@@ -115,29 +118,32 @@ class _SearchPageState extends State<SearchPage>
     );
   }
 
-  Widget _buildRepositoriesList(BuildContext context) {
-    return BlocBuilder<SearchCubit, SearchState>(
+  Widget _buildUsersList(BuildContext context) {
+    return BlocBuilder<SearchUserCubit, SearchUserState>(
       builder: (context, state) {
         return SmartRefresher(
-          controller: _repositoryRefreshController,
+          controller: _userRefreshController,
           onRefresh: () {
-            context.read<SearchCubit>().searchRepository('Swifthub');
+            context.read<SearchUserCubit>().searchUser('Khoren');
           },
           child: state.when(
             loading: () => Container(),
-            loaded: (repositories, users, repositoriesHasNextPage,
-                usersHasNextPage) {
-              _repositoryRefreshController.refreshCompleted();
+            loaded: (items, hasNextPage) {
+              _userRefreshController.refreshCompleted();
               return ListView.builder(
-                itemCount: repositories.length,
-                itemBuilder: (context, index) => RepositoryTile(
-                  item: repositories[index],
-                  onTap: _onRepositorySelect,
+                itemCount: items.length,
+                itemBuilder: (context, index) => UserTile(
+                  item: items[index],
+                  onTap: _onUserSelect,
                 ),
               );
             },
+            empty: () {
+              _userRefreshController.refreshCompleted();
+              return emptyUsersWidget();
+            },
             error: (message, url) {
-              _repositoryRefreshController.refreshFailed();
+              _userRefreshController.refreshFailed();
               return serverFailureWidget(message, url);
             },
           ),

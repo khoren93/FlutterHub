@@ -23,7 +23,7 @@ class UserTile extends StatelessWidget {
           height: 40,
         ),
         title: Text(item.login ?? ''),
-        subtitle: Text(item.name ?? ''),
+        subtitle: item.name != null ? Text(item.name ?? '') : null,
         onTap: () {
           onTap?.call(item);
         },

@@ -10,60 +10,63 @@ part 'search_state.dart';
 part 'search_cubit.freezed.dart';
 part 'search_cubit.g.dart';
 
-class SearchCubit extends Cubit<SearchState> {
-  SearchCubit({
+class SearchRepositoryCubit extends Cubit<SearchRepositoryState> {
+  SearchRepositoryCubit({
     required this.searchRepositories,
-    required this.searchUsers,
-  }) : super(const SearchState.loading());
+  }) : super(const SearchRepositoryState.loading());
 
   final SearchRepositoriesUsecase searchRepositories;
-  final SearchUsersUsecase searchUsers;
 
   void searchRepository(String query) async {
-    emit(const SearchState.loading());
+    emit(const SearchRepositoryState.loading());
     try {
       final result =
           await searchRepositories(SearchRepositoriesParams(query, 1));
       result.fold(
-        (l) => emit(SearchState.error(
+        (l) => emit(SearchRepositoryState.error(
           message: l.messageText(),
           url: l.documentationUrlText(),
         )),
-        (r) => emit(SearchState.loaded(
-          repositories: r.items ?? [],
-          users: [],
-          hasRepositoriesNextPage: true,
-          hasUsersNextPage: true,
-        )),
+        (r) => emit(r.isEmpty
+            ? const SearchRepositoryState.empty()
+            : SearchRepositoryState.loaded(
+                items: r.items ?? [],
+                hasNextPage: r.hasNextPage,
+              )),
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const SearchState.error(message: kUnexpectedError));
+      emit(const SearchRepositoryState.error(message: kUnexpectedError));
     }
   }
+}
+
+class SearchUserCubit extends Cubit<SearchUserState> {
+  SearchUserCubit({
+    required this.searchUsers,
+  }) : super(const SearchUserState.loading());
+
+  final SearchUsersUsecase searchUsers;
 
   void searchUser(String query) async {
-    emit(const SearchState.loading());
+    emit(const SearchUserState.loading());
     try {
       final result = await searchUsers(SearchUsersParams(query, 1));
       result.fold(
-        (l) => emit(SearchState.error(
+        (l) => emit(SearchUserState.error(
           message: l.messageText(),
           url: l.documentationUrlText(),
         )),
-        (r) => emit(SearchState.loaded(
-          repositories: [],
-          users: r.items ?? [],
-          hasRepositoriesNextPage: true,
-          hasUsersNextPage: true,
-        )),
+        (r) => emit(r.isEmpty
+            ? const SearchUserState.empty()
+            : SearchUserState.loaded(
+                items: r.items ?? [],
+                hasNextPage: r.hasNextPage,
+              )),
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const SearchState.error(message: kUnexpectedError));
+      emit(const SearchUserState.error(message: kUnexpectedError));
     }
   }
-
-  // calculate the next page number
-
 }

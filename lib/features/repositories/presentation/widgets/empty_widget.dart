@@ -20,6 +20,16 @@ Widget serverFailureWidget(String? message, String? url) {
   );
 }
 
+Widget emptyUsersWidget() => NoDataWidget.empty(
+      image: FontAwesomeIcons.user,
+      title: 'No users found',
+    );
+
+Widget emptyRepositoriesWidget() => NoDataWidget.empty(
+      image: FontAwesomeIcons.bookBookmark,
+      title: 'No repositories found',
+    );
+
 enum _NoDataType { error, empty }
 
 class NoDataWidget extends StatelessWidget {

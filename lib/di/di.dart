@@ -16,10 +16,8 @@ final di = GetIt.instance;
 
 Future<void> initDI() async {
   // Register Blocs and Cubits
-  di.registerFactory(() => SearchCubit(
-        searchRepositories: di(),
-        searchUsers: di(),
-      ));
+  di.registerFactory(() => SearchRepositoryCubit(searchRepositories: di()));
+  di.registerFactory(() => SearchUserCubit(searchUsers: di()));
   di.registerFactory(() => RepositoryCubit(getRepositoryUsecase: di()));
   di.registerFactory(() => UserCubit(getUserUsecase: di()));
 

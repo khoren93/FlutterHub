@@ -7,9 +7,11 @@ class UserSearch with _$UserSearch {
     List<User>? items,
     int? totalCount,
     bool? incompleteResults,
-    bool? hasNextPage,
   }) = _UserSearch;
 
   factory UserSearch.fromJson(Map<String, dynamic> json) =>
       _$UserSearchFromJson(json);
+
+  bool get isEmpty => items?.isEmpty ?? true;
+  bool get hasNextPage => items?.isNotEmpty ?? false;
 }
