@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecases/usecase.dart';
@@ -21,16 +20,9 @@ class SearchRepositoriesUsecase
   Future<Either<Failure, RepositorySearch>> call(
       SearchRepositoriesParams params) async {
     try {
-      final result =
-          await _repository.searchRepositories(params.query, params.page);
-      if (result != null) {
-        return right(result);
-      } else {
-        return left(ServerFailure());
-      }
+      return _repository.searchRepositories(params.query, params.page);
     } catch (e) {
-      debugPrint(e.toString());
-      return Left(ServerFailure());
+      return Left(ServerFailure.unknown());
     }
   }
 }

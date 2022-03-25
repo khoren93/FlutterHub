@@ -10,7 +10,10 @@ import 'features/repositories/presentation/cubit/search/search_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initDI();
-  runApp(const MyApp());
+  BlocOverrides.runZoned(
+    () => runApp(const MyApp()),
+    blocObserver: FlutterHubBlocObserver(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,10 +27,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di<RepositoryCubit>()),
         BlocProvider(create: (_) => di<UserCubit>()),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         title: 'FlutterHub',
         home: SearchPage(),
       ),
     );
+  }
+}
+
+class FlutterHubBlocObserver extends BlocObserver {
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    debugPrint('${bloc.runtimeType} $change');
   }
 }

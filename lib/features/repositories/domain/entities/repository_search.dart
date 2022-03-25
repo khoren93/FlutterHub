@@ -2,7 +2,9 @@ part of 'models.dart';
 
 @Freezed()
 class RepositorySearch with _$RepositorySearch {
+  
   const RepositorySearch._();
+
   const factory RepositorySearch({
     List<Repository>? items,
     int? totalCount,

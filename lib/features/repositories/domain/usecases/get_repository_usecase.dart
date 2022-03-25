@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 import '../repositories/repos_repository.dart';
 
 import '../../../../core/error/failure.dart';
@@ -18,15 +17,9 @@ class GetRepositoryUsecase extends UseCase<Repository, GetRepositoryParams> {
   @override
   Future<Either<Failure, Repository>> call(GetRepositoryParams params) async {
     try {
-      final result = await _repository.repository(params.fullname);
-      if (result != null) {
-        return right(result);
-      } else {
-        return left(ServerFailure());
-      }
+      return _repository.repository(params.fullname);
     } catch (e) {
-      debugPrint(e.toString());
-      return Left(ServerFailure());
+      return Left(ServerFailure.unknown());
     }
   }
 }

@@ -1,5 +1,8 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../../core/error/failure.dart';
 import '../entities/models.dart';
 
 abstract class UsersRepository {
-  Future<User?> user(String owner);
+  Future<Either<Failure, User>> user(String owner);
 }

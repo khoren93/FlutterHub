@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutterhub/core/error/failure.dart';
 import 'package:flutterhub/features/repositories/domain/usecases/usecases.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +14,7 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit({
     required this.searchRepositories,
     required this.searchUsers,
-  }) : super(const SearchState.initial());
+  }) : super(const SearchState.loading());
 
   final SearchRepositoriesUsecase searchRepositories;
   final SearchUsersUsecase searchUsers;
@@ -24,11 +26,15 @@ class SearchCubit extends Cubit<SearchState> {
           await searchRepositories(SearchRepositoriesParams(query, 1));
       // final users = await searchUsers(SearchUsersParams(query, 1));
       result.fold(
-        (l) => emit(const SearchState.error()),
+        (l) => emit(SearchState.error(
+          message: l.messageText(),
+          url: l.documentationUrlText(),
+        )),
         (r) => emit(SearchState.loaded(items: r.items ?? [])),
       );
     } catch (e) {
-      emit(const SearchState.error());
+      debugPrint(e.toString());
+      emit(const SearchState.error(message: kUnexpectedError));
     }
   }
 }

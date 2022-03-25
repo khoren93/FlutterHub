@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 import '../repositories/users_repository.dart';
 
 import '../../../../core/error/failure.dart';
@@ -18,15 +17,9 @@ class GetUserUsecase extends UseCase<User, GetUserParams> {
   @override
   Future<Either<Failure, User>> call(GetUserParams params) async {
     try {
-      final result = await _repository.user(params.owner);
-      if (result != null) {
-        return right(result);
-      } else {
-        return left(ServerFailure());
-      }
+      return _repository.user(params.owner);
     } catch (e) {
-      debugPrint(e.toString());
-      return Left(ServerFailure());
+      return Left(ServerFailure.unknown());
     }
   }
 }

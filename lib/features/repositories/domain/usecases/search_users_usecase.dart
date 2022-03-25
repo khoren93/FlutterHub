@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecases/usecase.dart';
@@ -19,15 +18,9 @@ class SearchUsersUsecase extends UseCase<UserSearch, SearchUsersParams> {
   @override
   Future<Either<Failure, UserSearch>> call(SearchUsersParams params) async {
     try {
-      final result = await _repository.searchUsers(params.query, params.page);
-      if (result != null) {
-        return right(result);
-      } else {
-        return left(ServerFailure());
-      }
+      return _repository.searchUsers(params.query, params.page);
     } catch (e) {
-      debugPrint(e.toString());
-      return Left(ServerFailure());
+      return Left(ServerFailure.unknown());
     }
   }
 }

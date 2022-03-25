@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutterhub/features/repositories/data/datasources/restapi/rest_service.dart';
 import 'package:flutterhub/features/repositories/domain/repositories/repos_repository.dart';
 
+import '../../../../core/error/failure.dart';
 import '../../domain/entities/models.dart';
 
 class ReposRepositoryImpl implements ReposRepository {
@@ -8,7 +10,12 @@ class ReposRepositoryImpl implements ReposRepository {
   final ReposService _restService;
 
   @override
-  Future<Repository?> repository(String fullname) async {
-    return (await _restService.repository(fullname)).body;
+  Future<Either<Failure, Repository>> repository(String fullname) async {
+    final result = await _restService.repository(fullname);
+    if (result.isSuccessful) {
+      return right(result.body ?? const Repository());
+    } else {
+      return left(result.error.toServerFailure());
+    }
   }
 }
