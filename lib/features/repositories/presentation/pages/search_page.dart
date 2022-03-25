@@ -1,10 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/features/repositories/presentation/cubit/search/search_cubit.dart';
+import 'package:flutterhub/features/repositories/presentation/pages/repository_page.dart';
 import 'package:flutterhub/features/repositories/presentation/widgets/empty_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../widgets/list_view_tiles.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -41,24 +42,23 @@ class _SearchPageState extends State<SearchPage> {
                 _refreshController.refreshCompleted();
                 return ListView.builder(
                   itemCount: result.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final item = result[index];
-                    return Card(
-                      child: ListTile(
-                        leading: CachedNetworkImage(
-                          imageUrl: item.owner?.avatarUrl ?? '',
-                          width: 40,
-                          height: 40,
+                  itemBuilder: (BuildContext context, int index) =>
+                      RepositoryTile(
+                    item: result[index],
+                    onTap: (item) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              RepositoryPage(fullName: item.fullName),
                         ),
-                        title: Text(item.name ?? ''),
-                        subtitle: Text(item.description ?? ''),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 );
               },
               error: (message, url) {
-                _refreshController.refreshCompleted();
+                _refreshController.refreshFailed();
                 return serverFailureWidget(message, url);
               },
             ),

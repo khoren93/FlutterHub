@@ -20,8 +20,8 @@ Future<void> initDI() async {
         searchRepositories: di(),
         searchUsers: di(),
       ));
-  di.registerFactory(() => RepositoryCubit());
-  di.registerFactory(() => UserCubit());
+  di.registerFactory(() => RepositoryCubit(getRepositoryUsecase: di()));
+  di.registerFactory(() => UserCubit(getUserUsecase: di()));
 
   // Register usecases
   di.registerLazySingleton(() => SearchRepositoriesUsecase(di()));
