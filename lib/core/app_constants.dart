@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const kPerPage = 20;
+
 /// space between widgets
 const spaceSmall = 2.0;
 const spaceSmall2 = 4.0;

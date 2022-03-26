@@ -4,11 +4,13 @@ import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/repositories/presentation/cubit/repository/repository_cubit.dart';
 import 'package:flutterhub/features/repositories/presentation/cubit/user/user_cubit.dart';
 import 'package:flutterhub/features/repositories/presentation/pages/search_page.dart';
+import 'package:logging/logging.dart';
 
 import 'features/repositories/presentation/cubit/search/search_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  _setupLogging();
   await initDI();
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
@@ -37,9 +39,28 @@ class MyApp extends StatelessWidget {
 }
 
 class FlutterHubBlocObserver extends BlocObserver {
+  // @override
+  // void onChange(BlocBase bloc, Change change) {
+  //   super.onChange(bloc, change);
+  //   debugPrint('${bloc.runtimeType} ${change.toString()}');
+  // }
+
   @override
-  void onChange(BlocBase bloc, Change change) {
-    super.onChange(bloc, change);
-    debugPrint('${bloc.runtimeType} $change');
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    debugPrint('$transition');
   }
+
+  @override
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    debugPrint('$error');
+    super.onError(bloc, error, stackTrace);
+  }
+}
+
+_setupLogging() {
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((rec) {
+    debugPrint('${rec.level.name}: ${rec.time}: ${rec.message}');
+  });
 }

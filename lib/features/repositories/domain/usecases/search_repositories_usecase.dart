@@ -5,22 +5,15 @@ import '../../../../core/usecases/usecase.dart';
 import '../entities/models.dart';
 import '../repositories/search_repository.dart';
 
-class SearchRepositoriesParams {
-  SearchRepositoriesParams(this.query, this.page);
-  final String query;
-  final int page;
-}
-
 class SearchRepositoriesUsecase
-    extends UseCase<RepositorySearch, SearchRepositoriesParams> {
+    extends UseCase<RepositorySearch, SearchParams> {
   SearchRepositoriesUsecase(this._repository);
   final SearchRepository _repository;
 
   @override
-  Future<Either<Failure, RepositorySearch>> call(
-      SearchRepositoriesParams params) async {
+  Future<Either<Failure, RepositorySearch>> call(SearchParams params) async {
     try {
-      return _repository.searchRepositories(params.query, params.page);
+      return _repository.searchRepositories(params);
     } catch (e) {
       return Left(ServerFailure.unknown());
     }

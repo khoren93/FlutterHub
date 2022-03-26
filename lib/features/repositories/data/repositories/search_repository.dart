@@ -11,8 +11,9 @@ class SearchRepositoryImpl implements SearchRepository {
 
   @override
   Future<Either<Failure, RepositorySearch>> searchRepositories(
-      String query, int page) async {
-    final result = await _restService.searchRepositories(query, page);
+      SearchParams params) async {
+    final result = await _restService.searchRepositories(
+        params.query, params.page, params.perPage);
     if (result.isSuccessful) {
       return right(result.body ?? const RepositorySearch());
     } else {
@@ -21,9 +22,9 @@ class SearchRepositoryImpl implements SearchRepository {
   }
 
   @override
-  Future<Either<Failure, UserSearch>> searchUsers(
-      String query, int page) async {
-    final result = await _restService.searchUsers(query, page);
+  Future<Either<Failure, UserSearch>> searchUsers(SearchParams params) async {
+    final result = await _restService.searchUsers(
+        params.query, params.page, params.perPage);
     if (result.isSuccessful) {
       return right(result.body ?? const UserSearch());
     } else {

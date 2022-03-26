@@ -5,7 +5,17 @@ import '../entities/models.dart';
 
 abstract class SearchRepository {
   Future<Either<Failure, RepositorySearch>> searchRepositories(
-      String query, int page);
+    SearchParams params,
+  );
 
-  Future<Either<Failure, UserSearch>> searchUsers(String query, int page);
+  Future<Either<Failure, UserSearch>> searchUsers(
+    SearchParams params,
+  );
+}
+
+class SearchParams {
+  SearchParams(this.query, this.page, this.perPage);
+  final String query;
+  final int page;
+  final int perPage;
 }

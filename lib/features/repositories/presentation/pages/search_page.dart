@@ -89,13 +89,28 @@ class _SearchPageState extends State<SearchPage>
       builder: (context, state) {
         return SmartRefresher(
           controller: _repositoryRefreshController,
+          enablePullUp: true,
           onRefresh: () {
-            context.read<SearchRepositoryCubit>().searchRepository('Swifthub');
+            context.read<SearchRepositoryCubit>().searchRepository(
+                  query: 'swifthub',
+                  isRefresh: true,
+                );
+          },
+          onLoading: () {
+            context.read<SearchRepositoryCubit>().searchRepository(
+                  query: 'swifthub',
+                  isRefresh: false,
+                );
           },
           child: state.when(
             loading: () => Container(),
             loaded: (items, hasNextPage) {
               _repositoryRefreshController.refreshCompleted();
+              if (hasNextPage) {
+                _repositoryRefreshController.loadComplete();
+              } else {
+                _repositoryRefreshController.loadNoData();
+              }
               return ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) => RepositoryTile(
@@ -105,11 +120,13 @@ class _SearchPageState extends State<SearchPage>
               );
             },
             empty: () {
-              _userRefreshController.refreshCompleted();
+              _repositoryRefreshController.refreshCompleted();
+              _repositoryRefreshController.loadNoData();
               return emptyRepositoriesWidget();
             },
             error: (message, url) {
               _repositoryRefreshController.refreshFailed();
+              _repositoryRefreshController.loadFailed();
               return serverFailureWidget(message, url);
             },
           ),
@@ -123,13 +140,28 @@ class _SearchPageState extends State<SearchPage>
       builder: (context, state) {
         return SmartRefresher(
           controller: _userRefreshController,
+          enablePullUp: true,
           onRefresh: () {
-            context.read<SearchUserCubit>().searchUser('Khoren');
+            context.read<SearchUserCubit>().searchUser(
+                  query: 'Khoren',
+                  isRefresh: true,
+                );
+          },
+          onLoading: () {
+            context.read<SearchUserCubit>().searchUser(
+                  query: 'Khoren',
+                  isRefresh: false,
+                );
           },
           child: state.when(
             loading: () => Container(),
             loaded: (items, hasNextPage) {
               _userRefreshController.refreshCompleted();
+              if (hasNextPage) {
+                _userRefreshController.loadComplete();
+              } else {
+                _userRefreshController.loadNoData();
+              }
               return ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) => UserTile(
@@ -140,10 +172,12 @@ class _SearchPageState extends State<SearchPage>
             },
             empty: () {
               _userRefreshController.refreshCompleted();
+              _userRefreshController.loadNoData();
               return emptyUsersWidget();
             },
             error: (message, url) {
               _userRefreshController.refreshFailed();
+              _userRefreshController.loadFailed();
               return serverFailureWidget(message, url);
             },
           ),
