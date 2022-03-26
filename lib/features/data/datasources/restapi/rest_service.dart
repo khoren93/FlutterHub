@@ -1,5 +1,5 @@
 import 'package:chopper/chopper.dart';
-import 'package:flutterhub/features/repositories/domain/entities/models.dart';
+import 'package:flutterhub/features/domain/entities/models.dart';
 
 part 'rest_service.chopper.dart';
 part 'repos_service.dart';

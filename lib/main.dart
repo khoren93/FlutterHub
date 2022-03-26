@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/di/di.dart';
-import 'package:flutterhub/features/repositories/presentation/cubit/repository/repository_cubit.dart';
-import 'package:flutterhub/features/repositories/presentation/cubit/user/user_cubit.dart';
-import 'package:flutterhub/features/repositories/presentation/pages/search_page.dart';
+import 'package:flutterhub/features/presentation/cubit/repository/repository_cubit.dart';
+import 'package:flutterhub/features/presentation/cubit/user/user_cubit.dart';
+import 'package:flutterhub/features/presentation/pages/search_page.dart';
 import 'package:logging/logging.dart';
 
-import 'features/repositories/presentation/cubit/search/search_cubit.dart';
+import 'features/presentation/cubit/search/search_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

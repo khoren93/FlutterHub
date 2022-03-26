@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutterhub/core/app_constants.dart';
 import 'package:flutterhub/core/error/failure.dart';
-import 'package:flutterhub/features/repositories/domain/usecases/usecases.dart';
+import 'package:flutterhub/features/domain/usecases/usecases.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/helpers.dart';

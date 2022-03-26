@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterhub/features/repositories/domain/entities/models.dart';
-import 'package:flutterhub/features/repositories/presentation/cubit/search/search_cubit.dart';
-import 'package:flutterhub/features/repositories/presentation/pages/repository_page.dart';
-import 'package:flutterhub/features/repositories/presentation/pages/user_page.dart';
-import 'package:flutterhub/features/repositories/presentation/widgets/empty_widget.dart';
-import 'package:flutterhub/features/repositories/presentation/widgets/user_tile.dart';
+import 'package:flutterhub/features/domain/entities/models.dart';
+import 'package:flutterhub/features/presentation/cubit/search/search_cubit.dart';
+import 'package:flutterhub/features/presentation/pages/repository_page.dart';
+import 'package:flutterhub/features/presentation/pages/user_page.dart';
+import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
+import 'package:flutterhub/features/presentation/widgets/user_tile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 

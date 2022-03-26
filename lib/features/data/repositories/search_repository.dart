@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutterhub/features/repositories/data/datasources/restapi/rest_service.dart';
+import 'package:flutterhub/features/data/datasources/restapi/rest_service.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../domain/entities/models.dart';
