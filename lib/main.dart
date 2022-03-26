@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           title: 'FlutterHub',
           theme: AppTheme.flexLightTheme(),
           darkTheme: AppTheme.flexDarkTheme(),
-          themeMode: ThemeMode.light,
+          themeMode: appStore.themeMode,
           localizationsDelegates: const [
             loc.S.delegate,
             GlobalMaterialLocalizations.delegate,
