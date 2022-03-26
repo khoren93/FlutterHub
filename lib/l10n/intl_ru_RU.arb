@@ -1,0 +1,11 @@
+{
+    "@@locale": "ru_RU",
+    "repositories": "Репозитории",
+    "repository": "Репозиторий",
+    "users": "Пользователи",
+    "user": "Пользователь",
+    "searchAppBarTile": "Поиск",
+    "settingsAppBarTitle": "Настройки",
+    "settingsThemeModeTitle": "Тема",
+    "settingsLanguageTitle": "Язык"
+}

@@ -1,0 +1,11 @@
+{
+    "@@locale": "en_US",
+    "repositories": "Repsoitories",
+    "repository": "Repository",
+    "users": "Users",
+    "user": "User",
+    "searchAppBarTile": "Search",
+    "settingsAppBarTitle": "Settings",
+    "settingsThemeModeTitle": "Theme",
+    "settingsLanguageTitle": "Language"
+}

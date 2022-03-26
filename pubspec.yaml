@@ -16,6 +16,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_localizations:
+    sdk: flutter
   flutter_mobx: ^2.0.4
   font_awesome_flutter: ^10.1.0
   freezed_annotation: ^1.1.0
@@ -24,7 +26,11 @@ dependencies:
   json_annotation: ^4.4.0
   nb_utils: ^4.4.14
   pull_to_refresh: ^2.0.0
-  url_launcher: ^6.0.20
+  url_launcher: ^6.0.20  
+
+flutter_intl:
+  main_locale: en_US
+  enabled: true
 
 dev_dependencies:
   build_runner: ^2.1.8
@@ -37,4 +43,5 @@ dev_dependencies:
   mobx_codegen: null
 
 flutter:
+  generate: true
   uses-material-design: true

@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/presentation/cubit/search/search_cubit.dart';
 import 'package:flutterhub/features/presentation/pages/repository_page.dart';
+import 'package:flutterhub/features/presentation/pages/settings_page.dart';
 import 'package:flutterhub/features/presentation/pages/user_page.dart';
 import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
 import 'package:flutterhub/features/presentation/widgets/user_tile.dart';
+import 'package:flutterhub/generated/l10n.dart' as loc;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -47,11 +49,11 @@ class _SearchPageState extends State<SearchPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search'),
+        title: Text(loc.S.current.searchAppBarTile),
         actions: [
           IconButton(
             icon: const Icon(FontAwesomeIcons.gear),
-            onPressed: () {},
+            onPressed: _onSettingsPressed,
           ),
         ],
         bottom: _buildSearchTypeTabsWidget(context, _tabController),
@@ -76,14 +78,14 @@ class _SearchPageState extends State<SearchPage>
       BuildContext context, TabController controller) {
     return TabBar(
       controller: controller,
-      tabs: const [
+      tabs: [
         Tab(
-          text: 'Repositories',
-          icon: Icon(FontAwesomeIcons.bookBookmark),
+          text: loc.S.current.repositories,
+          icon: const Icon(FontAwesomeIcons.bookBookmark),
         ),
         Tab(
-          text: 'Users',
-          icon: Icon(FontAwesomeIcons.user),
+          text: loc.S.current.users,
+          icon: const Icon(FontAwesomeIcons.user),
         ),
       ],
     );
@@ -120,7 +122,7 @@ class _SearchPageState extends State<SearchPage>
                 itemCount: items.length,
                 itemBuilder: (context, index) => RepositoryTile(
                   item: items[index],
-                  onTap: _onRepositorySelect,
+                  onTap: _onRepositorySelected,
                 ),
               );
             },
@@ -171,7 +173,7 @@ class _SearchPageState extends State<SearchPage>
                 itemCount: items.length,
                 itemBuilder: (context, index) => UserTile(
                   item: items[index],
-                  onTap: _onUserSelect,
+                  onTap: _onUserSelected,
                 ),
               );
             },
@@ -191,7 +193,24 @@ class _SearchPageState extends State<SearchPage>
     );
   }
 
-  _onRepositorySelect(Repository item) {
+  _onSettingsPressed() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SettingsPage(),
+      ),
+    );
+    setState(() {});
+  }
+
+  Future<dynamic> _onSearchPressed(BuildContext context) {
+    return showSearch(
+      context: context,
+      delegate: RepositoriesSearchDelegate(),
+    );
+  }
+
+  _onRepositorySelected(Repository item) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -200,19 +219,12 @@ class _SearchPageState extends State<SearchPage>
     );
   }
 
-  _onUserSelect(User item) {
+  _onUserSelected(User item) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => UserPage(owner: item.login),
       ),
-    );
-  }
-
-  Future<dynamic> _onSearchPressed(BuildContext context) {
-    return showSearch(
-      context: context,
-      delegate: RepositoriesSearchDelegate(),
     );
   }
 }

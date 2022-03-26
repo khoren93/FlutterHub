@@ -1,0 +1,11 @@
+{
+    "@@locale": "hy_AM",
+    "repositories": "Ռեպոզիտորիաներ",
+    "repository": "Ռեպոզիտորիա",
+    "users": "Օգտատերեր",
+    "user": "Օգտատեր",
+    "searchAppBarTile": "Որոնում",
+    "settingsAppBarTitle": "Կարգավորումներ",
+    "settingsThemeModeTitle": "Թեմա",
+    "settingsLanguageTitle": "Լեզու"
+}

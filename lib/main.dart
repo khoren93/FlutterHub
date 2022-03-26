@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutterhub/core/extensions.dart';
 import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/presentation/cubit/repository/repository_cubit.dart';
 import 'package:flutterhub/features/presentation/cubit/user/user_cubit.dart';
@@ -13,6 +15,7 @@ import 'core/bloc_observer.dart';
 import 'core/scroll_behavior.dart';
 import 'features/presentation/cubit/search/search_cubit.dart';
 import 'configs/app_theme.dart';
+import 'generated/l10n.dart' as loc;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +46,14 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.flexLightTheme(),
           darkTheme: AppTheme.flexDarkTheme(),
           themeMode: ThemeMode.light,
+          localizationsDelegates: const [
+            loc.S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: loc.S.delegate.supportedLocales,
+          locale: appStore.selectedLanguage.parseLocale(),
           home: const SearchPage(),
           scrollBehavior: MyCustomScrollBehavior(),
           debugShowCheckedModeBanner: false,

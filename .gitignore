@@ -46,6 +46,7 @@ app.*.map.json
 /android/app/release
 
 # Ignore all generated files
+lib/generated
 *.chopper.dart
 *.freezed.dart
 *.g.dart
