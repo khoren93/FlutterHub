@@ -2,13 +2,21 @@ import 'package:chopper/chopper.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
 
 part 'rest_service.chopper.dart';
+part 'trending_service.dart';
 part 'repos_service.dart';
 part 'search_service.dart';
 part 'users_service.dart';
 
-final chopper = ChopperClient(
+final githubClient = ChopperClient(
   baseUrl: 'https://api.github.com',
-  converter: JsonSerializableConverter(),
+  converter: JsonSerializableConverter(
+    CustomJsonDecoder({
+      RepositorySearch: RepositorySearch.fromJson,
+      UserSearch: UserSearch.fromJson,
+      Repository: Repository.fromJson,
+      User: User.fromJson,
+    }),
+  ),
   errorConverter: const JsonConverter(),
   services: [
     SearchService.create(),
@@ -20,17 +28,31 @@ final chopper = ChopperClient(
   ],
 );
 
+final trendingClient = ChopperClient(
+  baseUrl: 'https://gtrend.yapie.me',
+  converter: JsonSerializableConverter(
+    CustomJsonDecoder({
+      TrendingRepository: TrendingRepository.fromJson,
+      TrendingUser: TrendingUser.fromJson,
+      RepositoryLanguage: RepositoryLanguage.fromJson,
+    }),
+  ),
+  errorConverter: const JsonConverter(),
+  services: [
+    TrendingService.create(),
+  ],
+  interceptors: [
+    HttpLoggingInterceptor(),
+  ],
+);
+
 typedef JsonFactory<T> = T Function(Map<String, dynamic> json);
-final jsonDecoder = CustomJsonDecoder(apiDecoderMappings);
-final Map<Type, Object Function(Map<String, dynamic>)> apiDecoderMappings = {
-  RepositorySearch: RepositorySearch.fromJson,
-  UserSearch: UserSearch.fromJson,
-  Repository: Repository.fromJson,
-  User: User.fromJson,
-};
 
 /// Custom converter to convert the response body to a Models
 class JsonSerializableConverter extends JsonConverter {
+  const JsonSerializableConverter(this.jsonDecoder);
+  final CustomJsonDecoder jsonDecoder;
+
   @override
   Response<ResultType> convertResponse<ResultType, Item>(Response response) {
     if (response.bodyString.isEmpty) {

@@ -5,7 +5,7 @@ import 'package:flutterhub/core/extensions.dart';
 import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/presentation/cubit/repository/repository_cubit.dart';
 import 'package:flutterhub/features/presentation/cubit/user/user_cubit.dart';
-import 'package:flutterhub/features/presentation/pages/search_page.dart';
+import 'package:flutterhub/features/presentation/pages/trending_page.dart';
 import 'package:logging/logging.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -15,6 +15,7 @@ import 'core/bloc_observer.dart';
 import 'core/scroll_behavior.dart';
 import 'features/presentation/cubit/search/search_cubit.dart';
 import 'configs/app_theme.dart';
+import 'features/presentation/cubit/trending/trending_cubit.dart';
 import 'generated/l10n.dart' as loc;
 
 void main() async {
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (_) => di<TrendingRepositoryCubit>()),
+        BlocProvider(create: (_) => di<TrendingUserCubit>()),
         BlocProvider(create: (_) => di<SearchRepositoryCubit>()),
         BlocProvider(create: (_) => di<SearchUserCubit>()),
         BlocProvider(create: (_) => di<RepositoryCubit>()),
@@ -54,7 +57,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: loc.S.delegate.supportedLocales,
           locale: appStore.selectedLanguage.parseLocale(),
-          home: const SearchPage(),
+          home: const TrendingPage(),
           scrollBehavior: MyCustomScrollBehavior(),
           debugShowCheckedModeBanner: false,
         ),
