@@ -1,4 +1,4 @@
-# flutterhub
+# FlutterHub
 
 <p align="center">
   Cross-platform GitHub client in Flutter and BLoC clean architecture.
@@ -20,8 +20,8 @@
 - [x] In-app language switching (en, ru, hy)
 - [ ] Whats New functionality
 - [ ] Invite friends functionality
-- [x] Support iOS, Android, Web, and Windows
 - [ ] Clone repository directly to app
+- [x] Support iOS, Android, Web, and Windows
 
 ## Technologies
 - [x] Clean architecture ([BLoC](https://pub.dev/packages/flutter_bloc))
