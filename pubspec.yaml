@@ -4,7 +4,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.1 <3.0.0"
+  sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
   cached_network_image: ^3.2.0
@@ -26,7 +26,7 @@ dependencies:
   json_annotation: ^4.4.0
   nb_utils: ^4.4.14
   pull_to_refresh: ^2.0.0
-  url_launcher: ^6.0.20  
+  url_launcher: ^6.0.20
 
 flutter_intl:
   main_locale: en_US
@@ -40,7 +40,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^1.1.1
   json_serializable: ^6.1.5
-  mobx_codegen: null
+  mobx_codegen:
 
 flutter:
   generate: true
