@@ -5,12 +5,19 @@ import 'package:flutterhub/features/presentation/cubit/repository/repository_cub
 import 'package:flutterhub/features/presentation/cubit/user/user_cubit.dart';
 import 'package:flutterhub/features/presentation/pages/search_page.dart';
 import 'package:logging/logging.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:nb_utils/nb_utils.dart';
 
+import 'configs/app_store.dart';
+import 'core/bloc_observer.dart';
+import 'core/scroll_behavior.dart';
 import 'features/presentation/cubit/search/search_cubit.dart';
+import 'configs/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _setupLogging();
+  await _initializeSharedPrefs();
   await initDI();
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
@@ -30,32 +37,35 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => di<RepositoryCubit>()),
         BlocProvider(create: (_) => di<UserCubit>()),
       ],
-      child: const MaterialApp(
-        title: 'FlutterHub',
-        home: SearchPage(),
+      child: Observer(
+        builder: (_) => MaterialApp(
+          title: 'FlutterHub',
+          theme: AppTheme.flexLightTheme(),
+          darkTheme: AppTheme.flexDarkTheme(),
+          themeMode: ThemeMode.light,
+          home: const SearchPage(),
+          scrollBehavior: MyCustomScrollBehavior(),
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }
 }
 
-class FlutterHubBlocObserver extends BlocObserver {
-  // @override
-  // void onChange(BlocBase bloc, Change change) {
-  //   super.onChange(bloc, change);
-  //   debugPrint('${bloc.runtimeType} ${change.toString()}');
-  // }
-
-  @override
-  void onTransition(Bloc bloc, Transition transition) {
-    super.onTransition(bloc, transition);
-    debugPrint('$transition');
-  }
-
-  @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    debugPrint('$error');
-    super.onError(bloc, error, stackTrace);
-  }
+_initializeSharedPrefs() async {
+  await initialize();
+  await appStore.toggleUserLoggedIn(value: getBoolAsync(isUserLoggedInPref));
+  final themeModeString = getStringAsync(themeModePref,
+      defaultValue: appStore.themeMode.toString());
+  await appStore.setThemeMode(ThemeMode.values
+      .firstWhere((element) => element.toString() == themeModeString));
+  await appStore.setColorSchemeIndex(getIntAsync(colorSchemeIndexPref,
+      defaultValue: appStore.colorSchemeIndex));
+  await appStore.toggleNotificationsMode(
+      value: getBoolAsync(isNotificationsOnPref,
+          defaultValue: appStore.isNotificationsOn));
+  await appStore.setLanguage(
+      getStringAsync(languagePref, defaultValue: appStore.selectedLanguage));
 }
 
 _setupLogging() {

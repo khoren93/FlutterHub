@@ -7,8 +7,10 @@ import 'package:flutterhub/features/presentation/pages/user_page.dart';
 import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
 import 'package:flutterhub/features/presentation/widgets/user_tile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../configs/app_store.dart';
 import '../widgets/repository_tile.dart';
 import '../widgets/repositories_search_delegate.dart';
 
@@ -28,6 +30,9 @@ class _SearchPageState extends State<SearchPage>
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
+    Connectivity().onConnectivityChanged.listen((event) {
+      appStore.hasInternetConnection = event != ConnectivityResult.none;
+    });
     super.initState();
   }
 
