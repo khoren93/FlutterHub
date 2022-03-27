@@ -1,7 +1,17 @@
 # FlutterHub
 
 <p align="center">
+  <img src="https://github.com/khoren93/FlutterHub/blob/main/app_logo.svg" alt="FlutterHub logo" height="80" >
+</p>
+
+<p align="center">
   Cross-platform GitHub client in Flutter and BLoC clean architecture.
+</p>
+
+<p align="center">  
+  <a href="https://github.com/khoren93/SwiftHub">
+    SwiftHub - Swift version is available
+  </a>
 </p>
 
 ## App Features
@@ -35,4 +45,4 @@
 - [ ] Add tests
 
 ## License
-MIT License. See [LICENSE](https://github.com/khoren93/flutterhub/blob/master/LICENSE).
+MIT License. See [LICENSE](https://github.com/khoren93/FlutterHub/blob/master/LICENSE).
