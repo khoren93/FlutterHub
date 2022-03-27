@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.markosyan.flutterhub">
    <application
-        android:label="flutterhub"
+        android:label="FlutterHub"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
