@@ -20,7 +20,12 @@ class SettingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: leading != null ? Icon(leading) : null,
+        leading: leading != null
+            ? Icon(
+                leading,
+                color: Theme.of(context).colorScheme.secondary,
+              )
+            : null,
         title: Text(title ?? ''),
         trailing: trailing,
         onTap: onTap,

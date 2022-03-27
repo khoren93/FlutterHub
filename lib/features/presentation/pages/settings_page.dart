@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../configs/app_store.dart';
 import '../widgets/language_widget.dart';
-import '../widgets/setting_tile.dart';
+import '../widgets/list_tiles/setting_tile.dart';
 import '../widgets/theme_mode_switch.dart';
 import '../widgets/theme_selector.dart';
 

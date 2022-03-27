@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterhub/features/presentation/widgets/repository_tile.dart';
+import 'package:flutterhub/features/presentation/widgets/list_tiles/repository_tile.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../domain/entities/models.dart';
 import '../cubit/search/search_cubit.dart';
+import '../widgets/tab_bars/search_tab_bar.dart';
 import 'repository_page.dart';
 import 'user_page.dart';
 import '../widgets/empty_widget.dart';
-import '../widgets/tabbars/search_tab_bar.dart';
-import '../widgets/user_tile.dart';
+import '../widgets/list_tiles/user_tile.dart';
 
 class SearchDelegatePage extends SearchDelegate {
   SearchDelegatePage(this.type) : super();

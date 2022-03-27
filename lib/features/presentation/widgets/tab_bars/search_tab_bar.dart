@@ -16,24 +16,24 @@ class SearchTabModel {
     required this.icon,
   });
 
-  static List<SearchTabModel> items = [
-    SearchTabModel(
-      type: SearchType.repository,
-      title: S.current.repositories,
-      icon: FontAwesomeIcons.bookBookmark,
-    ),
-    SearchTabModel(
-      type: SearchType.user,
-      title: S.current.users,
-      icon: FontAwesomeIcons.solidUser,
-    ),
-  ];
+  static List<SearchTabModel> items() => [
+        SearchTabModel(
+          type: SearchType.repository,
+          title: S.current.repositories,
+          icon: FontAwesomeIcons.bookBookmark,
+        ),
+        SearchTabModel(
+          type: SearchType.user,
+          title: S.current.users,
+          icon: FontAwesomeIcons.solidUser,
+        ),
+      ];
 }
 
 TabBar buildSearchTypeTabs(BuildContext context, TabController controller) {
   return TabBar(
     controller: controller,
-    tabs: SearchTabModel.items.map((model) {
+    tabs: SearchTabModel.items().map((model) {
       return Tab(
         text: model.title,
         icon: Icon(model.icon),

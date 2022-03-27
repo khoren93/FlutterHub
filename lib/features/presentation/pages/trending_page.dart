@@ -7,17 +7,17 @@ import 'package:flutterhub/features/presentation/pages/repository_page.dart';
 import 'package:flutterhub/features/presentation/pages/settings_page.dart';
 import 'package:flutterhub/features/presentation/pages/user_page.dart';
 import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
-import 'package:flutterhub/features/presentation/widgets/tabbars/since_tab_bar.dart';
-import 'package:flutterhub/features/presentation/widgets/user_tile.dart';
+import 'package:flutterhub/features/presentation/widgets/list_tiles/user_tile.dart';
 import 'package:flutterhub/generated/l10n.dart' as loc;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../configs/app_store.dart';
-import '../widgets/repository_tile.dart';
+import '../widgets/list_tiles/repository_tile.dart';
+import '../widgets/tab_bars/search_tab_bar.dart';
+import '../widgets/tab_bars/since_tab_bar.dart';
 import 'search_delegate_page.dart';
-import '../widgets/tabbars/search_tab_bar.dart';
 
 class TrendingPage extends StatefulWidget {
   const TrendingPage({Key? key}) : super(key: key);
@@ -33,8 +33,8 @@ class _TrendingPageState extends State<TrendingPage>
   late TabController _searchTabController;
   late TabController _sinceTabController;
 
-  final _searchTabItems = SearchTabModel.items;
-  final _sinceTabItems = SinceTabModel.items;
+  final _searchTabItems = SearchTabModel.items();
+  final _sinceTabItems = SinceTabModel.items();
 
   late SearchTabModel _selectedSearch = _searchTabItems.first;
   late SinceTabModel _selectedSince = _sinceTabItems.first;

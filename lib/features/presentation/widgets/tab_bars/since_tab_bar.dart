@@ -13,17 +13,17 @@ class SinceTabModel {
   const SinceTabModel(this.type, this.title, this.value);
 
   static SinceTabModel fromType(SinceType type) {
-    return items.firstWhere(
+    return items().firstWhere(
       (since) => since.type == type,
       orElse: () => const SinceTabModel(SinceType.daily, '', ''),
     );
   }
 
-  static final items = [
-    SinceTabModel(SinceType.daily, S.current.daily, 'daily'),
-    SinceTabModel(SinceType.weekly, S.current.weekly, 'weekly'),
-    SinceTabModel(SinceType.monthly, S.current.monthly, 'monthly'),
-  ];
+  static List<SinceTabModel> items() => [
+        SinceTabModel(SinceType.daily, S.current.daily, 'daily'),
+        SinceTabModel(SinceType.weekly, S.current.weekly, 'weekly'),
+        SinceTabModel(SinceType.monthly, S.current.monthly, 'monthly'),
+      ];
 }
 
 Widget buildSinceTabs(BuildContext context, TabController controller) {
@@ -40,7 +40,7 @@ Widget buildSinceTabs(BuildContext context, TabController controller) {
         color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(20.0),
       ),
-      tabs: SinceTabModel.items.map((model) {
+      tabs: SinceTabModel.items().map((model) {
         return Tab(
           text: model.title,
         );
