@@ -35,13 +35,30 @@ flutter_intl:
 dev_dependencies:
   build_runner: ^2.1.8
   chopper_generator: ^4.0.5
+  flutter_launcher_icons: ^0.9.2 # flutter pub run flutter_launcher_icons:main
   flutter_lints: ^1.0.0
+  flutter_native_splash: ^2.1.2 # flutter pub run flutter_native_splash:create
   flutter_test:
     sdk: flutter
   freezed: ^1.1.1
   json_serializable: ^6.1.5
-  mobx_codegen:
+  mobx_codegen: null
 
 flutter:
   generate: true
   uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_native_splash:
+  color: "#ffffff"
+  color_dark: "#131d25"
+  image: assets/images/app_logo.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#01579B"
+  adaptive_icon_foreground: "assets/images/app_icon_adaptive.png"
