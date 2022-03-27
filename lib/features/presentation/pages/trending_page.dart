@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/domain/repositories/trend_repository.dart';
 import 'package:flutterhub/features/presentation/cubit/trending/trending_cubit.dart';
@@ -8,6 +7,7 @@ import 'package:flutterhub/features/presentation/pages/repository_page.dart';
 import 'package:flutterhub/features/presentation/pages/settings_page.dart';
 import 'package:flutterhub/features/presentation/pages/user_page.dart';
 import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
+import 'package:flutterhub/features/presentation/widgets/tabbars/since_tab_bar.dart';
 import 'package:flutterhub/features/presentation/widgets/user_tile.dart';
 import 'package:flutterhub/generated/l10n.dart' as loc;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,28 +16,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../configs/app_store.dart';
 import '../widgets/repository_tile.dart';
-import '../widgets/repositories_search_delegate.dart';
-
-// Since class
-class Since {
-  final String name;
-  final String value;
-
-  const Since({required this.name, required this.value});
-
-  static Since fromValue(String value) {
-    return items.firstWhere(
-      (since) => since.value == value,
-      orElse: () => const Since(name: '', value: ''),
-    );
-  }
-
-  static final items = [
-    Since(name: loc.S.current.daily, value: 'daily'),
-    Since(name: loc.S.current.weekly, value: 'weekly'),
-    Since(name: loc.S.current.monthly, value: 'monthly'),
-  ];
-}
+import 'search_delegate_page.dart';
+import '../widgets/tabbars/search_tab_bar.dart';
 
 class TrendingPage extends StatefulWidget {
   const TrendingPage({Key? key}) : super(key: key);
@@ -50,28 +30,41 @@ class _TrendingPageState extends State<TrendingPage>
     with TickerProviderStateMixin {
   final _repositoryRefreshController = RefreshController(initialRefresh: true);
   final _userRefreshController = RefreshController(initialRefresh: true);
-  late TabController _tabController;
+  late TabController _searchTabController;
   late TabController _sinceTabController;
 
-  final _sinceList = Since.items;
-  late Since _selectedSince;
+  final _searchTabItems = SearchTabModel.items;
+  final _sinceTabItems = SinceTabModel.items;
+
+  late SearchTabModel _selectedSearch = _searchTabItems.first;
+  late SinceTabModel _selectedSince = _sinceTabItems.first;
 
   @override
   void initState() {
-    _selectedSince = _sinceList.first;
-    _tabController = TabController(length: 2, vsync: this);
-    _sinceTabController = TabController(length: _sinceList.length, vsync: this);
+    _searchTabController =
+        TabController(length: _searchTabItems.length, vsync: this);
+    _searchTabController.addListener(() {
+      _selectedSearch = _searchTabItems[_searchTabController.index];
+    });
+
+    _sinceTabController =
+        TabController(length: _sinceTabItems.length, vsync: this);
     _sinceTabController.addListener(() {
-      _selectedSince = _sinceList[_sinceTabController.index];
-      if (_tabController.index == 0) {
-        _repositoryRefreshController.requestRefresh();
-      } else {
-        _userRefreshController.requestRefresh();
+      _selectedSince = _sinceTabItems[_sinceTabController.index];
+      switch (_selectedSearch.type) {
+        case SearchType.repository:
+          _repositoryRefreshController.requestRefresh();
+          break;
+        case SearchType.user:
+          _userRefreshController.requestRefresh();
+          break;
       }
     });
+
     Connectivity().onConnectivityChanged.listen((event) {
       appStore.hasInternetConnection = event != ConnectivityResult.none;
     });
+
     super.initState();
   }
 
@@ -79,7 +72,7 @@ class _TrendingPageState extends State<TrendingPage>
   void dispose() {
     _repositoryRefreshController.dispose();
     _userRefreshController.dispose();
-    _tabController.dispose();
+    _searchTabController.dispose();
     _sinceTabController.dispose();
     super.dispose();
   }
@@ -95,14 +88,14 @@ class _TrendingPageState extends State<TrendingPage>
             onPressed: _onSettingsPressed,
           ),
         ],
-        bottom: _buildSearchTypeTabsWidget(context, _tabController),
+        bottom: buildSearchTypeTabs(context, _searchTabController),
       ),
       body: Column(
         children: [
-          _buildSinceTabsWidget(_sinceTabController),
+          buildSinceTabs(context, _sinceTabController),
           Expanded(
             child: TabBarView(
-              controller: _tabController,
+              controller: _searchTabController,
               children: [
                 _buildRepositoriesList(context),
                 _buildUsersList(context),
@@ -116,52 +109,6 @@ class _TrendingPageState extends State<TrendingPage>
         onPressed: () {
           _onSearchPressed(context);
         },
-      ),
-    );
-  }
-
-  TabBar _buildSearchTypeTabsWidget(
-      BuildContext context, TabController controller) {
-    return TabBar(
-      controller: controller,
-      tabs: [
-        Tab(
-          text: loc.S.current.repositories,
-          icon: const Icon(FontAwesomeIcons.bookBookmark),
-        ),
-        Tab(
-          text: loc.S.current.users,
-          icon: const Icon(FontAwesomeIcons.solidUser),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSinceTabsWidget(TabController controller) {
-    return Container(
-      margin: paddingSmallDefault,
-      height: 40,
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withOpacity(0.8),
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: TabBar(
-        controller: controller,
-        indicator: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        tabs: [
-          Tab(
-            text: loc.S.current.daily,
-          ),
-          Tab(
-            text: loc.S.current.weekly,
-          ),
-          Tab(
-            text: loc.S.current.monthly,
-          ),
-        ],
       ),
     );
   }
@@ -252,7 +199,7 @@ class _TrendingPageState extends State<TrendingPage>
   Future<dynamic> _onSearchPressed(BuildContext context) {
     return showSearch(
       context: context,
-      delegate: RepositoriesSearchDelegate(),
+      delegate: SearchDelegatePage(_selectedSearch.type),
     );
   }
 

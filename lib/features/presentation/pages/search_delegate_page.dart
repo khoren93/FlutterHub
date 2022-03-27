@@ -5,11 +5,19 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../domain/entities/models.dart';
 import '../cubit/search/search_cubit.dart';
-import '../pages/repository_page.dart';
-import 'empty_widget.dart';
+import 'repository_page.dart';
+import 'user_page.dart';
+import '../widgets/empty_widget.dart';
+import '../widgets/tabbars/search_tab_bar.dart';
+import '../widgets/user_tile.dart';
 
-class RepositoriesSearchDelegate extends SearchDelegate {
+class SearchDelegatePage extends SearchDelegate {
+  SearchDelegatePage(this.type) : super();
+
+  final SearchType type;
+
   final _repositoryRefreshController = RefreshController(initialRefresh: true);
+  final _userRefreshController = RefreshController(initialRefresh: true);
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -35,7 +43,12 @@ class RepositoriesSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return _buildRepositoriesList(context);
+    switch (type) {
+      case SearchType.repository:
+        return _buildRepositoriesList(context, query);
+      case SearchType.user:
+        return _buildUsersList(context, query);
+    }
   }
 
   @override
@@ -43,7 +56,7 @@ class RepositoriesSearchDelegate extends SearchDelegate {
     return Container();
   }
 
-  Widget _buildRepositoriesList(BuildContext context) {
+  Widget _buildRepositoriesList(BuildContext context, String query) {
     return BlocBuilder<SearchRepositoryCubit, SearchRepositoryState>(
       builder: (context, state) {
         return SmartRefresher(
@@ -96,11 +109,73 @@ class RepositoriesSearchDelegate extends SearchDelegate {
     );
   }
 
+  Widget _buildUsersList(BuildContext context, String query) {
+    return BlocBuilder<SearchUserCubit, SearchUserState>(
+      builder: (context, state) {
+        return SmartRefresher(
+          controller: _userRefreshController,
+          enablePullUp: true,
+          onRefresh: () {
+            context.read<SearchUserCubit>().searchUser(
+                  query: query,
+                  isRefresh: true,
+                );
+          },
+          onLoading: () {
+            context.read<SearchUserCubit>().searchUser(
+                  query: query,
+                  isRefresh: false,
+                );
+          },
+          child: state.when(
+            loading: () => Container(),
+            loaded: (items, hasNextPage) {
+              _userRefreshController.refreshCompleted();
+              if (hasNextPage) {
+                _userRefreshController.loadComplete();
+              } else {
+                _userRefreshController.loadNoData();
+              }
+              return ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (context, index) => UserTile(
+                  item: items[index],
+                  onTap: (item) {
+                    _onUserSelected(context, item);
+                  },
+                ),
+              );
+            },
+            empty: () {
+              _userRefreshController.refreshCompleted();
+              _userRefreshController.loadNoData();
+              return emptyUsersWidget();
+            },
+            error: (message, url) {
+              _userRefreshController.refreshFailed();
+              _userRefreshController.loadFailed();
+              return serverFailureWidget(message, url);
+            },
+          ),
+        );
+      },
+    );
+  }
+
   _onRepositorySelected(BuildContext context, Repository item) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => RepositoryPage(fullName: item.fullName),
+      ),
+    );
+  }
+
+  _onUserSelected(BuildContext context, User item) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => UserPage(owner: item.login),
       ),
     );
   }
