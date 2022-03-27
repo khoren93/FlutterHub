@@ -10,7 +10,6 @@ import 'package:flutterhub/l10n/localizations.dart';
 import 'package:logging/logging.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'configs/app_store.dart';
 import 'core/bloc_observer.dart';
