@@ -8,6 +8,12 @@
   Cross-platform GitHub client in Flutter and BLoC clean architecture.
 </p>
 
+<p align="center">  
+  <a href="https://github.com/khoren93/SwiftHub">
+    SwiftHub - Swift version is available
+  </a>
+</p>
+
 ## App Features
 - [ ] Basic, Personal Access Token and OAuth2 authentication
 - [x] View trending repositories and users ([github-trending-api](https://github.com/huchenme/github-trending-api))
