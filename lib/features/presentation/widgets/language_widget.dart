@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhub/core/extensions.dart';
+import '../../../core/extensions.dart';
 
 import '../../../configs/app_store.dart';
 import '../../../generated/l10n.dart';

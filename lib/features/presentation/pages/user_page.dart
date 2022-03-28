@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterhub/features/presentation/cubit/user/user_cubit.dart';
-import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
+import '../cubit/user/user_cubit.dart';
+import '../widgets/empty_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class UserPage extends StatefulWidget {

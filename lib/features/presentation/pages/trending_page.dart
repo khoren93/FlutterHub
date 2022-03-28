@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterhub/features/domain/entities/models.dart';
-import 'package:flutterhub/features/domain/repositories/trend_repository.dart';
-import 'package:flutterhub/features/presentation/cubit/trending/trending_cubit.dart';
-import 'package:flutterhub/features/presentation/pages/repository_page.dart';
-import 'package:flutterhub/features/presentation/pages/settings_page.dart';
-import 'package:flutterhub/features/presentation/pages/user_page.dart';
-import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
-import 'package:flutterhub/features/presentation/widgets/list_tiles/user_tile.dart';
-import 'package:flutterhub/generated/l10n.dart' as loc;
+import '../../domain/entities/models.dart';
+import '../../domain/repositories/trend_repository.dart';
+import '../cubit/trending/trending_cubit.dart';
+import 'menu_drawer_page.dart';
+import 'repository_page.dart';
+import 'user_page.dart';
+import '../widgets/empty_widget.dart';
+import '../widgets/list_tiles/user_tile.dart';
+import '../../../generated/l10n.dart' as loc;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -80,14 +80,9 @@ class _TrendingPageState extends State<TrendingPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MenuDrawerPage(),
       appBar: AppBar(
         title: Text(loc.S.current.trendingAppBarTitle),
-        actions: [
-          IconButton(
-            icon: const Icon(FontAwesomeIcons.gear),
-            onPressed: _onSettingsPressed,
-          ),
-        ],
         bottom: buildSearchTypeTabs(context, _searchTabController),
       ),
       body: Column(
@@ -186,15 +181,6 @@ class _TrendingPageState extends State<TrendingPage>
     );
   }
 
-  _onSettingsPressed() async {
-    await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SettingsPage(),
-      ),
-    );
-    setState(() {});
-  }
 
   Future<dynamic> _onSearchPressed(BuildContext context) {
     return showSearch(

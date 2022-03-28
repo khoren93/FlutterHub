@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutterhub/features/domain/entities/models.dart';
-import 'package:flutterhub/features/domain/repositories/trend_repository.dart';
+import '../entities/models.dart';
+import '../repositories/trend_repository.dart';
 
 import '../../../core/error/failure.dart';
 import '../../../core/usecases/usecase.dart';

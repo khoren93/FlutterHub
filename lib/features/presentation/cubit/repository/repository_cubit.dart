@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutterhub/features/domain/entities/models.dart';
-import 'package:flutterhub/features/domain/usecases/usecases.dart';
+import '../../../domain/entities/models.dart';
+import '../../../domain/usecases/usecases.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/error/failure.dart';

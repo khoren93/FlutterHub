@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/models.dart';
+import '../network_image.dart';
 
 class RepositoryTile extends StatelessWidget {
   const RepositoryTile({
@@ -17,11 +17,7 @@ class RepositoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: CachedNetworkImage(
-          imageUrl: item.owner?.avatarUrl ?? '',
-          width: 40,
-          height: 40,
-        ),
+        leading: networkImage(context, item.owner?.avatarUrl),
         title: Text(item.name ?? ''),
         subtitle:
             item.description != null ? Text(item.description ?? '') : null,

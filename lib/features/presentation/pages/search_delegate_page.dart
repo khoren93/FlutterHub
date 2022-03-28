@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterhub/features/presentation/widgets/list_tiles/repository_tile.dart';
+import '../widgets/list_tiles/repository_tile.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../domain/entities/models.dart';

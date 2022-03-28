@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutterhub/features/data/datasources/restapi/rest_service.dart';
-import 'package:flutterhub/features/domain/entities/models.dart';
-import 'package:flutterhub/features/domain/repositories/trend_repository.dart';
+import '../datasources/restapi/rest_service.dart';
+import '../../domain/entities/models.dart';
+import '../../domain/repositories/trend_repository.dart';
 
 import '../../../core/error/failure.dart';
 

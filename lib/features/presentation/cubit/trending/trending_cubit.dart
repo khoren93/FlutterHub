@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutterhub/features/domain/entities/models.dart';
-import 'package:flutterhub/features/domain/repositories/trend_repository.dart';
-import 'package:flutterhub/features/domain/usecases/trending_repositories_usecase.dart';
-import 'package:flutterhub/features/domain/usecases/trending_users_usecase.dart';
+import '../../../domain/entities/models.dart';
+import '../../../domain/repositories/trend_repository.dart';
+import '../../../domain/usecases/trending_repositories_usecase.dart';
+import '../../../domain/usecases/trending_users_usecase.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/error/failure.dart';

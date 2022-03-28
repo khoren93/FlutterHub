@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutterhub/features/domain/entities/models.dart';
 
 import '../../../core/error/failure.dart';
+import '../entities/models.dart';
 
 abstract class TrendRepository {
   Future<Either<Failure, List<TrendingRepository>>> trendingRepositories(

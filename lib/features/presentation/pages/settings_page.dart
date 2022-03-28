@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhub/configs/constants.dart';
-import 'package:flutterhub/generated/l10n.dart';
+import '../../../configs/constants.dart';
+import '../../../generated/l10n.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../configs/app_store.dart';
