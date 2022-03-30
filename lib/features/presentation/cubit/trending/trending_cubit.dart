@@ -29,8 +29,7 @@ class TrendingRepositoryCubit extends Cubit<TrendingRepositoryState> {
         (r) {
           emit(r.isEmpty
               ? const TrendingRepositoryState.empty()
-              : TrendingRepositoryState.loaded(
-                  items: r.map((e) => e.toRepository()).toList()));
+              : TrendingRepositoryState.loaded(items: r));
         },
       );
     } catch (e) {
@@ -57,9 +56,7 @@ class TrendingUserCubit extends Cubit<TrendingUserState> {
         (r) {
           emit(r.isEmpty
               ? const TrendingUserState.empty()
-              : TrendingUserState.loaded(
-                  items: r.map((e) => e.toUser()).toList(),
-                ));
+              : TrendingUserState.loaded(items: r));
         },
       );
     } catch (e) {

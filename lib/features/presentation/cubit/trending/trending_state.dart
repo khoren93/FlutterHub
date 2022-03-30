@@ -7,7 +7,7 @@ class TrendingRepositoryState with _$TrendingRepositoryState {
   const factory TrendingRepositoryState.empty() = _RepositoryEmpty;
 
   const factory TrendingRepositoryState.loaded({
-    required List<Repository> items,
+    required List<TrendingRepository> items,
   }) = _RepositoryLoaded;
 
   const factory TrendingRepositoryState.error({
@@ -25,7 +25,7 @@ class TrendingUserState with _$TrendingUserState {
   const factory TrendingUserState.empty() = _UserEmpty;
 
   const factory TrendingUserState.loaded({
-    required List<User> items,
+    required List<TrendingUser> items,
   }) = _UserLoaded;
 
   const factory TrendingUserState.error({

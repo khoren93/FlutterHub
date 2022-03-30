@@ -14,12 +14,4 @@ class TrendingUser with _$TrendingUser {
 
   factory TrendingUser.fromJson(Map<String, dynamic> json) =>
       _$TrendingUserFromJson(json);
-
-  User toUser() {
-    return User(
-      login: username,
-      name: name,
-      avatarUrl: avatar,
-    );
-  }
 }

@@ -20,16 +20,7 @@ class TrendingRepository with _$TrendingRepository {
   factory TrendingRepository.fromJson(Map<String, dynamic> json) =>
       _$TrendingRepositoryFromJson(json);
 
-  Repository toRepository() {
-    return Repository(
-      name: name,
-      fullName: '$author/$name',
-      description: description,
-      url: url,
-      owner: User(
-        login: author,
-        avatarUrl: avatar,
-      ),
-    );
-  }
+  String get fullName => '$author/$name';
+  int get color =>
+      int.parse(languageColor?.replaceAll('#', '0xff') ?? '0xffffff');
 }

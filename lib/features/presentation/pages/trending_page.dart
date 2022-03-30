@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_repository_tile.dart';
+import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_user_tile.dart';
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/trend_repository.dart';
 import '../cubit/trending/trending_cubit.dart';
@@ -7,14 +9,12 @@ import 'menu_drawer_page.dart';
 import 'repository_page.dart';
 import 'user_page.dart';
 import '../widgets/empty_widget.dart';
-import '../widgets/list_tiles/user_tile.dart';
 import '../../../generated/l10n.dart' as loc;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../configs/app_store.dart';
-import '../widgets/list_tiles/repository_tile.dart';
 import '../widgets/tab_bars/search_tab_bar.dart';
 import '../widgets/tab_bars/since_tab_bar.dart';
 import 'search_delegate_page.dart';
@@ -124,8 +124,9 @@ class _TrendingPageState extends State<TrendingPage>
               _repositoryRefreshController.refreshCompleted();
               return ListView.builder(
                 itemCount: items.length,
-                itemBuilder: (context, index) => RepositoryTile(
+                itemBuilder: (context, index) => TrendingRepositoryTile(
                   item: items[index],
+                  timePeriod: _selectedSince.title.toLowerCase(),
                   onTap: _onRepositorySelected,
                 ),
               );
@@ -160,7 +161,7 @@ class _TrendingPageState extends State<TrendingPage>
               _userRefreshController.refreshCompleted();
               return ListView.builder(
                 itemCount: items.length,
-                itemBuilder: (context, index) => UserTile(
+                itemBuilder: (context, index) => TrendingUserTile(
                   item: items[index],
                   onTap: _onUserSelected,
                 ),
@@ -181,7 +182,6 @@ class _TrendingPageState extends State<TrendingPage>
     );
   }
 
-
   Future<dynamic> _onSearchPressed(BuildContext context) {
     return showSearch(
       context: context,
@@ -189,7 +189,7 @@ class _TrendingPageState extends State<TrendingPage>
     );
   }
 
-  _onRepositorySelected(Repository item) {
+  _onRepositorySelected(TrendingRepository item) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -198,11 +198,11 @@ class _TrendingPageState extends State<TrendingPage>
     );
   }
 
-  _onUserSelected(User item) {
+  _onUserSelected(TrendingUser item) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => UserPage(owner: item.login),
+        builder: (context) => UserPage(owner: item.username),
       ),
     );
   }
