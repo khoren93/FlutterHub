@@ -164,6 +164,7 @@ class _TrendingPageState extends State<TrendingPage>
                 itemBuilder: (context, index) => TrendingUserTile(
                   item: items[index],
                   onTap: _onUserSelected,
+                  onRepositoryTap: _onRepositorySelected,
                 ),
               );
             },

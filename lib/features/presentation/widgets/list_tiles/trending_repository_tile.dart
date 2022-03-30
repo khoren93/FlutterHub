@@ -21,13 +21,23 @@ class TrendingRepositoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: networkImage(context, item.avatar),
-        title: Row(
-          children: [
-            const Icon(FontAwesomeIcons.bookBookmark, size: 20),
-            const SizedBox(width: spaceMedium),
-            Text(item.name ?? ''),
-          ],
+        leading: networkImage(context, item.avatar, openPreview: false),
+        title: Padding(
+          padding: const EdgeInsets.only(top: spaceMedium),
+          child: Row(
+            children: [
+              const Icon(FontAwesomeIcons.bookBookmark, size: 20),
+              const SizedBox(width: spaceMedium),
+              Expanded(
+                child: Text(
+                  item.fullName,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,9 +61,8 @@ class TrendingRepositoryTile extends StatelessWidget {
                   const SizedBox(width: spaceMedium),
                   const Icon(FontAwesomeIcons.star, size: 14),
                   const SizedBox(width: spaceSmall2),
-                  Text('${item.stars}'),
+                  Expanded(child: Text('${item.stars}')),
                   const SizedBox(width: spaceMedium),
-                  const Spacer(),
                   const Icon(FontAwesomeIcons.star, size: 14),
                   const SizedBox(width: spaceSmall2),
                   Text('${item.currentPeriodStars} $timePeriod'),

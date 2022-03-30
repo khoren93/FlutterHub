@@ -44,7 +44,8 @@ Widget networkImage(
     imageUrl: url,
     fit: fit,
     errorWidget: errorWidgetFn(),
-    progressIndicatorBuilder: progressWidgetFn(),
+    progressIndicatorBuilder: (context, _, progress) =>
+        progressWidget(progress, width),
     width: width,
     height: height,
   );
@@ -185,16 +186,20 @@ class RadialExpansion extends StatelessWidget {
   }
 }
 
-Widget Function(BuildContext, String, DownloadProgress) progressWidgetFn() =>
-    (_, s, progress) => progressWidget(progress);
+Widget Function(BuildContext, String, DownloadProgress, double)
+    progressWidgetFn() =>
+        (_, s, progress, size) => progressWidget(progress, size);
 
-Widget progressWidget(DownloadProgress progress) => Padding(
+Widget progressWidget(DownloadProgress progress, double size) => Padding(
       padding: const EdgeInsets.all(3.0),
       child: Center(
         child: SizedBox(
-          width: 30,
-          height: 30,
-          child: CircularProgressIndicator(value: progress.progress),
+          width: size,
+          height: size,
+          child: CircularProgressIndicator(
+            value: progress.progress,
+            strokeWidth: 2,
+          ),
         ),
       ),
     );
