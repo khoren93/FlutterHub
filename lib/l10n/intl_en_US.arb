@@ -11,5 +11,20 @@
     "searchAppBarTile": "Search",
     "settingsAppBarTitle": "Settings",
     "settingsThemeModeTitle": "Theme",
-    "settingsLanguageTitle": "Language"
+    "settingsLanguageTitle": "Language",
+    "loginAppBarTitle": "Sign in to GitHub",
+    "loginOAuthTab": "OAuth2",
+    "loginPersonalTab": "Personal",
+    "loginBasicTab": "Basic",
+    "loginOAuthTitle": "OAuth2 Sign In",
+    "loginOAuthDescription": "For API requests using Basic Authentication or OAuth2, you can make up to 5000 requests per hour. \n\nFor unauthenticated requests, the rate limit allows for up to 60 requests per hour.",
+    "loginOAuthButton": "Sign in with GitHub",
+    "loginPersonalTitle": "Personal Sign In",
+    "loginPersonalDescription": "These permissions are required\n{permissions}",
+    "loginPersonalLoginHint": "Personal access token",
+    "loginPersonalButton": "Sign in with token",
+    "loginBasicTitle": "Basic Sign In",
+    "loginBasicLoginHint": "Username or email address",
+    "loginBasicPasswordHint": "Password",
+    "loginBasicButton": "Sign in"
 }

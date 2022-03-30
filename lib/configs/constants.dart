@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const githubScope = 'user+repo+notifications+read:org';
 const kPerPage = 20;
 
 /// space between widgets
@@ -11,6 +12,8 @@ const spaceLarge = 24.0;
 const spaceLarge2 = 32.0;
 const spaceLarge3 = 40.0;
 const spaceLarge4 = 96.0;
+
+const spaceMaxWidth = 736.0;
 
 /// padding widgets
 const paddingSmallDefault =

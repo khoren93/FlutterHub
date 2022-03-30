@@ -19,6 +19,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_mobx: ^2.0.4
+  flutter_secure_storage: ^5.0.2
   font_awesome_flutter: ^10.1.0
   freezed_annotation: ^1.1.0
   get_it: ^7.2.0
@@ -36,6 +37,7 @@ flutter_intl:
 dev_dependencies:
   build_runner: ^2.1.8 # flutter pub run build_runner build --delete-conflicting-outputs
   chopper_generator: ^4.0.5
+  flutter_gen: ^4.1.6
   flutter_launcher_icons: ^0.9.2 # flutter pub run flutter_launcher_icons:main
   flutter_lints: ^1.0.0
   flutter_native_splash: ^2.1.2 # flutter pub run flutter_native_splash:create
@@ -63,4 +65,3 @@ flutter_icons:
   remove_alpha_ios: true
   adaptive_icon_background: "#01579B"
   adaptive_icon_foreground: "assets/images/app_icon_adaptive.png"
-  

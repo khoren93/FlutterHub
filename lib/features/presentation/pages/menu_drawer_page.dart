@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhub/features/presentation/pages/login_page.dart';
 import '../../../configs/app_store.dart';
 import 'user_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,14 +16,39 @@ class MenuDrawerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLoggedIn = !appStore.isUserLoggedIn;
+    bool isLoggedIn = appStore.isUserLoggedIn;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           if (!isLoggedIn)
             DrawerHeader(
-              child: const Text('Sign In'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    child: noUserImageWidget(70, null),
+                  ),
+                  TextButton.icon(
+                    icon: const Icon(
+                      FontAwesomeIcons.rightToBracket,
+                    ),
+                    label: Text(S.current.loginBasicButton,
+                        style: const TextStyle(fontSize: 20)),
+                    style: TextButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
               ),

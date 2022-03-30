@@ -11,5 +11,20 @@
     "searchAppBarTile": "Поиск",
     "settingsAppBarTitle": "Настройки",
     "settingsThemeModeTitle": "Тема",
-    "settingsLanguageTitle": "Язык"
+    "settingsLanguageTitle": "Язык",
+    "loginAppBarTitle": "Войти на GitHub",
+    "loginOAuthTab": "OAuth2",
+    "loginPersonalTab": "Личный",
+    "loginBasicTab": "Базовый",
+    "loginOAuthTitle": "OAuth2 Вход",
+    "loginOAuthDescription": "Для запросов API, использующих обычную аутентификацию или OAuth, вы можете делать до 5000 запросов в час. \n\nДля неаутентифицированных запросов ограничение скорости допускает до 60 запросов в час.",
+    "loginOAuthButton": "Вход через GitHub",
+    "loginPersonalTitle": "Личный Вход",
+    "loginPersonalDescription": "Эти разрешения необходимы\n{permissions}",
+    "loginPersonalLoginHint": "Личный токен доступа",
+    "loginPersonalButton": "Войти через Токен",
+    "loginBasicTitle": "Базовый Вход",
+    "loginBasicLoginHint": "Имя пользователя или Эл. адрес",
+    "loginBasicPasswordHint": "Пароль",
+    "loginBasicButton": "Войти"
 }
