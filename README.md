@@ -20,6 +20,15 @@
   </a>
 </p>
 
+## Get Started
+To get started, you need to install the packages and build generated files.
+Run the following commands in your terminal:
+```sh
+flutter pub get
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+
 ## App Features
 - [ ] Basic, Personal Access Token and OAuth2 authentication
 - [x] View trending repositories and users ([github-trending-api](https://github.com/huchenme/github-trending-api))
