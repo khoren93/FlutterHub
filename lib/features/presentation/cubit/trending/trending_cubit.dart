@@ -12,56 +12,52 @@ part 'trending_state.dart';
 part 'trending_cubit.freezed.dart';
 part 'trending_cubit.g.dart';
 
-class TrendingRepositoryCubit extends Cubit<TrendingRepositoryState> {
-  TrendingRepositoryCubit(this.trendingRepositoriesUsecase)
-      : super(const TrendingRepositoryState.loading());
+class TrendingCubit extends Cubit<TrendingState> {
+  TrendingCubit(
+    this.trendingRepositoriesUsecase,
+    this.trendingUsersUsecase,
+  ) : super(const TrendingState.initial());
 
   final TrendingRepositoriesUsecase trendingRepositoriesUsecase;
+  final TrendingUsersUsecase trendingUsersUsecase;
 
-  void trendingRepositories(TrendingParams params) async {
-    emit(const TrendingRepositoryState.loading());
+  void fetchRepositories(TrendingParams params) async {
+    emit(const TrendingState.reposFetchInProgress());
     try {
       final result = await trendingRepositoriesUsecase(params);
       result.fold(
-        (l) => emit(TrendingRepositoryState.error(
+        (l) => emit(TrendingState.reposFetchError(
           message: l.messageText(),
         )),
         (r) {
           emit(r.isEmpty
-              ? const TrendingRepositoryState.empty()
-              : TrendingRepositoryState.loaded(items: r));
+              ? const TrendingState.reposFetchEmpty()
+              : TrendingState.reposFetchSuccess(items: r));
         },
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const TrendingRepositoryState.error(message: kUnexpectedError));
+      emit(const TrendingState.reposFetchError(message: kUnexpectedError));
     }
   }
-}
 
-class TrendingUserCubit extends Cubit<TrendingUserState> {
-  TrendingUserCubit(this.trendingUsersUsecase)
-      : super(const TrendingUserState.loading());
-
-  final TrendingUsersUsecase trendingUsersUsecase;
-
-  void trendingUsers(TrendingParams params) async {
-    emit(const TrendingUserState.loading());
+  void fetchUsers(TrendingParams params) async {
+    emit(const TrendingState.usersFetchInProgress());
     try {
       final result = await trendingUsersUsecase(params);
       result.fold(
-        (l) => emit(TrendingUserState.error(
+        (l) => emit(TrendingState.usersFetchError(
           message: l.messageText(),
         )),
         (r) {
           emit(r.isEmpty
-              ? const TrendingUserState.empty()
-              : TrendingUserState.loaded(items: r));
+              ? const TrendingState.usersFetchError()
+              : TrendingState.usersFetchSuccess(items: r));
         },
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const TrendingUserState.error(message: kUnexpectedError));
+      emit(const TrendingState.usersFetchError(message: kUnexpectedError));
     }
   }
 }

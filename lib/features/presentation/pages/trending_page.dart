@@ -28,8 +28,7 @@ class TrendingPage extends StatefulWidget {
 
 class _TrendingPageState extends State<TrendingPage>
     with TickerProviderStateMixin {
-  final _repositoryRefreshController = RefreshController(initialRefresh: true);
-  final _userRefreshController = RefreshController(initialRefresh: true);
+  final _refreshController = RefreshController(initialRefresh: true);
   late TabController _searchTabController;
   late TabController _sinceTabController;
 
@@ -42,20 +41,14 @@ class _TrendingPageState extends State<TrendingPage>
         TabController(length: SearchType.values.length, vsync: this);
     _searchTabController.addListener(() {
       _selectedSearchType = SearchType.values[_searchTabController.index];
+      _refreshController.requestRefresh();
     });
 
     _sinceTabController =
         TabController(length: SinceType.values.length, vsync: this);
     _sinceTabController.addListener(() {
       _selectedSinceType = SinceType.values[_sinceTabController.index];
-      switch (_selectedSearchType) {
-        case SearchType.repository:
-          _repositoryRefreshController.requestRefresh();
-          break;
-        case SearchType.user:
-          _userRefreshController.requestRefresh();
-          break;
-      }
+      _refreshController.requestRefresh();
     });
 
     Connectivity().onConnectivityChanged.listen((event) {
@@ -67,8 +60,7 @@ class _TrendingPageState extends State<TrendingPage>
 
   @override
   void dispose() {
-    _repositoryRefreshController.dispose();
-    _userRefreshController.dispose();
+    _refreshController.dispose();
     _searchTabController.dispose();
     _sinceTabController.dispose();
     super.dispose();
@@ -86,12 +78,24 @@ class _TrendingPageState extends State<TrendingPage>
         children: [
           buildSinceTabs(context, _sinceTabController),
           Expanded(
-            child: TabBarView(
-              controller: _searchTabController,
-              children: [
-                _buildRepositoriesList(context),
-                _buildUsersList(context),
-              ],
+            child: BlocBuilder<TrendingCubit, TrendingState>(
+              builder: (context, state) {
+                return SmartRefresher(
+                  controller: _refreshController,
+                  onRefresh: _onRefresh,
+                  child: state.when(
+                    initial: () => Container(),
+                    reposFetchInProgress: () => Container(),
+                    reposFetchEmpty: _buildEmptyRepositoriesWidget,
+                    reposFetchSuccess: _buildRepositoriesList,
+                    reposFetchError: _buildFailureWidget,
+                    usersFetchInProgress: () => Container(),
+                    usersFetchEmpty: _buildEmptyUsersWidget,
+                    usersFetchSuccess: _buildUsersList,
+                    usersFetchError: _buildFailureWidget,
+                  ),
+                );
+              },
             ),
           ),
         ],
@@ -105,78 +109,58 @@ class _TrendingPageState extends State<TrendingPage>
     );
   }
 
-  Widget _buildRepositoriesList(BuildContext context) {
-    return BlocBuilder<TrendingRepositoryCubit, TrendingRepositoryState>(
-      builder: (context, state) {
-        return SmartRefresher(
-          controller: _repositoryRefreshController,
-          onRefresh: () {
-            context.read<TrendingRepositoryCubit>().trendingRepositories(
-                TrendingParams('', _selectedSinceType.value));
-          },
-          child: state.when(
-            loading: () => Container(),
-            loaded: (items) {
-              _repositoryRefreshController.refreshCompleted();
-              return ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) => TrendingRepositoryTile(
-                  item: items[index],
-                  timePeriod: _selectedSinceType.title.toLowerCase(),
-                  onTap: _onRepositorySelected,
-                ),
-              );
-            },
-            empty: () {
-              _repositoryRefreshController.refreshCompleted();
-              return emptyRepositoriesWidget();
-            },
-            error: (message) {
-              _repositoryRefreshController.refreshFailed();
-              return serverFailureWidget(message, null);
-            },
-          ),
-        );
-      },
+  _onRefresh() {
+    switch (_selectedSearchType) {
+      case SearchType.repository:
+        context.read<TrendingCubit>().fetchRepositories(
+              TrendingParams('', _selectedSinceType.value),
+            );
+        break;
+      case SearchType.user:
+        context.read<TrendingCubit>().fetchUsers(
+              TrendingParams('', _selectedSinceType.value),
+            );
+        break;
+    }
+  }
+
+  Widget _buildEmptyRepositoriesWidget() {
+    _refreshController.refreshCompleted();
+    return emptyRepositoriesWidget();
+  }
+
+  Widget _buildEmptyUsersWidget() {
+    _refreshController.refreshFailed();
+    return emptyUsersWidget();
+  }
+
+  Widget _buildRepositoriesList(List<TrendingRepository> items) {
+    _refreshController.refreshCompleted();
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) => TrendingRepositoryTile(
+        item: items[index],
+        timePeriod: _selectedSinceType.title.toLowerCase(),
+        onTap: _onRepositorySelected,
+      ),
     );
   }
 
-  Widget _buildUsersList(BuildContext context) {
-    return BlocBuilder<TrendingUserCubit, TrendingUserState>(
-      builder: (context, state) {
-        return SmartRefresher(
-          controller: _userRefreshController,
-          onRefresh: () {
-            context
-                .read<TrendingUserCubit>()
-                .trendingUsers(TrendingParams('', _selectedSinceType.value));
-          },
-          child: state.when(
-            loading: () => Container(),
-            loaded: (items) {
-              _userRefreshController.refreshCompleted();
-              return ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) => TrendingUserTile(
-                  item: items[index],
-                  onTap: _onUserSelected,
-                  onRepositoryTap: _onRepositorySelected,
-                ),
-              );
-            },
-            empty: () {
-              _userRefreshController.refreshCompleted();
-              return emptyUsersWidget();
-            },
-            error: (message) {
-              _userRefreshController.refreshFailed();
-              _userRefreshController.loadFailed();
-              return serverFailureWidget(message, null);
-            },
-          ),
-        );
-      },
+  Widget _buildUsersList(List<TrendingUser> items) {
+    _refreshController.refreshCompleted();
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) => TrendingUserTile(
+        item: items[index],
+        onTap: _onUserSelected,
+        onRepositoryTap: _onRepositorySelected,
+      ),
     );
+  }
+
+  Widget _buildFailureWidget(String? message) {
+    _refreshController.refreshFailed();
+    return serverFailureWidget(message, null);
   }
 
   Future<dynamic> _onSearchPressed(BuildContext context) {

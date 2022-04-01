@@ -1,37 +1,27 @@
 part of 'trending_cubit.dart';
 
 @freezed
-class TrendingRepositoryState with _$TrendingRepositoryState {
-  const factory TrendingRepositoryState.loading() = _RepositoryLoading;
+class TrendingState with _$TrendingState {
+  const factory TrendingState.initial() = _Initial;
 
-  const factory TrendingRepositoryState.empty() = _RepositoryEmpty;
-
-  const factory TrendingRepositoryState.loaded({
+  const factory TrendingState.reposFetchInProgress() = _ReposFetchInProgress;
+  const factory TrendingState.reposFetchEmpty() = _ReposFetchEmpty;
+  const factory TrendingState.reposFetchSuccess({
     required List<TrendingRepository> items,
-  }) = _RepositoryLoaded;
-
-  const factory TrendingRepositoryState.error({
+  }) = _ReposFetchSuccess;
+  const factory TrendingState.reposFetchError({
     String? message,
-  }) = _RepositoryError;
+  }) = _ReposFetchError;
 
-  factory TrendingRepositoryState.fromJson(Map<String, dynamic> json) =>
-      _$TrendingRepositoryStateFromJson(json);
-}
-
-@freezed
-class TrendingUserState with _$TrendingUserState {
-  const factory TrendingUserState.loading() = _UserLoading;
-
-  const factory TrendingUserState.empty() = _UserEmpty;
-
-  const factory TrendingUserState.loaded({
+  const factory TrendingState.usersFetchInProgress() = _UsersFetchInProgress;
+  const factory TrendingState.usersFetchEmpty() = _UsersFetchEmpty;
+  const factory TrendingState.usersFetchSuccess({
     required List<TrendingUser> items,
-  }) = _UserLoaded;
-
-  const factory TrendingUserState.error({
+  }) = _UsersFetchSuccess;
+  const factory TrendingState.usersFetchError({
     String? message,
-  }) = _UserError;
+  }) = _UsersFetchError;
 
-  factory TrendingUserState.fromJson(Map<String, dynamic> json) =>
-      _$TrendingUserStateFromJson(json);
+  factory TrendingState.fromJson(Map<String, dynamic> json) =>
+      _$TrendingStateFromJson(json);
 }
