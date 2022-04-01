@@ -5,25 +5,28 @@ import '../../../../generated/l10n.dart';
 
 enum SinceType { daily, weekly, monthly }
 
-class SinceTabModel {
-  final String title;
-  final String value;
-  final SinceType type;
-
-  const SinceTabModel(this.type, this.title, this.value);
-
-  static SinceTabModel fromType(SinceType type) {
-    return items().firstWhere(
-      (since) => since.type == type,
-      orElse: () => const SinceTabModel(SinceType.daily, '', ''),
-    );
+extension SinceTypeExtension on SinceType {
+  String get title {
+    switch (this) {
+      case SinceType.daily:
+        return S.current.daily;
+      case SinceType.weekly:
+        return S.current.weekly;
+      case SinceType.monthly:
+        return S.current.monthly;
+    }
   }
 
-  static List<SinceTabModel> items() => [
-        SinceTabModel(SinceType.daily, S.current.daily, 'daily'),
-        SinceTabModel(SinceType.weekly, S.current.weekly, 'weekly'),
-        SinceTabModel(SinceType.monthly, S.current.monthly, 'monthly'),
-      ];
+  String get value {
+    switch (this) {
+      case SinceType.daily:
+        return 'daily';
+      case SinceType.weekly:
+        return 'weekly';
+      case SinceType.monthly:
+        return 'monthly';
+    }
+  }
 }
 
 Widget buildSinceTabs(BuildContext context, TabController controller) {
@@ -40,7 +43,7 @@ Widget buildSinceTabs(BuildContext context, TabController controller) {
         color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(20.0),
       ),
-      tabs: SinceTabModel.items().map((model) {
+      tabs: SinceType.values.map((model) {
         return Tab(
           text: model.title,
         );

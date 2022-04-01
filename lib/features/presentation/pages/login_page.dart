@@ -18,11 +18,11 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   late TabController _tabController;
-  final _tabItems = LoginTabModel.items();
 
   @override
   void initState() {
-    _tabController = TabController(length: _tabItems.length, vsync: this);
+    _tabController =
+        TabController(length: LoginType.values.length, vsync: this);
     super.initState();
   }
 

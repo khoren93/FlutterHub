@@ -33,25 +33,22 @@ class _TrendingPageState extends State<TrendingPage>
   late TabController _searchTabController;
   late TabController _sinceTabController;
 
-  final _searchTabItems = SearchTabModel.items();
-  final _sinceTabItems = SinceTabModel.items();
-
-  late SearchTabModel _selectedSearch = _searchTabItems.first;
-  late SinceTabModel _selectedSince = _sinceTabItems.first;
+  late SearchType _selectedSearchType = SearchType.repository;
+  late SinceType _selectedSinceType = SinceType.daily;
 
   @override
   void initState() {
     _searchTabController =
-        TabController(length: _searchTabItems.length, vsync: this);
+        TabController(length: SearchType.values.length, vsync: this);
     _searchTabController.addListener(() {
-      _selectedSearch = _searchTabItems[_searchTabController.index];
+      _selectedSearchType = SearchType.values[_searchTabController.index];
     });
 
     _sinceTabController =
-        TabController(length: _sinceTabItems.length, vsync: this);
+        TabController(length: SinceType.values.length, vsync: this);
     _sinceTabController.addListener(() {
-      _selectedSince = _sinceTabItems[_sinceTabController.index];
-      switch (_selectedSearch.type) {
+      _selectedSinceType = SinceType.values[_sinceTabController.index];
+      switch (_selectedSearchType) {
         case SearchType.repository:
           _repositoryRefreshController.requestRefresh();
           break;
@@ -114,9 +111,8 @@ class _TrendingPageState extends State<TrendingPage>
         return SmartRefresher(
           controller: _repositoryRefreshController,
           onRefresh: () {
-            context
-                .read<TrendingRepositoryCubit>()
-                .trendingRepositories(TrendingParams('', _selectedSince.value));
+            context.read<TrendingRepositoryCubit>().trendingRepositories(
+                TrendingParams('', _selectedSinceType.value));
           },
           child: state.when(
             loading: () => Container(),
@@ -126,7 +122,7 @@ class _TrendingPageState extends State<TrendingPage>
                 itemCount: items.length,
                 itemBuilder: (context, index) => TrendingRepositoryTile(
                   item: items[index],
-                  timePeriod: _selectedSince.title.toLowerCase(),
+                  timePeriod: _selectedSinceType.title.toLowerCase(),
                   onTap: _onRepositorySelected,
                 ),
               );
@@ -153,7 +149,7 @@ class _TrendingPageState extends State<TrendingPage>
           onRefresh: () {
             context
                 .read<TrendingUserCubit>()
-                .trendingUsers(TrendingParams('', _selectedSince.value));
+                .trendingUsers(TrendingParams('', _selectedSinceType.value));
           },
           child: state.when(
             loading: () => Container(),
@@ -186,7 +182,7 @@ class _TrendingPageState extends State<TrendingPage>
   Future<dynamic> _onSearchPressed(BuildContext context) {
     return showSearch(
       context: context,
-      delegate: SearchDelegatePage(_selectedSearch.type),
+      delegate: SearchDelegatePage(_selectedSearchType),
     );
   }
 

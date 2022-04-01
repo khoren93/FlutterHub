@@ -5,24 +5,19 @@ import '../../../../generated/l10n.dart';
 
 enum LoginType { oauth, personal, basic }
 
-class LoginTabModel {
-  final String title;
-  final LoginType type;
-
-  const LoginTabModel(this.type, this.title);
-
-  static LoginTabModel fromType(LoginType type) {
-    return items().firstWhere(
-      (since) => since.type == type,
-      orElse: () => const LoginTabModel(LoginType.oauth, ''),
-    );
+extension LoginTypeExtension on LoginType {
+  String get title {
+    switch (this) {
+      case LoginType.oauth:
+        return S.current.loginOAuthTab;
+      case LoginType.personal:
+        return S.current.loginPersonalTab;
+      case LoginType.basic:
+        return S.current.loginBasicTab;
+      default:
+        return '';
+    }
   }
-
-  static List<LoginTabModel> items() => [
-        LoginTabModel(LoginType.oauth, S.current.loginOAuthTab),
-        LoginTabModel(LoginType.personal, S.current.loginPersonalTab),
-        LoginTabModel(LoginType.basic, S.current.loginBasicTab),
-      ];
 }
 
 Widget buildLoginTabs(BuildContext context, TabController controller) {
@@ -39,7 +34,7 @@ Widget buildLoginTabs(BuildContext context, TabController controller) {
         color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(20.0),
       ),
-      tabs: LoginTabModel.items().map((model) {
+      tabs: LoginType.values.map((model) {
         return Tab(
           text: model.title,
         );
