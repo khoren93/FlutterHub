@@ -13,24 +13,24 @@ part 'repository_cubit.g.dart';
 class RepositoryCubit extends Cubit<RepositoryState> {
   RepositoryCubit(
     this.getRepositoryUsecase,
-  ) : super(const RepositoryState.loading());
+  ) : super(const RepositoryState.fetchInProgress());
 
   final GetRepositoryUsecase getRepositoryUsecase;
 
-  void getRepository({required String fullName}) async {
-    emit(const RepositoryState.loading());
+  void fetchRepository({required String fullName}) async {
+    emit(const RepositoryState.fetchInProgress());
     try {
       final result = await getRepositoryUsecase(GetRepositoryParams(fullName));
       result.fold(
-        (l) => emit(RepositoryState.error(
+        (l) => emit(RepositoryState.fetchError(
           message: l.messageText(),
           url: l.documentationUrlText(),
         )),
-        (r) => emit(RepositoryState.loaded(item: r)),
+        (r) => emit(RepositoryState.fetchSuccess(item: r)),
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const RepositoryState.error(message: kUnexpectedError));
+      emit(const RepositoryState.fetchError(message: kUnexpectedError));
     }
   }
 }

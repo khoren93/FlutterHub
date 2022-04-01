@@ -14,7 +14,7 @@ Widget networkImage(
   BoxFit fit = BoxFit.cover,
   bool openPreview = true,
   bool isCircle = true,
-  double radius = 0,
+  double borderRadius = 0,
   List<String>? urls,
   String? heroTag,
 }) {
@@ -62,7 +62,7 @@ Widget networkImage(
             )
           : ClipRRect(
               child: image,
-              borderRadius: BorderRadius.circular(radius),
+              borderRadius: BorderRadius.circular(borderRadius),
             ),
     ),
   );

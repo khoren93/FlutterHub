@@ -13,24 +13,24 @@ part 'user_cubit.g.dart';
 class UserCubit extends Cubit<UserState> {
   UserCubit(
     this.getUserUsecase,
-  ) : super(const UserState.loading());
+  ) : super(const UserState.fetchInProgress());
 
   final GetUserUsecase getUserUsecase;
 
-  void getUser({required String owner}) async {
-    emit(const UserState.loading());
+  void fetchUser({required String owner}) async {
+    emit(const UserState.fetchInProgress());
     try {
       final result = await getUserUsecase(GetUserParams(owner));
       result.fold(
-        (l) => emit(UserState.error(
+        (l) => emit(UserState.fetchError(
           message: l.messageText(),
           url: l.documentationUrlText(),
         )),
-        (r) => emit(UserState.loaded(item: r)),
+        (r) => emit(UserState.fetchSuccess(item: r)),
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const UserState.error(message: kUnexpectedError));
+      emit(const UserState.fetchError(message: kUnexpectedError));
     }
   }
 }

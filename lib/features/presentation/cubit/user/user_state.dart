@@ -2,16 +2,16 @@ part of 'user_cubit.dart';
 
 @freezed
 class UserState with _$UserState {
-  const factory UserState.loading() = _Loading;
+  const factory UserState.fetchInProgress() = _FetchInProgress;
 
-  const factory UserState.loaded({
+  const factory UserState.fetchSuccess({
     required User item,
-  }) = _Loaded;
-  
-  const factory UserState.error({
+  }) = _FetchSuccess;
+
+  const factory UserState.fetchError({
     String? message,
     String? url,
-  }) = _Error;
+  }) = _fetchError;
 
   factory UserState.fromJson(Map<String, dynamic> json) =>
       _$UserStateFromJson(json);

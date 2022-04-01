@@ -1,5 +1,7 @@
 import 'package:chopper/chopper.dart';
+import 'package:flutterhub/configs/app_store.dart';
 import '../../../domain/entities/models.dart';
+import '../../models/rate_limit.dart';
 
 part 'rest_service.chopper.dart';
 part 'trending_service.dart';
@@ -25,6 +27,7 @@ final githubClient = ChopperClient(
   ],
   interceptors: [
     HttpLoggingInterceptor(),
+    RateLimitInterceptor(),
   ],
 );
 
@@ -45,6 +48,19 @@ final trendingClient = ChopperClient(
     HttpLoggingInterceptor(),
   ],
 );
+
+class RateLimitInterceptor extends ResponseInterceptor {
+  @override
+  Future<Response> onResponse(Response response) async {
+    final headers = response.headers;
+    appStore.rateLimit = RateLimit(
+      limit: int.tryParse(headers['x-ratelimit-limit'] ?? '') ?? 0,
+      remaining: int.tryParse(headers['x-ratelimit-remaining'] ?? '') ?? 0,
+      reset: int.tryParse(headers['x-ratelimit-reset'] ?? '') ?? 0,
+    );
+    return response;
+  }
+}
 
 typedef JsonFactory<T> = T Function(Map<String, dynamic> json);
 

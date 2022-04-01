@@ -148,7 +148,7 @@ class SearchDelegatePage extends SearchDelegate {
 
   Widget _buildFailureWidget(String? message, String? url) {
     endLoadAnimation(isFailure: true);
-    return serverFailureWidget(message, url);
+    return serverErrorWidget(message, url);
   }
 
   _onRepositorySelected(BuildContext context, Repository item) {

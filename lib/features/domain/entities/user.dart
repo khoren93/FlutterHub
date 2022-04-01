@@ -1,5 +1,12 @@
 part of 'models.dart';
 
+enum UserType {
+  @JsonValue('User')
+  user,
+  @JsonValue('Organization')
+  organization,
+}
+
 @Freezed()
 class User with _$User {
   const User._();
@@ -7,7 +14,7 @@ class User with _$User {
     String? login,
     String? avatarUrl,
     String? htmlUrl,
-    String? type,
+    UserType? type,
     String? name,
     String? company,
     String? blog,

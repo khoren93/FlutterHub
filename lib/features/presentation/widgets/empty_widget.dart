@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Server Failure error widget
-Widget serverFailureWidget(String? message, String? url) {
+Widget serverErrorWidget(String? message, String? url) {
   return NoDataWidget.error(
     subtitle: message,
     actionText: url != null ? 'Open Documentation' : null,

@@ -2,16 +2,16 @@ part of 'repository_cubit.dart';
 
 @freezed
 class RepositoryState with _$RepositoryState {
-  const factory RepositoryState.loading() = _Loading;
+  const factory RepositoryState.fetchInProgress() = _FetchInProgress;
 
-  const factory RepositoryState.loaded({
+  const factory RepositoryState.fetchSuccess({
     required Repository item,
-  }) = _Loaded;
-  
-  const factory RepositoryState.error({
+  }) = _FetchSuccess;
+
+  const factory RepositoryState.fetchError({
     String? message,
     String? url,
-  }) = _Error;
+  }) = _FetchError;
 
   factory RepositoryState.fromJson(Map<String, dynamic> json) =>
       _$RepositoryStateFromJson(json);

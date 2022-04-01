@@ -34,42 +34,42 @@ class _RepositoryPageState extends State<RepositoryPage> {
       builder: (context, state) {
         return SmartRefresher(
           controller: _refreshController,
-          onRefresh: () {
-            context
-                .read<RepositoryCubit>()
-                .getRepository(fullName: widget.fullName ?? '');
-          },
+          onRefresh: _onRefresh,
           child: state.when(
-            loading: () => Scaffold(
-              appBar: AppBar(
-                title: Text(widget.fullName ?? ''),
-              ),
-              body: Container(),
-            ),
-            loaded: (item) {
-              _refreshController.refreshCompleted();
-              return Scaffold(
-                appBar: _buildAppBar(context, item),
-                body: Column(
-                  children: [
-                    const SizedBox(height: spaceDefault),
-                    _buildRepositoryInfo(context, item),
-                  ],
-                ),
-              );
-            },
-            error: (message, url) {
-              _refreshController.refreshFailed();
-              return Scaffold(
-                appBar: AppBar(
-                  title: Text(widget.fullName ?? ''),
-                ),
-                body: serverFailureWidget(message, url),
-              );
-            },
+            fetchInProgress: _buildInProgressWidget,
+            fetchSuccess: (item) => _buildSuccessWidget(context, item),
+            fetchError: (message, url) => _buildErrorWidget(message, url),
           ),
         );
       },
+    );
+  }
+
+  _onRefresh() {
+    context
+        .read<RepositoryCubit>()
+        .fetchRepository(fullName: widget.fullName ?? '');
+  }
+
+  Scaffold _buildInProgressWidget() {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.fullName ?? ''),
+      ),
+      body: Container(),
+    );
+  }
+
+  Scaffold _buildSuccessWidget(BuildContext context, Repository item) {
+    _refreshController.refreshCompleted();
+    return Scaffold(
+      appBar: _buildAppBar(context, item),
+      body: Column(
+        children: [
+          const SizedBox(height: spaceDefault),
+          _buildRepositoryInfo(context, item),
+        ],
+      ),
     );
   }
 
@@ -173,6 +173,16 @@ class _RepositoryPageState extends State<RepositoryPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Scaffold _buildErrorWidget(String? message, String? url) {
+    _refreshController.refreshFailed();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.fullName ?? ''),
+      ),
+      body: serverErrorWidget(message, url),
     );
   }
 }

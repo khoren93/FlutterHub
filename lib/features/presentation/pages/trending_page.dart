@@ -160,7 +160,7 @@ class _TrendingPageState extends State<TrendingPage>
 
   Widget _buildFailureWidget(String? message) {
     _refreshController.refreshFailed();
-    return serverFailureWidget(message, null);
+    return serverErrorWidget(message, null);
   }
 
   Future<dynamic> _onSearchPressed(BuildContext context) {

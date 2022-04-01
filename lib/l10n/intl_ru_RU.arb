@@ -7,6 +7,7 @@
     "daily": "За день",
     "weekly": "За недельку",
     "monthly": "За месяц",
+    "rateLimit": "Запросы",
     "trendingAppBarTitle": "Тренды",
     "searchAppBarTile": "Поиск",
     "settingsAppBarTitle": "Настройки",

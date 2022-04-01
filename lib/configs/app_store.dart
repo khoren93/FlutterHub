@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../features/data/models/rate_limit.dart';
+
 part 'app_store.g.dart';
 
 AppStore appStore = AppStore();
@@ -32,6 +34,9 @@ abstract class AppStoreBase with Store {
 
   @observable
   String selectedLanguage = 'en_US';
+
+  @observable
+  RateLimit rateLimit = RateLimit();
 
   @action
   Future<void> toggleUserLoggedIn({bool? value}) async {
