@@ -29,7 +29,7 @@ class _RateLimitWidgetState extends State<RateLimitWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (appStore.rateLimit.remaining.isNegative) {
+    if (appStore.rateLimit.resetTime.isNegative) {
       appStore.rateLimit = RateLimit();
     }
     final rm = appStore.rateLimit;

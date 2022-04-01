@@ -32,13 +32,16 @@ class _RepositoryPageState extends State<RepositoryPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<RepositoryCubit, RepositoryState>(
       builder: (context, state) {
-        return SmartRefresher(
-          controller: _refreshController,
-          onRefresh: _onRefresh,
-          child: state.when(
-            fetchInProgress: _buildInProgressWidget,
-            fetchSuccess: (item) => _buildSuccessWidget(context, item),
-            fetchError: (message, url) => _buildErrorWidget(message, url),
+        return Scaffold(
+          appBar: _buildAppBar(context, state),
+          body: SmartRefresher(
+            controller: _refreshController,
+            onRefresh: _onRefresh,
+            child: state.when(
+              fetchInProgress: _buildInProgressWidget,
+              fetchSuccess: (item) => _buildSuccessWidget(context, item),
+              fetchError: (message, url) => _buildErrorWidget(message, url),
+            ),
           ),
         );
       },
@@ -51,60 +54,57 @@ class _RepositoryPageState extends State<RepositoryPage> {
         .fetchRepository(fullName: widget.fullName ?? '');
   }
 
-  Scaffold _buildInProgressWidget() {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.fullName ?? ''),
-      ),
-      body: Container(),
-    );
+  Widget _buildInProgressWidget() {
+    return Container();
   }
 
-  Scaffold _buildSuccessWidget(BuildContext context, Repository item) {
-    _refreshController.refreshCompleted();
-    return Scaffold(
-      appBar: _buildAppBar(context, item),
-      body: Column(
-        children: [
-          const SizedBox(height: spaceDefault),
-          _buildRepositoryInfo(context, item),
+  AppBar _buildAppBar(BuildContext context, RepositoryState item) {
+    return item.maybeWhen(
+      orElse: () => AppBar(
+        title: Text(widget.fullName ?? ''),
+      ),
+      fetchSuccess: (item) => AppBar(
+        title: GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => UserPage(
+                  owner: item.owner?.login,
+                ),
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              networkImage(
+                context,
+                item.owner?.avatarUrl,
+                width: 44,
+                height: 44,
+              ),
+              const SizedBox(width: spaceDefault),
+              Expanded(child: Text(item.owner?.login ?? '')),
+            ],
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(FontAwesomeIcons.github),
+            onPressed: () {
+              launch(item.htmlUrl ?? '');
+            },
+          ),
         ],
       ),
     );
   }
 
-  AppBar _buildAppBar(BuildContext context, Repository item) {
-    return AppBar(
-      title: GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => UserPage(
-                owner: item.owner?.login,
-              ),
-            ),
-          );
-        },
-        child: Row(
-          children: [
-            networkImage(
-              context,
-              item.owner?.avatarUrl,
-              width: 44,
-              height: 44,
-            ),
-            const SizedBox(width: spaceDefault),
-            Expanded(child: Text(item.owner?.login ?? '')),
-          ],
-        ),
-      ),
-      actions: [
-        IconButton(
-          icon: const Icon(FontAwesomeIcons.github),
-          onPressed: () {
-            launch(item.htmlUrl ?? '');
-          },
-        ),
+  Widget _buildSuccessWidget(BuildContext context, Repository item) {
+    _refreshController.refreshCompleted();
+    return Column(
+      children: [
+        const SizedBox(height: spaceDefault),
+        _buildRepositoryInfo(context, item),
       ],
     );
   }
