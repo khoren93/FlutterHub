@@ -16,6 +16,9 @@ const spaceLarge4 = 96.0;
 const spaceMaxWidth = 736.0;
 
 /// padding widgets
+const paddingSmall = EdgeInsets.all(spaceSmall2);
+const paddingSmallMedium =
+    EdgeInsets.symmetric(vertical: spaceSmall2, horizontal: spaceMedium);
 const paddingSmallDefault =
     EdgeInsets.symmetric(vertical: spaceSmall2, horizontal: spaceDefault);
 const paddingDefault = EdgeInsets.all(spaceDefault);

@@ -24,6 +24,7 @@ dependencies:
   freezed_annotation: ^1.1.0
   get_it: ^7.2.0
   google_fonts: ^2.3.1
+  intl: ^0.17.0
   json_annotation: ^4.4.0
   nb_utils: ^4.4.14
   photo_view: ^0.13.0
