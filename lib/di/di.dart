@@ -23,11 +23,9 @@ final di = GetIt.instance;
 Future<void> initDI() async {
   // Register Blocs and Cubits
   di.registerFactory(() => TrendingCubit(di(), di()));
-  di.registerFactory(
-      () => SearchRepositoryCubit(searchRepositoriesUsecase: di()));
-  di.registerFactory(() => SearchUserCubit(searchUsersUsecase: di()));
-  di.registerFactory(() => RepositoryCubit(getRepositoryUsecase: di()));
-  di.registerFactory(() => UserCubit(getUserUsecase: di()));
+  di.registerFactory(() => SearchCubit(di(), di()));
+  di.registerFactory(() => RepositoryCubit(di()));
+  di.registerFactory(() => UserCubit(di()));
 
   // Register usecases
   di.registerLazySingleton(() => TrendingRepositoriesUsecase(di()));

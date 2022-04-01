@@ -38,8 +38,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di<TrendingCubit>()),
-        BlocProvider(create: (_) => di<SearchRepositoryCubit>()),
-        BlocProvider(create: (_) => di<SearchUserCubit>()),
+        BlocProvider(create: (_) => di<SearchCubit>()),
         BlocProvider(create: (_) => di<RepositoryCubit>()),
         BlocProvider(create: (_) => di<UserCubit>()),
       ],

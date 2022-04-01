@@ -16,8 +16,7 @@ class SearchDelegatePage extends SearchDelegate {
 
   final SearchType type;
 
-  final _repositoryRefreshController = RefreshController(initialRefresh: true);
-  final _userRefreshController = RefreshController(initialRefresh: true);
+  final _refreshController = RefreshController(initialRefresh: true);
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -43,12 +42,7 @@ class SearchDelegatePage extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    switch (type) {
-      case SearchType.repository:
-        return _buildRepositoriesList(context, query);
-      case SearchType.user:
-        return _buildUsersList(context, query);
-    }
+    return _buildResults(context, query);
   }
 
   @override
@@ -56,110 +50,105 @@ class SearchDelegatePage extends SearchDelegate {
     return Container();
   }
 
-  Widget _buildRepositoriesList(BuildContext context, String query) {
-    return BlocBuilder<SearchRepositoryCubit, SearchRepositoryState>(
+  Widget _buildResults(BuildContext context, String query) {
+    return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         return SmartRefresher(
-          controller: _repositoryRefreshController,
+          controller: _refreshController,
           enablePullUp: true,
-          onRefresh: () {
-            context.read<SearchRepositoryCubit>().searchRepository(
-                  query: query,
-                  isRefresh: true,
-                );
-          },
-          onLoading: () {
-            context.read<SearchRepositoryCubit>().searchRepository(
-                  query: query,
-                  isRefresh: false,
-                );
-          },
+          onRefresh: () => _onRefresh(context),
+          onLoading: () => _onRefresh(context, isLoading: true),
           child: state.when(
-            loading: () => Container(),
-            loaded: (items, hasNextPage) {
-              _repositoryRefreshController.refreshCompleted();
-              if (hasNextPage) {
-                _repositoryRefreshController.loadComplete();
-              } else {
-                _repositoryRefreshController.loadNoData();
-              }
-              return ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) => RepositoryTile(
-                  item: items[index],
-                  onTap: (item) {
-                    _onRepositorySelected(context, item);
-                  },
-                ),
-              );
-            },
-            empty: () {
-              _repositoryRefreshController.refreshCompleted();
-              _repositoryRefreshController.loadNoData();
-              return emptyRepositoriesWidget();
-            },
-            error: (message, url) {
-              _repositoryRefreshController.refreshFailed();
-              _repositoryRefreshController.loadFailed();
-              return serverFailureWidget(message, url);
-            },
+            initial: () => Container(),
+            reposFetchInProgress: () => Container(),
+            reposFetchEmpty: _buildEmptyRepositoriesWidget,
+            reposFetchSuccess: (items, hasNextPage) =>
+                _buildRepositoriesList(context, items, hasNextPage),
+            reposFetchError: _buildFailureWidget,
+            usersFetchInProgress: () => Container(),
+            usersFetchEmpty: _buildEmptyUsersWidget,
+            usersFetchSuccess: (items, hasNextPage) =>
+                _buildUsersList(context, items, hasNextPage),
+            usersFetchError: _buildFailureWidget,
           ),
         );
       },
     );
   }
 
-  Widget _buildUsersList(BuildContext context, String query) {
-    return BlocBuilder<SearchUserCubit, SearchUserState>(
-      builder: (context, state) {
-        return SmartRefresher(
-          controller: _userRefreshController,
-          enablePullUp: true,
-          onRefresh: () {
-            context.read<SearchUserCubit>().searchUser(
-                  query: query,
-                  isRefresh: true,
-                );
-          },
-          onLoading: () {
-            context.read<SearchUserCubit>().searchUser(
-                  query: query,
-                  isRefresh: false,
-                );
-          },
-          child: state.when(
-            loading: () => Container(),
-            loaded: (items, hasNextPage) {
-              _userRefreshController.refreshCompleted();
-              if (hasNextPage) {
-                _userRefreshController.loadComplete();
-              } else {
-                _userRefreshController.loadNoData();
-              }
-              return ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) => UserTile(
-                  item: items[index],
-                  onTap: (item) {
-                    _onUserSelected(context, item);
-                  },
-                ),
-              );
-            },
-            empty: () {
-              _userRefreshController.refreshCompleted();
-              _userRefreshController.loadNoData();
-              return emptyUsersWidget();
-            },
-            error: (message, url) {
-              _userRefreshController.refreshFailed();
-              _userRefreshController.loadFailed();
-              return serverFailureWidget(message, url);
-            },
-          ),
-        );
-      },
+  _onRefresh(BuildContext context, {bool isLoading = false}) {
+    switch (type) {
+      case SearchType.repository:
+        context.read<SearchCubit>().fetchRepository(
+              query: query,
+              isRefresh: !isLoading,
+            );
+        break;
+      case SearchType.user:
+        context.read<SearchCubit>().fetchUser(
+              query: query,
+              isRefresh: !isLoading,
+            );
+        break;
+    }
+  }
+
+  endLoadAnimation({
+    bool isRefresh = false,
+    bool hasNextPage = false,
+    bool isFailure = false,
+  }) {
+    if (isRefresh) {
+      _refreshController.refreshCompleted();
+    }
+    if (hasNextPage) {
+      _refreshController.loadComplete();
+    } else {
+      _refreshController.loadNoData();
+    }
+    if (isFailure) {
+      _refreshController.refreshFailed();
+      _refreshController.loadFailed();
+    }
+  }
+
+  Widget _buildEmptyRepositoriesWidget() {
+    endLoadAnimation(isRefresh: true);
+    return emptyRepositoriesWidget();
+  }
+
+  Widget _buildEmptyUsersWidget() {
+    endLoadAnimation(isRefresh: true);
+    return emptyUsersWidget();
+  }
+
+  Widget _buildRepositoriesList(
+      BuildContext context, List<Repository> items, bool hasNextPage) {
+    endLoadAnimation(isRefresh: true, hasNextPage: hasNextPage);
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) => RepositoryTile(
+        item: items[index],
+        onTap: (item) => _onRepositorySelected(context, item),
+      ),
     );
+  }
+
+  Widget _buildUsersList(
+      BuildContext context, List<User> items, bool hasNextPage) {
+    endLoadAnimation(isRefresh: true, hasNextPage: hasNextPage);
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) => UserTile(
+        item: items[index],
+        onTap: (item) => _onUserSelected(context, item),
+      ),
+    );
+  }
+
+  Widget _buildFailureWidget(String? message, String? url) {
+    endLoadAnimation(isFailure: true);
+    return serverFailureWidget(message, url);
   }
 
   _onRepositorySelected(BuildContext context, Repository item) {

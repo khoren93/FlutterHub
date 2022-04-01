@@ -1,41 +1,31 @@
 part of 'search_cubit.dart';
 
 @freezed
-class SearchRepositoryState with _$SearchRepositoryState {
-  const factory SearchRepositoryState.loading() = _RepositoryLoading;
+class SearchState with _$SearchState {
+  const factory SearchState.initial() = _Initial;
 
-  const factory SearchRepositoryState.empty() = _RepositoryEmpty;
-
-  const factory SearchRepositoryState.loaded({
+  const factory SearchState.reposFetchInProgress() = _ReposFetchInProgress;
+  const factory SearchState.reposFetchEmpty() = _ReposFetchEmpty;
+  const factory SearchState.reposFetchSuccess({
     required List<Repository> items,
     required bool hasNextPage,
-  }) = _RepositoryLoaded;
-
-  const factory SearchRepositoryState.error({
+  }) = _ReposFetchSuccess;
+  const factory SearchState.reposFetchError({
     String? message,
     String? url,
-  }) = _RepositoryError;
+  }) = _ReposFetchError;
 
-  factory SearchRepositoryState.fromJson(Map<String, dynamic> json) =>
-      _$SearchRepositoryStateFromJson(json);
-}
-
-@freezed
-class SearchUserState with _$SearchUserState {
-  const factory SearchUserState.loading() = _UserLoading;
-
-  const factory SearchUserState.empty() = _UserEmpty;
-
-  const factory SearchUserState.loaded({
+  const factory SearchState.usersFetchInProgress() = _UsersFetchInProgress;
+  const factory SearchState.usersFetchEmpty() = _UsersFetchEmpty;
+  const factory SearchState.usersFetchSuccess({
     required List<User> items,
     required bool hasNextPage,
-  }) = _UserLoaded;
-
-  const factory SearchUserState.error({
+  }) = _UsersFetchSuccess;
+  const factory SearchState.usersFetchError({
     String? message,
     String? url,
-  }) = _UserError;
+  }) = _UsersFetchError;
 
-  factory SearchUserState.fromJson(Map<String, dynamic> json) =>
-      _$SearchUserStateFromJson(json);
+  factory SearchState.fromJson(Map<String, dynamic> json) =>
+      _$SearchStateFromJson(json);
 }

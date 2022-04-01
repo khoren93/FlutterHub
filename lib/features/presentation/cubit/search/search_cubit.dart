@@ -13,39 +13,40 @@ part 'search_state.dart';
 part 'search_cubit.freezed.dart';
 part 'search_cubit.g.dart';
 
-class SearchRepositoryCubit extends Cubit<SearchRepositoryState> {
-  SearchRepositoryCubit({
-    required this.searchRepositoriesUsecase,
-  }) : super(const SearchRepositoryState.loading());
+class SearchCubit extends Cubit<SearchState> {
+  SearchCubit(
+    this.searchRepositoriesUsecase,
+    this.searchUsersUsecase,
+  ) : super(const SearchState.initial());
 
   final SearchRepositoriesUsecase searchRepositoriesUsecase;
+  final SearchUsersUsecase searchUsersUsecase;
 
-  void searchRepository(
-      {required String query, required bool isRefresh}) async {
+  void fetchRepository({required String query, required bool isRefresh}) async {
     List<Repository> oldItems = [];
     if (!isRefresh) {
       state.whenOrNull(
-        loaded: (_items, _hasNextPage) {
+        reposFetchSuccess: (_items, _hasNextPage) {
           oldItems = _items;
         },
       );
     } else {
-      emit(const SearchRepositoryState.loading());
+      emit(const SearchState.reposFetchInProgress());
     }
     try {
       final page = pageForItems(isRefresh, oldItems);
       final result =
           await searchRepositoriesUsecase(SearchParams(query, page, kPerPage));
       result.fold(
-        (l) => emit(SearchRepositoryState.error(
+        (l) => emit(SearchState.reposFetchError(
           message: l.messageText(),
           url: l.documentationUrlText(),
         )),
         (r) {
           final items = isRefresh ? r.items ?? [] : oldItems + (r.items ?? []);
           emit(items.isEmpty
-              ? const SearchRepositoryState.empty()
-              : SearchRepositoryState.loaded(
+              ? const SearchState.reposFetchEmpty()
+              : SearchState.reposFetchSuccess(
                   items: items,
                   hasNextPage: r.hasNextPage,
                 ));
@@ -53,43 +54,35 @@ class SearchRepositoryCubit extends Cubit<SearchRepositoryState> {
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const SearchRepositoryState.error(message: kUnexpectedError));
+      emit(const SearchState.reposFetchError(message: kUnexpectedError));
     }
   }
-}
 
-class SearchUserCubit extends Cubit<SearchUserState> {
-  SearchUserCubit({
-    required this.searchUsersUsecase,
-  }) : super(const SearchUserState.loading());
-
-  final SearchUsersUsecase searchUsersUsecase;
-
-  void searchUser({required String query, required bool isRefresh}) async {
+  void fetchUser({required String query, required bool isRefresh}) async {
     List<User> oldItems = [];
     if (!isRefresh) {
       state.whenOrNull(
-        loaded: (_items, _hasNextPage) {
+        usersFetchSuccess: (_items, _hasNextPage) {
           oldItems = _items;
         },
       );
     } else {
-      emit(const SearchUserState.loading());
+      emit(const SearchState.usersFetchInProgress());
     }
     try {
       final page = pageForItems(isRefresh, oldItems);
       final result =
           await searchUsersUsecase(SearchParams(query, page, kPerPage));
       result.fold(
-        (l) => emit(SearchUserState.error(
+        (l) => emit(SearchState.usersFetchError(
           message: l.messageText(),
           url: l.documentationUrlText(),
         )),
         (r) {
           final items = isRefresh ? r.items ?? [] : oldItems + (r.items ?? []);
           emit(items.isEmpty
-              ? const SearchUserState.empty()
-              : SearchUserState.loaded(
+              ? const SearchState.usersFetchEmpty()
+              : SearchState.usersFetchSuccess(
                   items: items,
                   hasNextPage: r.hasNextPage,
                 ));
@@ -97,7 +90,7 @@ class SearchUserCubit extends Cubit<SearchUserState> {
       );
     } catch (e) {
       debugPrint(e.toString());
-      emit(const SearchUserState.error(message: kUnexpectedError));
+      emit(const SearchState.usersFetchError(message: kUnexpectedError));
     }
   }
 }

@@ -11,9 +11,9 @@ part 'repository_cubit.freezed.dart';
 part 'repository_cubit.g.dart';
 
 class RepositoryCubit extends Cubit<RepositoryState> {
-  RepositoryCubit({
-    required this.getRepositoryUsecase,
-  }) : super(const RepositoryState.loading());
+  RepositoryCubit(
+    this.getRepositoryUsecase,
+  ) : super(const RepositoryState.loading());
 
   final GetRepositoryUsecase getRepositoryUsecase;
 
