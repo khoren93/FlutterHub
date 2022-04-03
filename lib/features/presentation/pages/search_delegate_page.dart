@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/configs/app_router.dart';
 import '../widgets/list_tiles/repository_tile.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -152,20 +153,16 @@ class SearchDelegatePage extends SearchDelegate {
   }
 
   _onRepositorySelected(BuildContext context, Repository item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => RepositoryPage(fullName: item.fullName),
-      ),
+    Navigator.of(context).pushNamed(
+      AppRoutes.repository,
+      arguments: item.fullName,
     );
   }
 
   _onUserSelected(BuildContext context, User item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => UserPage(owner: item.login),
-      ),
+    Navigator.of(context).pushNamed(
+      AppRoutes.user,
+      arguments: item.login,
     );
   }
 }

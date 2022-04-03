@@ -18,13 +18,21 @@ class RateLimitWidget extends StatefulWidget {
 }
 
 class _RateLimitWidgetState extends State<RateLimitWidget> {
+  Timer? _timer;
+
   @override
   void initState() {
     // Run timer to update the rate limit every second
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {});
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/configs/app_router.dart';
 import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/presentation/pages/user_page.dart';
@@ -12,8 +13,8 @@ import '../widgets/empty_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class RepositoryPage extends StatefulWidget {
-  const RepositoryPage({Key? key, required this.fullName}) : super(key: key);
-  final String? fullName;
+  const RepositoryPage({Key? key, required this.arguments}) : super(key: key);
+  final Object? arguments;
 
   @override
   State<RepositoryPage> createState() => _RepositoryPageState();
@@ -21,6 +22,8 @@ class RepositoryPage extends StatefulWidget {
 
 class _RepositoryPageState extends State<RepositoryPage> {
   final _refreshController = RefreshController(initialRefresh: true);
+
+  String? get fullName => widget.arguments as String;
 
   @override
   void dispose() {
@@ -49,9 +52,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
   }
 
   _onRefresh() {
-    context
-        .read<RepositoryCubit>()
-        .fetchRepository(fullName: widget.fullName ?? '');
+    context.read<RepositoryCubit>().fetchRepository(fullName: fullName ?? '');
   }
 
   Widget _buildInProgressWidget() {
@@ -61,17 +62,14 @@ class _RepositoryPageState extends State<RepositoryPage> {
   AppBar _buildAppBar(BuildContext context, RepositoryState item) {
     return item.maybeWhen(
       orElse: () => AppBar(
-        title: Text(widget.fullName ?? ''),
+        title: Text(fullName ?? ''),
       ),
       fetchSuccess: (item) => AppBar(
         title: GestureDetector(
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => UserPage(
-                  owner: item.owner?.login,
-                ),
-              ),
+            Navigator.of(context).pushNamed(
+              AppRoutes.user,
+              arguments: item.owner?.login,
             );
           },
           child: Row(
@@ -180,7 +178,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
     _refreshController.refreshFailed();
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.fullName ?? ''),
+        title: Text(fullName ?? ''),
       ),
       body: serverErrorWidget(message, url),
     );

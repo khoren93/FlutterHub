@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutterhub/configs/app_router.dart';
 import 'core/extensions.dart';
 import 'di/di.dart';
 import 'features/presentation/cubit/repository/repository_cubit.dart';
@@ -30,8 +31,15 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +47,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => di<TrendingCubit>()),
         BlocProvider(create: (_) => di<SearchCubit>()),
-        BlocProvider(create: (_) => di<RepositoryCubit>()),
-        BlocProvider(create: (_) => di<UserCubit>()),
       ],
       child: Observer(
         builder: (_) => MaterialApp(
@@ -57,7 +63,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: loc.S.delegate.supportedLocales,
           locale: appStore.selectedLanguage.parseLocale(),
-          home: const TrendingPage(),
+          onGenerateRoute: _appRouter.onGenerateRoute,
           scrollBehavior: MyCustomScrollBehavior(),
           debugShowCheckedModeBanner: false,
         ),

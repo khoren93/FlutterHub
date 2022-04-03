@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/configs/app_router.dart';
+import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/presentation/widgets/network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,8 +12,8 @@ import '../widgets/empty_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class UserPage extends StatefulWidget {
-  const UserPage({Key? key, this.owner}) : super(key: key);
-  final String? owner;
+  const UserPage({Key? key, required this.arguments}) : super(key: key);
+  final Object? arguments;
 
   @override
   State<UserPage> createState() => _UserPageState();
@@ -19,6 +21,8 @@ class UserPage extends StatefulWidget {
 
 class _UserPageState extends State<UserPage> {
   final _refreshController = RefreshController(initialRefresh: true);
+
+  String? get owner => widget.arguments as String;
 
   @override
   void dispose() {
@@ -49,7 +53,7 @@ class _UserPageState extends State<UserPage> {
   }
 
   void _onRefresh() {
-    context.read<UserCubit>().fetchUser(owner: widget.owner ?? '');
+    context.read<UserCubit>().fetchUser(owner: owner ?? '');
   }
 
   Widget? _buildInProgressWidget() => Container();
@@ -114,12 +118,9 @@ class _UserPageState extends State<UserPage> {
                       FontAwesomeIcons.building,
                       item.company,
                       () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => UserPage(
-                              owner: item.company?.replaceAll('@', ''),
-                            ),
-                          ),
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.user,
+                          arguments: item.company?.replaceAll('@', ''),
                         );
                       },
                     ),

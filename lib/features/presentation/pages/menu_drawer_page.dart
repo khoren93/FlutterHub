@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutterhub/features/presentation/pages/login_page.dart';
+import 'package:flutterhub/configs/app_router.dart';
 import '../../../configs/app_store.dart';
 import '../widgets/rate_limit_widget.dart';
-import 'user_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../generated/l10n.dart';
-import 'settings_page.dart';
 import '../widgets/list_tiles/menu_tile.dart';
 import '../widgets/network_image.dart';
 
@@ -44,11 +42,7 @@ class MenuDrawerPage extends StatelessWidget {
                             primary: Colors.white,
                           ),
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const LoginPage(),
-                              ),
-                            );
+                            Navigator.of(context).pushNamed(AppRoutes.login);
                           },
                         ),
                       ],
@@ -67,13 +61,9 @@ class MenuDrawerPage extends StatelessWidget {
                     accountName: const Text('Khoren Markosyan'),
                     accountEmail: const Text('khoren.markosyan@gmail.com'),
                     onDetailsPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const UserPage(
-                            owner: 'khoren93',
-                          ),
-                        ),
+                      Navigator.of(context).popAndPushNamed(
+                        AppRoutes.user,
+                        arguments: 'khoren93',
                       );
                     },
                   ),
@@ -100,12 +90,7 @@ class MenuDrawerPage extends StatelessWidget {
                   title: S.current.settingsAppBarTitle,
                   leading: FontAwesomeIcons.gear,
                   onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const SettingsPage(),
-                      ),
-                    );
+                    Navigator.of(context).popAndPushNamed(AppRoutes.settings);
                   },
                 ),
                 if (isLoggedIn) ...[
@@ -114,14 +99,7 @@ class MenuDrawerPage extends StatelessWidget {
                     context,
                     title: 'Log Out',
                     leading: FontAwesomeIcons.rightFromBracket,
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const SettingsPage(),
-                        ),
-                      );
-                    },
+                    onTap: () {},
                   ),
                 ],
               ],

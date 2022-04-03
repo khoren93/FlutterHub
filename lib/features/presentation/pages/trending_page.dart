@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/configs/app_router.dart';
+import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_repository_tile.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_user_tile.dart';
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/trend_repository.dart';
 import '../cubit/trending/trending_cubit.dart';
+import '../cubit/user/user_cubit.dart';
 import 'menu_drawer_page.dart';
 import 'repository_page.dart';
 import 'user_page.dart';
@@ -172,20 +175,16 @@ class _TrendingPageState extends State<TrendingPage>
   }
 
   _onRepositorySelected(TrendingRepository item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => RepositoryPage(fullName: item.fullName),
-      ),
+    Navigator.of(context).pushNamed(
+      AppRoutes.repository,
+      arguments: item.fullName,
     );
   }
 
   _onUserSelected(TrendingUser item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => UserPage(owner: item.username),
-      ),
+    Navigator.of(context).pushNamed(
+      AppRoutes.user,
+      arguments: item.username,
     );
   }
 }
