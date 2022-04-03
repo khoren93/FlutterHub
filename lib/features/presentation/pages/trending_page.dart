@@ -142,6 +142,7 @@ class _TrendingPageState extends State<TrendingPage>
         item: items[index],
         timePeriod: _selectedSinceType.title.toLowerCase(),
         onTap: _onRepositorySelected,
+        onUserTap: _onUserSelected,
       ),
     );
   }

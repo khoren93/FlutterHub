@@ -11,11 +11,13 @@ class TrendingRepositoryTile extends StatelessWidget {
     required this.item,
     required this.timePeriod,
     this.onTap,
+    this.onUserTap,
   }) : super(key: key);
 
   final TrendingRepository item;
   final String timePeriod;
   final Function(TrendingRepository)? onTap;
+  final Function(TrendingUser)? onUserTap;
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +73,15 @@ class TrendingRepositoryTile extends StatelessWidget {
             if (item.builtBy != null)
               Row(
                 children: (item.builtBy ?? []).map((builtBy) {
-                  return Padding(
-                    padding: const EdgeInsets.all(spaceSmall2),
-                    child: networkImage(context, builtBy.avatar,
-                        width: 30, height: 30),
+                  return InkWell(
+                    onTap: () {
+                      onUserTap?.call(builtBy);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(spaceSmall2),
+                      child: networkImage(context, builtBy.avatar,
+                          openPreview: false, width: 30, height: 30),
+                    ),
                   );
                 }).toList(),
               ),
