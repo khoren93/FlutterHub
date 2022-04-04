@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
-import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/presentation/cubit/languages/languages_cubit.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_repository_tile.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_user_tile.dart';
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/trend_repository.dart';
 import '../cubit/trending/trending_cubit.dart';
+import '../widgets/language_header_widget.dart';
 import 'menu_drawer_page.dart';
 import '../widgets/empty_widget.dart';
 import '../../../generated/l10n.dart' as loc;
@@ -76,58 +76,65 @@ class _TrendingPageState extends State<TrendingPage>
         title: Text(loc.S.current.trendingAppBarTitle),
         bottom: buildSearchTypeTabs(context, _searchTabController),
         actions: [
-          IconButton(
-            icon: const Icon(FontAwesomeIcons.code),
-            onPressed: () {
-              Navigator.of(context).pushNamed(AppRoutes.languages);
+          BlocConsumer<LanguagesCubit, LanguagesState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                fetchSuccess: (items, selected) {
+                  _selectedLanguage = selected;
+                  _onRefresh();
+                },
+              );
+            },
+            builder: (context, state) {
+              return IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.code,
+                  color: _selectedLanguage != null
+                      ? Theme.of(context).colorScheme.secondary
+                      : null,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRoutes.languages);
+                },
+              );
             },
           ),
         ],
       ),
-      body: BlocListener<LanguagesCubit, LanguagesState>(
-        listener: (context, state) {
-          state.whenOrNull(
-            fetchSuccess: (items, selected) {
-              _selectedLanguage = selected;
-              _onRefresh();
-            },
-          );
-        },
-        child: Column(
-          children: [
-            buildSinceTabs(context, _sinceTabController),
-            Expanded(
-              child: BlocBuilder<TrendingCubit, TrendingState>(
-                builder: (context, state) {
-                  return Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (_selectedLanguage != null)
-                        buildLanguageSection(context, _selectedLanguage),
-                      Expanded(
-                        child: SmartRefresher(
-                          controller: _refreshController,
-                          onRefresh: _onRefresh,
-                          child: state.when(
-                            initial: () => Container(),
-                            reposFetchInProgress: () => Container(),
-                            reposFetchEmpty: _buildEmptyRepositoriesWidget,
-                            reposFetchSuccess: _buildRepositoriesList,
-                            reposFetchError: _buildFailureWidget,
-                            usersFetchInProgress: () => Container(),
-                            usersFetchEmpty: _buildEmptyUsersWidget,
-                            usersFetchSuccess: _buildUsersList,
-                            usersFetchError: _buildFailureWidget,
-                          ),
+      body: Column(
+        children: [
+          buildSinceTabs(context, _sinceTabController),
+          Expanded(
+            child: BlocBuilder<TrendingCubit, TrendingState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    if (_selectedLanguage != null)
+                      LanguageHeaderWidget(
+                          context: context, language: _selectedLanguage),
+                    Expanded(
+                      child: SmartRefresher(
+                        controller: _refreshController,
+                        onRefresh: _onRefresh,
+                        child: state.when(
+                          initial: () => Container(),
+                          reposFetchInProgress: () => Container(),
+                          reposFetchEmpty: _buildEmptyRepositoriesWidget,
+                          reposFetchSuccess: _buildRepositoriesList,
+                          reposFetchError: _buildFailureWidget,
+                          usersFetchInProgress: () => Container(),
+                          usersFetchEmpty: _buildEmptyUsersWidget,
+                          usersFetchSuccess: _buildUsersList,
+                          usersFetchError: _buildFailureWidget,
                         ),
                       ),
-                    ],
-                  );
-                },
-              ),
+                    ),
+                  ],
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(FontAwesomeIcons.magnifyingGlass),
@@ -202,7 +209,7 @@ class _TrendingPageState extends State<TrendingPage>
   Future<dynamic> _onSearchPressed(BuildContext context) {
     return showSearch(
       context: context,
-      delegate: SearchDelegatePage(_selectedSearchType),
+      delegate: SearchDelegatePage(_selectedSearchType, _selectedLanguage),
     );
   }
 
@@ -217,17 +224,6 @@ class _TrendingPageState extends State<TrendingPage>
     Navigator.of(context).pushNamed(
       AppRoutes.user,
       arguments: item.username,
-    );
-  }
-
-  Widget buildLanguageSection(
-      BuildContext context, RepositoryLanguage? language) {
-    return Padding(
-      padding: paddingSmallDefault,
-      child: Text(
-        loc.S.current.languageResults(language?.name ?? ''),
-        style: Theme.of(context).textTheme.titleMedium,
-      ),
     );
   }
 }

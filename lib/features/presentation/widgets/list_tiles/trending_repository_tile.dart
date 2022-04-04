@@ -47,29 +47,42 @@ class TrendingRepositoryTile extends StatelessWidget {
             const SizedBox(height: spaceMedium),
             if (item.description != null) Text(item.description ?? ''),
             const SizedBox(height: spaceMedium),
-            if (item.language != null)
-              Row(
-                children: [
+            Row(
+              children: [
+                if (item.color != null)
                   Container(
                     width: 14,
                     height: 14,
                     decoration: BoxDecoration(
-                      color: Color(item.color),
+                      color: Color(item.color ?? 0),
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const SizedBox(width: spaceSmall2),
-                  if (item.language != null) Text(item.language ?? ''),
-                  const SizedBox(width: spaceMedium),
-                  const Icon(FontAwesomeIcons.star, size: 14),
-                  const SizedBox(width: spaceSmall2),
-                  Expanded(child: Text('${item.stars}')),
-                  const SizedBox(width: spaceMedium),
-                  const Icon(FontAwesomeIcons.star, size: 14),
-                  const SizedBox(width: spaceSmall2),
-                  Text('${item.currentPeriodStars} $timePeriod'),
-                ],
-              ),
+                const SizedBox(width: spaceSmall2),
+                if (item.language != null)
+                  Text(
+                    item.language ?? '',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                const SizedBox(width: spaceMedium),
+                const Icon(FontAwesomeIcons.star, size: 14),
+                const SizedBox(width: spaceSmall2),
+                Expanded(
+                  child: Text(
+                    '${item.stars}',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ),
+                const SizedBox(width: spaceMedium),
+                const Icon(FontAwesomeIcons.star, size: 14),
+                const SizedBox(width: spaceSmall2),
+                Text(
+                  '${item.currentPeriodStars} $timePeriod',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
+            const SizedBox(height: spaceMedium),
             if (item.builtBy != null)
               Row(
                 children: (item.builtBy ?? []).map((builtBy) {
@@ -78,7 +91,7 @@ class TrendingRepositoryTile extends StatelessWidget {
                       onUserTap?.call(builtBy);
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(spaceSmall2),
+                      padding: paddingSmall,
                       child: networkImage(context, builtBy.avatar,
                           openPreview: false, width: 34, height: 34),
                     ),

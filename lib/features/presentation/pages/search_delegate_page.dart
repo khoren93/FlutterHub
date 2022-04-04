@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../widgets/language_header_widget.dart';
 import '../widgets/list_tiles/repository_tile.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -11,9 +13,10 @@ import '../widgets/empty_widget.dart';
 import '../widgets/list_tiles/user_tile.dart';
 
 class SearchDelegatePage extends SearchDelegate {
-  SearchDelegatePage(this.type) : super();
+  SearchDelegatePage(this.type, this.selectedLanguage) : super();
 
   final SearchType type;
+  final RepositoryLanguage? selectedLanguage;
 
   final _refreshController = RefreshController(initialRefresh: true);
 
@@ -21,7 +24,7 @@ class SearchDelegatePage extends SearchDelegate {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: const Icon(Icons.clear),
+        icon: const Icon(FontAwesomeIcons.xmark),
         onPressed: () {
           query = '';
         },
@@ -32,7 +35,7 @@ class SearchDelegatePage extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: const Icon(Icons.arrow_back),
+      icon: const Icon(FontAwesomeIcons.arrowLeft),
       onPressed: () {
         close(context, null);
       },
@@ -52,40 +55,56 @@ class SearchDelegatePage extends SearchDelegate {
   Widget _buildResults(BuildContext context, String query) {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
-        return SmartRefresher(
-          controller: _refreshController,
-          enablePullUp: true,
-          onRefresh: () => _onRefresh(context),
-          onLoading: () => _onRefresh(context, isLoading: true),
-          child: state.when(
-            initial: () => Container(),
-            reposFetchInProgress: () => Container(),
-            reposFetchEmpty: _buildEmptyRepositoriesWidget,
-            reposFetchSuccess: (items, hasNextPage) =>
-                _buildRepositoriesList(context, items, hasNextPage),
-            reposFetchError: _buildFailureWidget,
-            usersFetchInProgress: () => Container(),
-            usersFetchEmpty: _buildEmptyUsersWidget,
-            usersFetchSuccess: (items, hasNextPage) =>
-                _buildUsersList(context, items, hasNextPage),
-            usersFetchError: _buildFailureWidget,
-          ),
+        return Column(
+          children: [
+            if (selectedLanguage != null)
+              LanguageHeaderWidget(
+                  context: context, language: selectedLanguage),
+            Expanded(
+              child: SmartRefresher(
+                controller: _refreshController,
+                enablePullUp: true,
+                onRefresh: () => _onRefresh(context),
+                onLoading: () => _onRefresh(context, isLoading: true),
+                child: state.when(
+                  initial: () => Container(),
+                  reposFetchInProgress: () => Container(),
+                  reposFetchEmpty: _buildEmptyRepositoriesWidget,
+                  reposFetchSuccess: (items, hasNextPage) =>
+                      _buildRepositoriesList(context, items, hasNextPage),
+                  reposFetchError: _buildFailureWidget,
+                  usersFetchInProgress: () => Container(),
+                  usersFetchEmpty: _buildEmptyUsersWidget,
+                  usersFetchSuccess: (items, hasNextPage) =>
+                      _buildUsersList(context, items, hasNextPage),
+                  usersFetchError: _buildFailureWidget,
+                ),
+              ),
+            ),
+          ],
         );
       },
     );
+  }
+
+  String createQuery() {
+    if (selectedLanguage != null) {
+      return 'language:${selectedLanguage?.urlParam} $query';
+    }
+    return query;
   }
 
   _onRefresh(BuildContext context, {bool isLoading = false}) {
     switch (type) {
       case SearchType.repository:
         context.read<SearchCubit>().fetchRepository(
-              query: query,
+              query: createQuery(),
               isRefresh: !isLoading,
             );
         break;
       case SearchType.user:
         context.read<SearchCubit>().fetchUser(
-              query: query,
+              query: createQuery(),
               isRefresh: !isLoading,
             );
         break;

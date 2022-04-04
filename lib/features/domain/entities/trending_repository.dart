@@ -21,6 +21,5 @@ class TrendingRepository with _$TrendingRepository {
       _$TrendingRepositoryFromJson(json);
 
   String get fullName => '$author/$name';
-  int get color =>
-      int.parse(languageColor?.replaceAll('#', '0xff') ?? '0xffffff');
+  int? get color => languageColor.parseColor();
 }

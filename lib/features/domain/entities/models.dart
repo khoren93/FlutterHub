@@ -9,3 +9,10 @@ part 'repository_search.dart';
 part 'repository.dart';
 part 'user_search.dart';
 part 'user.dart';
+
+extension StringExtension on String? {
+  int? parseColor() {
+    if (this == null) return null;
+    return int.tryParse(this?.replaceAll('#', '0xff') ?? '');
+  }
+}
