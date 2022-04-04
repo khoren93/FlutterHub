@@ -33,6 +33,7 @@ class _TrendingPageState extends State<TrendingPage>
 
   late SearchType _selectedSearchType = SearchType.repository;
   late SinceType _selectedSinceType = SinceType.daily;
+  RepositoryLanguage? _selectedLanguage;
 
   @override
   void initState() {
@@ -72,6 +73,17 @@ class _TrendingPageState extends State<TrendingPage>
       appBar: AppBar(
         title: Text(loc.S.current.trendingAppBarTitle),
         bottom: buildSearchTypeTabs(context, _searchTabController),
+        actions: [
+          IconButton(
+            icon: const Icon(FontAwesomeIcons.code),
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                AppRoutes.languages,
+                arguments: _selectedLanguage?.urlParam,
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [

@@ -4,6 +4,7 @@ import '../../../domain/entities/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/error/failure.dart';
+import '../../../domain/repositories/users_repository.dart';
 import '../../../domain/usecases/get_user_usecase.dart';
 
 part 'user_state.dart';

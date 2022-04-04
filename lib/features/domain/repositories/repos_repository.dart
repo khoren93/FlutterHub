@@ -4,5 +4,12 @@ import '../../../../core/error/failure.dart';
 import '../entities/models.dart';
 
 abstract class ReposRepository {
-  Future<Either<Failure, Repository>> repository(String fullname);
+  Future<Either<Failure, Repository>> repository(
+    GetRepositoryParams params,
+  );
+}
+
+class GetRepositoryParams {
+  GetRepositoryParams(this.fullname);
+  final String fullname;
 }

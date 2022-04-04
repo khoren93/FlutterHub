@@ -1,12 +1,11 @@
+import 'package:flutterhub/features/presentation/cubit/languages/languages_cubit.dart';
+
 import '../features/data/datasources/restapi/rest_service.dart';
 import '../features/data/repositories/trend_repository.dart';
 import '../features/domain/repositories/repos_repository.dart';
 import '../features/domain/repositories/search_repository.dart';
 import '../features/domain/repositories/trend_repository.dart';
 import '../features/domain/repositories/users_repository.dart';
-import '../features/domain/usecases/languages_usecase.dart';
-import '../features/domain/usecases/trending_repositories_usecase.dart';
-import '../features/domain/usecases/trending_users_usecase.dart';
 import '../features/domain/usecases/usecases.dart';
 import '../features/presentation/cubit/repository/repository_cubit.dart';
 import '../features/presentation/cubit/search/search_cubit.dart';
@@ -23,6 +22,7 @@ final di = GetIt.instance;
 Future<void> initDI() async {
   // Register Blocs and Cubits
   di.registerFactory(() => TrendingCubit(di(), di()));
+  di.registerFactory(() => LanguagesCubit(di()));
   di.registerFactory(() => SearchCubit(di(), di()));
   di.registerFactory(() => RepositoryCubit(di()));
   di.registerFactory(() => UserCubit(di()));

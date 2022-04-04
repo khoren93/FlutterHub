@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/presentation/cubit/repository/repository_cubit.dart';
 import 'package:flutterhub/features/presentation/cubit/user/user_cubit.dart';
+import 'package:flutterhub/features/presentation/pages/languages_page.dart';
 
 import '../features/presentation/pages/home_page.dart';
 import '../features/presentation/pages/login_page.dart';
@@ -13,6 +14,7 @@ import '../features/presentation/pages/user_page.dart';
 
 abstract class AppRoutes {
   static const home = '/';
+  static const languages = '/languages';
   static const login = '/login';
   static const repository = '/repository';
   static const settings = '/settings';
@@ -26,6 +28,10 @@ class AppRouter {
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (_) => const HomePage(),
+        );
+      case AppRoutes.languages:
+        return MaterialPageRoute(
+          builder: (_) => const LanguagesPage(),
         );
       case AppRoutes.login:
         return MaterialPageRoute(

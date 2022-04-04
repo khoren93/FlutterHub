@@ -30,6 +30,11 @@ Widget emptyRepositoriesWidget() => NoDataWidget.empty(
       title: 'No repositories found',
     );
 
+Widget emptyLanguagesWidget() => NoDataWidget.empty(
+      image: FontAwesomeIcons.code,
+      title: 'No languages found',
+    );
+
 enum _NoDataType { error, empty }
 
 class NoDataWidget extends StatelessWidget {

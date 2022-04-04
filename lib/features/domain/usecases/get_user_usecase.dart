@@ -5,11 +5,6 @@ import '../../../../core/error/failure.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/models.dart';
 
-class GetUserParams {
-  GetUserParams(this.owner);
-  final String owner;
-}
-
 class GetUserUsecase extends UseCase<User, GetUserParams> {
   GetUserUsecase(this._repository);
   final UsersRepository _repository;
@@ -17,7 +12,7 @@ class GetUserUsecase extends UseCase<User, GetUserParams> {
   @override
   Future<Either<Failure, User>> call(GetUserParams params) async {
     try {
-      return _repository.user(params.owner);
+      return _repository.user(params);
     } catch (e) {
       return Left(ServerFailure.unknown());
     }

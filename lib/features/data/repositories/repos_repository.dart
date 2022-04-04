@@ -10,8 +10,9 @@ class ReposRepositoryImpl implements ReposRepository {
   final ReposService _restService;
 
   @override
-  Future<Either<Failure, Repository>> repository(String fullname) async {
-    final result = await _restService.repository(fullname);
+  Future<Either<Failure, Repository>> repository(
+      GetRepositoryParams params) async {
+    final result = await _restService.repository(params.fullname);
     if (result.isSuccessful) {
       return right(result.body ?? const Repository());
     } else {

@@ -10,8 +10,8 @@ class UsersRepositoryImpl implements UsersRepository {
   final UsersService _restService;
 
   @override
-  Future<Either<Failure, User>> user(String owner) async {
-    final result = await _restService.user(owner);
+  Future<Either<Failure, User>> user(GetUserParams params) async {
+    final result = await _restService.user(params.owner);
     if (result.isSuccessful) {
       return right(result.body ?? const User());
     } else {
