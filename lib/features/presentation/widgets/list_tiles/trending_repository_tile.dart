@@ -80,7 +80,7 @@ class TrendingRepositoryTile extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(spaceSmall2),
                       child: networkImage(context, builtBy.avatar,
-                          openPreview: false, width: 30, height: 30),
+                          openPreview: false, width: 34, height: 34),
                     ),
                   );
                 }).toList(),

@@ -51,7 +51,7 @@ class TrendingCubit extends Cubit<TrendingState> {
         )),
         (r) {
           emit(r.isEmpty
-              ? const TrendingState.usersFetchError()
+              ? const TrendingState.usersFetchEmpty()
               : TrendingState.usersFetchSuccess(items: r));
         },
       );

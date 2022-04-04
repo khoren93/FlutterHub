@@ -4,7 +4,10 @@ import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/presentation/cubit/languages/languages_cubit.dart';
 import 'package:flutterhub/features/presentation/widgets/empty_widget.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/language_tile.dart';
+import 'package:flutterhub/generated/l10n.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+import '../../../configs/constants.dart';
 
 class LanguagesPage extends StatefulWidget {
   const LanguagesPage({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _LanguagesPageState extends State<LanguagesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select a language'),
+        title: Text(S.current.languagesAppBarTitle),
       ),
       body: Column(
         children: [
@@ -37,7 +40,7 @@ class _LanguagesPageState extends State<LanguagesPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(28),
                 ),
-                labelText: 'Filter languages',
+                labelText: S.current.languagesSearchText,
               ),
               onChanged: (value) {
                 context.read<LanguagesCubit>().searchLanguages(value);
@@ -53,7 +56,7 @@ class _LanguagesPageState extends State<LanguagesPage> {
                   fetchEmpty: () {
                     _refreshController.refreshCompleted();
                   },
-                  fetchSuccess: (items, language) {
+                  fetchSuccess: (items, selected) {
                     _refreshController.refreshCompleted();
                   },
                   fetchError: (error) {
@@ -62,16 +65,39 @@ class _LanguagesPageState extends State<LanguagesPage> {
                 );
               },
               builder: (context, state) {
-                return SmartRefresher(
-                  controller: _refreshController,
-                  onRefresh: _onRefresh,
-                  child: state.when(
-                    initial: () => Container(),
-                    fetchInProgress: () => Container(),
-                    fetchEmpty: emptyLanguagesWidget,
-                    fetchSuccess: _buildSuccessWidget,
-                    fetchError: (message) => serverErrorWidget(message, null),
-                  ),
+                return Column(
+                  children: [
+                    Expanded(
+                      child: SmartRefresher(
+                        controller: _refreshController,
+                        onRefresh: _onRefresh,
+                        child: state.when(
+                          initial: () => Container(),
+                          fetchInProgress: () => Container(),
+                          fetchEmpty: emptyLanguagesWidget,
+                          fetchSuccess: _buildSuccessWidget,
+                          fetchError: (message) =>
+                              serverErrorWidget(message, null),
+                        ),
+                      ),
+                    ),
+                    state.whenOrNull(
+                          fetchSuccess: (items, selected) {
+                            return selected == null
+                                ? Container()
+                                : Padding(
+                                    padding: paddingDefault,
+                                    child: ElevatedButton(
+                                      onPressed: () =>
+                                          _onLanguageSelected(null),
+                                      child:
+                                          Text(S.current.languagesClearButton),
+                                    ),
+                                  );
+                          },
+                        ) ??
+                        Container(),
+                  ],
                 );
               },
             ),
@@ -100,5 +126,6 @@ class _LanguagesPageState extends State<LanguagesPage> {
 
   _onLanguageSelected(RepositoryLanguage? item) {
     context.read<LanguagesCubit>().selectLanguage(item);
+    Navigator.of(context).pop();
   }
 }

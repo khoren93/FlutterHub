@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
+import 'package:flutterhub/configs/constants.dart';
+import 'package:flutterhub/features/presentation/cubit/languages/languages_cubit.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_repository_tile.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_user_tile.dart';
 import '../../domain/entities/models.dart';
@@ -77,39 +79,55 @@ class _TrendingPageState extends State<TrendingPage>
           IconButton(
             icon: const Icon(FontAwesomeIcons.code),
             onPressed: () {
-              Navigator.of(context).pushNamed(
-                AppRoutes.languages,
-                arguments: _selectedLanguage?.urlParam,
-              );
+              Navigator.of(context).pushNamed(AppRoutes.languages);
             },
           ),
         ],
       ),
-      body: Column(
-        children: [
-          buildSinceTabs(context, _sinceTabController),
-          Expanded(
-            child: BlocBuilder<TrendingCubit, TrendingState>(
-              builder: (context, state) {
-                return SmartRefresher(
-                  controller: _refreshController,
-                  onRefresh: _onRefresh,
-                  child: state.when(
-                    initial: () => Container(),
-                    reposFetchInProgress: () => Container(),
-                    reposFetchEmpty: _buildEmptyRepositoriesWidget,
-                    reposFetchSuccess: _buildRepositoriesList,
-                    reposFetchError: _buildFailureWidget,
-                    usersFetchInProgress: () => Container(),
-                    usersFetchEmpty: _buildEmptyUsersWidget,
-                    usersFetchSuccess: _buildUsersList,
-                    usersFetchError: _buildFailureWidget,
-                  ),
-                );
-              },
+      body: BlocListener<LanguagesCubit, LanguagesState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            fetchSuccess: (items, selected) {
+              _selectedLanguage = selected;
+              _onRefresh();
+            },
+          );
+        },
+        child: Column(
+          children: [
+            buildSinceTabs(context, _sinceTabController),
+            Expanded(
+              child: BlocBuilder<TrendingCubit, TrendingState>(
+                builder: (context, state) {
+                  return Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (_selectedLanguage != null)
+                        buildLanguageSection(context, _selectedLanguage),
+                      Expanded(
+                        child: SmartRefresher(
+                          controller: _refreshController,
+                          onRefresh: _onRefresh,
+                          child: state.when(
+                            initial: () => Container(),
+                            reposFetchInProgress: () => Container(),
+                            reposFetchEmpty: _buildEmptyRepositoriesWidget,
+                            reposFetchSuccess: _buildRepositoriesList,
+                            reposFetchError: _buildFailureWidget,
+                            usersFetchInProgress: () => Container(),
+                            usersFetchEmpty: _buildEmptyUsersWidget,
+                            usersFetchSuccess: _buildUsersList,
+                            usersFetchError: _buildFailureWidget,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(FontAwesomeIcons.magnifyingGlass),
@@ -124,12 +142,18 @@ class _TrendingPageState extends State<TrendingPage>
     switch (_selectedSearchType) {
       case SearchType.repository:
         context.read<TrendingCubit>().fetchRepositories(
-              TrendingParams('', _selectedSinceType.value),
+              TrendingParams(
+                _selectedLanguage?.urlParam ?? '',
+                _selectedSinceType.value,
+              ),
             );
         break;
       case SearchType.user:
         context.read<TrendingCubit>().fetchUsers(
-              TrendingParams('', _selectedSinceType.value),
+              TrendingParams(
+                _selectedLanguage?.urlParam ?? '',
+                _selectedSinceType.value,
+              ),
             );
         break;
     }
@@ -193,6 +217,17 @@ class _TrendingPageState extends State<TrendingPage>
     Navigator.of(context).pushNamed(
       AppRoutes.user,
       arguments: item.username,
+    );
+  }
+
+  Widget buildLanguageSection(
+      BuildContext context, RepositoryLanguage? language) {
+    return Padding(
+      padding: paddingSmallDefault,
+      child: Text(
+        loc.S.current.languageResults(language?.name ?? ''),
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
     );
   }
 }
