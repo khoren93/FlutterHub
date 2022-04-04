@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
 import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
-import 'package:flutterhub/features/presentation/pages/user_page.dart';
 import 'package:flutterhub/features/presentation/widgets/network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';

@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
-import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_repository_tile.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_user_tile.dart';
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/trend_repository.dart';
 import '../cubit/trending/trending_cubit.dart';
-import '../cubit/user/user_cubit.dart';
 import 'menu_drawer_page.dart';
-import 'repository_page.dart';
-import 'user_page.dart';
 import '../widgets/empty_widget.dart';
 import '../../../generated/l10n.dart' as loc;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

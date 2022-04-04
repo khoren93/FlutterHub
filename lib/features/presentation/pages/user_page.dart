@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
-import 'package:flutterhub/di/di.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/presentation/widgets/network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -143,7 +142,7 @@ class _UserPageState extends State<UserPage> {
   }
 
   Widget _buildPersonalInfo(IconData? icon, String? text, VoidCallback? onTap) {
-    return text == null
+    return text == null || text.isEmpty
         ? Container()
         : InkWell(
             onTap: onTap,
