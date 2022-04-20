@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/features/presentation/widgets/login/login_button.dart';
 
 import '../../../../configs/constants.dart';
 import '../../../../generated/l10n.dart';
+import '../../cubit/login/login_cubit.dart';
 
 class PersonalLoginWidget extends StatelessWidget {
   const PersonalLoginWidget({Key? key}) : super(key: key);
@@ -17,9 +19,9 @@ class PersonalLoginWidget extends StatelessWidget {
           const SizedBox(height: spaceDefault),
           _buildDescription(context),
           const SizedBox(height: spaceDefault),
-          _buildTokenTextField(),
+          const TokenInput(),
           const SizedBox(height: spaceDefault),
-          _buildLoginButton(),
+          const LoginButton(),
         ],
       ),
     );
@@ -39,21 +41,27 @@ class PersonalLoginWidget extends StatelessWidget {
       style: Theme.of(context).textTheme.bodyText2,
     );
   }
+}
 
-  _buildTokenTextField() {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: S.current.loginPersonalLoginHint,
-        filled: true,
-      ),
-    );
-  }
+class TokenInput extends StatelessWidget {
+  const TokenInput({Key? key}) : super(key: key);
 
-  _buildLoginButton() {
-    return ElevatedButton.icon(
-      label: Text(S.current.loginPersonalButton),
-      icon: const Icon(FontAwesomeIcons.github),
-      onPressed: () {},
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
+      builder: (context, state) {
+        return state.whenOrNull(
+              personal: (status, token, message) => TextFormField(
+                decoration: InputDecoration(
+                  labelText: S.current.loginPersonalLoginHint,
+                  errorText: token.invalid ? 'invalid token' : null,
+                ),
+                onChanged: (value) =>
+                    context.read<LoginCubit>().onPersonalTokenChanged(value),
+              ),
+            ) ??
+            Container();
+      },
     );
   }
 }

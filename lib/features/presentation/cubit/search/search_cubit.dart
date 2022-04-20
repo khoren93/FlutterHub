@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import '../../../../configs/constants.dart';
-import '../../../../core/error/failure.dart';
 import '../../../domain/usecases/usecases.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

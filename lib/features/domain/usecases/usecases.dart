@@ -5,3 +5,4 @@ export 'search_repositories_usecase.dart';
 export 'search_users_usecase.dart';
 export 'trending_repositories_usecase.dart';
 export 'trending_users_usecase.dart';
+export 'user_usecase.dart';

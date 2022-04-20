@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:chopper/chopper.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutterhub/configs/app_store.dart';
 import '../../../domain/entities/models.dart';
 import '../../models/rate_limit.dart';
@@ -7,10 +10,12 @@ part 'rest_service.chopper.dart';
 part 'trending_service.dart';
 part 'repos_service.dart';
 part 'search_service.dart';
+part 'user_service.dart';
 part 'users_service.dart';
 
 final githubClient = ChopperClient(
   baseUrl: 'https://api.github.com',
+  authenticator: AppAuthenticator(),
   converter: JsonSerializableConverter(
     CustomJsonDecoder({
       RepositorySearch: RepositorySearch.fromJson,
@@ -23,9 +28,11 @@ final githubClient = ChopperClient(
   services: [
     SearchService.create(),
     ReposService.create(),
+    UserService.create(),
     UsersService.create(),
   ],
   interceptors: [
+    AuthInterceptor(),
     HttpLoggingInterceptor(),
     RateLimitInterceptor(),
   ],
@@ -49,6 +56,34 @@ final trendingClient = ChopperClient(
   ],
 );
 
+/// This class is used to authenticate the user.
+/// It is used by the [AuthInterceptor] to add the token to the request.
+class AuthInterceptor extends RequestInterceptor {
+  @override
+  FutureOr<Request> onRequest(Request request) async {
+    Token? token = appStore.token;
+    if (token?.token != null) {
+      var headers = Map<String, String>.from(request.headers);
+      headers['Authorization'] = token?.token ?? '';
+      return request.copyWith(headers: headers);
+    }
+    return request;
+  }
+}
+
+class AppAuthenticator extends Authenticator {
+  @override
+  FutureOr<Request?> authenticate(Request request, Response response,
+      [Request? originalRequest]) {
+    if (response.statusCode == 401) {
+      debugPrint('Token is invalid, removing it from the store');
+      appStore.deleteToken();
+    }
+    return null;
+  }
+}
+
+/// This class is used to handle the rate limit.
 class RateLimitInterceptor extends ResponseInterceptor {
   @override
   Future<Response> onResponse(Response response) async {

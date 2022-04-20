@@ -173,13 +173,8 @@ class _RepositoryPageState extends State<RepositoryPage> {
     );
   }
 
-  Scaffold _buildErrorWidget(String? message, String? url) {
+  Widget _buildErrorWidget(String? message, String? url) {
     _refreshController.refreshFailed();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(fullName ?? ''),
-      ),
-      body: serverErrorWidget(message, url),
-    );
+    return serverErrorWidget(message, url);
   }
 }

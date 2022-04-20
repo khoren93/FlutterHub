@@ -8,11 +8,16 @@ import '../../../generated/l10n.dart';
 import '../widgets/list_tiles/menu_tile.dart';
 import '../widgets/network_image.dart';
 
-class MenuDrawerPage extends StatelessWidget {
+class MenuDrawerPage extends StatefulWidget {
   const MenuDrawerPage({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<MenuDrawerPage> createState() => _MenuDrawerPageState();
+}
+
+class _MenuDrawerPageState extends State<MenuDrawerPage> {
   @override
   Widget build(BuildContext context) {
     bool isLoggedIn = appStore.isUserLoggedIn;
@@ -41,8 +46,10 @@ class MenuDrawerPage extends StatelessWidget {
                           style: TextButton.styleFrom(
                             primary: Colors.white,
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pushNamed(AppRoutes.login);
+                          onPressed: () async {
+                            await Navigator.of(context)
+                                .pushNamed(AppRoutes.login);
+                            setState(() {});
                           },
                         ),
                       ],
@@ -99,7 +106,10 @@ class MenuDrawerPage extends StatelessWidget {
                     context,
                     title: 'Log Out',
                     leading: FontAwesomeIcons.rightFromBracket,
-                    onTap: () {},
+                    onTap: () {
+                      appStore.deleteToken();
+                      setState(() {});
+                    },
                   ),
                 ],
               ],

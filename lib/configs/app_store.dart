@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhub/core/secure_storage.dart';
 import 'package:mobx/mobx.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../features/data/models/rate_limit.dart';
+import '../features/domain/entities/models.dart';
 
 part 'app_store.g.dart';
 
 AppStore appStore = AppStore();
 
-class AppStore = AppStoreBase with _$AppStore;
+class AppStore = _AppStore with _$AppStore;
 
 const isUserLoggedInPref = 'isUserLoggedInPref';
 const themeModePref = 'themeModePref';
@@ -16,9 +18,12 @@ const colorSchemeIndexPref = 'colorSchemeIndexPref';
 const isNotificationsOnPref = 'isNotificationsOnPref';
 const languagePref = 'languagePref';
 
-abstract class AppStoreBase with Store {
+abstract class _AppStore with Store {
   @observable
   bool hasInternetConnection = true;
+
+  @observable
+  Token? token;
 
   @observable
   bool isUserLoggedIn = false;
@@ -39,9 +44,17 @@ abstract class AppStoreBase with Store {
   RateLimit rateLimit = RateLimit();
 
   @action
-  Future<void> toggleUserLoggedIn({bool? value}) async {
-    isUserLoggedIn = value ?? !isUserLoggedIn;
-    setValue(isUserLoggedInPref, isUserLoggedIn);
+  Future<void> saveToken(Token value) async {
+    token = value;
+    isUserLoggedIn = true;
+    await SecureStorage.instance.saveToken(value);
+  }
+
+  @action
+  Future<void> deleteToken() async {
+    token = null;
+    isUserLoggedIn = false;
+    await SecureStorage.instance.deleteToken();
   }
 
   @action

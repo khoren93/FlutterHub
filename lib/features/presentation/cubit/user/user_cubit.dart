@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import '../../../../configs/constants.dart';
 import '../../../domain/entities/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../../core/error/failure.dart';
 import '../../../domain/repositories/users_repository.dart';
 import '../../../domain/usecases/get_user_usecase.dart';
 
@@ -21,7 +21,7 @@ class UserCubit extends Cubit<UserState> {
   void fetchUser({required String owner}) async {
     emit(const UserState.fetchInProgress());
     try {
-      final result = await getUserUsecase(GetUserParams(owner));
+      final result = await getUserUsecase(UserParams(owner));
       result.fold(
         (l) => emit(UserState.fetchError(
           message: l.messageText(),

@@ -3,13 +3,12 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/error/failure.dart';
 import '../entities/models.dart';
 
-abstract class UsersRepository {
+abstract class UserRepository {
   Future<Either<Failure, User>> user(
-    UserParams params,
+    AuthenticatedUserParams params,
   );
 }
 
-class UserParams {
-  UserParams(this.owner);
-  final String owner;
+class AuthenticatedUserParams {
+  AuthenticatedUserParams();
 }

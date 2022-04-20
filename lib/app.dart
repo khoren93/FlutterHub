@@ -10,6 +10,7 @@ import 'configs/app_theme.dart';
 import 'core/scroll_behavior.dart';
 import 'di/di.dart';
 import 'features/presentation/cubit/languages/languages_cubit.dart';
+import 'features/presentation/cubit/login/login_cubit.dart';
 import 'features/presentation/cubit/search/search_cubit.dart';
 import 'features/presentation/cubit/trending/trending_cubit.dart';
 import 'generated/l10n.dart';
@@ -29,6 +30,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (_) => di<LoginCubit>()),
         BlocProvider(create: (_) => di<TrendingCubit>()),
         BlocProvider(create: (_) => di<SearchCubit>()),
         BlocProvider(create: (_) => di<LanguagesCubit>()),

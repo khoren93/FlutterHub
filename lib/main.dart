@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/core/secure_storage.dart';
 import 'di/di.dart';
 import 'package:logging/logging.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -11,7 +12,7 @@ import 'app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _setupLogging();
-  await _initializeSharedPrefs();
+  await _initializeAppStore();
   await initDI();
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
@@ -19,11 +20,12 @@ void main() async {
   );
 }
 
-_initializeSharedPrefs() async {
+_initializeAppStore() async {
   await initialize();
-  await appStore.toggleUserLoggedIn(
-    value: getBoolAsync(isUserLoggedInPref),
-  );
+  final token = await SecureStorage.instance.getToken();
+  if (token != null && token.isValid) {
+    await appStore.saveToken(token);
+  }
   final themeModeString = getStringAsync(themeModePref,
       defaultValue: appStore.themeMode.toString());
   await appStore.setThemeMode(ThemeMode.values

@@ -4,7 +4,7 @@ import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/domain/usecases/languages_usecase.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/error/failure.dart';
+import '../../../../configs/constants.dart';
 
 part 'languages_state.dart';
 part 'languages_cubit.freezed.dart';

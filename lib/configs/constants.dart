@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 const githubScope = 'user+repo+notifications+read:org';
 const kPerPage = 20;
 
+const kUnexpectedError = 'Unexpected error';
+const kUnknownServerError = 'Unknown server error';
+const kNoInternetConnection = 'No internet connection';
+
 /// space between widgets
 const spaceSmall = 2.0;
 const spaceSmall2 = 4.0;

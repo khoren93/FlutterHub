@@ -3,15 +3,15 @@ import '../datasources/restapi/rest_service.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../domain/entities/models.dart';
-import '../../domain/repositories/users_repository.dart';
+import '../../domain/repositories/user_repository.dart';
 
-class UsersRepositoryImpl implements UsersRepository {
-  UsersRepositoryImpl(this._restService);
-  final UsersService _restService;
+class UserRepositoryImpl implements UserRepository {
+  UserRepositoryImpl(this._restService);
+  final UserService _restService;
 
   @override
-  Future<Either<Failure, User>> user(UserParams params) async {
-    final result = await _restService.user(params.owner);
+  Future<Either<Failure, User>> user(AuthenticatedUserParams params) async {
+    final result = await _restService.user();
     if (result.isSuccessful) {
       return right(result.body ?? const User());
     } else {

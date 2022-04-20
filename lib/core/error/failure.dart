@@ -1,12 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../configs/constants.dart';
+
 part 'failure.freezed.dart';
 part 'failure.g.dart';
-
-// Unexpected error
-const kUnexpectedError = 'Unexpected error';
-const kUnknownError = 'Unknown server error';
 
 abstract class Failure extends Equatable {
   const Failure();
@@ -47,7 +45,7 @@ class ServerFailure extends Failure with _$ServerFailure {
       _$ServerFailureFromJson(json);
 
   static unknown() => const ServerFailure(
-        message: kUnknownError,
+        message: kUnknownServerError,
       );
 }
 
