@@ -172,7 +172,10 @@ class NoDataWidget extends StatelessWidget {
                 TextButton(
                   child: Text(
                     actionText ?? '',
-                    style: textStyleDefaultBold,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   onPressed: onAction,
                 ),
