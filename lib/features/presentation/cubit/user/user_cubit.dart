@@ -34,4 +34,8 @@ class UserCubit extends Cubit<UserState> {
       emit(const UserState.fetchError(message: kUnexpectedError));
     }
   }
+
+  void setUser(User user) {
+    emit(UserState.fetchSuccess(item: user));
+  }
 }

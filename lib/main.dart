@@ -8,6 +8,7 @@ import 'package:nb_utils/nb_utils.dart';
 import 'configs/app_store.dart';
 import 'core/bloc_observer.dart';
 import 'app.dart';
+import 'features/domain/entities/models.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +24,13 @@ void main() async {
 _initializeAppStore() async {
   await initialize();
   final token = await SecureStorage.instance.getToken();
+  if (token != null && token.isValid) {
+    await appStore.saveToken(token);
+  }
+  final userJson = getJSONAsync(currentUserPref);
+  if (userJson.isNotEmpty) {
+    await appStore.saveUser(User.fromJson(userJson));
+  }
   if (token != null && token.isValid) {
     await appStore.saveToken(token);
   }

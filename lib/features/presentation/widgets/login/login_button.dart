@@ -24,14 +24,8 @@ class LoginButton extends StatelessWidget {
               : ElevatedButton.icon(
                   icon: const Icon(FontAwesomeIcons.github),
                   label: Text(S.current.loginOAuthButton),
-                  onPressed: () {
-                    context.read<LoginCubit>().onOAuthLoginPressed();
-
-                    // show comming soon message
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Comming soon')),
-                    );
-                  },
+                  onPressed: () =>
+                      context.read<LoginCubit>().onOAuthLoginPressed(),
                 ),
           personal: (status, token, message) => status.isSubmissionInProgress
               ? const CircularProgressIndicator()

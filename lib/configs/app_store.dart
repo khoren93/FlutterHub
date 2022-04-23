@@ -12,6 +12,7 @@ AppStore appStore = AppStore();
 
 class AppStore = _AppStore with _$AppStore;
 
+const currentUserPref = 'currentUserPref';
 const isUserLoggedInPref = 'isUserLoggedInPref';
 const themeModePref = 'themeModePref';
 const colorSchemeIndexPref = 'colorSchemeIndexPref';
@@ -24,6 +25,9 @@ abstract class _AppStore with Store {
 
   @observable
   Token? token;
+
+  @observable
+  User? currentUser;
 
   @observable
   bool isUserLoggedIn = false;
@@ -54,7 +58,20 @@ abstract class _AppStore with Store {
   Future<void> deleteToken() async {
     token = null;
     isUserLoggedIn = false;
+    rateLimit = RateLimit();
     await SecureStorage.instance.deleteToken();
+  }
+
+  @action
+  Future<void> saveUser(User value) async {
+    currentUser = value;
+    await setValue(currentUserPref, value.toJson());
+  }
+
+  @action
+  Future<void> deleteUser() async {
+    currentUser = null;
+    await removeKey(currentUserPref);
   }
 
   @action

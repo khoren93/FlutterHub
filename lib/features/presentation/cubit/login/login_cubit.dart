@@ -1,8 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:flutterhub/configs/app_store.dart';
+import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/data/models/personal_token_input.dart';
+import 'package:flutterhub/features/domain/repositories/login_repository.dart';
 import 'package:flutterhub/features/domain/repositories/user_repository.dart';
+import 'package:flutterhub/features/domain/usecases/login_usecase.dart';
 import 'package:flutterhub/features/domain/usecases/user_usecase.dart';
 import 'package:flutterhub/features/presentation/widgets/tab_bars/login_tab_bar.dart';
 import 'package:formz/formz.dart';
@@ -18,8 +22,10 @@ part 'login_state.dart';
 part 'login_cubit.freezed.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this.getUserUsecase) : super(const LoginState.oauth());
+  LoginCubit(this.createAccessTokenUsecase, this.getUserUsecase)
+      : super(const LoginState.oauth());
 
+  final CreateAccessTokenUsecase createAccessTokenUsecase;
   final GetAuthenticatedUserUsecase getUserUsecase;
 
   void onLoginTypeChanged(LoginType type) {
@@ -38,7 +44,43 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onOAuthLoginPressed() {
     state.whenOrNull(
-      oauth: (_status, _message) {},
+      oauth: (_status, _message) async {
+        try {
+          final url = Uri.https('github.com', 'login/oauth/authorize', {
+            'client_id': githubClientId,
+            'scope': githubScope,
+            'redirect_uri': '$githubRedirectUrl://',
+          });
+          final result = await FlutterWebAuth.authenticate(
+            url: url.toString(),
+            callbackUrlScheme: githubRedirectUrl,
+          );
+          final code = Uri.parse(result).queryParameters['code'];
+          if (code != null) {
+            final token = await createAccessTokenUsecase(
+              AccessTokenParams(githubClientId, githubClientSecret, code,
+                  '$githubRedirectUrl://', ''),
+            );
+            token.fold(
+              (l) => emit(state.copyWith(
+                status: FormzStatus.submissionFailure,
+                message: l.messageText(),
+              )),
+              (r) async {
+                await appStore.saveToken(r);
+                await _fetchUser();
+              },
+            );
+          } else {
+            emit(state.copyWith(
+              status: FormzStatus.submissionFailure,
+              message: kUnexpectedError,
+            ));
+          }
+        } catch (e) {
+          debugPrint(e.toString());
+        }
+      },
     );
   }
 
@@ -52,7 +94,7 @@ class LoginCubit extends Cubit<LoginState> {
           personalToken: personalToken,
         );
         await appStore.saveToken(token);
-        await _validateToken();
+        await _fetchUser();
       },
     );
   }
@@ -71,7 +113,7 @@ class LoginCubit extends Cubit<LoginState> {
             basicToken: basicToken,
           );
           await appStore.saveToken(token);
-          await _validateToken();
+          await _fetchUser();
         }
       },
     );
@@ -111,15 +153,19 @@ class LoginCubit extends Cubit<LoginState> {
     ));
   }
 
-  Future<void> _validateToken() async {
+  Future<void> _fetchUser() async {
     final result = await getUserUsecase(AuthenticatedUserParams());
     result.fold(
       (l) async {
         await appStore.deleteToken();
+        await appStore.deleteUser();
         emit(state.copyWith(
             status: FormzStatus.submissionFailure, message: l.messageText()));
       },
-      (r) => emit(state.copyWith(status: FormzStatus.submissionSuccess)),
+      (r) async {
+        await appStore.saveUser(r);
+        emit(state.copyWith(status: FormzStatus.submissionSuccess));
+      },
     );
   }
 }

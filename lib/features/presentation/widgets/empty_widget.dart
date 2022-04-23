@@ -11,7 +11,7 @@ Widget serverErrorWidget(String? message, String? url) {
     onAction: url != null
         ? () async {
             try {
-              launch(url);
+              launchUrl(Uri.parse(url));
             } on Exception catch (e) {
               debugPrint(e.toString());
             }

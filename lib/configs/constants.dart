@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+const githubClientId = 'b2fe416e9e6796ee6363';
+const githubClientSecret = 'a93cf9cbffecb02d44c24918c9a31a6933580737';
 const githubScope = 'user+repo+notifications+read:org';
+const githubRedirectUrl = 'flutterhub';
 const kPerPage = 20;
 
 const kUnexpectedError = 'Unexpected error';

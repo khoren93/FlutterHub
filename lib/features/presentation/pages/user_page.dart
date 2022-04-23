@@ -96,7 +96,7 @@ class _UserPageState extends State<UserPage> {
                       item.email,
                       () async {
                         try {
-                          launch('mailto:${item.email}');
+                          launchUrl(Uri(scheme: 'mailto', path: item.email));
                         } catch (e) {
                           debugPrint(e.toString());
                         }
@@ -107,7 +107,7 @@ class _UserPageState extends State<UserPage> {
                       item.blog,
                       () async {
                         try {
-                          await launch(item.blog ?? '');
+                          await launchUrl(Uri.parse(item.blog ?? ''));
                         } catch (e) {
                           debugPrint(e.toString());
                         }

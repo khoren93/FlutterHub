@@ -88,7 +88,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
           IconButton(
             icon: const Icon(FontAwesomeIcons.github),
             onPressed: () {
-              launch(item.htmlUrl ?? '');
+              launchUrl(Uri.parse(item.htmlUrl ?? ''));
             },
           ),
         ],

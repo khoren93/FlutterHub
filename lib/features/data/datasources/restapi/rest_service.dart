@@ -7,9 +7,10 @@ import '../../../domain/entities/models.dart';
 import '../../models/rate_limit.dart';
 
 part 'rest_service.chopper.dart';
-part 'trending_service.dart';
+part 'login_service.dart';
 part 'repos_service.dart';
 part 'search_service.dart';
+part 'trending_service.dart';
 part 'user_service.dart';
 part 'users_service.dart';
 
@@ -18,6 +19,7 @@ final githubClient = ChopperClient(
   authenticator: AppAuthenticator(),
   converter: JsonSerializableConverter(
     CustomJsonDecoder({
+      Token: Token.fromJson,
       RepositorySearch: RepositorySearch.fromJson,
       UserSearch: UserSearch.fromJson,
       Repository: Repository.fromJson,
@@ -26,6 +28,7 @@ final githubClient = ChopperClient(
   ),
   errorConverter: const JsonConverter(),
   services: [
+    LoginService.create(),
     SearchService.create(),
     ReposService.create(),
     UserService.create(),
