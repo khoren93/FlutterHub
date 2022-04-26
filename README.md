@@ -21,16 +21,21 @@
 </p>
 
 ## Get Started
-To get started, you need to install the packages and build generated files.
-Run the following commands in your terminal:
+To get started, you need to
+1. Install Flutter Intl extension for [VSCode](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl) or [Android Studio](https://plugins.jetbrains.com/plugin/13666-flutter-intl)
+
+2. Install the packages
 ```sh
 flutter pub get
+```
+
+3. Build generated files
+```sh
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
-
 ## App Features
-- [ ] Basic, Personal Access Token and OAuth2 authentication
+- [x] Basic, Personal Access Token and OAuth2 authentication
 - [x] View trending repositories and users ([github-trending-api](https://github.com/huchenme/github-trending-api))
 - [ ] Advanced searching and sorting repositories and users, filter by language
 - [ ] View repository and user details, events, issues, commits, pull requests, contributors, etc...
@@ -58,6 +63,22 @@ flutter pub run build_runner build --delete-conflicting-outputs
 - [x] Logging
 - [ ] Google ads implementation, can be enabled/disabled from settings
 - [ ] Add tests
+
+## VSCode extensions that I use
+- [x] [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) - Flutter support and debugger for Visual Studio Code.
+- [x] [Flutter Intl](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl) - Flutter localization binding from .arb files with official Intl library
+- [x] [bloc](https://marketplace.visualstudio.com/items?itemName=FelixAngelov.bloc) - Support for the bloc library and provides tools for effectively creating blocs for both Flutter and AngularDart apps.
+- [x] [Flutter Feature Scaffolding](https://marketplace.visualstudio.com/items?itemName=KiritchoukC.flutter-clean-architecture) - Add new feature easily with well structured directories (Clean Architecture pattern)
+- [x] [Awesome Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=Nash.awesome-flutter-snippets) - Awesome Flutter Snippets is a collection snippets and shortcuts for commonly used Flutter functions and classes
+- [x] [FlutterPubOpen](https://marketplace.visualstudio.com/items?itemName=AndrijaRubelj.flutterpubopen) - Opens pub.dev package and API for your pubspec.yaml dependencies
+- [x] [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) - Improve highlighting of errors, warnings and other language diagnostics.
+- [x] [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) - Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and CodeLens and so much more
+- [x] [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) - Makes indentation easier to read
+- [x] [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) - Visual Studio Code plugin that autocompletes filenames
+- [x] [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) - Material Design Icons for Visual Studio Code
+- [x] [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) - Icons for Visual Studio Code
+- [x] [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) - Your AI pair programmer 
+
 
 ## License
 MIT License. See [LICENSE](https://github.com/khoren93/FlutterHub/blob/master/LICENSE).
