@@ -4,16 +4,19 @@ import 'package:flutterhub/core/secure_storage.dart';
 import 'di/di.dart';
 import 'package:logging/logging.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import 'configs/app_store.dart';
 import 'core/bloc_observer.dart';
 import 'app.dart';
 import 'features/domain/entities/models.dart';
+import 'l10n/localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _setupLogging();
-  await _initializeAppStore();
+  _setupTimeago();
+  await _setupAppStore();
   await initDI();
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
@@ -21,7 +24,7 @@ void main() async {
   );
 }
 
-_initializeAppStore() async {
+_setupAppStore() async {
   await initialize();
   final token = await SecureStorage.instance.getToken();
   if (token != null && token.isValid) {
@@ -48,6 +51,12 @@ _initializeAppStore() async {
   await appStore.setLanguage(
     getStringAsync(languagePref, defaultValue: appStore.selectedLanguage),
   );
+}
+
+void _setupTimeago() {
+  timeago.setLocaleMessages('en_US', timeago.EnMessages());
+  timeago.setLocaleMessages('ru_RU', timeago.RuMessages());
+  timeago.setLocaleMessages('hy_AM', HyTimeMessages());
 }
 
 _setupLogging() {

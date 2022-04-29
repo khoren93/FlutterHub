@@ -1,5 +1,10 @@
 import 'dart:ui';
 
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
+
+import '../configs/app_store.dart';
+
 extension LocaleParsing on String {
   Locale parseLocale() {
     assert(contains('_') == true);
@@ -45,4 +50,11 @@ extension LocaleParsing on String {
     assert(contains('_') == true);
     return split('_').first;
   }
+}
+
+extension FormattedDate on DateTime {
+  String toDateString() => DateFormat.yMMMd().format(this);
+
+  String toTimeAgoString() => timeago.format(this,
+      allowFromNow: true, locale: appStore.selectedLanguage);
 }
