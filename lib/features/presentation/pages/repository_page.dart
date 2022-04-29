@@ -64,6 +64,11 @@ class _RepositoryPageState extends State<RepositoryPage> {
     return Container();
   }
 
+  Widget _buildErrorWidget(String? message, String? url) {
+    _refreshController.refreshFailed();
+    return serverErrorWidget(message, url);
+  }
+
   AppBar _buildAppBar(BuildContext context, RepositoryState item) {
     return item.maybeWhen(
       orElse: () => AppBar(
@@ -111,6 +116,8 @@ class _RepositoryPageState extends State<RepositoryPage> {
         children: [
           const SizedBox(height: spaceDefault),
           _buildRepositoryInfo(context, item),
+          _buildStats(context, item),
+          if (item.topics != null) _buildTopics(context, item.topics),
           _buildRepoActions(context, item),
         ],
       ),
@@ -125,8 +132,6 @@ class _RepositoryPageState extends State<RepositoryPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(item.description ?? ''),
-          const SizedBox(height: spaceSmall2),
-          _buildStats(context, item),
         ],
       ),
       isThreeLine: true,
@@ -136,8 +141,8 @@ class _RepositoryPageState extends State<RepositoryPage> {
   // Repository size, created at and updated at
   Widget _buildStats(BuildContext context, Repository item) {
     return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
+      scrollDirection: Axis.horizontal,
+      child: Wrap(
         children: [
           if (item.size != null)
             _buildRepoInfoItem(
@@ -163,7 +168,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
     return text == null || text.isEmpty
         ? Container()
         : Padding(
-            padding: paddingSmall,
+            padding: paddingSmallMedium,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -171,13 +176,11 @@ class _RepositoryPageState extends State<RepositoryPage> {
                   Center(child: Icon(icon, size: 14)),
                   const SizedBox(width: spaceMedium),
                 ],
-                Expanded(
-                  child: Text(
-                    text,
-                    style: Theme.of(context).textTheme.bodyText2,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodyText2,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
@@ -237,8 +240,25 @@ class _RepositoryPageState extends State<RepositoryPage> {
     );
   }
 
-  Widget _buildErrorWidget(String? message, String? url) {
-    _refreshController.refreshFailed();
-    return serverErrorWidget(message, url);
+  Widget _buildTopics(BuildContext context, List<String>? topics) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: paddingSmallMedium,
+        child: Wrap(
+          spacing: spaceSmall2,
+          children: topics
+                  ?.map((topic) => Chip(
+                        label: Text(topic),
+                        padding: EdgeInsets.zero,
+                        visualDensity: VisualDensity.compact,
+                        backgroundColor:
+                            Theme.of(context).primaryColor.withOpacity(0.4),
+                      ))
+                  .toList() ??
+              [],
+        ),
+      ),
+    );
   }
 }
