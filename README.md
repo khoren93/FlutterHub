@@ -37,7 +37,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ## App Features
 - [x] Basic, Personal Access Token and OAuth2 authentication
 - [x] View trending repositories and users ([github-trending-api](https://github.com/huchenme/github-trending-api))
-- [ ] Advanced searching and sorting repositories and users, filter by language
+- [x] Advanced searching and sorting repositories and users, filter by language
 - [ ] View repository and user details, events, issues, commits, pull requests, contributors, etc...
 - [ ] View issue and pull request messages
 - [ ] Tool for counting lines of code from github repositories ([codetabs](https://github.com/jolav/codetabs)) ([charts_flutter](https://pub.dev/packages/charts_flutter))
