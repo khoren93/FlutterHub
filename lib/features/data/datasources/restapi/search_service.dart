@@ -8,6 +8,8 @@ abstract class SearchService extends ChopperService {
   @Get(path: '/repositories')
   Future<Response<RepositorySearch>> searchRepositories(
     @Query('q') String query,
+    @Query() String order,
+    @Query() String sort,
     @Query() int page,
     @Query('per_page') int perPage,
   );
@@ -15,6 +17,8 @@ abstract class SearchService extends ChopperService {
   @Get(path: '/users')
   Future<Response<UserSearch>> searchUsers(
     @Query('q') String query,
+    @Query() String order,
+    @Query() String sort,
     @Query() int page,
     @Query('per_page') int perPage,
   );

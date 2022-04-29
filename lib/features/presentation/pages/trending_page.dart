@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
+import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/presentation/cubit/languages/languages_cubit.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_repository_tile.dart';
 import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_user_tile.dart';
@@ -87,6 +88,7 @@ class _TrendingPageState extends State<TrendingPage>
             },
             builder: (context, state) {
               return IconButton(
+                padding: paddingSmallDefault,
                 icon: Icon(
                   FontAwesomeIcons.code,
                   color: _selectedLanguage != null

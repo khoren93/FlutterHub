@@ -14,8 +14,10 @@ abstract class SearchRepository {
 }
 
 class SearchParams {
-  SearchParams(this.query, this.page, this.perPage);
+  SearchParams(this.query, this.order, this.sort, this.page, this.perPage);
   final String query;
+  final String order;
+  final String sort;
   final int page;
   final int perPage;
 }

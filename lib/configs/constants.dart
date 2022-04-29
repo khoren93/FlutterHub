@@ -32,4 +32,3 @@ const paddingSmallDefault =
 const paddingDefault = EdgeInsets.all(spaceDefault);
 const paddingDefaultLargeBottom =
     EdgeInsets.fromLTRB(spaceDefault, spaceDefault, spaceDefault, spaceLarge4);
-

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
+import 'package:flutterhub/features/presentation/widgets/dropdowns/sort_repository_dropdown.dart';
+import 'package:flutterhub/features/presentation/widgets/dropdowns/sort_user_dropdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/language_header_widget.dart';
 import '../widgets/list_tiles/repository_tile.dart';
@@ -17,6 +19,8 @@ class SearchDelegatePage extends SearchDelegate {
 
   final SearchType type;
   final RepositoryLanguage? selectedLanguage;
+  String? sort;
+  String? order;
 
   final _refreshController = RefreshController(initialRefresh: true);
 
@@ -57,6 +61,18 @@ class SearchDelegatePage extends SearchDelegate {
       builder: (context, state) {
         return Column(
           children: [
+            if (type == SearchType.repository)
+              SortRepositoryDropDown(
+                onChanged: (value) {
+                  _onSortRepositorySelected(context, value);
+                },
+              ),
+            if (type == SearchType.user)
+              SortUserDropDown(
+                onChanged: (value) {
+                  _onSortUserSelected(context, value);
+                },
+              ),
             if (selectedLanguage != null)
               LanguageHeaderWidget(
                   context: context, language: selectedLanguage),
@@ -99,12 +115,16 @@ class SearchDelegatePage extends SearchDelegate {
       case SearchType.repository:
         context.read<SearchCubit>().fetchRepository(
               query: createQuery(),
+              order: order ?? '',
+              sort: sort ?? '',
               isRefresh: !isLoading,
             );
         break;
       case SearchType.user:
         context.read<SearchCubit>().fetchUser(
               query: createQuery(),
+              order: order ?? '',
+              sort: sort ?? '',
               isRefresh: !isLoading,
             );
         break;
@@ -167,6 +187,18 @@ class SearchDelegatePage extends SearchDelegate {
   Widget _buildFailureWidget(String? message, String? url) {
     endLoadAnimation(isFailure: true);
     return serverErrorWidget(message, url);
+  }
+
+  _onSortRepositorySelected(BuildContext context, SortRepositoryType? sort) {
+    order = sort?.orderValue;
+    this.sort = sort?.sortValue;
+    _onRefresh(context);
+  }
+
+  _onSortUserSelected(BuildContext context, SortUserType? sort) {
+    order = sort?.orderValue;
+    this.sort = sort?.sortValue;
+    _onRefresh(context);
   }
 
   _onRepositorySelected(BuildContext context, Repository item) {

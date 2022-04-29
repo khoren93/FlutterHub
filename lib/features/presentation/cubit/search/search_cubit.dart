@@ -21,7 +21,12 @@ class SearchCubit extends Cubit<SearchState> {
   final SearchRepositoriesUsecase searchRepositoriesUsecase;
   final SearchUsersUsecase searchUsersUsecase;
 
-  void fetchRepository({required String query, required bool isRefresh}) async {
+  void fetchRepository({
+    required String query,
+    required String order,
+    required String sort,
+    required bool isRefresh,
+  }) async {
     List<Repository> oldItems = [];
     if (!isRefresh) {
       state.whenOrNull(
@@ -34,8 +39,8 @@ class SearchCubit extends Cubit<SearchState> {
     }
     try {
       final page = pageForItems(isRefresh, oldItems);
-      final result =
-          await searchRepositoriesUsecase(SearchParams(query, page, kPerPage));
+      final result = await searchRepositoriesUsecase(
+          SearchParams(query, order, sort, page, kPerPage));
       result.fold(
         (l) => emit(SearchState.reposFetchError(
           message: l.messageText(),
@@ -57,7 +62,12 @@ class SearchCubit extends Cubit<SearchState> {
     }
   }
 
-  void fetchUser({required String query, required bool isRefresh}) async {
+  void fetchUser({
+    required String query,
+    required String order,
+    required String sort,
+    required bool isRefresh,
+  }) async {
     List<User> oldItems = [];
     if (!isRefresh) {
       state.whenOrNull(
@@ -70,8 +80,8 @@ class SearchCubit extends Cubit<SearchState> {
     }
     try {
       final page = pageForItems(isRefresh, oldItems);
-      final result =
-          await searchUsersUsecase(SearchParams(query, page, kPerPage));
+      final result = await searchUsersUsecase(
+          SearchParams(query, order, sort, page, kPerPage));
       result.fold(
         (l) => emit(SearchState.usersFetchError(
           message: l.messageText(),
