@@ -120,7 +120,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
         if (item.topics != null) _buildTopics(context, item.topics),
         _buildRepoActions(context, item),
         _buildRepoRows(context, item),
-        const SizedBox(height: spaceLarge4),
+        const SizedBox(height: spaceLarge3),
       ],
     );
   }
@@ -140,7 +140,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
     );
   }
 
-  // Repository size, created at and updated at
+  // Repository language, size, created at and updated at
   Widget _buildStats(BuildContext context, Repository item) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -252,7 +252,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
         padding: paddingSmallDefault,
         child: Row(
           children: [
-            Icon(icon, color: Theme.of(context).primaryColor),
+            Icon(icon, size: 20, color: Theme.of(context).primaryColor),
             const SizedBox(width: spaceDefault),
             Column(
               children: [
@@ -269,7 +269,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
     );
   }
 
-  // Repository issues, pull requests, commits, branches, releases and etc
+  // Repository issues, pull requests, commits, branches, releases and etc...
   Widget _buildRepoRows(BuildContext context, Repository item) {
     return GridView(
       shrinkWrap: true,
@@ -325,8 +325,11 @@ class _RepositoryPageState extends State<RepositoryPage> {
             S.current.repositorySourceTitle, null, () {
           _onSourceCodeSelect(item);
         }),
-        _buildRowItem(context, FontAwesomeIcons.star,
-            S.current.repositoryStarHistoryTitle, 'star-history.t9t.io', () {
+        _buildRowItem(
+            context,
+            FontAwesomeIcons.star,
+            S.current.repositoryStarHistoryTitle,
+            Uri.parse(kStarHistoryBaseUrl).host, () {
           _onStarHistorySelect(item);
         }),
         _buildRowItem(context, FontAwesomeIcons.chartPie,
@@ -398,7 +401,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
   _onSourceCodeSelect(Repository item) {}
 
   _onStarHistorySelect(Repository item) {
-    final url = '$kStarHistoryApiBaseUrl/#${item.fullName}';
+    final url = '$kStarHistoryBaseUrl/#${item.fullName}';
     launchUrl(Uri.parse(url));
   }
 

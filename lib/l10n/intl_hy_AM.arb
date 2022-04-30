@@ -61,5 +61,15 @@
     "repositoryContributorsTitle": "Ներդրողներ",
     "repositorySourceTitle": "Բաց կոդը",
     "repositoryStarHistoryTitle": "Աստղերի պատմություն",
-    "repositoryCountLinesOfCodeTitle": "Կոդի տողերի քանակը"
+    "repositoryCountLinesOfCodeTitle": "Կոդի տողերի քանակը",
+    "userRepositoriesTitle": "Ռեպոզիտորիաներ",
+    "userFollowersTitle": "Հետեւորդներ",
+    "userFollowingTitle": "Համախոհներ",
+    "userStarsTitle": "Աստղեր",
+    "userWatchingTitle": "Դիտում է",
+    "userEventsTitle": "Միջոցառումներ",
+    "userProfileSummaryTitle": "Պրոֆիլի Ամփոփագիր",
+    "userContributionsTitle": "Ներդրումներ",
+    "userPinnedSectionTitle": "Կապակցված",
+    "userOrganizationsSectionTitle": "Կազմակերպություններ"
 }

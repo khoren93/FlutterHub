@@ -1,11 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
 import 'package:flutterhub/features/domain/entities/models.dart';
 import 'package:flutterhub/features/presentation/widgets/network_image.dart';
+import 'package:flutterhub/core/extensions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../configs/constants.dart';
+import '../../../generated/l10n.dart';
 import '../cubit/user/user_cubit.dart';
 import '../widgets/empty_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -57,11 +62,21 @@ class _UserPageState extends State<UserPage> {
 
   Widget? _buildInProgressWidget() => Container();
 
-  Widget? _buildSuccessWidget(item) {
+  Widget _buildErrorWidget(String? message, String? url) {
+    _refreshController.refreshFailed();
+    return serverErrorWidget(message, url);
+  }
+
+  Widget? _buildSuccessWidget(User item) {
     _refreshController.refreshCompleted();
-    return Column(
+    return ListView(
+      padding: paddingSmall,
       children: [
         _buildUserInfo(item),
+        _buildStats(context, item),
+        _buildUserActions(context, item),
+        _buildUserRows(context, item),
+        const SizedBox(height: spaceLarge3),
       ],
     );
   }
@@ -169,8 +184,168 @@ class _UserPageState extends State<UserPage> {
           );
   }
 
-  Widget _buildErrorWidget(String? message, String? url) {
-    _refreshController.refreshFailed();
-    return serverErrorWidget(message, url);
+  // User created at and updated at
+  Widget _buildStats(BuildContext context, User item) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          if (item.createdAt != null)
+            _buildStatItem(
+              FontAwesomeIcons.calendarPlus,
+              '${item.createdAt?.toTimeAgoString()}',
+            ),
+          if (item.updatedAt != null)
+            _buildStatItem(
+              FontAwesomeIcons.clock,
+              '${item.updatedAt?.toTimeAgoString()}',
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStatItem(IconData? icon, String? text) {
+    return text == null || text.isEmpty
+        ? Container()
+        : Padding(
+            padding: paddingSmallMedium,
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (icon != null) ...[
+                  Center(child: Icon(icon, size: 12)),
+                  const SizedBox(width: spaceMedium),
+                ],
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodyText2,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          );
+  }
+
+  // User repositories, followers and following
+  Widget _buildUserActions(BuildContext context, User item) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          _buildActionButton(
+            context,
+            S.current.userRepositoriesTitle,
+            item.publicRepos,
+          ),
+          _buildActionButton(
+            context,
+            S.current.userFollowersTitle,
+            item.followers,
+          ),
+          _buildActionButton(
+            context,
+            S.current.userFollowingTitle,
+            item.following,
+          ),
+        ],
+      ),
+    );
+  }
+
+  _buildActionButton(BuildContext context, String title, int? count) {
+    return Card(
+      child: Padding(
+        padding: paddingSmallDefault,
+        child: Row(
+          children: [
+            Column(
+              children: [
+                if (count != null)
+                  Text(
+                    NumberFormat.compact().format(count),
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                Text(title),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // User stars, watching, events and etc...
+  Widget _buildUserRows(BuildContext context, User item) {
+    return GridView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 600,
+        childAspectRatio: 6,
+      ),
+      children: [
+        _buildRowItem(context, FontAwesomeIcons.star, S.current.userStarsTitle,
+            '${item.starredRepositoriesCount ?? ''}', () {
+          _onStarsSelect(item);
+        }),
+        _buildRowItem(context, FontAwesomeIcons.eye,
+            S.current.userWatchingTitle, '${item.watchingCount ?? ''}', () {
+          _onWatchingSelect(item);
+        }),
+        _buildRowItem(
+            context, FontAwesomeIcons.rss, S.current.userEventsTitle, null, () {
+          _onEventsSelect(item);
+        }),
+        _buildRowItem(
+            context,
+            FontAwesomeIcons.chartPie,
+            S.current.userProfileSummaryTitle,
+            Uri.parse(kProfileSummaryBaseUrl).host, () {
+          _onProfileSummarySelect(item);
+        }),
+      ],
+    );
+  }
+
+  _buildRowItem(BuildContext context, IconData icon, String title,
+      String? detail, Function()? onTap) {
+    final width = min(MediaQuery.of(context).size.width, spaceMaxWidth);
+    return Card(
+      child: InkWell(
+        onTap: onTap,
+        child: Center(
+          child: ListTile(
+            dense: true,
+            leading: Icon(icon, color: Theme.of(context).primaryColor),
+            title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (detail != null && detail.isNotEmpty)
+                  Container(
+                    constraints: BoxConstraints(maxWidth: width * 0.3),
+                    child: Chip(label: Text(detail)),
+                  ),
+                const Icon(FontAwesomeIcons.chevronRight),
+              ],
+            ),
+            // onTap: onTap,
+          ),
+        ),
+      ),
+    );
+  }
+
+  _onStarsSelect(User item) {}
+
+  _onWatchingSelect(User item) {}
+
+  _onEventsSelect(User item) {}
+
+  _onProfileSummarySelect(User item) {
+    final url = '$kProfileSummaryBaseUrl/user/${item.login}';
+    launchUrl(Uri.parse(url));
   }
 }

@@ -61,5 +61,15 @@
     "repositoryContributorsTitle": "Contributors",
     "repositorySourceTitle": "Source Code",
     "repositoryStarHistoryTitle": "Star History",
-    "repositoryCountLinesOfCodeTitle": "Count Lines of Code"
+    "repositoryCountLinesOfCodeTitle": "Count Lines of Code",
+    "userRepositoriesTitle": "Repositories",
+    "userFollowersTitle": "Followers",
+    "userFollowingTitle": "Following",
+    "userStarsTitle": "Stars",
+    "userWatchingTitle": "Watching",
+    "userEventsTitle": "Events",
+    "userProfileSummaryTitle": "Profile Summary",
+    "userContributionsTitle": "Contributions",
+    "userPinnedSectionTitle": "Pinned",
+    "userOrganizationsSectionTitle": "Organizations"
 }

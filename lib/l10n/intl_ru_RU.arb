@@ -61,5 +61,15 @@
     "repositoryContributorsTitle": "Вкладчики",
     "repositorySourceTitle": "Исходный код",
     "repositoryStarHistoryTitle": "История звезд",
-    "repositoryCountLinesOfCodeTitle": "Подсчет строк кода"
+    "repositoryCountLinesOfCodeTitle": "Подсчет строк кода",
+    "userRepositoriesTitle": "Репозитории",
+    "userFollowersTitle": "Подписчики",
+    "userFollowingTitle": "Подписки",
+    "userStarsTitle": "Звезды",
+    "userWatchingTitle": "Наблюдает",
+    "userEventsTitle": "События",
+    "userProfileSummaryTitle": "Резюме Профиля",
+    "userContributionsTitle": "Взносы",
+    "userPinnedSectionTitle": "Закрепленные",
+    "userOrganizationsSectionTitle": "Организации"
 }

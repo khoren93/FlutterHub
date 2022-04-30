@@ -25,8 +25,12 @@ class User with _$User {
     int? publicGists,
     int? followers,
     int? following,
-    String? createdAt,
-    String? updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    int? starredRepositoriesCount,
+    int? repositoriesCount,
+    int? issuesCount,
+    int? watchingCount,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

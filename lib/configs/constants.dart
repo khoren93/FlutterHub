@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 const kGithubApiBaseUrl = 'https://api.github.com';
-const kStarHistoryApiBaseUrl = 'https://star-history.com';
+const kStarHistoryBaseUrl = 'https://star-history.com';
+const kProfileSummaryBaseUrl = 'https://profile-summary-for-github.com';
 
 // ALL KEYS ARE DEMONSTRATIVE AND ARE USED FOR THE TEST.
 const kGithubClientId = 'b2fe416e9e6796ee6363';

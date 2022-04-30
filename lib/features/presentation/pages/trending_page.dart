@@ -8,7 +8,6 @@ import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_use
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/trend_repository.dart';
 import '../cubit/trending/trending_cubit.dart';
-import '../widgets/common_widgets.dart';
 import '../widgets/language_header_widget.dart';
 import 'menu_drawer_page.dart';
 import '../widgets/empty_widget.dart';
@@ -44,15 +43,21 @@ class _TrendingPageState extends State<TrendingPage>
     _searchTabController =
         TabController(length: SearchType.values.length, vsync: this);
     _searchTabController.addListener(() {
-      _selectedSearchType = SearchType.values[_searchTabController.index];
-      _refreshController.requestRefresh();
+      if (_searchTabController.indexIsChanging) {
+        // to prevent twice call
+        _selectedSearchType = SearchType.values[_searchTabController.index];
+        _refreshController.requestRefresh();
+      }
     });
 
     _sinceTabController =
         TabController(length: SinceType.values.length, vsync: this);
     _sinceTabController.addListener(() {
-      _selectedSinceType = SinceType.values[_sinceTabController.index];
-      _refreshController.requestRefresh();
+      // to prevent twice call
+      if (_sinceTabController.indexIsChanging) {
+        _selectedSinceType = SinceType.values[_sinceTabController.index];
+        _refreshController.requestRefresh();
+      }
     });
 
     Connectivity().onConnectivityChanged.listen((event) {
