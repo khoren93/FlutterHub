@@ -41,9 +41,9 @@ flutter pub run build_runner build --delete-conflicting-outputs
 - [ ] View repository and user details, events, issues, commits, pull requests, contributors, etc...
 - [ ] View issue and pull request messages
 - [ ] Tool for counting lines of code from github repositories ([codetabs](https://github.com/jolav/codetabs)) ([charts_flutter](https://pub.dev/packages/charts_flutter))
-- [ ] The missing star history graph of github repos ([stars-history](https://github.com/timqian/star-history))
+- [x] The missing star history graph of github repos ([stars-history](https://github.com/timqian/star-history))
 - [ ] Quickly browse the history of a file from any git repository ([git-history](https://github.com/pomber/git-history))
-- [ ] Tool for visualizing GitHub profiles ([profile-summary-for-github](https://github.com/tipsy/profile-summary-for-github))
+- [x] Tool for visualizing GitHub profiles ([profile-summary-for-github](https://github.com/tipsy/profile-summary-for-github))
 - [ ] View a 3D model of your GitHub contribution grap ([skyline](https://skyline.github.com))
 - [ ] Source file viewer and syntax highlighting
 - [x] Color themes in light and dark modes ([flex_color_scheme](https://pub.dev/packages/flex_color_scheme))
