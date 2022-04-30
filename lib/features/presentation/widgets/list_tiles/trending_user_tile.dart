@@ -20,26 +20,17 @@ class TrendingUserTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      clipBehavior: Clip.hardEdge,
       child: ListTile(
         leading: networkImage(context, item.avatar, openPreview: false),
-        title: Padding(
-          padding: EdgeInsets.only(top: (item.repo != null ? spaceMedium : 0)),
-          child: Row(
-            children: [
-              Text(item.name ?? ''),
-              if (item.name != null) ...[
-                const SizedBox(width: spaceMedium),
-                Text(
-                  '(${item.username ?? ''})',
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ],
-            ],
-          ),
+        title: Text(
+          '${item.name ?? ''} (${item.username ?? ''})',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
         subtitle: (item.repo != null)
             ? Padding(
-                padding: paddingDefault,
+                padding: paddingSmallDefault,
                 child: InkWell(
                   onTap: () {
                     onRepositoryTap
@@ -47,10 +38,11 @@ class TrendingUserTile extends StatelessWidget {
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
                         children: [
-                          const Icon(FontAwesomeIcons.bookBookmark, size: 20),
+                          const Icon(FontAwesomeIcons.bookBookmark, size: 16),
                           const SizedBox(width: spaceMedium),
                           Flexible(
                             child: Text(
@@ -58,13 +50,21 @@ class TrendingUserTile extends StatelessWidget {
                               style: TextStyle(
                                 color: Theme.of(context).colorScheme.primary,
                               ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: spaceMedium),
-                      if (item.repo?.description != null)
-                        Text(item.repo?.description ?? ''),
+                      if (item.repo?.description != null) ...[
+                        const SizedBox(height: spaceMedium),
+                        Flexible(
+                          child: Text(
+                            item.repo?.description ?? '',
+                            // overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ]
                     ],
                   ),
                 ),

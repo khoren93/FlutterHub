@@ -36,7 +36,7 @@ class PersonalLoginWidget extends StatelessWidget {
 
   _buildDescription(BuildContext context) {
     return Text(
-      S.current.loginPersonalDescription(githubScope),
+      S.current.loginPersonalDescription(kGithubScope),
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.bodyText2,
     );

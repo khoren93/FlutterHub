@@ -8,6 +8,7 @@ import 'package:flutterhub/features/presentation/widgets/list_tiles/trending_use
 import '../../domain/entities/models.dart';
 import '../../domain/repositories/trend_repository.dart';
 import '../cubit/trending/trending_cubit.dart';
+import '../widgets/common_widgets.dart';
 import '../widgets/language_header_widget.dart';
 import 'menu_drawer_page.dart';
 import '../widgets/empty_widget.dart';
@@ -180,20 +181,26 @@ class _TrendingPageState extends State<TrendingPage>
 
   Widget _buildRepositoriesList(List<TrendingRepository> items) {
     _refreshController.refreshCompleted();
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) => TrendingRepositoryTile(
-        item: items[index],
-        timePeriod: _selectedSinceType.title.toLowerCase(),
-        onTap: _onRepositorySelected,
-        onUserTap: _onUserSelected,
+    return ContainerX(
+      child: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) => TrendingRepositoryTile(
+          item: items[index],
+          timePeriod: _selectedSinceType.title.toLowerCase(),
+          onTap: _onRepositorySelected,
+          onUserTap: _onUserSelected,
+        ),
       ),
     );
   }
 
   Widget _buildUsersList(List<TrendingUser> items) {
     _refreshController.refreshCompleted();
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 500,
+        childAspectRatio: 2.5,
+      ),
       itemCount: items.length,
       itemBuilder: (context, index) => TrendingUserTile(
         item: items[index],

@@ -1,9 +1,11 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../configs/app_store.dart';
+import '../configs/constants.dart';
 
 extension LocaleParsing on String {
   Locale parseLocale() {
@@ -57,4 +59,8 @@ extension FormattedDate on DateTime {
 
   String toTimeAgoString() => timeago.format(this,
       allowFromNow: true, locale: appStore.selectedLanguage);
+}
+
+extension DoubleExtensions on double {
+  int toGridItemsCount() => min(this, spaceMaxWidth) ~/ spaceMaxGridItemWidth;
 }

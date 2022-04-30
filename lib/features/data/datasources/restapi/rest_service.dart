@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutterhub/configs/app_store.dart';
+import 'package:flutterhub/configs/constants.dart';
 import '../../../domain/entities/models.dart';
 import '../../models/rate_limit.dart';
 
@@ -15,7 +16,7 @@ part 'user_service.dart';
 part 'users_service.dart';
 
 final githubClient = ChopperClient(
-  baseUrl: 'https://api.github.com',
+  baseUrl: kGithubApiBaseUrl,
   authenticator: AppAuthenticator(),
   converter: JsonSerializableConverter(
     CustomJsonDecoder({

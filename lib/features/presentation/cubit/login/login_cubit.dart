@@ -47,19 +47,19 @@ class LoginCubit extends Cubit<LoginState> {
       oauth: (_status, _message) async {
         try {
           final url = Uri.https('github.com', 'login/oauth/authorize', {
-            'client_id': githubClientId,
-            'scope': githubScope,
-            'redirect_uri': '$githubRedirectUrl://',
+            'client_id': kGithubClientId,
+            'scope': kGithubScope,
+            'redirect_uri': '$kGithubRedirectUrl://',
           });
           final result = await FlutterWebAuth.authenticate(
             url: url.toString(),
-            callbackUrlScheme: githubRedirectUrl,
+            callbackUrlScheme: kGithubRedirectUrl,
           );
           final code = Uri.parse(result).queryParameters['code'];
           if (code != null) {
             final token = await createAccessTokenUsecase(
-              AccessTokenParams(githubClientId, githubClientSecret, code,
-                  '$githubRedirectUrl://', ''),
+              AccessTokenParams(kGithubClientId, kGithubClientSecret, code,
+                  '$kGithubRedirectUrl://', ''),
             );
             token.fold(
               (l) => emit(state.copyWith(

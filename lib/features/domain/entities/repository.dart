@@ -24,6 +24,7 @@ class Repository with _$Repository {
     List<String>? topics,
     String? defaultBranch,
     int? subscribersCount,
+    Repository? parent,
   }) = _Repository;
 
   factory Repository.fromJson(Map<String, dynamic> json) =>
