@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhub/features/presentation/widgets/common_widgets.dart';
 
 import '../../../../configs/constants.dart';
 import '../../../../generated/l10n.dart';
@@ -30,24 +31,26 @@ extension SinceTypeExtension on SinceType {
 }
 
 Widget buildSinceTabs(BuildContext context, TabController controller) {
-  return Container(
-    margin: paddingSmallDefault,
-    height: 40,
-    decoration: BoxDecoration(
-      color: Theme.of(context).primaryColor.withOpacity(0.8),
-      borderRadius: BorderRadius.circular(20.0),
-    ),
-    child: TabBar(
-      controller: controller,
-      indicator: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
+  return ContainerX(
+    child: Container(
+      margin: paddingSmallMedium,
+      height: 40,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor.withOpacity(0.8),
         borderRadius: BorderRadius.circular(20.0),
       ),
-      tabs: SinceType.values.map((model) {
-        return Tab(
-          text: model.title,
-        );
-      }).toList(),
+      child: TabBar(
+        controller: controller,
+        indicator: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        tabs: SinceType.values.map((model) {
+          return Tab(
+            text: model.title,
+          );
+        }).toList(),
+      ),
     ),
   );
 }

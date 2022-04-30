@@ -28,6 +28,8 @@ extension SearchTypeExtension on SearchType {
 TabBar buildSearchTypeTabs(BuildContext context, TabController controller) {
   return TabBar(
     controller: controller,
+    indicatorColor: Theme.of(context).colorScheme.secondary,
+    indicatorWeight: 3,
     tabs: SearchType.values.map((model) {
       return Tab(
         text: model.title,

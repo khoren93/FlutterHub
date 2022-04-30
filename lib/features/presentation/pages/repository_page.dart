@@ -271,7 +271,13 @@ class _RepositoryPageState extends State<RepositoryPage> {
 
   // Repository issues, pull requests, commits, branches, releases and etc
   Widget _buildRepoRows(BuildContext context, Repository item) {
-    return Column(
+    return GridView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 600,
+        childAspectRatio: 6,
+      ),
       children: [
         if (item.fork == true)
           _buildRowItem(context, FontAwesomeIcons.codeFork,
@@ -335,22 +341,27 @@ class _RepositoryPageState extends State<RepositoryPage> {
       String? detail, Function()? onTap) {
     final width = min(MediaQuery.of(context).size.width, spaceMaxWidth);
     return Card(
-      child: ListTile(
-        dense: true,
-        leading: Icon(icon, color: Theme.of(context).primaryColor),
-        title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (detail != null)
-              Container(
-                constraints: BoxConstraints(maxWidth: width * 0.4),
-                child: Chip(label: Text(detail)),
-              ),
-            const Icon(FontAwesomeIcons.chevronRight),
-          ],
-        ),
+      child: InkWell(
         onTap: onTap,
+        child: Center(
+          child: ListTile(
+            dense: true,
+            leading: Icon(icon, color: Theme.of(context).primaryColor),
+            title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (detail != null)
+                  Container(
+                    constraints: BoxConstraints(maxWidth: width * 0.4),
+                    child: Chip(label: Text(detail)),
+                  ),
+                const Icon(FontAwesomeIcons.chevronRight),
+              ],
+            ),
+            // onTap: onTap,
+          ),
+        ),
       ),
     );
   }

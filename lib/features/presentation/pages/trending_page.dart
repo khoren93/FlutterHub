@@ -74,70 +74,80 @@ class _TrendingPageState extends State<TrendingPage>
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MenuDrawerPage(),
-      appBar: AppBar(
-        title: Text(loc.S.current.trendingAppBarTitle),
-        bottom: buildSearchTypeTabs(context, _searchTabController),
-        actions: [
-          BlocConsumer<LanguagesCubit, LanguagesState>(
-            listener: (context, state) {
-              state.whenOrNull(
-                fetchSuccess: (items, selected) {
-                  _selectedLanguage = selected;
-                  _onRefresh();
-                },
-              );
-            },
-            builder: (context, state) {
-              return IconButton(
-                padding: paddingSmallDefault,
-                icon: Icon(
-                  FontAwesomeIcons.code,
-                  color: _selectedLanguage != null
-                      ? Theme.of(context).colorScheme.secondary
-                      : null,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              title: Text(loc.S.current.trendingAppBarTitle),
+              pinned: true,
+              floating: true,
+              snap: true,
+              forceElevated: innerBoxIsScrolled,
+              bottom: buildSearchTypeTabs(context, _searchTabController),
+              actions: [
+                BlocConsumer<LanguagesCubit, LanguagesState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      fetchSuccess: (items, selected) {
+                        _selectedLanguage = selected;
+                        _onRefresh();
+                      },
+                    );
+                  },
+                  builder: (context, state) {
+                    return IconButton(
+                      padding: paddingSmallDefault,
+                      icon: Icon(
+                        FontAwesomeIcons.code,
+                        color: _selectedLanguage != null
+                            ? Theme.of(context).colorScheme.secondary
+                            : null,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AppRoutes.languages);
+                      },
+                    );
+                  },
                 ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(AppRoutes.languages);
-                },
-              );
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          buildSinceTabs(context, _sinceTabController),
-          Expanded(
-            child: BlocBuilder<TrendingCubit, TrendingState>(
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    if (_selectedLanguage != null)
-                      LanguageHeaderWidget(
-                          context: context, language: _selectedLanguage),
-                    Expanded(
-                      child: SmartRefresher(
-                        controller: _refreshController,
-                        onRefresh: _onRefresh,
-                        child: state.when(
-                          initial: () => Container(),
-                          reposFetchInProgress: () => Container(),
-                          reposFetchEmpty: _buildEmptyRepositoriesWidget,
-                          reposFetchSuccess: _buildRepositoriesList,
-                          reposFetchError: _buildFailureWidget,
-                          usersFetchInProgress: () => Container(),
-                          usersFetchEmpty: _buildEmptyUsersWidget,
-                          usersFetchSuccess: _buildUsersList,
-                          usersFetchError: _buildFailureWidget,
+              ],
+            ),
+          ];
+        },
+        body: Column(
+          children: [
+            buildSinceTabs(context, _sinceTabController),
+            Expanded(
+              child: BlocBuilder<TrendingCubit, TrendingState>(
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      if (_selectedLanguage != null)
+                        LanguageHeaderWidget(
+                            context: context, language: _selectedLanguage),
+                      Expanded(
+                        child: SmartRefresher(
+                          controller: _refreshController,
+                          onRefresh: _onRefresh,
+                          child: state.when(
+                            initial: () => Container(),
+                            reposFetchInProgress: () => Container(),
+                            reposFetchEmpty: _buildEmptyRepositoriesWidget,
+                            reposFetchSuccess: _buildRepositoriesList,
+                            reposFetchError: _buildFailureWidget,
+                            usersFetchInProgress: () => Container(),
+                            usersFetchEmpty: _buildEmptyUsersWidget,
+                            usersFetchSuccess: _buildUsersList,
+                            usersFetchError: _buildFailureWidget,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(FontAwesomeIcons.magnifyingGlass),
@@ -181,15 +191,13 @@ class _TrendingPageState extends State<TrendingPage>
 
   Widget _buildRepositoriesList(List<TrendingRepository> items) {
     _refreshController.refreshCompleted();
-    return ContainerX(
-      child: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) => TrendingRepositoryTile(
-          item: items[index],
-          timePeriod: _selectedSinceType.title.toLowerCase(),
-          onTap: _onRepositorySelected,
-          onUserTap: _onUserSelected,
-        ),
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) => TrendingRepositoryTile(
+        item: items[index],
+        timePeriod: _selectedSinceType.title.toLowerCase(),
+        onTap: _onRepositorySelected,
+        onUserTap: _onUserSelected,
       ),
     );
   }
@@ -199,7 +207,7 @@ class _TrendingPageState extends State<TrendingPage>
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 500,
-        childAspectRatio: 2.5,
+        childAspectRatio: 3,
       ),
       itemCount: items.length,
       itemBuilder: (context, index) => TrendingUserTile(

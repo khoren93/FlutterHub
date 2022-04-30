@@ -4,6 +4,7 @@ import '../../../generated/l10n.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../configs/app_store.dart';
+import '../widgets/common_widgets.dart';
 import '../widgets/language_widget.dart';
 import '../widgets/list_tiles/setting_tile.dart';
 import '../widgets/theme_mode_switch.dart';
@@ -24,36 +25,38 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Text(S.current.settingsAppBarTitle),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: spaceDefault),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: spaceDefault),
-              child: ThemeSelector(),
-            ),
-            SettingTile(
-              context,
-              leading: Icons.brightness_4,
-              title: S.current.settingsThemeModeTitle,
-              trailing: ThemeModeSwitch(
-                themeMode: appStore.themeMode,
-                onChanged: (mode) {
-                  appStore.setThemeMode(mode);
-                  setState(() {});
-                },
+        child: ContainerX(
+          child: Column(
+            children: [
+              const SizedBox(height: spaceDefault),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: spaceDefault),
+                child: ThemeSelector(),
               ),
-            ),
-            SettingTile(
-              context,
-              leading: FontAwesomeIcons.globe,
-              title: S.current.settingsLanguageTitle,
-              trailing: LanguageWidget(
-                onChanged: (value) {
-                  setState(() {});
-                },
+              SettingTile(
+                context,
+                leading: Icons.brightness_4,
+                title: S.current.settingsThemeModeTitle,
+                trailing: ThemeModeSwitch(
+                  themeMode: appStore.themeMode,
+                  onChanged: (mode) {
+                    appStore.setThemeMode(mode);
+                    setState(() {});
+                  },
+                ),
               ),
-            ),
-          ],
+              SettingTile(
+                context,
+                leading: FontAwesomeIcons.globe,
+                title: S.current.settingsLanguageTitle,
+                trailing: LanguageWidget(
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

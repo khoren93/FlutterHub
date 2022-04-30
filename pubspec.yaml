@@ -13,7 +13,7 @@ dependencies:
   dartz: ^0.10.1
   equatable: ^2.0.3
   filesize: ^2.0.1
-  flex_color_scheme: ^5.0.0
+  flex_color_scheme: ^5.0.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
