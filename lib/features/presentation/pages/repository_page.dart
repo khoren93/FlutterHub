@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -275,8 +273,8 @@ class _RepositoryPageState extends State<RepositoryPage> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 600,
-        childAspectRatio: 6,
+        maxCrossAxisExtent: 500,
+        mainAxisExtent: 60,
       ),
       children: [
         if (item.fork == true)
@@ -342,7 +340,6 @@ class _RepositoryPageState extends State<RepositoryPage> {
 
   _buildRowItem(BuildContext context, IconData icon, String title,
       String? detail, Function()? onTap) {
-    final width = min(MediaQuery.of(context).size.width, spaceMaxWidth);
     return Card(
       child: InkWell(
         onTap: onTap,
@@ -350,19 +347,22 @@ class _RepositoryPageState extends State<RepositoryPage> {
           child: ListTile(
             dense: true,
             leading: Icon(icon, color: Theme.of(context).primaryColor),
-            title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (detail != null)
-                  Container(
-                    constraints: BoxConstraints(maxWidth: width * 0.4),
-                    child: Chip(label: Text(detail)),
+                Flexible(
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                const Icon(FontAwesomeIcons.chevronRight),
+                ),
+                if (detail != null && detail.isNotEmpty) ...[
+                  const SizedBox(width: spaceDefault),
+                  Flexible(child: Chip(label: Text(detail)))
+                ]
               ],
             ),
-            // onTap: onTap,
+            trailing: const Icon(FontAwesomeIcons.chevronRight),
           ),
         ),
       ),

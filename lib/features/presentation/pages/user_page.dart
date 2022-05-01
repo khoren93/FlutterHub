@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
@@ -12,6 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../configs/constants.dart';
 import '../../../generated/l10n.dart';
 import '../cubit/user/user_cubit.dart';
+import '../widgets/common_widgets.dart';
 import '../widgets/empty_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -42,13 +41,15 @@ class _UserPageState extends State<UserPage> {
       ),
       body: BlocBuilder<UserCubit, UserState>(
         builder: (context, state) {
-          return SmartRefresher(
-            controller: _refreshController,
-            onRefresh: _onRefresh,
-            child: state.when(
-              fetchInProgress: _buildInProgressWidget,
-              fetchSuccess: _buildSuccessWidget,
-              fetchError: _buildErrorWidget,
+          return ContainerX(
+            child: SmartRefresher(
+              controller: _refreshController,
+              onRefresh: _onRefresh,
+              child: state.when(
+                fetchInProgress: _buildInProgressWidget,
+                fetchSuccess: _buildSuccessWidget,
+                fetchError: _buildErrorWidget,
+              ),
             ),
           );
         },
@@ -173,8 +174,6 @@ class _UserPageState extends State<UserPage> {
                   Expanded(
                     child: Text(
                       text,
-                      style: Theme.of(context).textTheme.bodyText2,
-                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -282,8 +281,8 @@ class _UserPageState extends State<UserPage> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 600,
-        childAspectRatio: 6,
+        maxCrossAxisExtent: 500,
+        mainAxisExtent: 60,
       ),
       children: [
         _buildRowItem(context, FontAwesomeIcons.star, S.current.userStarsTitle,
@@ -311,7 +310,6 @@ class _UserPageState extends State<UserPage> {
 
   _buildRowItem(BuildContext context, IconData icon, String title,
       String? detail, Function()? onTap) {
-    final width = min(MediaQuery.of(context).size.width, spaceMaxWidth);
     return Card(
       child: InkWell(
         onTap: onTap,
@@ -319,19 +317,22 @@ class _UserPageState extends State<UserPage> {
           child: ListTile(
             dense: true,
             leading: Icon(icon, color: Theme.of(context).primaryColor),
-            title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (detail != null && detail.isNotEmpty)
-                  Container(
-                    constraints: BoxConstraints(maxWidth: width * 0.3),
-                    child: Chip(label: Text(detail)),
+                Flexible(
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                const Icon(FontAwesomeIcons.chevronRight),
+                ),
+                if (detail != null && detail.isNotEmpty) ...[
+                  const SizedBox(width: spaceDefault),
+                  Flexible(child: Chip(label: Text(detail)))
+                ]
               ],
             ),
-            // onTap: onTap,
+            trailing: const Icon(FontAwesomeIcons.chevronRight),
           ),
         ),
       ),

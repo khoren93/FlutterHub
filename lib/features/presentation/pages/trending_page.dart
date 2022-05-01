@@ -212,7 +212,7 @@ class _TrendingPageState extends State<TrendingPage>
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 500,
-        childAspectRatio: 3,
+        mainAxisExtent: 120,
       ),
       itemCount: items.length,
       itemBuilder: (context, index) => TrendingUserTile(
