@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutterhub/core/extensions.dart';
+import 'package:flutterhub/utils/extensions.dart';
 
-import 'configs/app_router.dart';
+import 'utils/app_router.dart';
 import 'configs/app_store.dart';
 import 'configs/app_theme.dart';
-import 'core/scroll_behavior.dart';
-import 'di/di.dart';
-import 'features/presentation/cubit/languages/languages_cubit.dart';
-import 'features/presentation/cubit/login/login_cubit.dart';
-import 'features/presentation/cubit/search/search_cubit.dart';
-import 'features/presentation/cubit/trending/trending_cubit.dart';
+import 'utils/di.dart';
+import 'features/languages/presentation/cubit/languages_cubit.dart';
+import 'features/login/presentation/cubit/login_cubit.dart';
+import 'features/search/presentation/cubit/search_cubit.dart';
+import 'features/trending/presentation/cubit/trending_cubit.dart';
 import 'generated/l10n.dart';
 import 'l10n/localizations.dart';
+import 'utils/scroll_behavior.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

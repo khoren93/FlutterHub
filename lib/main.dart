@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterhub/core/secure_storage.dart';
-import 'di/di.dart';
+import 'utils/di.dart';
 import 'package:logging/logging.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import 'configs/app_store.dart';
-import 'core/bloc_observer.dart';
 import 'app.dart';
-import 'features/domain/entities/models.dart';
+import 'features/core/domain/entities/models.dart';
 import 'l10n/localizations.dart';
+import 'utils/bloc_observer.dart';
+import 'utils/secure_storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
