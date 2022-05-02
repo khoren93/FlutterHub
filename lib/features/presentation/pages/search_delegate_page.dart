@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/app_router.dart';
+import 'package:flutterhub/features/presentation/widgets/common_widgets.dart';
 import 'package:flutterhub/features/presentation/widgets/dropdowns/sort_repository_dropdown.dart';
 import 'package:flutterhub/features/presentation/widgets/dropdowns/sort_user_dropdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -163,11 +164,13 @@ class SearchDelegatePage extends SearchDelegate {
   Widget _buildRepositoriesList(
       BuildContext context, List<Repository> items, bool hasNextPage) {
     endLoadAnimation(isRefresh: true, hasNextPage: hasNextPage);
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) => RepositoryTile(
-        item: items[index],
-        onTap: (item) => _onRepositorySelected(context, item),
+    return ContainerX(
+      child: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) => RepositoryTile(
+          item: items[index],
+          onTap: (item) => _onRepositorySelected(context, item),
+        ),
       ),
     );
   }
@@ -175,7 +178,10 @@ class SearchDelegatePage extends SearchDelegate {
   Widget _buildUsersList(
       BuildContext context, List<User> items, bool hasNextPage) {
     endLoadAnimation(isRefresh: true, hasNextPage: hasNextPage);
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 250,
+      ),
       itemCount: items.length,
       itemBuilder: (context, index) => UserTile(
         item: items[index],

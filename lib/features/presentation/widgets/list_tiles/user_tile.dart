@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhub/features/presentation/widgets/grid_item.dart';
 
 import '../../../domain/entities/models.dart';
-import '../network_image.dart';
 
 class UserTile extends StatelessWidget {
   const UserTile({
@@ -15,15 +15,13 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: networkImage(context, item.avatarUrl),
-        title: Text(item.login ?? ''),
-        subtitle: item.name != null ? Text(item.name ?? '') : null,
-        onTap: () {
-          onTap?.call(item);
-        },
-      ),
+    return GridItem(
+      imageUrl: item.avatarUrl,
+      title: item.login,
+      subtitle: item.name,
+      onTap: () {
+        onTap?.call(item);
+      },
     );
   }
 }

@@ -194,8 +194,8 @@ Widget progressWidget(DownloadProgress progress, double size) => Padding(
       padding: const EdgeInsets.all(3.0),
       child: Center(
         child: SizedBox(
-          width: size,
-          height: size,
+          width: 30,
+          height: 30,
           child: CircularProgressIndicator(
             value: progress.progress,
             strokeWidth: 2,
