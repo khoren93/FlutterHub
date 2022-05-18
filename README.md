@@ -65,19 +65,19 @@ flutter pub run build_runner build --delete-conflicting-outputs
 - [ ] Add tests
 
 ## VSCode extensions that I use
-- [x] [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) - Flutter support and debugger for Visual Studio Code.
-- [x] [Flutter Intl](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl) - Flutter localization binding from .arb files with official Intl library
-- [x] [bloc](https://marketplace.visualstudio.com/items?itemName=FelixAngelov.bloc) - Support for the bloc library and provides tools for effectively creating blocs for both Flutter and AngularDart apps.
-- [x] [Flutter Feature Scaffolding](https://marketplace.visualstudio.com/items?itemName=KiritchoukC.flutter-clean-architecture) - Add new feature easily with well structured directories (Clean Architecture pattern)
-- [x] [Awesome Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=Nash.awesome-flutter-snippets) - Awesome Flutter Snippets is a collection snippets and shortcuts for commonly used Flutter functions and classes
-- [x] [FlutterPubOpen](https://marketplace.visualstudio.com/items?itemName=AndrijaRubelj.flutterpubopen) - Opens pub.dev package and API for your pubspec.yaml dependencies
-- [x] [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) - Improve highlighting of errors, warnings and other language diagnostics.
-- [x] [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) - Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and CodeLens and so much more
-- [x] [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) - Makes indentation easier to read
-- [x] [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) - Visual Studio Code plugin that autocompletes filenames
-- [x] [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) - Material Design Icons for Visual Studio Code
-- [x] [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) - Icons for Visual Studio Code
-- [x] [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) - Your AI pair programmer 
+- [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) - Flutter support and debugger for Visual Studio Code.
+- [Flutter Intl](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl) - Flutter localization binding from .arb files with official Intl library
+- [bloc](https://marketplace.visualstudio.com/items?itemName=FelixAngelov.bloc) - Support for the bloc library and provides tools for effectively creating blocs for both Flutter and AngularDart apps.
+- [Flutter Feature Scaffolding](https://marketplace.visualstudio.com/items?itemName=KiritchoukC.flutter-clean-architecture) - Add new feature easily with well structured directories (Clean Architecture pattern)
+- [Awesome Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=Nash.awesome-flutter-snippets) - Awesome Flutter Snippets is a collection snippets and shortcuts for commonly used Flutter functions and classes
+- [FlutterPubOpen](https://marketplace.visualstudio.com/items?itemName=AndrijaRubelj.flutterpubopen) - Opens pub.dev package and API for your pubspec.yaml dependencies
+- [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) - Improve highlighting of errors, warnings and other language diagnostics.
+- [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) - Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and CodeLens and so much more
+- [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) - Makes indentation easier to read
+- [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense) - Visual Studio Code plugin that autocompletes filenames
+- [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) - Material Design Icons for Visual Studio Code
+- [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) - Icons for Visual Studio Code
+- [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) - Your AI pair programmer 
 
 
 ## License
