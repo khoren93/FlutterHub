@@ -30,8 +30,8 @@ class SearchCubit extends Cubit<SearchState> {
     List<Repository> oldItems = [];
     if (!isRefresh) {
       state.whenOrNull(
-        reposFetchSuccess: (_items, _hasNextPage) {
-          oldItems = _items;
+        reposFetchSuccess: (items, hasNextPage) {
+          oldItems = items;
         },
       );
     } else {
@@ -71,8 +71,8 @@ class SearchCubit extends Cubit<SearchState> {
     List<User> oldItems = [];
     if (!isRefresh) {
       state.whenOrNull(
-        usersFetchSuccess: (_items, _hasNextPage) {
-          oldItems = _items;
+        usersFetchSuccess: (items, hasNextPage) {
+          oldItems = items;
         },
       );
     } else {

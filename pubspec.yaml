@@ -4,10 +4,11 @@ description: A new Flutter project.
 version: 1.0.0+8
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
-  cached_network_image: ^3.2.0
+  bloc: ^8.0.3
+  cached_network_image: ^3.2.1
   chopper: ^4.0.5
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -19,38 +20,40 @@ dependencies:
   flutter_bloc: ^8.0.1
   flutter_localizations:
     sdk: flutter
-  flutter_mobx: ^2.0.5
+  flutter_mobx: ^2.0.6
   flutter_secure_storage: ^5.0.2
   flutter_web_auth: ^0.4.1
   font_awesome_flutter: ^10.1.0
   formz: ^0.4.1
-  freezed_annotation: null
+  freezed_annotation:
   get_it: ^7.2.0
   google_fonts: ^2.3.2
   intl: ^0.17.0
   json_annotation: ^4.5.0
-  nb_utils: ^4.4.17
+  logging: ^1.0.2
+  mobx: ^2.0.7+2
+  nb_utils: ^4.5.2
   photo_view: ^0.13.0
   pull_to_refresh: ^2.0.0
   timeago: ^3.2.2
-  url_launcher: ^6.1.0
+  url_launcher: ^6.1.2
 
 flutter_intl:
   main_locale: en_US
   enabled: true
 
 dev_dependencies:
-  build_runner: ^2.1.10 # flutter pub run build_runner build --delete-conflicting-outputs
+  build_runner: ^2.1.11 # flutter pub run build_runner build --delete-conflicting-outputs
   chopper_generator: ^4.0.5
   flutter_gen: ^4.1.6
   flutter_launcher_icons: ^0.9.2 # flutter pub run flutter_launcher_icons:main
-  flutter_lints: ^1.0.0
-  flutter_native_splash: ^2.1.6 # flutter pub run flutter_native_splash:create
+  flutter_lints: ^2.0.1
+  flutter_native_splash: ^2.2.0 # flutter pub run flutter_native_splash:create
   flutter_test:
     sdk: flutter
-  freezed: ^2.0.2
+  freezed: ^2.0.3
   json_serializable: ^6.1.6
-  mobx_codegen: null
+  mobx_codegen:
 
 flutter:
   generate: true

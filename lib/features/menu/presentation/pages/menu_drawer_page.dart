@@ -144,6 +144,9 @@ class _MenuDrawerPageState extends State<MenuDrawerPage> {
       padding: EdgeInsets.zero,
       children: <Widget>[
         DrawerHeader(
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -166,9 +169,6 @@ class _MenuDrawerPageState extends State<MenuDrawerPage> {
                 },
               ),
             ],
-          ),
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
           ),
         ),
         MenuTile(

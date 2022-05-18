@@ -9,7 +9,7 @@ part 'app_store.g.dart';
 
 AppStore appStore = AppStore();
 
-class AppStore = _AppStore with _$AppStore;
+class AppStore = AppStoreBase with _$AppStore;
 
 const currentUserPref = 'currentUserPref';
 const isUserLoggedInPref = 'isUserLoggedInPref';
@@ -18,7 +18,7 @@ const colorSchemeIndexPref = 'colorSchemeIndexPref';
 const isNotificationsOnPref = 'isNotificationsOnPref';
 const languagePref = 'languagePref';
 
-abstract class _AppStore with Store {
+abstract class AppStoreBase with Store {
   @observable
   bool hasInternetConnection = true;
 

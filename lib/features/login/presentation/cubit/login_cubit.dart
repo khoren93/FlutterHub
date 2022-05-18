@@ -44,7 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onOAuthLoginPressed() {
     state.whenOrNull(
-      oauth: (_status, _message) async {
+      oauth: (status, message) async {
         try {
           final url = Uri.https('github.com', 'login/oauth/authorize', {
             'client_id': kGithubClientId,
@@ -86,14 +86,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onPersonalLoginPressed() {
     state.whenOrNull(
-      personal: (_status, _token, _message) async {
+      personal: (status, token, message) async {
         emit(state.copyWith(status: FormzStatus.submissionInProgress));
-        final personalToken = _token.value;
-        Token token = Token(
+        final personalToken = token.value;
+        await appStore.saveToken(Token(
           type: TokenType.personal,
           personalToken: personalToken,
-        );
-        await appStore.saveToken(token);
+        ));
         await _fetchUser();
       },
     );
@@ -101,12 +100,12 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onBasicLoginPressed() {
     state.whenOrNull(
-      basic: (_status, _username, _password, _message) async {
-        emit(state.copyWith(status: Formz.validate([_username, _password])));
-        if (_status.isValidated) {
+      basic: (status, username, password, message) async {
+        emit(state.copyWith(status: Formz.validate([username, password])));
+        if (status.isValidated) {
           emit(state.copyWith(status: FormzStatus.submissionInProgress));
           final credentials =
-              '${_username.value.trim()}:${_password.value.trim()}';
+              '${username.value.trim()}:${password.value.trim()}';
           final basicToken = utf8.fuse(base64).encode(credentials);
           Token token = Token(
             type: TokenType.basic,
@@ -122,7 +121,7 @@ class LoginCubit extends Cubit<LoginState> {
   void onUsernameChanged(String value) {
     final username = Username.dirty(value);
     dynamic password = state.whenOrNull(
-          basic: (_status, _username, _password, _message) => _password,
+          basic: (status, username, password, message) => password,
         ) ??
         const Password.pure();
     emit(LoginState.basic(
@@ -135,7 +134,7 @@ class LoginCubit extends Cubit<LoginState> {
   void onPasswordChanged(String value) {
     final password = Password.dirty(value);
     dynamic username = state.whenOrNull(
-          basic: (_status, _username, _password, _message) => _username,
+          basic: (status, username, password, message) => username,
         ) ??
         const Username.pure();
     emit(LoginState.basic(

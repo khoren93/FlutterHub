@@ -30,12 +30,12 @@ Widget networkImage(
   if (url == null || url.isEmpty) {
     return Container(
       decoration: decoration,
+      width: width,
+      height: height,
       child: noUserImageWidget(
         height * 0.8,
         Theme.of(context).textTheme.bodyText1?.color,
       ),
-      width: width,
-      height: height,
     );
   }
   var imageUrls = urls ?? [url];
@@ -61,8 +61,8 @@ Widget networkImage(
               child: image,
             )
           : ClipRRect(
-              child: image,
               borderRadius: BorderRadius.circular(borderRadius),
+              child: image,
             ),
     ),
   );

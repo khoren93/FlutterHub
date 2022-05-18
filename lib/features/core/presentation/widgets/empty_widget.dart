@@ -35,10 +35,10 @@ Widget emptyLanguagesWidget() => NoDataWidget.empty(
       title: 'No languages found',
     );
 
-enum _NoDataType { error, empty }
+enum NoDataType { error, empty }
 
 class NoDataWidget extends StatelessWidget {
-  final _NoDataType? type;
+  final NoDataType? type;
   final Widget? image;
   final double? imageSize;
   final String? title;
@@ -71,7 +71,7 @@ class NoDataWidget extends StatelessWidget {
     Color? imageBackgroundColor,
   }) {
     return NoDataWidget._(
-      type: _NoDataType.error,
+      type: NoDataType.error,
       image: Icon(
         image ?? FontAwesomeIcons.xmark,
         size: imageSize,
@@ -97,7 +97,7 @@ class NoDataWidget extends StatelessWidget {
     Color? imageBackgroundColor,
   }) {
     return NoDataWidget._(
-      type: _NoDataType.empty,
+      type: NoDataType.empty,
       image: Icon(
         image ?? FontAwesomeIcons.box,
         size: imageSize,
@@ -170,6 +170,7 @@ class NoDataWidget extends StatelessWidget {
               const SizedBox(height: spaceMedium),
               if (actionText != null)
                 TextButton(
+                  onPressed: onAction,
                   child: Text(
                     actionText ?? '',
                     style: const TextStyle(
@@ -177,7 +178,6 @@ class NoDataWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onPressed: onAction,
                 ),
               const SizedBox(height: spaceMedium),
             ],
