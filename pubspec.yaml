@@ -27,14 +27,14 @@ dependencies:
   formz: ^0.4.1
   freezed_annotation:
   get_it: ^7.2.0
-  google_fonts: ^2.3.2
+  google_fonts: ^3.0.1
   intl: ^0.17.0
   json_annotation: ^4.5.0
   logging: ^1.0.2
   mobx: ^2.0.7+2
-  nb_utils: ^4.5.2
-  photo_view: ^0.13.0
+  photo_view: ^0.14.0
   pull_to_refresh: ^2.0.0
+  shared_preferences: ^2.0.15
   timeago: ^3.2.2
   url_launcher: ^6.1.2
 
@@ -45,10 +45,10 @@ flutter_intl:
 dev_dependencies:
   build_runner: ^2.1.11 # flutter pub run build_runner build --delete-conflicting-outputs
   chopper_generator: ^4.0.5
-  flutter_gen: ^4.1.6
+  flutter_gen: ^4.2.0
   flutter_launcher_icons: ^0.9.2 # flutter pub run flutter_launcher_icons:main
   flutter_lints: ^2.0.1
-  flutter_native_splash: ^2.2.0 # flutter pub run flutter_native_splash:create
+  flutter_native_splash: ^2.2.1 # flutter pub run flutter_native_splash:create
   flutter_test:
     sdk: flutter
   freezed: ^2.0.3

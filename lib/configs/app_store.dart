@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutterhub/features/core/domain/entities/models.dart';
 import 'package:flutterhub/features/menu/data/models/rate_limit.dart';
 import 'package:flutterhub/utils/secure_storage.dart';
+import 'package:flutterhub/utils/shared_pref.dart';
 import 'package:mobx/mobx.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 part 'app_store.g.dart';
 
@@ -64,36 +64,36 @@ abstract class AppStoreBase with Store {
   @action
   Future<void> saveUser(User value) async {
     currentUser = value;
-    await setValue(currentUserPref, value.toJson());
+    await setPrefValue(currentUserPref, value.toJson());
   }
 
   @action
   Future<void> deleteUser() async {
     currentUser = null;
-    await removeKey(currentUserPref);
+    await removePrefKey(currentUserPref);
   }
 
   @action
   Future<void> setThemeMode(ThemeMode value) async {
     themeMode = value;
-    setValue(themeModePref, themeMode.toString());
+    setPrefValue(themeModePref, themeMode.toString());
   }
 
   @action
   Future<void> setColorSchemeIndex(int value) async {
     colorSchemeIndex = value;
-    await setValue(colorSchemeIndexPref, colorSchemeIndex);
+    await setPrefValue(colorSchemeIndexPref, colorSchemeIndex);
   }
 
   @action
   Future<void> toggleNotificationsMode({bool? value}) async {
     isNotificationsOn = value ?? !isNotificationsOn;
-    setValue(isNotificationsOnPref, isNotificationsOn);
+    setPrefValue(isNotificationsOnPref, isNotificationsOn);
   }
 
   @action
   Future<void> setLanguage(String aLanguage) async {
     selectedLanguage = aLanguage;
-    await setValue(languagePref, aLanguage);
+    await setPrefValue(languagePref, aLanguage);
   }
 }

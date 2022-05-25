@@ -1,55 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterhub/utils/shared_pref.dart';
 import 'utils/di.dart';
 import 'package:logging/logging.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-import 'configs/app_store.dart';
 import 'app.dart';
-import 'features/core/domain/entities/models.dart';
 import 'l10n/localizations.dart';
 import 'utils/bloc_observer.dart';
-import 'utils/secure_storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _setupLogging();
   _setupTimeago();
-  await _setupAppStore();
+  await initializePrefs();
   await initDI();
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
     blocObserver: FlutterHubBlocObserver(),
-  );
-}
-
-_setupAppStore() async {
-  await initialize();
-  final token = await SecureStorage.instance.getToken();
-  if (token != null && token.isValid) {
-    await appStore.saveToken(token);
-  }
-  final userJson = getJSONAsync(currentUserPref);
-  if (userJson.isNotEmpty) {
-    await appStore.saveUser(User.fromJson(userJson));
-  }
-  if (token != null && token.isValid) {
-    await appStore.saveToken(token);
-  }
-  final themeModeString = getStringAsync(themeModePref,
-      defaultValue: appStore.themeMode.toString());
-  await appStore.setThemeMode(ThemeMode.values
-      .firstWhere((element) => element.toString() == themeModeString));
-  await appStore.setColorSchemeIndex(
-    getIntAsync(colorSchemeIndexPref, defaultValue: appStore.colorSchemeIndex),
-  );
-  await appStore.toggleNotificationsMode(
-    value: getBoolAsync(isNotificationsOnPref,
-        defaultValue: appStore.isNotificationsOn),
-  );
-  await appStore.setLanguage(
-    getStringAsync(languagePref, defaultValue: appStore.selectedLanguage),
   );
 }
 

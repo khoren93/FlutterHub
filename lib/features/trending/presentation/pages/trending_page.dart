@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/utils/app_router.dart';
-import 'package:flutterhub/configs/app_store.dart';
 import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/core/domain/entities/models.dart';
 import 'package:flutterhub/features/core/presentation/widgets/empty_widget.dart';
@@ -13,7 +12,6 @@ import 'package:flutterhub/features/trending/domain/repositories/trend_repositor
 
 import '../../../../generated/l10n.dart' as loc;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../cubit/trending_cubit.dart';
@@ -61,9 +59,9 @@ class _TrendingPageState extends State<TrendingPage>
       }
     });
 
-    Connectivity().onConnectivityChanged.listen((event) {
-      appStore.hasInternetConnection = event != ConnectivityResult.none;
-    });
+    // Connectivity().onConnectivityChanged.listen((event) {
+    //   appStore.hasInternetConnection = event != ConnectivityResult.none;
+    // });
 
     super.initState();
   }
