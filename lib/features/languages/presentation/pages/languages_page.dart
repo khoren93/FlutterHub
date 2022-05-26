@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/configs/constants.dart';
 import 'package:flutterhub/features/core/domain/entities/models.dart';
+import 'package:flutterhub/features/core/presentation/widgets/common_widgets.dart';
 import 'package:flutterhub/features/core/presentation/widgets/empty_widget.dart';
 import 'package:flutterhub/features/languages/presentation/widgets/language_tile.dart';
 import 'package:flutterhub/generated/l10n.dart';
@@ -33,18 +34,20 @@ class _LanguagesPageState extends State<LanguagesPage> {
       ),
       body: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(28),
+          ContainerX(
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(28),
+                  ),
+                  labelText: S.current.languagesSearchText,
                 ),
-                labelText: S.current.languagesSearchText,
+                onChanged: (value) {
+                  context.read<LanguagesCubit>().searchLanguages(value);
+                },
               ),
-              onChanged: (value) {
-                context.read<LanguagesCubit>().searchLanguages(value);
-              },
             ),
           ),
           Expanded(
@@ -113,9 +116,13 @@ class _LanguagesPageState extends State<LanguagesPage> {
 
   Widget _buildSuccessWidget(
       List<RepositoryLanguage> items, RepositoryLanguage? selected) {
-    return ListView.builder(
+    return GridView.builder(
       itemCount: items.length,
       shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 200,
+        mainAxisExtent: 60,
+      ),
       itemBuilder: (context, index) => LanguageTile(
         item: items[index],
         selected: items[index] == selected,
