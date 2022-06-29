@@ -19,9 +19,6 @@ Future<void> initializePrefs() async {
   if (userJson.isNotEmpty) {
     await appStore.saveUser(User.fromJson(userJson));
   }
-  if (token != null && token.isValid) {
-    await appStore.saveToken(token);
-  }
   final themeModeString =
       getPrefString(themeModePref, defaultValue: appStore.themeMode.toString());
   await appStore.setThemeMode(ThemeMode.values
