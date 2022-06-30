@@ -3,7 +3,6 @@ import 'package:flutterhub/configs/app_store.dart';
 import 'package:flutterhub/generated/l10n.dart';
 import 'package:flutterhub/utils/extensions.dart';
 
-
 class LanguageWidget extends StatelessWidget {
   const LanguageWidget({Key? key, required this.onChanged}) : super(key: key);
 
