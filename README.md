@@ -22,16 +22,15 @@
 
 ## Get Started
 To get started, you need to
-1. Install Flutter Intl extension for [VSCode](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl) or [Android Studio](https://plugins.jetbrains.com/plugin/13666-flutter-intl)
 
-2. Install the packages
+1. Install dependencies
 ```sh
 flutter pub get
 ```
 
-3. Build generated files
+2. Run
 ```sh
-flutter pub run build_runner build --delete-conflicting-outputs
+flutter run
 ```
 
 ## App Features
