@@ -164,13 +164,11 @@ class SearchDelegatePage extends SearchDelegate {
   Widget _buildRepositoriesList(
       BuildContext context, List<Repository> items, bool hasNextPage) {
     endLoadAnimation(isRefresh: true, hasNextPage: hasNextPage);
-    return ContainerX(
-      child: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) => RepositoryTile(
-          item: items[index],
-          onTap: (item) => _onRepositorySelected(context, item),
-        ),
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) => RepositoryTile(
+        item: items[index],
+        onTap: (item) => _onRepositorySelected(context, item),
       ),
     );
   }
