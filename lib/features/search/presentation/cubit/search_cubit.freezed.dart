@@ -305,7 +305,9 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InitialToJson(this);
+    return _$$_InitialToJson(
+      this,
+    );
   }
 }
 
@@ -480,7 +482,9 @@ class _$_ReposFetchInProgress
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchInProgressToJson(this);
+    return _$$_ReposFetchInProgressToJson(
+      this,
+    );
   }
 }
 
@@ -655,7 +659,9 @@ class _$_ReposFetchEmpty
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchEmptyToJson(this);
+    return _$$_ReposFetchEmptyToJson(
+      this,
+    );
   }
 }
 
@@ -878,7 +884,9 @@ class _$_ReposFetchSuccess
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchSuccessToJson(this);
+    return _$$_ReposFetchSuccessToJson(
+      this,
+    );
   }
 }
 
@@ -890,8 +898,8 @@ abstract class _ReposFetchSuccess implements SearchState {
   factory _ReposFetchSuccess.fromJson(Map<String, dynamic> json) =
       _$_ReposFetchSuccess.fromJson;
 
-  List<Repository> get items => throw _privateConstructorUsedError;
-  bool get hasNextPage => throw _privateConstructorUsedError;
+  List<Repository> get items;
+  bool get hasNextPage;
   @JsonKey(ignore: true)
   _$$_ReposFetchSuccessCopyWith<_$_ReposFetchSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1098,7 +1106,9 @@ class _$_ReposFetchError
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchErrorToJson(this);
+    return _$$_ReposFetchErrorToJson(
+      this,
+    );
   }
 }
 
@@ -1109,8 +1119,8 @@ abstract class _ReposFetchError implements SearchState {
   factory _ReposFetchError.fromJson(Map<String, dynamic> json) =
       _$_ReposFetchError.fromJson;
 
-  String? get message => throw _privateConstructorUsedError;
-  String? get url => throw _privateConstructorUsedError;
+  String? get message;
+  String? get url;
   @JsonKey(ignore: true)
   _$$_ReposFetchErrorCopyWith<_$_ReposFetchError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1281,7 +1291,9 @@ class _$_UsersFetchInProgress
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchInProgressToJson(this);
+    return _$$_UsersFetchInProgressToJson(
+      this,
+    );
   }
 }
 
@@ -1456,7 +1468,9 @@ class _$_UsersFetchEmpty
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchEmptyToJson(this);
+    return _$$_UsersFetchEmptyToJson(
+      this,
+    );
   }
 }
 
@@ -1679,7 +1693,9 @@ class _$_UsersFetchSuccess
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchSuccessToJson(this);
+    return _$$_UsersFetchSuccessToJson(
+      this,
+    );
   }
 }
 
@@ -1691,8 +1707,8 @@ abstract class _UsersFetchSuccess implements SearchState {
   factory _UsersFetchSuccess.fromJson(Map<String, dynamic> json) =
       _$_UsersFetchSuccess.fromJson;
 
-  List<User> get items => throw _privateConstructorUsedError;
-  bool get hasNextPage => throw _privateConstructorUsedError;
+  List<User> get items;
+  bool get hasNextPage;
   @JsonKey(ignore: true)
   _$$_UsersFetchSuccessCopyWith<_$_UsersFetchSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1899,7 +1915,9 @@ class _$_UsersFetchError
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchErrorToJson(this);
+    return _$$_UsersFetchErrorToJson(
+      this,
+    );
   }
 }
 
@@ -1910,8 +1928,8 @@ abstract class _UsersFetchError implements SearchState {
   factory _UsersFetchError.fromJson(Map<String, dynamic> json) =
       _$_UsersFetchError.fromJson;
 
-  String? get message => throw _privateConstructorUsedError;
-  String? get url => throw _privateConstructorUsedError;
+  String? get message;
+  String? get url;
   @JsonKey(ignore: true)
   _$$_UsersFetchErrorCopyWith<_$_UsersFetchError> get copyWith =>
       throw _privateConstructorUsedError;

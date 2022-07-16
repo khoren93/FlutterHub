@@ -254,7 +254,9 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InitialToJson(this);
+    return _$$_InitialToJson(
+      this,
+    );
   }
 }
 
@@ -407,7 +409,9 @@ class _$_FetchInProgress
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchInProgressToJson(this);
+    return _$$_FetchInProgressToJson(
+      this,
+    );
   }
 }
 
@@ -557,7 +561,9 @@ class _$_FetchEmpty with DiagnosticableTreeMixin implements _FetchEmpty {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchEmptyToJson(this);
+    return _$$_FetchEmptyToJson(
+      this,
+    );
   }
 }
 
@@ -767,7 +773,9 @@ class _$_FetchSuccess with DiagnosticableTreeMixin implements _FetchSuccess {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchSuccessToJson(this);
+    return _$$_FetchSuccessToJson(
+      this,
+    );
   }
 }
 
@@ -779,8 +787,8 @@ abstract class _FetchSuccess implements LanguagesState {
   factory _FetchSuccess.fromJson(Map<String, dynamic> json) =
       _$_FetchSuccess.fromJson;
 
-  List<RepositoryLanguage> get items => throw _privateConstructorUsedError;
-  RepositoryLanguage? get selected => throw _privateConstructorUsedError;
+  List<RepositoryLanguage> get items;
+  RepositoryLanguage? get selected;
   @JsonKey(ignore: true)
   _$$_FetchSuccessCopyWith<_$_FetchSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -952,7 +960,9 @@ class _$_FetchError with DiagnosticableTreeMixin implements _FetchError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchErrorToJson(this);
+    return _$$_FetchErrorToJson(
+      this,
+    );
   }
 }
 
@@ -962,7 +972,7 @@ abstract class _FetchError implements LanguagesState {
   factory _FetchError.fromJson(Map<String, dynamic> json) =
       _$_FetchError.fromJson;
 
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @JsonKey(ignore: true)
   _$$_FetchErrorCopyWith<_$_FetchError> get copyWith =>
       throw _privateConstructorUsedError;

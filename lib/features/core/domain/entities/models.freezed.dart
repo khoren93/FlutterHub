@@ -149,7 +149,9 @@ class _$_RepositoryLanguage extends _RepositoryLanguage {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RepositoryLanguageToJson(this);
+    return _$$_RepositoryLanguageToJson(
+      this,
+    );
   }
 }
 
@@ -164,10 +166,10 @@ abstract class _RepositoryLanguage extends RepositoryLanguage {
       _$_RepositoryLanguage.fromJson;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'urlParam')
-  String? get urlParam => throw _privateConstructorUsedError;
+  String? get urlParam;
   @override
   @JsonKey(ignore: true)
   _$$_RepositoryLanguageCopyWith<_$_RepositoryLanguage> get copyWith =>
@@ -333,7 +335,9 @@ class _$_RepositorySearch extends _RepositorySearch {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RepositorySearchToJson(this);
+    return _$$_RepositorySearchToJson(
+      this,
+    );
   }
 }
 
@@ -348,11 +352,11 @@ abstract class _RepositorySearch extends RepositorySearch {
       _$_RepositorySearch.fromJson;
 
   @override
-  List<Repository>? get items => throw _privateConstructorUsedError;
+  List<Repository>? get items;
   @override
-  int? get totalCount => throw _privateConstructorUsedError;
+  int? get totalCount;
   @override
-  bool? get incompleteResults => throw _privateConstructorUsedError;
+  bool? get incompleteResults;
   @override
   @JsonKey(ignore: true)
   _$$_RepositorySearchCopyWith<_$_RepositorySearch> get copyWith =>
@@ -882,7 +886,9 @@ class _$_Repository extends _Repository {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RepositoryToJson(this);
+    return _$$_RepositoryToJson(
+      this,
+    );
   }
 }
 
@@ -915,47 +921,47 @@ abstract class _Repository extends Repository {
       _$_Repository.fromJson;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get fullName => throw _privateConstructorUsedError;
+  String? get fullName;
   @override
-  bool? get private => throw _privateConstructorUsedError;
+  bool? get private;
   @override
-  User? get owner => throw _privateConstructorUsedError;
+  User? get owner;
   @override
-  String? get htmlUrl => throw _privateConstructorUsedError;
+  String? get htmlUrl;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  bool? get fork => throw _privateConstructorUsedError;
+  bool? get fork;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
-  String? get homepage => throw _privateConstructorUsedError;
+  String? get homepage;
   @override
-  double? get size => throw _privateConstructorUsedError;
+  double? get size;
   @override
-  int? get stargazersCount => throw _privateConstructorUsedError;
+  int? get stargazersCount;
   @override
-  String? get language => throw _privateConstructorUsedError;
+  String? get language;
   @override
-  String? get languageColor => throw _privateConstructorUsedError;
+  String? get languageColor;
   @override
-  int? get forksCount => throw _privateConstructorUsedError;
+  int? get forksCount;
   @override
-  bool? get archived => throw _privateConstructorUsedError;
+  bool? get archived;
   @override
-  int? get openIssuesCount => throw _privateConstructorUsedError;
+  int? get openIssuesCount;
   @override
-  List<String>? get topics => throw _privateConstructorUsedError;
+  List<String>? get topics;
   @override
-  String? get defaultBranch => throw _privateConstructorUsedError;
+  String? get defaultBranch;
   @override
-  int? get subscribersCount => throw _privateConstructorUsedError;
+  int? get subscribersCount;
   @override
-  Repository? get parent => throw _privateConstructorUsedError;
+  Repository? get parent;
   @override
   @JsonKey(ignore: true)
   _$$_RepositoryCopyWith<_$_Repository> get copyWith =>
@@ -1167,7 +1173,9 @@ class _$_Token extends _Token {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenToJson(this);
+    return _$$_TokenToJson(
+      this,
+    );
   }
 }
 
@@ -1184,17 +1192,17 @@ abstract class _Token extends Token {
   factory _Token.fromJson(Map<String, dynamic> json) = _$_Token.fromJson;
 
   @override
-  TokenType? get type => throw _privateConstructorUsedError;
+  TokenType? get type;
   @override
-  String? get basicToken => throw _privateConstructorUsedError;
+  String? get basicToken;
   @override
-  String? get personalToken => throw _privateConstructorUsedError;
+  String? get personalToken;
   @override
-  String? get accessToken => throw _privateConstructorUsedError;
+  String? get accessToken;
   @override
-  String? get tokenType => throw _privateConstructorUsedError;
+  String? get tokenType;
   @override
-  String? get scope => throw _privateConstructorUsedError;
+  String? get scope;
   @override
   @JsonKey(ignore: true)
   _$$_TokenCopyWith<_$_Token> get copyWith =>
@@ -1517,7 +1525,9 @@ class _$_TrendingRepository extends _TrendingRepository {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrendingRepositoryToJson(this);
+    return _$$_TrendingRepositoryToJson(
+      this,
+    );
   }
 }
 
@@ -1541,30 +1551,30 @@ abstract class _TrendingRepository extends TrendingRepository {
       _$_TrendingRepository.fromJson;
 
   @override
-  String? get author => throw _privateConstructorUsedError;
+  String? get author;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get avatar => throw _privateConstructorUsedError;
+  String? get avatar;
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  String? get language => throw _privateConstructorUsedError;
+  String? get language;
   @override
   @JsonKey(name: 'languageColor')
-  String? get languageColor => throw _privateConstructorUsedError;
+  String? get languageColor;
   @override
-  int? get stars => throw _privateConstructorUsedError;
+  int? get stars;
   @override
-  int? get forks => throw _privateConstructorUsedError;
+  int? get forks;
   @override
   @JsonKey(name: 'currentPeriodStars')
-  int? get currentPeriodStars => throw _privateConstructorUsedError;
+  int? get currentPeriodStars;
   @override
   @JsonKey(name: 'builtBy')
-  List<TrendingUser>? get builtBy => throw _privateConstructorUsedError;
+  List<TrendingUser>? get builtBy;
   @override
   @JsonKey(ignore: true)
   _$$_TrendingRepositoryCopyWith<_$_TrendingRepository> get copyWith =>
@@ -1790,7 +1800,9 @@ class _$_TrendingUser extends _TrendingUser {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrendingUserToJson(this);
+    return _$$_TrendingUserToJson(
+      this,
+    );
   }
 }
 
@@ -1808,17 +1820,17 @@ abstract class _TrendingUser extends TrendingUser {
       _$_TrendingUser.fromJson;
 
   @override
-  String? get username => throw _privateConstructorUsedError;
+  String? get username;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override
-  String? get avatar => throw _privateConstructorUsedError;
+  String? get avatar;
   @override
-  TrendingRepository? get repo => throw _privateConstructorUsedError;
+  TrendingRepository? get repo;
   @override
-  String? get type => throw _privateConstructorUsedError;
+  String? get type;
   @override
   @JsonKey(ignore: true)
   _$$_TrendingUserCopyWith<_$_TrendingUser> get copyWith =>
@@ -1980,7 +1992,9 @@ class _$_UserSearch extends _UserSearch {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserSearchToJson(this);
+    return _$$_UserSearchToJson(
+      this,
+    );
   }
 }
 
@@ -1995,11 +2009,11 @@ abstract class _UserSearch extends UserSearch {
       _$_UserSearch.fromJson;
 
   @override
-  List<User>? get items => throw _privateConstructorUsedError;
+  List<User>? get items;
   @override
-  int? get totalCount => throw _privateConstructorUsedError;
+  int? get totalCount;
   @override
-  bool? get incompleteResults => throw _privateConstructorUsedError;
+  bool? get incompleteResults;
   @override
   @JsonKey(ignore: true)
   _$$_UserSearchCopyWith<_$_UserSearch> get copyWith =>
@@ -2466,7 +2480,9 @@ class _$_User extends _User {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserToJson(this);
+    return _$$_UserToJson(
+      this,
+    );
   }
 }
 
@@ -2497,45 +2513,45 @@ abstract class _User extends User {
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  String? get login => throw _privateConstructorUsedError;
+  String? get login;
   @override
-  String? get avatarUrl => throw _privateConstructorUsedError;
+  String? get avatarUrl;
   @override
-  String? get htmlUrl => throw _privateConstructorUsedError;
+  String? get htmlUrl;
   @override
-  UserType? get type => throw _privateConstructorUsedError;
+  UserType? get type;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get company => throw _privateConstructorUsedError;
+  String? get company;
   @override
-  String? get blog => throw _privateConstructorUsedError;
+  String? get blog;
   @override
-  String? get location => throw _privateConstructorUsedError;
+  String? get location;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get bio => throw _privateConstructorUsedError;
+  String? get bio;
   @override
-  int? get publicRepos => throw _privateConstructorUsedError;
+  int? get publicRepos;
   @override
-  int? get publicGists => throw _privateConstructorUsedError;
+  int? get publicGists;
   @override
-  int? get followers => throw _privateConstructorUsedError;
+  int? get followers;
   @override
-  int? get following => throw _privateConstructorUsedError;
+  int? get following;
   @override
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt;
   @override
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt;
   @override
-  int? get starredRepositoriesCount => throw _privateConstructorUsedError;
+  int? get starredRepositoriesCount;
   @override
-  int? get repositoriesCount => throw _privateConstructorUsedError;
+  int? get repositoriesCount;
   @override
-  int? get issuesCount => throw _privateConstructorUsedError;
+  int? get issuesCount;
   @override
-  int? get watchingCount => throw _privateConstructorUsedError;
+  int? get watchingCount;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

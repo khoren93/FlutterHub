@@ -217,7 +217,9 @@ class _$_FetchInProgress
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchInProgressToJson(this);
+    return _$$_FetchInProgressToJson(
+      this,
+    );
   }
 }
 
@@ -384,7 +386,9 @@ class _$_FetchSuccess with DiagnosticableTreeMixin implements _FetchSuccess {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchSuccessToJson(this);
+    return _$$_FetchSuccessToJson(
+      this,
+    );
   }
 }
 
@@ -394,7 +398,7 @@ abstract class _FetchSuccess implements UserState {
   factory _FetchSuccess.fromJson(Map<String, dynamic> json) =
       _$_FetchSuccess.fromJson;
 
-  User get item => throw _privateConstructorUsedError;
+  User get item;
   @JsonKey(ignore: true)
   _$$_FetchSuccessCopyWith<_$_FetchSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -558,7 +562,9 @@ class _$_fetchError with DiagnosticableTreeMixin implements _fetchError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_fetchErrorToJson(this);
+    return _$$_fetchErrorToJson(
+      this,
+    );
   }
 }
 
@@ -569,8 +575,8 @@ abstract class _fetchError implements UserState {
   factory _fetchError.fromJson(Map<String, dynamic> json) =
       _$_fetchError.fromJson;
 
-  String? get message => throw _privateConstructorUsedError;
-  String? get url => throw _privateConstructorUsedError;
+  String? get message;
+  String? get url;
   @JsonKey(ignore: true)
   _$$_fetchErrorCopyWith<_$_fetchError> get copyWith =>
       throw _privateConstructorUsedError;

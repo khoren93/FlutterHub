@@ -276,9 +276,9 @@ abstract class _OAuth implements LoginState {
       _$_OAuth;
 
   @override
-  FormzStatus get status => throw _privateConstructorUsedError;
+  FormzStatus get status;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$_OAuthCopyWith<_$_OAuth> get copyWith =>
@@ -467,10 +467,10 @@ abstract class _Personal implements LoginState {
       final String? message}) = _$_Personal;
 
   @override
-  FormzStatus get status => throw _privateConstructorUsedError;
-  PersonalToken get token => throw _privateConstructorUsedError;
+  FormzStatus get status;
+  PersonalToken get token;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$_PersonalCopyWith<_$_Personal> get copyWith =>
@@ -674,11 +674,11 @@ abstract class _Basic implements LoginState {
       final String? message}) = _$_Basic;
 
   @override
-  FormzStatus get status => throw _privateConstructorUsedError;
-  Username get username => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  FormzStatus get status;
+  Username get username;
+  Password get password;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$_BasicCopyWith<_$_Basic> get copyWith =>

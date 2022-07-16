@@ -147,7 +147,9 @@ class _$_ServerFailure extends _ServerFailure {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServerFailureToJson(this);
+    return _$$_ServerFailureToJson(
+      this,
+    );
   }
 }
 
@@ -162,11 +164,11 @@ abstract class _ServerFailure extends ServerFailure {
       _$_ServerFailure.fromJson;
 
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
-  String? get documentationUrl => throw _privateConstructorUsedError;
+  String? get documentationUrl;
   @override
-  List<ServerError>? get errors => throw _privateConstructorUsedError;
+  List<ServerError>? get errors;
   @override
   @JsonKey(ignore: true)
   _$$_ServerFailureCopyWith<_$_ServerFailure> get copyWith =>
@@ -332,7 +334,9 @@ class _$_ServerError extends _ServerError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServerErrorToJson(this);
+    return _$$_ServerErrorToJson(
+      this,
+    );
   }
 }
 
@@ -348,13 +352,13 @@ abstract class _ServerError extends ServerError {
       _$_ServerError.fromJson;
 
   @override
-  String? get code => throw _privateConstructorUsedError;
+  String? get code;
   @override
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
-  String? get field => throw _privateConstructorUsedError;
+  String? get field;
   @override
-  String? get resource => throw _privateConstructorUsedError;
+  String? get resource;
   @override
   @JsonKey(ignore: true)
   _$$_ServerErrorCopyWith<_$_ServerError> get copyWith =>
