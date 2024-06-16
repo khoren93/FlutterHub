@@ -30,7 +30,7 @@ class PersonalLoginWidget extends StatelessWidget {
   _buildTitle(BuildContext context) {
     return Text(
       S.current.loginPersonalTitle,
-      style: Theme.of(context).textTheme.headline5,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 
@@ -38,7 +38,7 @@ class PersonalLoginWidget extends StatelessWidget {
     return Text(
       S.current.loginPersonalDescription(kGithubScope),
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.bodyText2,
+      style: Theme.of(context).textTheme.bodySmall,
     );
   }
 }
@@ -51,10 +51,10 @@ class TokenInput extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         return state.whenOrNull(
-              personal: (status, token, message) => TextFormField(
+              personal: (status, isValid, token, message) => TextFormField(
                 decoration: InputDecoration(
                   labelText: S.current.loginPersonalLoginHint,
-                  errorText: token.invalid ? 'invalid token' : null,
+                  errorText: token.isNotValid ? 'invalid token' : null,
                 ),
                 onChanged: (value) =>
                     context.read<LoginCubit>().onPersonalTokenChanged(value),

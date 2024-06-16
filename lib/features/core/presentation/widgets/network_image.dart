@@ -34,7 +34,7 @@ Widget networkImage(
       height: height,
       child: noUserImageWidget(
         height * 0.8,
-        Theme.of(context).textTheme.bodyText1?.color,
+        Theme.of(context).textTheme.bodyLarge?.color,
       ),
     );
   }
@@ -129,7 +129,7 @@ class _ImagePreviewPageState extends State<ImagePreviewPage> {
                 axis: Axis.vertical,
                 child: PhotoViewGallery.builder(
                   backgroundDecoration: BoxDecoration(
-                    color: Theme.of(context).backgroundColor,
+                    color: Theme.of(context).colorScheme.background,
                   ),
                   itemCount: widget.imageUrls.length,
                   pageController: pageController,

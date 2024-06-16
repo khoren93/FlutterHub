@@ -8,4 +8,11 @@ abstract class ReposService extends ChopperService {
   Future<Response<Repository>> repository(
     @Path() String fullname,
   );
+
+  @Get(path: '/{fullname}/forks')
+  Future<Response<List<Repository>>> forks(
+    @Path() String fullname,
+    @Query() int page,
+    @Query('per_page') int perPage,
+  );
 }

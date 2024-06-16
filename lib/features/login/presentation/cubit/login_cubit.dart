@@ -44,7 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onOAuthLoginPressed() {
     state.whenOrNull(
-      oauth: (status, message) async {
+      oauth: (status, valis, message) async {
         try {
           final url = Uri.https('github.com', 'login/oauth/authorize', {
             'client_id': kGithubClientId,
@@ -63,7 +63,7 @@ class LoginCubit extends Cubit<LoginState> {
             );
             token.fold(
               (l) => emit(state.copyWith(
-                status: FormzStatus.submissionFailure,
+                status: FormzSubmissionStatus.failure,
                 message: l.messageText(),
               )),
               (r) async {
@@ -73,7 +73,7 @@ class LoginCubit extends Cubit<LoginState> {
             );
           } else {
             emit(state.copyWith(
-              status: FormzStatus.submissionFailure,
+              status: FormzSubmissionStatus.failure,
               message: kUnexpectedError,
             ));
           }
@@ -86,8 +86,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onPersonalLoginPressed() {
     state.whenOrNull(
-      personal: (status, token, message) async {
-        emit(state.copyWith(status: FormzStatus.submissionInProgress));
+      personal: (status, valid, token, message) async {
+        emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
         final personalToken = token.value;
         await appStore.saveToken(Token(
           type: TokenType.personal,
@@ -100,10 +100,14 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onBasicLoginPressed() {
     state.whenOrNull(
-      basic: (status, username, password, message) async {
-        emit(state.copyWith(status: Formz.validate([username, password])));
-        if (status.isValidated) {
-          emit(state.copyWith(status: FormzStatus.submissionInProgress));
+      basic: (status, valid, username, password, message) async {
+        final isValid = Formz.validate([username, password]);
+        emit(state.copyWith(
+          status: FormzSubmissionStatus.initial,
+          isValid: isValid,
+        ));
+        if (isValid) {
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           final credentials =
               '${username.value.trim()}:${password.value.trim()}';
           final basicToken = utf8.fuse(base64).encode(credentials);
@@ -121,26 +125,28 @@ class LoginCubit extends Cubit<LoginState> {
   void onUsernameChanged(String value) {
     final username = Username.dirty(value);
     dynamic password = state.whenOrNull(
-          basic: (status, username, password, message) => password,
+          basic: (status, valid, username, password, message) => password,
         ) ??
         const Password.pure();
     emit(LoginState.basic(
       username: username,
       password: password,
-      status: Formz.validate([username, password]),
+      status: FormzSubmissionStatus.initial,
+      isValid: Formz.validate([username, password]),
     ));
   }
 
   void onPasswordChanged(String value) {
     final password = Password.dirty(value);
     dynamic username = state.whenOrNull(
-          basic: (status, username, password, message) => username,
+          basic: (status, valid, username, password, message) => username,
         ) ??
         const Username.pure();
     emit(LoginState.basic(
       username: username,
       password: password,
-      status: Formz.validate([username, password]),
+      status: FormzSubmissionStatus.initial,
+      isValid: Formz.validate([username, password]),
     ));
   }
 
@@ -148,7 +154,8 @@ class LoginCubit extends Cubit<LoginState> {
     final token = PersonalToken.dirty(value);
     emit(LoginState.personal(
       token: token,
-      status: Formz.validate([token]),
+      status: FormzSubmissionStatus.initial,
+      isValid: Formz.validate([token]),
     ));
   }
 
@@ -159,11 +166,11 @@ class LoginCubit extends Cubit<LoginState> {
         await appStore.deleteToken();
         await appStore.deleteUser();
         emit(state.copyWith(
-            status: FormzStatus.submissionFailure, message: l.messageText()));
+            status: FormzSubmissionStatus.failure, message: l.messageText()));
       },
       (r) async {
         await appStore.saveUser(r);
-        emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        emit(state.copyWith(status: FormzSubmissionStatus.success));
       },
     );
   }

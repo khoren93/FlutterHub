@@ -99,11 +99,11 @@ class _UserPageState extends State<UserPage> {
                   children: [
                     Text(
                       item.name ?? '',
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     Text(
                       item.login ?? '',
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: spaceSmall2),
                     _buildPersonalInfo(
@@ -149,7 +149,7 @@ class _UserPageState extends State<UserPage> {
             const SizedBox(height: spaceDefault),
             Text(
               item.bio ?? '',
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
               textAlign: TextAlign.left,
             ),
           ],
@@ -219,7 +219,7 @@ class _UserPageState extends State<UserPage> {
                 ],
                 Text(
                   text,
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

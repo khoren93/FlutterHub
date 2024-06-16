@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'languages_cubit.dart';
+part of 'repositories_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,86 +14,83 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-LanguagesState _$LanguagesStateFromJson(Map<String, dynamic> json) {
+RepositoriesState _$RepositoriesStateFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'initial':
       return _Initial.fromJson(json);
-    case 'fetchInProgress':
+    case 'reposFetchInProgress':
       return _FetchInProgress.fromJson(json);
-    case 'fetchEmpty':
+    case 'reposFetchEmpty':
       return _FetchEmpty.fromJson(json);
-    case 'fetchSuccess':
+    case 'reposFetchSuccess':
       return _FetchSuccess.fromJson(json);
-    case 'fetchError':
+    case 'reposFetchError':
       return _FetchError.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'LanguagesState',
+      throw CheckedFromJsonException(json, 'runtimeType', 'RepositoriesState',
           'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
 /// @nodoc
-mixin _$LanguagesState {
+mixin _$RepositoriesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() fetchInProgress,
-    required TResult Function() fetchEmpty,
-    required TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)
-        fetchSuccess,
-    required TResult Function(String? message) fetchError,
+    required TResult Function() reposFetchInProgress,
+    required TResult Function() reposFetchEmpty,
+    required TResult Function(List<Repository> items, bool hasNextPage)
+        reposFetchSuccess,
+    required TResult Function(String? message) reposFetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? fetchInProgress,
-    TResult? Function()? fetchEmpty,
-    TResult? Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult? Function(String? message)? fetchError,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult? Function(String? message)? reposFetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? fetchInProgress,
-    TResult Function()? fetchEmpty,
-    TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult Function(String? message)? fetchError,
+    TResult Function()? reposFetchInProgress,
+    TResult Function()? reposFetchEmpty,
+    TResult Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult Function(String? message)? reposFetchError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_FetchInProgress value) fetchInProgress,
-    required TResult Function(_FetchEmpty value) fetchEmpty,
-    required TResult Function(_FetchSuccess value) fetchSuccess,
-    required TResult Function(_FetchError value) fetchError,
+    required TResult Function(_FetchInProgress value) reposFetchInProgress,
+    required TResult Function(_FetchEmpty value) reposFetchEmpty,
+    required TResult Function(_FetchSuccess value) reposFetchSuccess,
+    required TResult Function(_FetchError value) reposFetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_FetchInProgress value)? fetchInProgress,
-    TResult? Function(_FetchEmpty value)? fetchEmpty,
-    TResult? Function(_FetchSuccess value)? fetchSuccess,
-    TResult? Function(_FetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_FetchError value)? reposFetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchEmpty value)? fetchEmpty,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_FetchError value)? fetchError,
+    TResult Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult Function(_FetchError value)? reposFetchError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -101,16 +98,16 @@ mixin _$LanguagesState {
 }
 
 /// @nodoc
-abstract class $LanguagesStateCopyWith<$Res> {
-  factory $LanguagesStateCopyWith(
-          LanguagesState value, $Res Function(LanguagesState) then) =
-      _$LanguagesStateCopyWithImpl<$Res, LanguagesState>;
+abstract class $RepositoriesStateCopyWith<$Res> {
+  factory $RepositoriesStateCopyWith(
+          RepositoriesState value, $Res Function(RepositoriesState) then) =
+      _$RepositoriesStateCopyWithImpl<$Res, RepositoriesState>;
 }
 
 /// @nodoc
-class _$LanguagesStateCopyWithImpl<$Res, $Val extends LanguagesState>
-    implements $LanguagesStateCopyWith<$Res> {
-  _$LanguagesStateCopyWithImpl(this._value, this._then);
+class _$RepositoriesStateCopyWithImpl<$Res, $Val extends RepositoriesState>
+    implements $RepositoriesStateCopyWith<$Res> {
+  _$RepositoriesStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -127,7 +124,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$LanguagesStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$RepositoriesStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -147,13 +144,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LanguagesState.initial()';
+    return 'RepositoriesState.initial()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'LanguagesState.initial'));
+    properties.add(DiagnosticsProperty('type', 'RepositoriesState.initial'));
   }
 
   @override
@@ -170,12 +167,11 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() fetchInProgress,
-    required TResult Function() fetchEmpty,
-    required TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)
-        fetchSuccess,
-    required TResult Function(String? message) fetchError,
+    required TResult Function() reposFetchInProgress,
+    required TResult Function() reposFetchEmpty,
+    required TResult Function(List<Repository> items, bool hasNextPage)
+        reposFetchSuccess,
+    required TResult Function(String? message) reposFetchError,
   }) {
     return initial();
   }
@@ -184,12 +180,11 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? fetchInProgress,
-    TResult? Function()? fetchEmpty,
-    TResult? Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult? Function(String? message)? fetchError,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult? Function(String? message)? reposFetchError,
   }) {
     return initial?.call();
   }
@@ -198,12 +193,11 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? fetchInProgress,
-    TResult Function()? fetchEmpty,
-    TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult Function(String? message)? fetchError,
+    TResult Function()? reposFetchInProgress,
+    TResult Function()? reposFetchEmpty,
+    TResult Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult Function(String? message)? reposFetchError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -216,10 +210,10 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_FetchInProgress value) fetchInProgress,
-    required TResult Function(_FetchEmpty value) fetchEmpty,
-    required TResult Function(_FetchSuccess value) fetchSuccess,
-    required TResult Function(_FetchError value) fetchError,
+    required TResult Function(_FetchInProgress value) reposFetchInProgress,
+    required TResult Function(_FetchEmpty value) reposFetchEmpty,
+    required TResult Function(_FetchSuccess value) reposFetchSuccess,
+    required TResult Function(_FetchError value) reposFetchError,
   }) {
     return initial(this);
   }
@@ -228,10 +222,10 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_FetchInProgress value)? fetchInProgress,
-    TResult? Function(_FetchEmpty value)? fetchEmpty,
-    TResult? Function(_FetchSuccess value)? fetchSuccess,
-    TResult? Function(_FetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_FetchError value)? reposFetchError,
   }) {
     return initial?.call(this);
   }
@@ -240,10 +234,10 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchEmpty value)? fetchEmpty,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_FetchError value)? fetchError,
+    TResult Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult Function(_FetchError value)? reposFetchError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -260,7 +254,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements LanguagesState {
+abstract class _Initial implements RepositoriesState {
   const factory _Initial() = _$InitialImpl;
 
   factory _Initial.fromJson(Map<String, dynamic> json) = _$InitialImpl.fromJson;
@@ -275,7 +269,7 @@ abstract class _$$FetchInProgressImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FetchInProgressImplCopyWithImpl<$Res>
-    extends _$LanguagesStateCopyWithImpl<$Res, _$FetchInProgressImpl>
+    extends _$RepositoriesStateCopyWithImpl<$Res, _$FetchInProgressImpl>
     implements _$$FetchInProgressImplCopyWith<$Res> {
   __$$FetchInProgressImplCopyWithImpl(
       _$FetchInProgressImpl _value, $Res Function(_$FetchInProgressImpl) _then)
@@ -288,7 +282,7 @@ class _$FetchInProgressImpl
     with DiagnosticableTreeMixin
     implements _FetchInProgress {
   const _$FetchInProgressImpl({final String? $type})
-      : $type = $type ?? 'fetchInProgress';
+      : $type = $type ?? 'reposFetchInProgress';
 
   factory _$FetchInProgressImpl.fromJson(Map<String, dynamic> json) =>
       _$$FetchInProgressImplFromJson(json);
@@ -298,14 +292,14 @@ class _$FetchInProgressImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LanguagesState.fetchInProgress()';
+    return 'RepositoriesState.reposFetchInProgress()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'LanguagesState.fetchInProgress'));
+    properties.add(
+        DiagnosticsProperty('type', 'RepositoriesState.reposFetchInProgress'));
   }
 
   @override
@@ -322,44 +316,41 @@ class _$FetchInProgressImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() fetchInProgress,
-    required TResult Function() fetchEmpty,
-    required TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)
-        fetchSuccess,
-    required TResult Function(String? message) fetchError,
+    required TResult Function() reposFetchInProgress,
+    required TResult Function() reposFetchEmpty,
+    required TResult Function(List<Repository> items, bool hasNextPage)
+        reposFetchSuccess,
+    required TResult Function(String? message) reposFetchError,
   }) {
-    return fetchInProgress();
+    return reposFetchInProgress();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? fetchInProgress,
-    TResult? Function()? fetchEmpty,
-    TResult? Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult? Function(String? message)? fetchError,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult? Function(String? message)? reposFetchError,
   }) {
-    return fetchInProgress?.call();
+    return reposFetchInProgress?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? fetchInProgress,
-    TResult Function()? fetchEmpty,
-    TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult Function(String? message)? fetchError,
+    TResult Function()? reposFetchInProgress,
+    TResult Function()? reposFetchEmpty,
+    TResult Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult Function(String? message)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchInProgress != null) {
-      return fetchInProgress();
+    if (reposFetchInProgress != null) {
+      return reposFetchInProgress();
     }
     return orElse();
   }
@@ -368,38 +359,38 @@ class _$FetchInProgressImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_FetchInProgress value) fetchInProgress,
-    required TResult Function(_FetchEmpty value) fetchEmpty,
-    required TResult Function(_FetchSuccess value) fetchSuccess,
-    required TResult Function(_FetchError value) fetchError,
+    required TResult Function(_FetchInProgress value) reposFetchInProgress,
+    required TResult Function(_FetchEmpty value) reposFetchEmpty,
+    required TResult Function(_FetchSuccess value) reposFetchSuccess,
+    required TResult Function(_FetchError value) reposFetchError,
   }) {
-    return fetchInProgress(this);
+    return reposFetchInProgress(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_FetchInProgress value)? fetchInProgress,
-    TResult? Function(_FetchEmpty value)? fetchEmpty,
-    TResult? Function(_FetchSuccess value)? fetchSuccess,
-    TResult? Function(_FetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_FetchError value)? reposFetchError,
   }) {
-    return fetchInProgress?.call(this);
+    return reposFetchInProgress?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchEmpty value)? fetchEmpty,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_FetchError value)? fetchError,
+    TResult Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult Function(_FetchError value)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchInProgress != null) {
-      return fetchInProgress(this);
+    if (reposFetchInProgress != null) {
+      return reposFetchInProgress(this);
     }
     return orElse();
   }
@@ -412,7 +403,7 @@ class _$FetchInProgressImpl
   }
 }
 
-abstract class _FetchInProgress implements LanguagesState {
+abstract class _FetchInProgress implements RepositoriesState {
   const factory _FetchInProgress() = _$FetchInProgressImpl;
 
   factory _FetchInProgress.fromJson(Map<String, dynamic> json) =
@@ -428,7 +419,7 @@ abstract class _$$FetchEmptyImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FetchEmptyImplCopyWithImpl<$Res>
-    extends _$LanguagesStateCopyWithImpl<$Res, _$FetchEmptyImpl>
+    extends _$RepositoriesStateCopyWithImpl<$Res, _$FetchEmptyImpl>
     implements _$$FetchEmptyImplCopyWith<$Res> {
   __$$FetchEmptyImplCopyWithImpl(
       _$FetchEmptyImpl _value, $Res Function(_$FetchEmptyImpl) _then)
@@ -438,7 +429,8 @@ class __$$FetchEmptyImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FetchEmptyImpl with DiagnosticableTreeMixin implements _FetchEmpty {
-  const _$FetchEmptyImpl({final String? $type}) : $type = $type ?? 'fetchEmpty';
+  const _$FetchEmptyImpl({final String? $type})
+      : $type = $type ?? 'reposFetchEmpty';
 
   factory _$FetchEmptyImpl.fromJson(Map<String, dynamic> json) =>
       _$$FetchEmptyImplFromJson(json);
@@ -448,13 +440,14 @@ class _$FetchEmptyImpl with DiagnosticableTreeMixin implements _FetchEmpty {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LanguagesState.fetchEmpty()';
+    return 'RepositoriesState.reposFetchEmpty()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'LanguagesState.fetchEmpty'));
+    properties
+        .add(DiagnosticsProperty('type', 'RepositoriesState.reposFetchEmpty'));
   }
 
   @override
@@ -471,44 +464,41 @@ class _$FetchEmptyImpl with DiagnosticableTreeMixin implements _FetchEmpty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() fetchInProgress,
-    required TResult Function() fetchEmpty,
-    required TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)
-        fetchSuccess,
-    required TResult Function(String? message) fetchError,
+    required TResult Function() reposFetchInProgress,
+    required TResult Function() reposFetchEmpty,
+    required TResult Function(List<Repository> items, bool hasNextPage)
+        reposFetchSuccess,
+    required TResult Function(String? message) reposFetchError,
   }) {
-    return fetchEmpty();
+    return reposFetchEmpty();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? fetchInProgress,
-    TResult? Function()? fetchEmpty,
-    TResult? Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult? Function(String? message)? fetchError,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult? Function(String? message)? reposFetchError,
   }) {
-    return fetchEmpty?.call();
+    return reposFetchEmpty?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? fetchInProgress,
-    TResult Function()? fetchEmpty,
-    TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult Function(String? message)? fetchError,
+    TResult Function()? reposFetchInProgress,
+    TResult Function()? reposFetchEmpty,
+    TResult Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult Function(String? message)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchEmpty != null) {
-      return fetchEmpty();
+    if (reposFetchEmpty != null) {
+      return reposFetchEmpty();
     }
     return orElse();
   }
@@ -517,38 +507,38 @@ class _$FetchEmptyImpl with DiagnosticableTreeMixin implements _FetchEmpty {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_FetchInProgress value) fetchInProgress,
-    required TResult Function(_FetchEmpty value) fetchEmpty,
-    required TResult Function(_FetchSuccess value) fetchSuccess,
-    required TResult Function(_FetchError value) fetchError,
+    required TResult Function(_FetchInProgress value) reposFetchInProgress,
+    required TResult Function(_FetchEmpty value) reposFetchEmpty,
+    required TResult Function(_FetchSuccess value) reposFetchSuccess,
+    required TResult Function(_FetchError value) reposFetchError,
   }) {
-    return fetchEmpty(this);
+    return reposFetchEmpty(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_FetchInProgress value)? fetchInProgress,
-    TResult? Function(_FetchEmpty value)? fetchEmpty,
-    TResult? Function(_FetchSuccess value)? fetchSuccess,
-    TResult? Function(_FetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_FetchError value)? reposFetchError,
   }) {
-    return fetchEmpty?.call(this);
+    return reposFetchEmpty?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchEmpty value)? fetchEmpty,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_FetchError value)? fetchError,
+    TResult Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult Function(_FetchError value)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchEmpty != null) {
-      return fetchEmpty(this);
+    if (reposFetchEmpty != null) {
+      return reposFetchEmpty(this);
     }
     return orElse();
   }
@@ -561,7 +551,7 @@ class _$FetchEmptyImpl with DiagnosticableTreeMixin implements _FetchEmpty {
   }
 }
 
-abstract class _FetchEmpty implements LanguagesState {
+abstract class _FetchEmpty implements RepositoriesState {
   const factory _FetchEmpty() = _$FetchEmptyImpl;
 
   factory _FetchEmpty.fromJson(Map<String, dynamic> json) =
@@ -574,14 +564,12 @@ abstract class _$$FetchSuccessImplCopyWith<$Res> {
           _$FetchSuccessImpl value, $Res Function(_$FetchSuccessImpl) then) =
       __$$FetchSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<RepositoryLanguage> items, RepositoryLanguage? selected});
-
-  $RepositoryLanguageCopyWith<$Res>? get selected;
+  $Res call({List<Repository> items, bool hasNextPage});
 }
 
 /// @nodoc
 class __$$FetchSuccessImplCopyWithImpl<$Res>
-    extends _$LanguagesStateCopyWithImpl<$Res, _$FetchSuccessImpl>
+    extends _$RepositoriesStateCopyWithImpl<$Res, _$FetchSuccessImpl>
     implements _$$FetchSuccessImplCopyWith<$Res> {
   __$$FetchSuccessImplCopyWithImpl(
       _$FetchSuccessImpl _value, $Res Function(_$FetchSuccessImpl) _then)
@@ -591,30 +579,18 @@ class __$$FetchSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? items = null,
-    Object? selected = freezed,
+    Object? hasNextPage = null,
   }) {
     return _then(_$FetchSuccessImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<RepositoryLanguage>,
-      selected: freezed == selected
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as RepositoryLanguage?,
+              as List<Repository>,
+      hasNextPage: null == hasNextPage
+          ? _value.hasNextPage
+          : hasNextPage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RepositoryLanguageCopyWith<$Res>? get selected {
-    if (_value.selected == null) {
-      return null;
-    }
-
-    return $RepositoryLanguageCopyWith<$Res>(_value.selected!, (value) {
-      return _then(_value.copyWith(selected: value));
-    });
   }
 }
 
@@ -622,41 +598,41 @@ class __$$FetchSuccessImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FetchSuccessImpl with DiagnosticableTreeMixin implements _FetchSuccess {
   const _$FetchSuccessImpl(
-      {required final List<RepositoryLanguage> items,
-      required this.selected,
+      {required final List<Repository> items,
+      required this.hasNextPage,
       final String? $type})
       : _items = items,
-        $type = $type ?? 'fetchSuccess';
+        $type = $type ?? 'reposFetchSuccess';
 
   factory _$FetchSuccessImpl.fromJson(Map<String, dynamic> json) =>
       _$$FetchSuccessImplFromJson(json);
 
-  final List<RepositoryLanguage> _items;
+  final List<Repository> _items;
   @override
-  List<RepositoryLanguage> get items {
+  List<Repository> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
   }
 
   @override
-  final RepositoryLanguage? selected;
+  final bool hasNextPage;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LanguagesState.fetchSuccess(items: $items, selected: $selected)';
+    return 'RepositoriesState.reposFetchSuccess(items: $items, hasNextPage: $hasNextPage)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'LanguagesState.fetchSuccess'))
+      ..add(DiagnosticsProperty('type', 'RepositoriesState.reposFetchSuccess'))
       ..add(DiagnosticsProperty('items', items))
-      ..add(DiagnosticsProperty('selected', selected));
+      ..add(DiagnosticsProperty('hasNextPage', hasNextPage));
   }
 
   @override
@@ -665,14 +641,14 @@ class _$FetchSuccessImpl with DiagnosticableTreeMixin implements _FetchSuccess {
         (other.runtimeType == runtimeType &&
             other is _$FetchSuccessImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.selected, selected) ||
-                other.selected == selected));
+            (identical(other.hasNextPage, hasNextPage) ||
+                other.hasNextPage == hasNextPage));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_items), selected);
+      runtimeType, const DeepCollectionEquality().hash(_items), hasNextPage);
 
   @JsonKey(ignore: true)
   @override
@@ -684,44 +660,41 @@ class _$FetchSuccessImpl with DiagnosticableTreeMixin implements _FetchSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() fetchInProgress,
-    required TResult Function() fetchEmpty,
-    required TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)
-        fetchSuccess,
-    required TResult Function(String? message) fetchError,
+    required TResult Function() reposFetchInProgress,
+    required TResult Function() reposFetchEmpty,
+    required TResult Function(List<Repository> items, bool hasNextPage)
+        reposFetchSuccess,
+    required TResult Function(String? message) reposFetchError,
   }) {
-    return fetchSuccess(items, selected);
+    return reposFetchSuccess(items, hasNextPage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? fetchInProgress,
-    TResult? Function()? fetchEmpty,
-    TResult? Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult? Function(String? message)? fetchError,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult? Function(String? message)? reposFetchError,
   }) {
-    return fetchSuccess?.call(items, selected);
+    return reposFetchSuccess?.call(items, hasNextPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? fetchInProgress,
-    TResult Function()? fetchEmpty,
-    TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult Function(String? message)? fetchError,
+    TResult Function()? reposFetchInProgress,
+    TResult Function()? reposFetchEmpty,
+    TResult Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult Function(String? message)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchSuccess != null) {
-      return fetchSuccess(items, selected);
+    if (reposFetchSuccess != null) {
+      return reposFetchSuccess(items, hasNextPage);
     }
     return orElse();
   }
@@ -730,38 +703,38 @@ class _$FetchSuccessImpl with DiagnosticableTreeMixin implements _FetchSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_FetchInProgress value) fetchInProgress,
-    required TResult Function(_FetchEmpty value) fetchEmpty,
-    required TResult Function(_FetchSuccess value) fetchSuccess,
-    required TResult Function(_FetchError value) fetchError,
+    required TResult Function(_FetchInProgress value) reposFetchInProgress,
+    required TResult Function(_FetchEmpty value) reposFetchEmpty,
+    required TResult Function(_FetchSuccess value) reposFetchSuccess,
+    required TResult Function(_FetchError value) reposFetchError,
   }) {
-    return fetchSuccess(this);
+    return reposFetchSuccess(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_FetchInProgress value)? fetchInProgress,
-    TResult? Function(_FetchEmpty value)? fetchEmpty,
-    TResult? Function(_FetchSuccess value)? fetchSuccess,
-    TResult? Function(_FetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_FetchError value)? reposFetchError,
   }) {
-    return fetchSuccess?.call(this);
+    return reposFetchSuccess?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchEmpty value)? fetchEmpty,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_FetchError value)? fetchError,
+    TResult Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult Function(_FetchError value)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchSuccess != null) {
-      return fetchSuccess(this);
+    if (reposFetchSuccess != null) {
+      return reposFetchSuccess(this);
     }
     return orElse();
   }
@@ -774,16 +747,16 @@ class _$FetchSuccessImpl with DiagnosticableTreeMixin implements _FetchSuccess {
   }
 }
 
-abstract class _FetchSuccess implements LanguagesState {
+abstract class _FetchSuccess implements RepositoriesState {
   const factory _FetchSuccess(
-      {required final List<RepositoryLanguage> items,
-      required final RepositoryLanguage? selected}) = _$FetchSuccessImpl;
+      {required final List<Repository> items,
+      required final bool hasNextPage}) = _$FetchSuccessImpl;
 
   factory _FetchSuccess.fromJson(Map<String, dynamic> json) =
       _$FetchSuccessImpl.fromJson;
 
-  List<RepositoryLanguage> get items;
-  RepositoryLanguage? get selected;
+  List<Repository> get items;
+  bool get hasNextPage;
   @JsonKey(ignore: true)
   _$$FetchSuccessImplCopyWith<_$FetchSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -800,7 +773,7 @@ abstract class _$$FetchErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FetchErrorImplCopyWithImpl<$Res>
-    extends _$LanguagesStateCopyWithImpl<$Res, _$FetchErrorImpl>
+    extends _$RepositoriesStateCopyWithImpl<$Res, _$FetchErrorImpl>
     implements _$$FetchErrorImplCopyWith<$Res> {
   __$$FetchErrorImplCopyWithImpl(
       _$FetchErrorImpl _value, $Res Function(_$FetchErrorImpl) _then)
@@ -824,7 +797,7 @@ class __$$FetchErrorImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FetchErrorImpl with DiagnosticableTreeMixin implements _FetchError {
   const _$FetchErrorImpl({this.message, final String? $type})
-      : $type = $type ?? 'fetchError';
+      : $type = $type ?? 'reposFetchError';
 
   factory _$FetchErrorImpl.fromJson(Map<String, dynamic> json) =>
       _$$FetchErrorImplFromJson(json);
@@ -837,14 +810,14 @@ class _$FetchErrorImpl with DiagnosticableTreeMixin implements _FetchError {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LanguagesState.fetchError(message: $message)';
+    return 'RepositoriesState.reposFetchError(message: $message)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'LanguagesState.fetchError'))
+      ..add(DiagnosticsProperty('type', 'RepositoriesState.reposFetchError'))
       ..add(DiagnosticsProperty('message', message));
   }
 
@@ -870,44 +843,41 @@ class _$FetchErrorImpl with DiagnosticableTreeMixin implements _FetchError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() fetchInProgress,
-    required TResult Function() fetchEmpty,
-    required TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)
-        fetchSuccess,
-    required TResult Function(String? message) fetchError,
+    required TResult Function() reposFetchInProgress,
+    required TResult Function() reposFetchEmpty,
+    required TResult Function(List<Repository> items, bool hasNextPage)
+        reposFetchSuccess,
+    required TResult Function(String? message) reposFetchError,
   }) {
-    return fetchError(message);
+    return reposFetchError(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? fetchInProgress,
-    TResult? Function()? fetchEmpty,
-    TResult? Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult? Function(String? message)? fetchError,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult? Function(String? message)? reposFetchError,
   }) {
-    return fetchError?.call(message);
+    return reposFetchError?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? fetchInProgress,
-    TResult Function()? fetchEmpty,
-    TResult Function(
-            List<RepositoryLanguage> items, RepositoryLanguage? selected)?
-        fetchSuccess,
-    TResult Function(String? message)? fetchError,
+    TResult Function()? reposFetchInProgress,
+    TResult Function()? reposFetchEmpty,
+    TResult Function(List<Repository> items, bool hasNextPage)?
+        reposFetchSuccess,
+    TResult Function(String? message)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchError != null) {
-      return fetchError(message);
+    if (reposFetchError != null) {
+      return reposFetchError(message);
     }
     return orElse();
   }
@@ -916,38 +886,38 @@ class _$FetchErrorImpl with DiagnosticableTreeMixin implements _FetchError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_FetchInProgress value) fetchInProgress,
-    required TResult Function(_FetchEmpty value) fetchEmpty,
-    required TResult Function(_FetchSuccess value) fetchSuccess,
-    required TResult Function(_FetchError value) fetchError,
+    required TResult Function(_FetchInProgress value) reposFetchInProgress,
+    required TResult Function(_FetchEmpty value) reposFetchEmpty,
+    required TResult Function(_FetchSuccess value) reposFetchSuccess,
+    required TResult Function(_FetchError value) reposFetchError,
   }) {
-    return fetchError(this);
+    return reposFetchError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_FetchInProgress value)? fetchInProgress,
-    TResult? Function(_FetchEmpty value)? fetchEmpty,
-    TResult? Function(_FetchSuccess value)? fetchSuccess,
-    TResult? Function(_FetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_FetchError value)? reposFetchError,
   }) {
-    return fetchError?.call(this);
+    return reposFetchError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchEmpty value)? fetchEmpty,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_FetchError value)? fetchError,
+    TResult Function(_FetchInProgress value)? reposFetchInProgress,
+    TResult Function(_FetchEmpty value)? reposFetchEmpty,
+    TResult Function(_FetchSuccess value)? reposFetchSuccess,
+    TResult Function(_FetchError value)? reposFetchError,
     required TResult orElse(),
   }) {
-    if (fetchError != null) {
-      return fetchError(this);
+    if (reposFetchError != null) {
+      return reposFetchError(this);
     }
     return orElse();
   }
@@ -960,7 +930,7 @@ class _$FetchErrorImpl with DiagnosticableTreeMixin implements _FetchError {
   }
 }
 
-abstract class _FetchError implements LanguagesState {
+abstract class _FetchError implements RepositoriesState {
   const factory _FetchError({final String? message}) = _$FetchErrorImpl;
 
   factory _FetchError.fromJson(Map<String, dynamic> json) =

@@ -161,7 +161,7 @@ class _MenuDrawerPageState extends State<MenuDrawerPage> {
                 label: Text(S.current.loginBasicButton,
                     style: const TextStyle(fontSize: 20)),
                 style: TextButton.styleFrom(
-                  primary: Colors.white,
+                  foregroundColor: Colors.white,
                 ),
                 onPressed: () async {
                   await Navigator.of(context).pushNamed(AppRoutes.login);

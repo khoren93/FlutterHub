@@ -15,10 +15,8 @@ void main() async {
   _setupTimeago();
   await initializePrefs();
   await initDI();
-  BlocOverrides.runZoned(
-    () => runApp(const MyApp()),
-    blocObserver: FlutterHubBlocObserver(),
-  );
+  Bloc.observer = FlutterHubBlocObserver();
+  runApp(const MyApp());
 }
 
 void _setupTimeago() {

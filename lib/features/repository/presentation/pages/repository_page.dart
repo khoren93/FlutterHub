@@ -184,7 +184,7 @@ class _RepositoryPageState extends State<RepositoryPage> {
                 ],
                 Text(
                   text,
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

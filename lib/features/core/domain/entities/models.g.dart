@@ -6,38 +6,40 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RepositoryLanguage _$$_RepositoryLanguageFromJson(
+_$RepositoryLanguageImpl _$$RepositoryLanguageImplFromJson(
         Map<String, dynamic> json) =>
-    _$_RepositoryLanguage(
+    _$RepositoryLanguageImpl(
       name: json['name'] as String?,
       urlParam: json['urlParam'] as String?,
     );
 
-Map<String, dynamic> _$$_RepositoryLanguageToJson(
-        _$_RepositoryLanguage instance) =>
+Map<String, dynamic> _$$RepositoryLanguageImplToJson(
+        _$RepositoryLanguageImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'urlParam': instance.urlParam,
     };
 
-_$_RepositorySearch _$$_RepositorySearchFromJson(Map<String, dynamic> json) =>
-    _$_RepositorySearch(
+_$RepositorySearchImpl _$$RepositorySearchImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RepositorySearchImpl(
       items: (json['items'] as List<dynamic>?)
           ?.map((e) => Repository.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalCount: json['total_count'] as int?,
+      totalCount: (json['total_count'] as num?)?.toInt(),
       incompleteResults: json['incomplete_results'] as bool?,
     );
 
-Map<String, dynamic> _$$_RepositorySearchToJson(_$_RepositorySearch instance) =>
+Map<String, dynamic> _$$RepositorySearchImplToJson(
+        _$RepositorySearchImpl instance) =>
     <String, dynamic>{
       'items': instance.items?.map((e) => e.toJson()).toList(),
       'total_count': instance.totalCount,
       'incomplete_results': instance.incompleteResults,
     };
 
-_$_Repository _$$_RepositoryFromJson(Map<String, dynamic> json) =>
-    _$_Repository(
+_$RepositoryImpl _$$RepositoryImplFromJson(Map<String, dynamic> json) =>
+    _$RepositoryImpl(
       name: json['name'] as String?,
       fullName: json['full_name'] as String?,
       private: json['private'] as bool?,
@@ -55,22 +57,22 @@ _$_Repository _$$_RepositoryFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updated_at'] as String),
       homepage: json['homepage'] as String?,
       size: (json['size'] as num?)?.toDouble(),
-      stargazersCount: json['stargazers_count'] as int?,
+      stargazersCount: (json['stargazers_count'] as num?)?.toInt(),
       language: json['language'] as String?,
       languageColor: json['language_color'] as String?,
-      forksCount: json['forks_count'] as int?,
+      forksCount: (json['forks_count'] as num?)?.toInt(),
       archived: json['archived'] as bool?,
-      openIssuesCount: json['open_issues_count'] as int?,
+      openIssuesCount: (json['open_issues_count'] as num?)?.toInt(),
       topics:
           (json['topics'] as List<dynamic>?)?.map((e) => e as String).toList(),
       defaultBranch: json['default_branch'] as String?,
-      subscribersCount: json['subscribers_count'] as int?,
+      subscribersCount: (json['subscribers_count'] as num?)?.toInt(),
       parent: json['parent'] == null
           ? null
           : Repository.fromJson(json['parent'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_RepositoryToJson(_$_Repository instance) =>
+Map<String, dynamic> _$$RepositoryImplToJson(_$RepositoryImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'full_name': instance.fullName,
@@ -95,7 +97,7 @@ Map<String, dynamic> _$$_RepositoryToJson(_$_Repository instance) =>
       'parent': instance.parent?.toJson(),
     };
 
-_$_Token _$$_TokenFromJson(Map<String, dynamic> json) => _$_Token(
+_$TokenImpl _$$TokenImplFromJson(Map<String, dynamic> json) => _$TokenImpl(
       type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']),
       basicToken: json['basic_token'] as String?,
       personalToken: json['personal_token'] as String?,
@@ -104,7 +106,8 @@ _$_Token _$$_TokenFromJson(Map<String, dynamic> json) => _$_Token(
       scope: json['scope'] as String?,
     );
 
-Map<String, dynamic> _$$_TokenToJson(_$_Token instance) => <String, dynamic>{
+Map<String, dynamic> _$$TokenImplToJson(_$TokenImpl instance) =>
+    <String, dynamic>{
       'type': _$TokenTypeEnumMap[instance.type],
       'basic_token': instance.basicToken,
       'personal_token': instance.personalToken,
@@ -119,9 +122,9 @@ const _$TokenTypeEnumMap = {
   TokenType.basic: 'basic',
 };
 
-_$_TrendingRepository _$$_TrendingRepositoryFromJson(
+_$TrendingRepositoryImpl _$$TrendingRepositoryImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TrendingRepository(
+    _$TrendingRepositoryImpl(
       author: json['author'] as String?,
       name: json['name'] as String?,
       avatar: json['avatar'] as String?,
@@ -129,16 +132,16 @@ _$_TrendingRepository _$$_TrendingRepositoryFromJson(
       description: json['description'] as String?,
       language: json['language'] as String?,
       languageColor: json['languageColor'] as String?,
-      stars: json['stars'] as int?,
-      forks: json['forks'] as int?,
-      currentPeriodStars: json['currentPeriodStars'] as int?,
+      stars: (json['stars'] as num?)?.toInt(),
+      forks: (json['forks'] as num?)?.toInt(),
+      currentPeriodStars: (json['currentPeriodStars'] as num?)?.toInt(),
       builtBy: (json['builtBy'] as List<dynamic>?)
           ?.map((e) => TrendingUser.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_TrendingRepositoryToJson(
-        _$_TrendingRepository instance) =>
+Map<String, dynamic> _$$TrendingRepositoryImplToJson(
+        _$TrendingRepositoryImpl instance) =>
     <String, dynamic>{
       'author': instance.author,
       'name': instance.name,
@@ -153,8 +156,8 @@ Map<String, dynamic> _$$_TrendingRepositoryToJson(
       'builtBy': instance.builtBy?.map((e) => e.toJson()).toList(),
     };
 
-_$_TrendingUser _$$_TrendingUserFromJson(Map<String, dynamic> json) =>
-    _$_TrendingUser(
+_$TrendingUserImpl _$$TrendingUserImplFromJson(Map<String, dynamic> json) =>
+    _$TrendingUserImpl(
       username: json['username'] as String?,
       name: json['name'] as String?,
       url: json['url'] as String?,
@@ -165,7 +168,7 @@ _$_TrendingUser _$$_TrendingUserFromJson(Map<String, dynamic> json) =>
       type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_TrendingUserToJson(_$_TrendingUser instance) =>
+Map<String, dynamic> _$$TrendingUserImplToJson(_$TrendingUserImpl instance) =>
     <String, dynamic>{
       'username': instance.username,
       'name': instance.name,
@@ -175,23 +178,23 @@ Map<String, dynamic> _$$_TrendingUserToJson(_$_TrendingUser instance) =>
       'type': instance.type,
     };
 
-_$_UserSearch _$$_UserSearchFromJson(Map<String, dynamic> json) =>
-    _$_UserSearch(
+_$UserSearchImpl _$$UserSearchImplFromJson(Map<String, dynamic> json) =>
+    _$UserSearchImpl(
       items: (json['items'] as List<dynamic>?)
           ?.map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalCount: json['total_count'] as int?,
+      totalCount: (json['total_count'] as num?)?.toInt(),
       incompleteResults: json['incomplete_results'] as bool?,
     );
 
-Map<String, dynamic> _$$_UserSearchToJson(_$_UserSearch instance) =>
+Map<String, dynamic> _$$UserSearchImplToJson(_$UserSearchImpl instance) =>
     <String, dynamic>{
       'items': instance.items?.map((e) => e.toJson()).toList(),
       'total_count': instance.totalCount,
       'incomplete_results': instance.incompleteResults,
     };
 
-_$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
+_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       login: json['login'] as String?,
       avatarUrl: json['avatar_url'] as String?,
       htmlUrl: json['html_url'] as String?,
@@ -202,23 +205,25 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       location: json['location'] as String?,
       email: json['email'] as String?,
       bio: json['bio'] as String?,
-      publicRepos: json['public_repos'] as int?,
-      publicGists: json['public_gists'] as int?,
-      followers: json['followers'] as int?,
-      following: json['following'] as int?,
+      publicRepos: (json['public_repos'] as num?)?.toInt(),
+      publicGists: (json['public_gists'] as num?)?.toInt(),
+      followers: (json['followers'] as num?)?.toInt(),
+      following: (json['following'] as num?)?.toInt(),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      starredRepositoriesCount: json['starred_repositories_count'] as int?,
-      repositoriesCount: json['repositories_count'] as int?,
-      issuesCount: json['issues_count'] as int?,
-      watchingCount: json['watching_count'] as int?,
+      starredRepositoriesCount:
+          (json['starred_repositories_count'] as num?)?.toInt(),
+      repositoriesCount: (json['repositories_count'] as num?)?.toInt(),
+      issuesCount: (json['issues_count'] as num?)?.toInt(),
+      watchingCount: (json['watching_count'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
+Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
+    <String, dynamic>{
       'login': instance.login,
       'avatar_url': instance.avatarUrl,
       'html_url': instance.htmlUrl,

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'failure.dart';
 
@@ -12,7 +12,7 @@ part of 'failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ServerFailure _$ServerFailureFromJson(Map<String, dynamic> json) {
   return _ServerFailure.fromJson(json);
@@ -34,20 +34,23 @@ mixin _$ServerFailure {
 abstract class $ServerFailureCopyWith<$Res> {
   factory $ServerFailureCopyWith(
           ServerFailure value, $Res Function(ServerFailure) then) =
-      _$ServerFailureCopyWithImpl<$Res>;
+      _$ServerFailureCopyWithImpl<$Res, ServerFailure>;
+  @useResult
   $Res call(
       {String? message, String? documentationUrl, List<ServerError>? errors});
 }
 
 /// @nodoc
-class _$ServerFailureCopyWithImpl<$Res>
+class _$ServerFailureCopyWithImpl<$Res, $Val extends ServerFailure>
     implements $ServerFailureCopyWith<$Res> {
   _$ServerFailureCopyWithImpl(this._value, this._then);
 
-  final ServerFailure _value;
   // ignore: unused_field
-  final $Res Function(ServerFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
@@ -55,60 +58,59 @@ class _$ServerFailureCopyWithImpl<$Res>
     Object? errors = freezed,
   }) {
     return _then(_value.copyWith(
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      documentationUrl: documentationUrl == freezed
+      documentationUrl: freezed == documentationUrl
           ? _value.documentationUrl
           : documentationUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      errors: errors == freezed
+      errors: freezed == errors
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
               as List<ServerError>?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_ServerFailureCopyWith<$Res>
+abstract class _$$ServerFailureImplCopyWith<$Res>
     implements $ServerFailureCopyWith<$Res> {
-  factory _$$_ServerFailureCopyWith(
-          _$_ServerFailure value, $Res Function(_$_ServerFailure) then) =
-      __$$_ServerFailureCopyWithImpl<$Res>;
+  factory _$$ServerFailureImplCopyWith(
+          _$ServerFailureImpl value, $Res Function(_$ServerFailureImpl) then) =
+      __$$ServerFailureImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? message, String? documentationUrl, List<ServerError>? errors});
 }
 
 /// @nodoc
-class __$$_ServerFailureCopyWithImpl<$Res>
-    extends _$ServerFailureCopyWithImpl<$Res>
-    implements _$$_ServerFailureCopyWith<$Res> {
-  __$$_ServerFailureCopyWithImpl(
-      _$_ServerFailure _value, $Res Function(_$_ServerFailure) _then)
-      : super(_value, (v) => _then(v as _$_ServerFailure));
+class __$$ServerFailureImplCopyWithImpl<$Res>
+    extends _$ServerFailureCopyWithImpl<$Res, _$ServerFailureImpl>
+    implements _$$ServerFailureImplCopyWith<$Res> {
+  __$$ServerFailureImplCopyWithImpl(
+      _$ServerFailureImpl _value, $Res Function(_$ServerFailureImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_ServerFailure get _value => super._value as _$_ServerFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
     Object? documentationUrl = freezed,
     Object? errors = freezed,
   }) {
-    return _then(_$_ServerFailure(
-      message: message == freezed
+    return _then(_$ServerFailureImpl(
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      documentationUrl: documentationUrl == freezed
+      documentationUrl: freezed == documentationUrl
           ? _value.documentationUrl
           : documentationUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      errors: errors == freezed
+      errors: freezed == errors
           ? _value._errors
           : errors // ignore: cast_nullable_to_non_nullable
               as List<ServerError>?,
@@ -118,14 +120,14 @@ class __$$_ServerFailureCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ServerFailure extends _ServerFailure {
-  const _$_ServerFailure(
+class _$ServerFailureImpl extends _ServerFailure {
+  const _$ServerFailureImpl(
       {this.message, this.documentationUrl, final List<ServerError>? errors})
       : _errors = errors,
         super._();
 
-  factory _$_ServerFailure.fromJson(Map<String, dynamic> json) =>
-      _$$_ServerFailureFromJson(json);
+  factory _$ServerFailureImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ServerFailureImplFromJson(json);
 
   @override
   final String? message;
@@ -136,18 +138,20 @@ class _$_ServerFailure extends _ServerFailure {
   List<ServerError>? get errors {
     final value = _errors;
     if (value == null) return null;
+    if (_errors is EqualUnmodifiableListView) return _errors;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @JsonKey(ignore: true)
   @override
-  _$$_ServerFailureCopyWith<_$_ServerFailure> get copyWith =>
-      __$$_ServerFailureCopyWithImpl<_$_ServerFailure>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
+      __$$ServerFailureImplCopyWithImpl<_$ServerFailureImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServerFailureToJson(
+    return _$$ServerFailureImplToJson(
       this,
     );
   }
@@ -157,11 +161,11 @@ abstract class _ServerFailure extends ServerFailure {
   const factory _ServerFailure(
       {final String? message,
       final String? documentationUrl,
-      final List<ServerError>? errors}) = _$_ServerFailure;
+      final List<ServerError>? errors}) = _$ServerFailureImpl;
   const _ServerFailure._() : super._();
 
   factory _ServerFailure.fromJson(Map<String, dynamic> json) =
-      _$_ServerFailure.fromJson;
+      _$ServerFailureImpl.fromJson;
 
   @override
   String? get message;
@@ -171,7 +175,7 @@ abstract class _ServerFailure extends ServerFailure {
   List<ServerError>? get errors;
   @override
   @JsonKey(ignore: true)
-  _$$_ServerFailureCopyWith<_$_ServerFailure> get copyWith =>
+  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -196,18 +200,22 @@ mixin _$ServerError {
 abstract class $ServerErrorCopyWith<$Res> {
   factory $ServerErrorCopyWith(
           ServerError value, $Res Function(ServerError) then) =
-      _$ServerErrorCopyWithImpl<$Res>;
+      _$ServerErrorCopyWithImpl<$Res, ServerError>;
+  @useResult
   $Res call({String? code, String? message, String? field, String? resource});
 }
 
 /// @nodoc
-class _$ServerErrorCopyWithImpl<$Res> implements $ServerErrorCopyWith<$Res> {
+class _$ServerErrorCopyWithImpl<$Res, $Val extends ServerError>
+    implements $ServerErrorCopyWith<$Res> {
   _$ServerErrorCopyWithImpl(this._value, this._then);
 
-  final ServerError _value;
   // ignore: unused_field
-  final $Res Function(ServerError) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = freezed,
@@ -216,46 +224,46 @@ class _$ServerErrorCopyWithImpl<$Res> implements $ServerErrorCopyWith<$Res> {
     Object? resource = freezed,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      field: field == freezed
+      field: freezed == field
           ? _value.field
           : field // ignore: cast_nullable_to_non_nullable
               as String?,
-      resource: resource == freezed
+      resource: freezed == resource
           ? _value.resource
           : resource // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_ServerErrorCopyWith<$Res>
+abstract class _$$ServerErrorImplCopyWith<$Res>
     implements $ServerErrorCopyWith<$Res> {
-  factory _$$_ServerErrorCopyWith(
-          _$_ServerError value, $Res Function(_$_ServerError) then) =
-      __$$_ServerErrorCopyWithImpl<$Res>;
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? code, String? message, String? field, String? resource});
 }
 
 /// @nodoc
-class __$$_ServerErrorCopyWithImpl<$Res> extends _$ServerErrorCopyWithImpl<$Res>
-    implements _$$_ServerErrorCopyWith<$Res> {
-  __$$_ServerErrorCopyWithImpl(
-      _$_ServerError _value, $Res Function(_$_ServerError) _then)
-      : super(_value, (v) => _then(v as _$_ServerError));
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$ServerErrorCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_ServerError get _value => super._value as _$_ServerError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = freezed,
@@ -263,20 +271,20 @@ class __$$_ServerErrorCopyWithImpl<$Res> extends _$ServerErrorCopyWithImpl<$Res>
     Object? field = freezed,
     Object? resource = freezed,
   }) {
-    return _then(_$_ServerError(
-      code: code == freezed
+    return _then(_$ServerErrorImpl(
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      field: field == freezed
+      field: freezed == field
           ? _value.field
           : field // ignore: cast_nullable_to_non_nullable
               as String?,
-      resource: resource == freezed
+      resource: freezed == resource
           ? _value.resource
           : resource // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -286,12 +294,12 @@ class __$$_ServerErrorCopyWithImpl<$Res> extends _$ServerErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ServerError extends _ServerError {
-  const _$_ServerError({this.code, this.message, this.field, this.resource})
+class _$ServerErrorImpl extends _ServerError {
+  const _$ServerErrorImpl({this.code, this.message, this.field, this.resource})
       : super._();
 
-  factory _$_ServerError.fromJson(Map<String, dynamic> json) =>
-      _$$_ServerErrorFromJson(json);
+  factory _$ServerErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ServerErrorImplFromJson(json);
 
   @override
   final String? code;
@@ -308,33 +316,30 @@ class _$_ServerError extends _ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ServerError &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.field, field) &&
-            const DeepCollectionEquality().equals(other.resource, resource));
+            other is _$ServerErrorImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.field, field) || other.field == field) &&
+            (identical(other.resource, resource) ||
+                other.resource == resource));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(field),
-      const DeepCollectionEquality().hash(resource));
+  int get hashCode => Object.hash(runtimeType, code, message, field, resource);
 
   @JsonKey(ignore: true)
   @override
-  _$$_ServerErrorCopyWith<_$_ServerError> get copyWith =>
-      __$$_ServerErrorCopyWithImpl<_$_ServerError>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ServerErrorImplCopyWith<_$ServerErrorImpl> get copyWith =>
+      __$$ServerErrorImplCopyWithImpl<_$ServerErrorImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServerErrorToJson(
+    return _$$ServerErrorImplToJson(
       this,
     );
   }
@@ -345,11 +350,11 @@ abstract class _ServerError extends ServerError {
       {final String? code,
       final String? message,
       final String? field,
-      final String? resource}) = _$_ServerError;
+      final String? resource}) = _$ServerErrorImpl;
   const _ServerError._() : super._();
 
   factory _ServerError.fromJson(Map<String, dynamic> json) =
-      _$_ServerError.fromJson;
+      _$ServerErrorImpl.fromJson;
 
   @override
   String? get code;
@@ -361,6 +366,6 @@ abstract class _ServerError extends ServerError {
   String? get resource;
   @override
   @JsonKey(ignore: true)
-  _$$_ServerErrorCopyWith<_$_ServerError> get copyWith =>
+  _$$ServerErrorImplCopyWith<_$ServerErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

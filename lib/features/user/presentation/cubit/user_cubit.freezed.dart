@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_cubit.dart';
 
@@ -12,7 +12,7 @@ part of 'user_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 UserState _$UserStateFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -40,9 +40,9 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchInProgress,
-    TResult Function(User item)? fetchSuccess,
-    TResult Function(String? message, String? url)? fetchError,
+    TResult? Function()? fetchInProgress,
+    TResult? Function(User item)? fetchSuccess,
+    TResult? Function(String? message, String? url)? fetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,9 +62,9 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_fetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? fetchInProgress,
+    TResult? Function(_FetchSuccess value)? fetchSuccess,
+    TResult? Function(_fetchError value)? fetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,47 +81,46 @@ mixin _$UserState {
 /// @nodoc
 abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
-      _$UserStateCopyWithImpl<$Res>;
+      _$UserStateCopyWithImpl<$Res, UserState>;
 }
 
 /// @nodoc
-class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
+class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
+    implements $UserStateCopyWith<$Res> {
   _$UserStateCopyWithImpl(this._value, this._then);
 
-  final UserState _value;
   // ignore: unused_field
-  final $Res Function(UserState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$_FetchInProgressCopyWith<$Res> {
-  factory _$$_FetchInProgressCopyWith(
-          _$_FetchInProgress value, $Res Function(_$_FetchInProgress) then) =
-      __$$_FetchInProgressCopyWithImpl<$Res>;
+abstract class _$$FetchInProgressImplCopyWith<$Res> {
+  factory _$$FetchInProgressImplCopyWith(_$FetchInProgressImpl value,
+          $Res Function(_$FetchInProgressImpl) then) =
+      __$$FetchInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FetchInProgressCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res>
-    implements _$$_FetchInProgressCopyWith<$Res> {
-  __$$_FetchInProgressCopyWithImpl(
-      _$_FetchInProgress _value, $Res Function(_$_FetchInProgress) _then)
-      : super(_value, (v) => _then(v as _$_FetchInProgress));
-
-  @override
-  _$_FetchInProgress get _value => super._value as _$_FetchInProgress;
+class __$$FetchInProgressImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$FetchInProgressImpl>
+    implements _$$FetchInProgressImplCopyWith<$Res> {
+  __$$FetchInProgressImplCopyWithImpl(
+      _$FetchInProgressImpl _value, $Res Function(_$FetchInProgressImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_FetchInProgress
+class _$FetchInProgressImpl
     with DiagnosticableTreeMixin
     implements _FetchInProgress {
-  const _$_FetchInProgress({final String? $type})
+  const _$FetchInProgressImpl({final String? $type})
       : $type = $type ?? 'fetchInProgress';
 
-  factory _$_FetchInProgress.fromJson(Map<String, dynamic> json) =>
-      _$$_FetchInProgressFromJson(json);
+  factory _$FetchInProgressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FetchInProgressImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -138,9 +137,9 @@ class _$_FetchInProgress
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FetchInProgress);
+        (other.runtimeType == runtimeType && other is _$FetchInProgressImpl);
   }
 
   @JsonKey(ignore: true)
@@ -160,9 +159,9 @@ class _$_FetchInProgress
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchInProgress,
-    TResult Function(User item)? fetchSuccess,
-    TResult Function(String? message, String? url)? fetchError,
+    TResult? Function()? fetchInProgress,
+    TResult? Function(User item)? fetchSuccess,
+    TResult? Function(String? message, String? url)? fetchError,
   }) {
     return fetchInProgress?.call();
   }
@@ -194,9 +193,9 @@ class _$_FetchInProgress
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_fetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? fetchInProgress,
+    TResult? Function(_FetchSuccess value)? fetchSuccess,
+    TResult? Function(_fetchError value)? fetchError,
   }) {
     return fetchInProgress?.call(this);
   }
@@ -217,45 +216,45 @@ class _$_FetchInProgress
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchInProgressToJson(
+    return _$$FetchInProgressImplToJson(
       this,
     );
   }
 }
 
 abstract class _FetchInProgress implements UserState {
-  const factory _FetchInProgress() = _$_FetchInProgress;
+  const factory _FetchInProgress() = _$FetchInProgressImpl;
 
   factory _FetchInProgress.fromJson(Map<String, dynamic> json) =
-      _$_FetchInProgress.fromJson;
+      _$FetchInProgressImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_FetchSuccessCopyWith<$Res> {
-  factory _$$_FetchSuccessCopyWith(
-          _$_FetchSuccess value, $Res Function(_$_FetchSuccess) then) =
-      __$$_FetchSuccessCopyWithImpl<$Res>;
+abstract class _$$FetchSuccessImplCopyWith<$Res> {
+  factory _$$FetchSuccessImplCopyWith(
+          _$FetchSuccessImpl value, $Res Function(_$FetchSuccessImpl) then) =
+      __$$FetchSuccessImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({User item});
 
   $UserCopyWith<$Res> get item;
 }
 
 /// @nodoc
-class __$$_FetchSuccessCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
-    implements _$$_FetchSuccessCopyWith<$Res> {
-  __$$_FetchSuccessCopyWithImpl(
-      _$_FetchSuccess _value, $Res Function(_$_FetchSuccess) _then)
-      : super(_value, (v) => _then(v as _$_FetchSuccess));
+class __$$FetchSuccessImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$FetchSuccessImpl>
+    implements _$$FetchSuccessImplCopyWith<$Res> {
+  __$$FetchSuccessImplCopyWithImpl(
+      _$FetchSuccessImpl _value, $Res Function(_$FetchSuccessImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_FetchSuccess get _value => super._value as _$_FetchSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
+    Object? item = null,
   }) {
-    return _then(_$_FetchSuccess(
-      item: item == freezed
+    return _then(_$FetchSuccessImpl(
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as User,
@@ -263,6 +262,7 @@ class __$$_FetchSuccessCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get item {
     return $UserCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value));
@@ -272,12 +272,12 @@ class __$$_FetchSuccessCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FetchSuccess with DiagnosticableTreeMixin implements _FetchSuccess {
-  const _$_FetchSuccess({required this.item, final String? $type})
+class _$FetchSuccessImpl with DiagnosticableTreeMixin implements _FetchSuccess {
+  const _$FetchSuccessImpl({required this.item, final String? $type})
       : $type = $type ?? 'fetchSuccess';
 
-  factory _$_FetchSuccess.fromJson(Map<String, dynamic> json) =>
-      _$$_FetchSuccessFromJson(json);
+  factory _$FetchSuccessImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FetchSuccessImplFromJson(json);
 
   @override
   final User item;
@@ -299,22 +299,22 @@ class _$_FetchSuccess with DiagnosticableTreeMixin implements _FetchSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FetchSuccess &&
-            const DeepCollectionEquality().equals(other.item, item));
+            other is _$FetchSuccessImpl &&
+            (identical(other.item, item) || other.item == item));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(item));
+  int get hashCode => Object.hash(runtimeType, item);
 
   @JsonKey(ignore: true)
   @override
-  _$$_FetchSuccessCopyWith<_$_FetchSuccess> get copyWith =>
-      __$$_FetchSuccessCopyWithImpl<_$_FetchSuccess>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$FetchSuccessImplCopyWith<_$FetchSuccessImpl> get copyWith =>
+      __$$FetchSuccessImplCopyWithImpl<_$FetchSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -329,9 +329,9 @@ class _$_FetchSuccess with DiagnosticableTreeMixin implements _FetchSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchInProgress,
-    TResult Function(User item)? fetchSuccess,
-    TResult Function(String? message, String? url)? fetchError,
+    TResult? Function()? fetchInProgress,
+    TResult? Function(User item)? fetchSuccess,
+    TResult? Function(String? message, String? url)? fetchError,
   }) {
     return fetchSuccess?.call(item);
   }
@@ -363,9 +363,9 @@ class _$_FetchSuccess with DiagnosticableTreeMixin implements _FetchSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_fetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? fetchInProgress,
+    TResult? Function(_FetchSuccess value)? fetchSuccess,
+    TResult? Function(_fetchError value)? fetchError,
   }) {
     return fetchSuccess?.call(this);
   }
@@ -386,53 +386,53 @@ class _$_FetchSuccess with DiagnosticableTreeMixin implements _FetchSuccess {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchSuccessToJson(
+    return _$$FetchSuccessImplToJson(
       this,
     );
   }
 }
 
 abstract class _FetchSuccess implements UserState {
-  const factory _FetchSuccess({required final User item}) = _$_FetchSuccess;
+  const factory _FetchSuccess({required final User item}) = _$FetchSuccessImpl;
 
   factory _FetchSuccess.fromJson(Map<String, dynamic> json) =
-      _$_FetchSuccess.fromJson;
+      _$FetchSuccessImpl.fromJson;
 
   User get item;
   @JsonKey(ignore: true)
-  _$$_FetchSuccessCopyWith<_$_FetchSuccess> get copyWith =>
+  _$$FetchSuccessImplCopyWith<_$FetchSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_fetchErrorCopyWith<$Res> {
-  factory _$$_fetchErrorCopyWith(
-          _$_fetchError value, $Res Function(_$_fetchError) then) =
-      __$$_fetchErrorCopyWithImpl<$Res>;
+abstract class _$$fetchErrorImplCopyWith<$Res> {
+  factory _$$fetchErrorImplCopyWith(
+          _$fetchErrorImpl value, $Res Function(_$fetchErrorImpl) then) =
+      __$$fetchErrorImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? message, String? url});
 }
 
 /// @nodoc
-class __$$_fetchErrorCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
-    implements _$$_fetchErrorCopyWith<$Res> {
-  __$$_fetchErrorCopyWithImpl(
-      _$_fetchError _value, $Res Function(_$_fetchError) _then)
-      : super(_value, (v) => _then(v as _$_fetchError));
+class __$$fetchErrorImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$fetchErrorImpl>
+    implements _$$fetchErrorImplCopyWith<$Res> {
+  __$$fetchErrorImplCopyWithImpl(
+      _$fetchErrorImpl _value, $Res Function(_$fetchErrorImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_fetchError get _value => super._value as _$_fetchError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_fetchError(
-      message: message == freezed
+    return _then(_$fetchErrorImpl(
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -442,12 +442,12 @@ class __$$_fetchErrorCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_fetchError with DiagnosticableTreeMixin implements _fetchError {
-  const _$_fetchError({this.message, this.url, final String? $type})
+class _$fetchErrorImpl with DiagnosticableTreeMixin implements _fetchError {
+  const _$fetchErrorImpl({this.message, this.url, final String? $type})
       : $type = $type ?? 'fetchError';
 
-  factory _$_fetchError.fromJson(Map<String, dynamic> json) =>
-      _$$_fetchErrorFromJson(json);
+  factory _$fetchErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$fetchErrorImplFromJson(json);
 
   @override
   final String? message;
@@ -472,25 +472,23 @@ class _$_fetchError with DiagnosticableTreeMixin implements _fetchError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_fetchError &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            other is _$fetchErrorImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, message, url);
 
   @JsonKey(ignore: true)
   @override
-  _$$_fetchErrorCopyWith<_$_fetchError> get copyWith =>
-      __$$_fetchErrorCopyWithImpl<_$_fetchError>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$fetchErrorImplCopyWith<_$fetchErrorImpl> get copyWith =>
+      __$$fetchErrorImplCopyWithImpl<_$fetchErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -505,9 +503,9 @@ class _$_fetchError with DiagnosticableTreeMixin implements _fetchError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchInProgress,
-    TResult Function(User item)? fetchSuccess,
-    TResult Function(String? message, String? url)? fetchError,
+    TResult? Function()? fetchInProgress,
+    TResult? Function(User item)? fetchSuccess,
+    TResult? Function(String? message, String? url)? fetchError,
   }) {
     return fetchError?.call(message, url);
   }
@@ -539,9 +537,9 @@ class _$_fetchError with DiagnosticableTreeMixin implements _fetchError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchInProgress value)? fetchInProgress,
-    TResult Function(_FetchSuccess value)? fetchSuccess,
-    TResult Function(_fetchError value)? fetchError,
+    TResult? Function(_FetchInProgress value)? fetchInProgress,
+    TResult? Function(_FetchSuccess value)? fetchSuccess,
+    TResult? Function(_fetchError value)? fetchError,
   }) {
     return fetchError?.call(this);
   }
@@ -562,7 +560,7 @@ class _$_fetchError with DiagnosticableTreeMixin implements _fetchError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_fetchErrorToJson(
+    return _$$fetchErrorImplToJson(
       this,
     );
   }
@@ -570,14 +568,14 @@ class _$_fetchError with DiagnosticableTreeMixin implements _fetchError {
 
 abstract class _fetchError implements UserState {
   const factory _fetchError({final String? message, final String? url}) =
-      _$_fetchError;
+      _$fetchErrorImpl;
 
   factory _fetchError.fromJson(Map<String, dynamic> json) =
-      _$_fetchError.fromJson;
+      _$fetchErrorImpl.fromJson;
 
   String? get message;
   String? get url;
   @JsonKey(ignore: true)
-  _$$_fetchErrorCopyWith<_$_fetchError> get copyWith =>
+  _$$fetchErrorImplCopyWith<_$fetchErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

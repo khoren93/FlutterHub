@@ -27,7 +27,7 @@ class OAuthLoginWidget extends StatelessWidget {
     return Text(
       S.current.loginOAuthTitle,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headline5,
+      style: Theme.of(context).textTheme.headlineSmall,
     );
   }
 
@@ -35,7 +35,7 @@ class OAuthLoginWidget extends StatelessWidget {
     return Text(
       S.current.loginOAuthDescription,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.bodyText2,
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 }

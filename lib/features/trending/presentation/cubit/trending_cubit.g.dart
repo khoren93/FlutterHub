@@ -6,108 +6,119 @@ part of 'trending_cubit.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Initial _$$_InitialFromJson(Map<String, dynamic> json) => _$_Initial(
+_$InitialImpl _$$InitialImplFromJson(Map<String, dynamic> json) =>
+    _$InitialImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_InitialToJson(_$_Initial instance) =>
+Map<String, dynamic> _$$InitialImplToJson(_$InitialImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_ReposFetchInProgress _$$_ReposFetchInProgressFromJson(
+_$ReposFetchInProgressImpl _$$ReposFetchInProgressImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ReposFetchInProgress(
+    _$ReposFetchInProgressImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_ReposFetchInProgressToJson(
-        _$_ReposFetchInProgress instance) =>
+Map<String, dynamic> _$$ReposFetchInProgressImplToJson(
+        _$ReposFetchInProgressImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_ReposFetchEmpty _$$_ReposFetchEmptyFromJson(Map<String, dynamic> json) =>
-    _$_ReposFetchEmpty(
+_$ReposFetchEmptyImpl _$$ReposFetchEmptyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReposFetchEmptyImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_ReposFetchEmptyToJson(_$_ReposFetchEmpty instance) =>
+Map<String, dynamic> _$$ReposFetchEmptyImplToJson(
+        _$ReposFetchEmptyImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_ReposFetchSuccess _$$_ReposFetchSuccessFromJson(Map<String, dynamic> json) =>
-    _$_ReposFetchSuccess(
+_$ReposFetchSuccessImpl _$$ReposFetchSuccessImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReposFetchSuccessImpl(
       items: (json['items'] as List<dynamic>)
           .map((e) => TrendingRepository.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_ReposFetchSuccessToJson(
-        _$_ReposFetchSuccess instance) =>
+Map<String, dynamic> _$$ReposFetchSuccessImplToJson(
+        _$ReposFetchSuccessImpl instance) =>
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
 
-_$_ReposFetchError _$$_ReposFetchErrorFromJson(Map<String, dynamic> json) =>
-    _$_ReposFetchError(
+_$ReposFetchErrorImpl _$$ReposFetchErrorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ReposFetchErrorImpl(
       message: json['message'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_ReposFetchErrorToJson(_$_ReposFetchError instance) =>
+Map<String, dynamic> _$$ReposFetchErrorImplToJson(
+        _$ReposFetchErrorImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'runtimeType': instance.$type,
     };
 
-_$_UsersFetchInProgress _$$_UsersFetchInProgressFromJson(
+_$UsersFetchInProgressImpl _$$UsersFetchInProgressImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UsersFetchInProgress(
+    _$UsersFetchInProgressImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_UsersFetchInProgressToJson(
-        _$_UsersFetchInProgress instance) =>
+Map<String, dynamic> _$$UsersFetchInProgressImplToJson(
+        _$UsersFetchInProgressImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_UsersFetchEmpty _$$_UsersFetchEmptyFromJson(Map<String, dynamic> json) =>
-    _$_UsersFetchEmpty(
+_$UsersFetchEmptyImpl _$$UsersFetchEmptyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UsersFetchEmptyImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_UsersFetchEmptyToJson(_$_UsersFetchEmpty instance) =>
+Map<String, dynamic> _$$UsersFetchEmptyImplToJson(
+        _$UsersFetchEmptyImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_UsersFetchSuccess _$$_UsersFetchSuccessFromJson(Map<String, dynamic> json) =>
-    _$_UsersFetchSuccess(
+_$UsersFetchSuccessImpl _$$UsersFetchSuccessImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UsersFetchSuccessImpl(
       items: (json['items'] as List<dynamic>)
           .map((e) => TrendingUser.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_UsersFetchSuccessToJson(
-        _$_UsersFetchSuccess instance) =>
+Map<String, dynamic> _$$UsersFetchSuccessImplToJson(
+        _$UsersFetchSuccessImpl instance) =>
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
 
-_$_UsersFetchError _$$_UsersFetchErrorFromJson(Map<String, dynamic> json) =>
-    _$_UsersFetchError(
+_$UsersFetchErrorImpl _$$UsersFetchErrorImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UsersFetchErrorImpl(
       message: json['message'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_UsersFetchErrorToJson(_$_UsersFetchError instance) =>
+Map<String, dynamic> _$$UsersFetchErrorImplToJson(
+        _$UsersFetchErrorImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'runtimeType': instance.$type,

@@ -6,36 +6,38 @@ part of 'user_cubit.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FetchInProgress _$$_FetchInProgressFromJson(Map<String, dynamic> json) =>
-    _$_FetchInProgress(
+_$FetchInProgressImpl _$$FetchInProgressImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FetchInProgressImpl(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_FetchInProgressToJson(_$_FetchInProgress instance) =>
+Map<String, dynamic> _$$FetchInProgressImplToJson(
+        _$FetchInProgressImpl instance) =>
     <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
-_$_FetchSuccess _$$_FetchSuccessFromJson(Map<String, dynamic> json) =>
-    _$_FetchSuccess(
+_$FetchSuccessImpl _$$FetchSuccessImplFromJson(Map<String, dynamic> json) =>
+    _$FetchSuccessImpl(
       item: User.fromJson(json['item'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_FetchSuccessToJson(_$_FetchSuccess instance) =>
+Map<String, dynamic> _$$FetchSuccessImplToJson(_$FetchSuccessImpl instance) =>
     <String, dynamic>{
       'item': instance.item.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$_fetchError _$$_fetchErrorFromJson(Map<String, dynamic> json) =>
-    _$_fetchError(
+_$fetchErrorImpl _$$fetchErrorImplFromJson(Map<String, dynamic> json) =>
+    _$fetchErrorImpl(
       message: json['message'] as String?,
       url: json['url'] as String?,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_fetchErrorToJson(_$_fetchError instance) =>
+Map<String, dynamic> _$$fetchErrorImplToJson(_$fetchErrorImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'url': instance.url,

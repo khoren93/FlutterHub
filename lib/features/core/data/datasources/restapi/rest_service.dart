@@ -16,7 +16,7 @@ part 'user_service.dart';
 part 'users_service.dart';
 
 final githubClient = ChopperClient(
-  baseUrl: kGithubApiBaseUrl,
+  baseUrl: Uri.tryParse(kGithubApiBaseUrl),
   authenticator: AppAuthenticator(),
   converter: JsonSerializableConverter(
     CustomJsonDecoder({
@@ -43,7 +43,7 @@ final githubClient = ChopperClient(
 );
 
 final trendingClient = ChopperClient(
-  baseUrl: 'https://gtrend.yapie.me',
+  baseUrl: Uri.tryParse('https://gtrend.yapie.me'),
   converter: JsonSerializableConverter(
     CustomJsonDecoder({
       TrendingRepository: TrendingRepository.fromJson,
@@ -109,12 +109,13 @@ class JsonSerializableConverter extends JsonConverter {
   final CustomJsonDecoder jsonDecoder;
 
   @override
-  Response<ResultType> convertResponse<ResultType, Item>(Response response) {
+  FutureOr<Response<ResultType>> convertResponse<ResultType, Item>(
+      Response response) async {
     if (response.bodyString.isEmpty) {
       return Response(response.base, null, error: response.error);
     }
 
-    final jsonRes = super.convertResponse(response);
+    final jsonRes = await super.convertResponse(response);
     return jsonRes.copyWith<ResultType>(
       body: jsonDecoder.decode<Item>(jsonRes.body) as ResultType,
     );

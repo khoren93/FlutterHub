@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'search_cubit.dart';
 
@@ -12,7 +12,7 @@ part of 'search_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SearchState _$SearchStateFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -60,16 +60,16 @@ mixin _$SearchState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -102,15 +102,15 @@ mixin _$SearchState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -134,42 +134,43 @@ mixin _$SearchState {
 abstract class $SearchStateCopyWith<$Res> {
   factory $SearchStateCopyWith(
           SearchState value, $Res Function(SearchState) then) =
-      _$SearchStateCopyWithImpl<$Res>;
+      _$SearchStateCopyWithImpl<$Res, SearchState>;
 }
 
 /// @nodoc
-class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
+class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
+    implements $SearchStateCopyWith<$Res> {
   _$SearchStateCopyWithImpl(this._value, this._then);
 
-  final SearchState _value;
   // ignore: unused_field
-  final $Res Function(SearchState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
-  const _$_Initial({final String? $type}) : $type = $type ?? 'initial';
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+  const _$InitialImpl({final String? $type}) : $type = $type ?? 'initial';
 
-  factory _$_Initial.fromJson(Map<String, dynamic> json) =>
-      _$$_InitialFromJson(json);
+  factory _$InitialImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InitialImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -186,9 +187,9 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @JsonKey(ignore: true)
@@ -216,16 +217,16 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return initial?.call();
   }
@@ -270,15 +271,15 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return initial?.call(this);
   }
@@ -305,47 +306,44 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InitialToJson(
+    return _$$InitialImplToJson(
       this,
     );
   }
 }
 
 abstract class _Initial implements SearchState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 
-  factory _Initial.fromJson(Map<String, dynamic> json) = _$_Initial.fromJson;
+  factory _Initial.fromJson(Map<String, dynamic> json) = _$InitialImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_ReposFetchInProgressCopyWith<$Res> {
-  factory _$$_ReposFetchInProgressCopyWith(_$_ReposFetchInProgress value,
-          $Res Function(_$_ReposFetchInProgress) then) =
-      __$$_ReposFetchInProgressCopyWithImpl<$Res>;
+abstract class _$$ReposFetchInProgressImplCopyWith<$Res> {
+  factory _$$ReposFetchInProgressImplCopyWith(_$ReposFetchInProgressImpl value,
+          $Res Function(_$ReposFetchInProgressImpl) then) =
+      __$$ReposFetchInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ReposFetchInProgressCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_ReposFetchInProgressCopyWith<$Res> {
-  __$$_ReposFetchInProgressCopyWithImpl(_$_ReposFetchInProgress _value,
-      $Res Function(_$_ReposFetchInProgress) _then)
-      : super(_value, (v) => _then(v as _$_ReposFetchInProgress));
-
-  @override
-  _$_ReposFetchInProgress get _value => super._value as _$_ReposFetchInProgress;
+class __$$ReposFetchInProgressImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$ReposFetchInProgressImpl>
+    implements _$$ReposFetchInProgressImplCopyWith<$Res> {
+  __$$ReposFetchInProgressImplCopyWithImpl(_$ReposFetchInProgressImpl _value,
+      $Res Function(_$ReposFetchInProgressImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReposFetchInProgress
+class _$ReposFetchInProgressImpl
     with DiagnosticableTreeMixin
     implements _ReposFetchInProgress {
-  const _$_ReposFetchInProgress({final String? $type})
+  const _$ReposFetchInProgressImpl({final String? $type})
       : $type = $type ?? 'reposFetchInProgress';
 
-  factory _$_ReposFetchInProgress.fromJson(Map<String, dynamic> json) =>
-      _$$_ReposFetchInProgressFromJson(json);
+  factory _$ReposFetchInProgressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReposFetchInProgressImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -363,9 +361,10 @@ class _$_ReposFetchInProgress
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ReposFetchInProgress);
+        (other.runtimeType == runtimeType &&
+            other is _$ReposFetchInProgressImpl);
   }
 
   @JsonKey(ignore: true)
@@ -393,16 +392,16 @@ class _$_ReposFetchInProgress
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return reposFetchInProgress?.call();
   }
@@ -447,15 +446,15 @@ class _$_ReposFetchInProgress
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return reposFetchInProgress?.call(this);
   }
@@ -482,48 +481,45 @@ class _$_ReposFetchInProgress
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchInProgressToJson(
+    return _$$ReposFetchInProgressImplToJson(
       this,
     );
   }
 }
 
 abstract class _ReposFetchInProgress implements SearchState {
-  const factory _ReposFetchInProgress() = _$_ReposFetchInProgress;
+  const factory _ReposFetchInProgress() = _$ReposFetchInProgressImpl;
 
   factory _ReposFetchInProgress.fromJson(Map<String, dynamic> json) =
-      _$_ReposFetchInProgress.fromJson;
+      _$ReposFetchInProgressImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_ReposFetchEmptyCopyWith<$Res> {
-  factory _$$_ReposFetchEmptyCopyWith(
-          _$_ReposFetchEmpty value, $Res Function(_$_ReposFetchEmpty) then) =
-      __$$_ReposFetchEmptyCopyWithImpl<$Res>;
+abstract class _$$ReposFetchEmptyImplCopyWith<$Res> {
+  factory _$$ReposFetchEmptyImplCopyWith(_$ReposFetchEmptyImpl value,
+          $Res Function(_$ReposFetchEmptyImpl) then) =
+      __$$ReposFetchEmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ReposFetchEmptyCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_ReposFetchEmptyCopyWith<$Res> {
-  __$$_ReposFetchEmptyCopyWithImpl(
-      _$_ReposFetchEmpty _value, $Res Function(_$_ReposFetchEmpty) _then)
-      : super(_value, (v) => _then(v as _$_ReposFetchEmpty));
-
-  @override
-  _$_ReposFetchEmpty get _value => super._value as _$_ReposFetchEmpty;
+class __$$ReposFetchEmptyImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$ReposFetchEmptyImpl>
+    implements _$$ReposFetchEmptyImplCopyWith<$Res> {
+  __$$ReposFetchEmptyImplCopyWithImpl(
+      _$ReposFetchEmptyImpl _value, $Res Function(_$ReposFetchEmptyImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReposFetchEmpty
+class _$ReposFetchEmptyImpl
     with DiagnosticableTreeMixin
     implements _ReposFetchEmpty {
-  const _$_ReposFetchEmpty({final String? $type})
+  const _$ReposFetchEmptyImpl({final String? $type})
       : $type = $type ?? 'reposFetchEmpty';
 
-  factory _$_ReposFetchEmpty.fromJson(Map<String, dynamic> json) =>
-      _$$_ReposFetchEmptyFromJson(json);
+  factory _$ReposFetchEmptyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReposFetchEmptyImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -540,9 +536,9 @@ class _$_ReposFetchEmpty
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ReposFetchEmpty);
+        (other.runtimeType == runtimeType && other is _$ReposFetchEmptyImpl);
   }
 
   @JsonKey(ignore: true)
@@ -570,16 +566,16 @@ class _$_ReposFetchEmpty
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return reposFetchEmpty?.call();
   }
@@ -624,15 +620,15 @@ class _$_ReposFetchEmpty
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return reposFetchEmpty?.call(this);
   }
@@ -659,49 +655,48 @@ class _$_ReposFetchEmpty
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchEmptyToJson(
+    return _$$ReposFetchEmptyImplToJson(
       this,
     );
   }
 }
 
 abstract class _ReposFetchEmpty implements SearchState {
-  const factory _ReposFetchEmpty() = _$_ReposFetchEmpty;
+  const factory _ReposFetchEmpty() = _$ReposFetchEmptyImpl;
 
   factory _ReposFetchEmpty.fromJson(Map<String, dynamic> json) =
-      _$_ReposFetchEmpty.fromJson;
+      _$ReposFetchEmptyImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_ReposFetchSuccessCopyWith<$Res> {
-  factory _$$_ReposFetchSuccessCopyWith(_$_ReposFetchSuccess value,
-          $Res Function(_$_ReposFetchSuccess) then) =
-      __$$_ReposFetchSuccessCopyWithImpl<$Res>;
+abstract class _$$ReposFetchSuccessImplCopyWith<$Res> {
+  factory _$$ReposFetchSuccessImplCopyWith(_$ReposFetchSuccessImpl value,
+          $Res Function(_$ReposFetchSuccessImpl) then) =
+      __$$ReposFetchSuccessImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Repository> items, bool hasNextPage});
 }
 
 /// @nodoc
-class __$$_ReposFetchSuccessCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_ReposFetchSuccessCopyWith<$Res> {
-  __$$_ReposFetchSuccessCopyWithImpl(
-      _$_ReposFetchSuccess _value, $Res Function(_$_ReposFetchSuccess) _then)
-      : super(_value, (v) => _then(v as _$_ReposFetchSuccess));
+class __$$ReposFetchSuccessImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$ReposFetchSuccessImpl>
+    implements _$$ReposFetchSuccessImplCopyWith<$Res> {
+  __$$ReposFetchSuccessImplCopyWithImpl(_$ReposFetchSuccessImpl _value,
+      $Res Function(_$ReposFetchSuccessImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_ReposFetchSuccess get _value => super._value as _$_ReposFetchSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = freezed,
-    Object? hasNextPage = freezed,
+    Object? items = null,
+    Object? hasNextPage = null,
   }) {
-    return _then(_$_ReposFetchSuccess(
-      items: items == freezed
+    return _then(_$ReposFetchSuccessImpl(
+      items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<Repository>,
-      hasNextPage: hasNextPage == freezed
+      hasNextPage: null == hasNextPage
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -711,22 +706,23 @@ class __$$_ReposFetchSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReposFetchSuccess
+class _$ReposFetchSuccessImpl
     with DiagnosticableTreeMixin
     implements _ReposFetchSuccess {
-  const _$_ReposFetchSuccess(
+  const _$ReposFetchSuccessImpl(
       {required final List<Repository> items,
       required this.hasNextPage,
       final String? $type})
       : _items = items,
         $type = $type ?? 'reposFetchSuccess';
 
-  factory _$_ReposFetchSuccess.fromJson(Map<String, dynamic> json) =>
-      _$$_ReposFetchSuccessFromJson(json);
+  factory _$ReposFetchSuccessImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReposFetchSuccessImplFromJson(json);
 
   final List<Repository> _items;
   @override
   List<Repository> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
   }
@@ -752,26 +748,25 @@ class _$_ReposFetchSuccess
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReposFetchSuccess &&
+            other is _$ReposFetchSuccessImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
-            const DeepCollectionEquality()
-                .equals(other.hasNextPage, hasNextPage));
+            (identical(other.hasNextPage, hasNextPage) ||
+                other.hasNextPage == hasNextPage));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_items),
-      const DeepCollectionEquality().hash(hasNextPage));
+      runtimeType, const DeepCollectionEquality().hash(_items), hasNextPage);
 
   @JsonKey(ignore: true)
   @override
-  _$$_ReposFetchSuccessCopyWith<_$_ReposFetchSuccess> get copyWith =>
-      __$$_ReposFetchSuccessCopyWithImpl<_$_ReposFetchSuccess>(
+  @pragma('vm:prefer-inline')
+  _$$ReposFetchSuccessImplCopyWith<_$ReposFetchSuccessImpl> get copyWith =>
+      __$$ReposFetchSuccessImplCopyWithImpl<_$ReposFetchSuccessImpl>(
           this, _$identity);
 
   @override
@@ -795,16 +790,16 @@ class _$_ReposFetchSuccess
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return reposFetchSuccess?.call(items, hasNextPage);
   }
@@ -849,15 +844,15 @@ class _$_ReposFetchSuccess
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return reposFetchSuccess?.call(this);
   }
@@ -884,7 +879,7 @@ class _$_ReposFetchSuccess
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchSuccessToJson(
+    return _$$ReposFetchSuccessImplToJson(
       this,
     );
   }
@@ -893,48 +888,47 @@ class _$_ReposFetchSuccess
 abstract class _ReposFetchSuccess implements SearchState {
   const factory _ReposFetchSuccess(
       {required final List<Repository> items,
-      required final bool hasNextPage}) = _$_ReposFetchSuccess;
+      required final bool hasNextPage}) = _$ReposFetchSuccessImpl;
 
   factory _ReposFetchSuccess.fromJson(Map<String, dynamic> json) =
-      _$_ReposFetchSuccess.fromJson;
+      _$ReposFetchSuccessImpl.fromJson;
 
   List<Repository> get items;
   bool get hasNextPage;
   @JsonKey(ignore: true)
-  _$$_ReposFetchSuccessCopyWith<_$_ReposFetchSuccess> get copyWith =>
+  _$$ReposFetchSuccessImplCopyWith<_$ReposFetchSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ReposFetchErrorCopyWith<$Res> {
-  factory _$$_ReposFetchErrorCopyWith(
-          _$_ReposFetchError value, $Res Function(_$_ReposFetchError) then) =
-      __$$_ReposFetchErrorCopyWithImpl<$Res>;
+abstract class _$$ReposFetchErrorImplCopyWith<$Res> {
+  factory _$$ReposFetchErrorImplCopyWith(_$ReposFetchErrorImpl value,
+          $Res Function(_$ReposFetchErrorImpl) then) =
+      __$$ReposFetchErrorImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? message, String? url});
 }
 
 /// @nodoc
-class __$$_ReposFetchErrorCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_ReposFetchErrorCopyWith<$Res> {
-  __$$_ReposFetchErrorCopyWithImpl(
-      _$_ReposFetchError _value, $Res Function(_$_ReposFetchError) _then)
-      : super(_value, (v) => _then(v as _$_ReposFetchError));
+class __$$ReposFetchErrorImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$ReposFetchErrorImpl>
+    implements _$$ReposFetchErrorImplCopyWith<$Res> {
+  __$$ReposFetchErrorImplCopyWithImpl(
+      _$ReposFetchErrorImpl _value, $Res Function(_$ReposFetchErrorImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_ReposFetchError get _value => super._value as _$_ReposFetchError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_ReposFetchError(
-      message: message == freezed
+    return _then(_$ReposFetchErrorImpl(
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -944,14 +938,14 @@ class __$$_ReposFetchErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReposFetchError
+class _$ReposFetchErrorImpl
     with DiagnosticableTreeMixin
     implements _ReposFetchError {
-  const _$_ReposFetchError({this.message, this.url, final String? $type})
+  const _$ReposFetchErrorImpl({this.message, this.url, final String? $type})
       : $type = $type ?? 'reposFetchError';
 
-  factory _$_ReposFetchError.fromJson(Map<String, dynamic> json) =>
-      _$$_ReposFetchErrorFromJson(json);
+  factory _$ReposFetchErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReposFetchErrorImplFromJson(json);
 
   @override
   final String? message;
@@ -976,25 +970,24 @@ class _$_ReposFetchError
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReposFetchError &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            other is _$ReposFetchErrorImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, message, url);
 
   @JsonKey(ignore: true)
   @override
-  _$$_ReposFetchErrorCopyWith<_$_ReposFetchError> get copyWith =>
-      __$$_ReposFetchErrorCopyWithImpl<_$_ReposFetchError>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$ReposFetchErrorImplCopyWith<_$ReposFetchErrorImpl> get copyWith =>
+      __$$ReposFetchErrorImplCopyWithImpl<_$ReposFetchErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1017,16 +1010,16 @@ class _$_ReposFetchError
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return reposFetchError?.call(message, url);
   }
@@ -1071,15 +1064,15 @@ class _$_ReposFetchError
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return reposFetchError?.call(this);
   }
@@ -1106,7 +1099,7 @@ class _$_ReposFetchError
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReposFetchErrorToJson(
+    return _$$ReposFetchErrorImplToJson(
       this,
     );
   }
@@ -1114,47 +1107,44 @@ class _$_ReposFetchError
 
 abstract class _ReposFetchError implements SearchState {
   const factory _ReposFetchError({final String? message, final String? url}) =
-      _$_ReposFetchError;
+      _$ReposFetchErrorImpl;
 
   factory _ReposFetchError.fromJson(Map<String, dynamic> json) =
-      _$_ReposFetchError.fromJson;
+      _$ReposFetchErrorImpl.fromJson;
 
   String? get message;
   String? get url;
   @JsonKey(ignore: true)
-  _$$_ReposFetchErrorCopyWith<_$_ReposFetchError> get copyWith =>
+  _$$ReposFetchErrorImplCopyWith<_$ReposFetchErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UsersFetchInProgressCopyWith<$Res> {
-  factory _$$_UsersFetchInProgressCopyWith(_$_UsersFetchInProgress value,
-          $Res Function(_$_UsersFetchInProgress) then) =
-      __$$_UsersFetchInProgressCopyWithImpl<$Res>;
+abstract class _$$UsersFetchInProgressImplCopyWith<$Res> {
+  factory _$$UsersFetchInProgressImplCopyWith(_$UsersFetchInProgressImpl value,
+          $Res Function(_$UsersFetchInProgressImpl) then) =
+      __$$UsersFetchInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UsersFetchInProgressCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_UsersFetchInProgressCopyWith<$Res> {
-  __$$_UsersFetchInProgressCopyWithImpl(_$_UsersFetchInProgress _value,
-      $Res Function(_$_UsersFetchInProgress) _then)
-      : super(_value, (v) => _then(v as _$_UsersFetchInProgress));
-
-  @override
-  _$_UsersFetchInProgress get _value => super._value as _$_UsersFetchInProgress;
+class __$$UsersFetchInProgressImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$UsersFetchInProgressImpl>
+    implements _$$UsersFetchInProgressImplCopyWith<$Res> {
+  __$$UsersFetchInProgressImplCopyWithImpl(_$UsersFetchInProgressImpl _value,
+      $Res Function(_$UsersFetchInProgressImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_UsersFetchInProgress
+class _$UsersFetchInProgressImpl
     with DiagnosticableTreeMixin
     implements _UsersFetchInProgress {
-  const _$_UsersFetchInProgress({final String? $type})
+  const _$UsersFetchInProgressImpl({final String? $type})
       : $type = $type ?? 'usersFetchInProgress';
 
-  factory _$_UsersFetchInProgress.fromJson(Map<String, dynamic> json) =>
-      _$$_UsersFetchInProgressFromJson(json);
+  factory _$UsersFetchInProgressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UsersFetchInProgressImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -1172,9 +1162,10 @@ class _$_UsersFetchInProgress
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UsersFetchInProgress);
+        (other.runtimeType == runtimeType &&
+            other is _$UsersFetchInProgressImpl);
   }
 
   @JsonKey(ignore: true)
@@ -1202,16 +1193,16 @@ class _$_UsersFetchInProgress
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return usersFetchInProgress?.call();
   }
@@ -1256,15 +1247,15 @@ class _$_UsersFetchInProgress
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return usersFetchInProgress?.call(this);
   }
@@ -1291,48 +1282,45 @@ class _$_UsersFetchInProgress
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchInProgressToJson(
+    return _$$UsersFetchInProgressImplToJson(
       this,
     );
   }
 }
 
 abstract class _UsersFetchInProgress implements SearchState {
-  const factory _UsersFetchInProgress() = _$_UsersFetchInProgress;
+  const factory _UsersFetchInProgress() = _$UsersFetchInProgressImpl;
 
   factory _UsersFetchInProgress.fromJson(Map<String, dynamic> json) =
-      _$_UsersFetchInProgress.fromJson;
+      _$UsersFetchInProgressImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_UsersFetchEmptyCopyWith<$Res> {
-  factory _$$_UsersFetchEmptyCopyWith(
-          _$_UsersFetchEmpty value, $Res Function(_$_UsersFetchEmpty) then) =
-      __$$_UsersFetchEmptyCopyWithImpl<$Res>;
+abstract class _$$UsersFetchEmptyImplCopyWith<$Res> {
+  factory _$$UsersFetchEmptyImplCopyWith(_$UsersFetchEmptyImpl value,
+          $Res Function(_$UsersFetchEmptyImpl) then) =
+      __$$UsersFetchEmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UsersFetchEmptyCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_UsersFetchEmptyCopyWith<$Res> {
-  __$$_UsersFetchEmptyCopyWithImpl(
-      _$_UsersFetchEmpty _value, $Res Function(_$_UsersFetchEmpty) _then)
-      : super(_value, (v) => _then(v as _$_UsersFetchEmpty));
-
-  @override
-  _$_UsersFetchEmpty get _value => super._value as _$_UsersFetchEmpty;
+class __$$UsersFetchEmptyImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$UsersFetchEmptyImpl>
+    implements _$$UsersFetchEmptyImplCopyWith<$Res> {
+  __$$UsersFetchEmptyImplCopyWithImpl(
+      _$UsersFetchEmptyImpl _value, $Res Function(_$UsersFetchEmptyImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_UsersFetchEmpty
+class _$UsersFetchEmptyImpl
     with DiagnosticableTreeMixin
     implements _UsersFetchEmpty {
-  const _$_UsersFetchEmpty({final String? $type})
+  const _$UsersFetchEmptyImpl({final String? $type})
       : $type = $type ?? 'usersFetchEmpty';
 
-  factory _$_UsersFetchEmpty.fromJson(Map<String, dynamic> json) =>
-      _$$_UsersFetchEmptyFromJson(json);
+  factory _$UsersFetchEmptyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UsersFetchEmptyImplFromJson(json);
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -1349,9 +1337,9 @@ class _$_UsersFetchEmpty
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UsersFetchEmpty);
+        (other.runtimeType == runtimeType && other is _$UsersFetchEmptyImpl);
   }
 
   @JsonKey(ignore: true)
@@ -1379,16 +1367,16 @@ class _$_UsersFetchEmpty
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return usersFetchEmpty?.call();
   }
@@ -1433,15 +1421,15 @@ class _$_UsersFetchEmpty
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return usersFetchEmpty?.call(this);
   }
@@ -1468,49 +1456,48 @@ class _$_UsersFetchEmpty
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchEmptyToJson(
+    return _$$UsersFetchEmptyImplToJson(
       this,
     );
   }
 }
 
 abstract class _UsersFetchEmpty implements SearchState {
-  const factory _UsersFetchEmpty() = _$_UsersFetchEmpty;
+  const factory _UsersFetchEmpty() = _$UsersFetchEmptyImpl;
 
   factory _UsersFetchEmpty.fromJson(Map<String, dynamic> json) =
-      _$_UsersFetchEmpty.fromJson;
+      _$UsersFetchEmptyImpl.fromJson;
 }
 
 /// @nodoc
-abstract class _$$_UsersFetchSuccessCopyWith<$Res> {
-  factory _$$_UsersFetchSuccessCopyWith(_$_UsersFetchSuccess value,
-          $Res Function(_$_UsersFetchSuccess) then) =
-      __$$_UsersFetchSuccessCopyWithImpl<$Res>;
+abstract class _$$UsersFetchSuccessImplCopyWith<$Res> {
+  factory _$$UsersFetchSuccessImplCopyWith(_$UsersFetchSuccessImpl value,
+          $Res Function(_$UsersFetchSuccessImpl) then) =
+      __$$UsersFetchSuccessImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<User> items, bool hasNextPage});
 }
 
 /// @nodoc
-class __$$_UsersFetchSuccessCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_UsersFetchSuccessCopyWith<$Res> {
-  __$$_UsersFetchSuccessCopyWithImpl(
-      _$_UsersFetchSuccess _value, $Res Function(_$_UsersFetchSuccess) _then)
-      : super(_value, (v) => _then(v as _$_UsersFetchSuccess));
+class __$$UsersFetchSuccessImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$UsersFetchSuccessImpl>
+    implements _$$UsersFetchSuccessImplCopyWith<$Res> {
+  __$$UsersFetchSuccessImplCopyWithImpl(_$UsersFetchSuccessImpl _value,
+      $Res Function(_$UsersFetchSuccessImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_UsersFetchSuccess get _value => super._value as _$_UsersFetchSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = freezed,
-    Object? hasNextPage = freezed,
+    Object? items = null,
+    Object? hasNextPage = null,
   }) {
-    return _then(_$_UsersFetchSuccess(
-      items: items == freezed
+    return _then(_$UsersFetchSuccessImpl(
+      items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<User>,
-      hasNextPage: hasNextPage == freezed
+      hasNextPage: null == hasNextPage
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1520,22 +1507,23 @@ class __$$_UsersFetchSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UsersFetchSuccess
+class _$UsersFetchSuccessImpl
     with DiagnosticableTreeMixin
     implements _UsersFetchSuccess {
-  const _$_UsersFetchSuccess(
+  const _$UsersFetchSuccessImpl(
       {required final List<User> items,
       required this.hasNextPage,
       final String? $type})
       : _items = items,
         $type = $type ?? 'usersFetchSuccess';
 
-  factory _$_UsersFetchSuccess.fromJson(Map<String, dynamic> json) =>
-      _$$_UsersFetchSuccessFromJson(json);
+  factory _$UsersFetchSuccessImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UsersFetchSuccessImplFromJson(json);
 
   final List<User> _items;
   @override
   List<User> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_items);
   }
@@ -1561,26 +1549,25 @@ class _$_UsersFetchSuccess
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UsersFetchSuccess &&
+            other is _$UsersFetchSuccessImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
-            const DeepCollectionEquality()
-                .equals(other.hasNextPage, hasNextPage));
+            (identical(other.hasNextPage, hasNextPage) ||
+                other.hasNextPage == hasNextPage));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_items),
-      const DeepCollectionEquality().hash(hasNextPage));
+      runtimeType, const DeepCollectionEquality().hash(_items), hasNextPage);
 
   @JsonKey(ignore: true)
   @override
-  _$$_UsersFetchSuccessCopyWith<_$_UsersFetchSuccess> get copyWith =>
-      __$$_UsersFetchSuccessCopyWithImpl<_$_UsersFetchSuccess>(
+  @pragma('vm:prefer-inline')
+  _$$UsersFetchSuccessImplCopyWith<_$UsersFetchSuccessImpl> get copyWith =>
+      __$$UsersFetchSuccessImplCopyWithImpl<_$UsersFetchSuccessImpl>(
           this, _$identity);
 
   @override
@@ -1604,16 +1591,16 @@ class _$_UsersFetchSuccess
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return usersFetchSuccess?.call(items, hasNextPage);
   }
@@ -1658,15 +1645,15 @@ class _$_UsersFetchSuccess
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return usersFetchSuccess?.call(this);
   }
@@ -1693,7 +1680,7 @@ class _$_UsersFetchSuccess
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchSuccessToJson(
+    return _$$UsersFetchSuccessImplToJson(
       this,
     );
   }
@@ -1702,48 +1689,47 @@ class _$_UsersFetchSuccess
 abstract class _UsersFetchSuccess implements SearchState {
   const factory _UsersFetchSuccess(
       {required final List<User> items,
-      required final bool hasNextPage}) = _$_UsersFetchSuccess;
+      required final bool hasNextPage}) = _$UsersFetchSuccessImpl;
 
   factory _UsersFetchSuccess.fromJson(Map<String, dynamic> json) =
-      _$_UsersFetchSuccess.fromJson;
+      _$UsersFetchSuccessImpl.fromJson;
 
   List<User> get items;
   bool get hasNextPage;
   @JsonKey(ignore: true)
-  _$$_UsersFetchSuccessCopyWith<_$_UsersFetchSuccess> get copyWith =>
+  _$$UsersFetchSuccessImplCopyWith<_$UsersFetchSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UsersFetchErrorCopyWith<$Res> {
-  factory _$$_UsersFetchErrorCopyWith(
-          _$_UsersFetchError value, $Res Function(_$_UsersFetchError) then) =
-      __$$_UsersFetchErrorCopyWithImpl<$Res>;
+abstract class _$$UsersFetchErrorImplCopyWith<$Res> {
+  factory _$$UsersFetchErrorImplCopyWith(_$UsersFetchErrorImpl value,
+          $Res Function(_$UsersFetchErrorImpl) then) =
+      __$$UsersFetchErrorImplCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? message, String? url});
 }
 
 /// @nodoc
-class __$$_UsersFetchErrorCopyWithImpl<$Res>
-    extends _$SearchStateCopyWithImpl<$Res>
-    implements _$$_UsersFetchErrorCopyWith<$Res> {
-  __$$_UsersFetchErrorCopyWithImpl(
-      _$_UsersFetchError _value, $Res Function(_$_UsersFetchError) _then)
-      : super(_value, (v) => _then(v as _$_UsersFetchError));
+class __$$UsersFetchErrorImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$UsersFetchErrorImpl>
+    implements _$$UsersFetchErrorImplCopyWith<$Res> {
+  __$$UsersFetchErrorImplCopyWithImpl(
+      _$UsersFetchErrorImpl _value, $Res Function(_$UsersFetchErrorImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_UsersFetchError get _value => super._value as _$_UsersFetchError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_UsersFetchError(
-      message: message == freezed
+    return _then(_$UsersFetchErrorImpl(
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -1753,14 +1739,14 @@ class __$$_UsersFetchErrorCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UsersFetchError
+class _$UsersFetchErrorImpl
     with DiagnosticableTreeMixin
     implements _UsersFetchError {
-  const _$_UsersFetchError({this.message, this.url, final String? $type})
+  const _$UsersFetchErrorImpl({this.message, this.url, final String? $type})
       : $type = $type ?? 'usersFetchError';
 
-  factory _$_UsersFetchError.fromJson(Map<String, dynamic> json) =>
-      _$$_UsersFetchErrorFromJson(json);
+  factory _$UsersFetchErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UsersFetchErrorImplFromJson(json);
 
   @override
   final String? message;
@@ -1785,25 +1771,24 @@ class _$_UsersFetchError
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UsersFetchError &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            other is _$UsersFetchErrorImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, message, url);
 
   @JsonKey(ignore: true)
   @override
-  _$$_UsersFetchErrorCopyWith<_$_UsersFetchError> get copyWith =>
-      __$$_UsersFetchErrorCopyWithImpl<_$_UsersFetchError>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$UsersFetchErrorImplCopyWith<_$UsersFetchErrorImpl> get copyWith =>
+      __$$UsersFetchErrorImplCopyWithImpl<_$UsersFetchErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1826,16 +1811,16 @@ class _$_UsersFetchError
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? reposFetchInProgress,
-    TResult Function()? reposFetchEmpty,
-    TResult Function(List<Repository> items, bool hasNextPage)?
+    TResult? Function()? initial,
+    TResult? Function()? reposFetchInProgress,
+    TResult? Function()? reposFetchEmpty,
+    TResult? Function(List<Repository> items, bool hasNextPage)?
         reposFetchSuccess,
-    TResult Function(String? message, String? url)? reposFetchError,
-    TResult Function()? usersFetchInProgress,
-    TResult Function()? usersFetchEmpty,
-    TResult Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
-    TResult Function(String? message, String? url)? usersFetchError,
+    TResult? Function(String? message, String? url)? reposFetchError,
+    TResult? Function()? usersFetchInProgress,
+    TResult? Function()? usersFetchEmpty,
+    TResult? Function(List<User> items, bool hasNextPage)? usersFetchSuccess,
+    TResult? Function(String? message, String? url)? usersFetchError,
   }) {
     return usersFetchError?.call(message, url);
   }
@@ -1880,15 +1865,15 @@ class _$_UsersFetchError
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ReposFetchInProgress value)? reposFetchInProgress,
-    TResult Function(_ReposFetchEmpty value)? reposFetchEmpty,
-    TResult Function(_ReposFetchSuccess value)? reposFetchSuccess,
-    TResult Function(_ReposFetchError value)? reposFetchError,
-    TResult Function(_UsersFetchInProgress value)? usersFetchInProgress,
-    TResult Function(_UsersFetchEmpty value)? usersFetchEmpty,
-    TResult Function(_UsersFetchSuccess value)? usersFetchSuccess,
-    TResult Function(_UsersFetchError value)? usersFetchError,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ReposFetchInProgress value)? reposFetchInProgress,
+    TResult? Function(_ReposFetchEmpty value)? reposFetchEmpty,
+    TResult? Function(_ReposFetchSuccess value)? reposFetchSuccess,
+    TResult? Function(_ReposFetchError value)? reposFetchError,
+    TResult? Function(_UsersFetchInProgress value)? usersFetchInProgress,
+    TResult? Function(_UsersFetchEmpty value)? usersFetchEmpty,
+    TResult? Function(_UsersFetchSuccess value)? usersFetchSuccess,
+    TResult? Function(_UsersFetchError value)? usersFetchError,
   }) {
     return usersFetchError?.call(this);
   }
@@ -1915,7 +1900,7 @@ class _$_UsersFetchError
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersFetchErrorToJson(
+    return _$$UsersFetchErrorImplToJson(
       this,
     );
   }
@@ -1923,14 +1908,14 @@ class _$_UsersFetchError
 
 abstract class _UsersFetchError implements SearchState {
   const factory _UsersFetchError({final String? message, final String? url}) =
-      _$_UsersFetchError;
+      _$UsersFetchErrorImpl;
 
   factory _UsersFetchError.fromJson(Map<String, dynamic> json) =
-      _$_UsersFetchError.fromJson;
+      _$UsersFetchErrorImpl.fromJson;
 
   String? get message;
   String? get url;
   @JsonKey(ignore: true)
-  _$$_UsersFetchErrorCopyWith<_$_UsersFetchError> get copyWith =>
+  _$$UsersFetchErrorImplCopyWith<_$UsersFetchErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

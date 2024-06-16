@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/utils/app_router.dart';
 import 'package:flutterhub/features/core/domain/entities/models.dart';
-import 'package:flutterhub/features/core/presentation/widgets/common_widgets.dart';
 import 'package:flutterhub/features/core/presentation/widgets/empty_widget.dart';
 import 'package:flutterhub/features/languages/presentation/widgets/language_header_widget.dart';
 import 'package:flutterhub/features/trending/presentation/widgets/search_tab_bar.dart';

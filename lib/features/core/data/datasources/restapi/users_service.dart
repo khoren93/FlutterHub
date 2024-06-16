@@ -8,4 +8,25 @@ abstract class UsersService extends ChopperService {
   Future<Response<User>> user(
     @Path() String owner,
   );
+
+  @Get(path: '/{username}/repos')
+  Future<Response<List<Repository>>> repositories(
+    @Path() String username,
+    @Query() int page,
+    @Query('per_page') int perPage,
+  );
+
+  @Get(path: '/{username}/starred')
+  Future<Response<List<Repository>>> starredRepositories(
+    @Path() String username,
+    @Query() int page,
+    @Query('per_page') int perPage,
+  );
+
+  @Get(path: '/{username}/subscriptions')
+  Future<Response<List<Repository>>> watchingRepositories(
+    @Path() String username,
+    @Query() int page,
+    @Query('per_page') int perPage,
+  );
 }

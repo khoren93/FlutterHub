@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'models.dart';
 
@@ -12,7 +12,7 @@ part of 'models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RepositoryLanguage _$RepositoryLanguageFromJson(Map<String, dynamic> json) {
   return _RepositoryLanguage.fromJson(json);
@@ -34,69 +34,71 @@ mixin _$RepositoryLanguage {
 abstract class $RepositoryLanguageCopyWith<$Res> {
   factory $RepositoryLanguageCopyWith(
           RepositoryLanguage value, $Res Function(RepositoryLanguage) then) =
-      _$RepositoryLanguageCopyWithImpl<$Res>;
+      _$RepositoryLanguageCopyWithImpl<$Res, RepositoryLanguage>;
+  @useResult
   $Res call({String? name, @JsonKey(name: 'urlParam') String? urlParam});
 }
 
 /// @nodoc
-class _$RepositoryLanguageCopyWithImpl<$Res>
+class _$RepositoryLanguageCopyWithImpl<$Res, $Val extends RepositoryLanguage>
     implements $RepositoryLanguageCopyWith<$Res> {
   _$RepositoryLanguageCopyWithImpl(this._value, this._then);
 
-  final RepositoryLanguage _value;
   // ignore: unused_field
-  final $Res Function(RepositoryLanguage) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
     Object? urlParam = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      urlParam: urlParam == freezed
+      urlParam: freezed == urlParam
           ? _value.urlParam
           : urlParam // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_RepositoryLanguageCopyWith<$Res>
+abstract class _$$RepositoryLanguageImplCopyWith<$Res>
     implements $RepositoryLanguageCopyWith<$Res> {
-  factory _$$_RepositoryLanguageCopyWith(_$_RepositoryLanguage value,
-          $Res Function(_$_RepositoryLanguage) then) =
-      __$$_RepositoryLanguageCopyWithImpl<$Res>;
+  factory _$$RepositoryLanguageImplCopyWith(_$RepositoryLanguageImpl value,
+          $Res Function(_$RepositoryLanguageImpl) then) =
+      __$$RepositoryLanguageImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? name, @JsonKey(name: 'urlParam') String? urlParam});
 }
 
 /// @nodoc
-class __$$_RepositoryLanguageCopyWithImpl<$Res>
-    extends _$RepositoryLanguageCopyWithImpl<$Res>
-    implements _$$_RepositoryLanguageCopyWith<$Res> {
-  __$$_RepositoryLanguageCopyWithImpl(
-      _$_RepositoryLanguage _value, $Res Function(_$_RepositoryLanguage) _then)
-      : super(_value, (v) => _then(v as _$_RepositoryLanguage));
+class __$$RepositoryLanguageImplCopyWithImpl<$Res>
+    extends _$RepositoryLanguageCopyWithImpl<$Res, _$RepositoryLanguageImpl>
+    implements _$$RepositoryLanguageImplCopyWith<$Res> {
+  __$$RepositoryLanguageImplCopyWithImpl(_$RepositoryLanguageImpl _value,
+      $Res Function(_$RepositoryLanguageImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_RepositoryLanguage get _value => super._value as _$_RepositoryLanguage;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
     Object? urlParam = freezed,
   }) {
-    return _then(_$_RepositoryLanguage(
-      name: name == freezed
+    return _then(_$RepositoryLanguageImpl(
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      urlParam: urlParam == freezed
+      urlParam: freezed == urlParam
           ? _value.urlParam
           : urlParam // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -106,13 +108,13 @@ class __$$_RepositoryLanguageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RepositoryLanguage extends _RepositoryLanguage {
-  const _$_RepositoryLanguage(
+class _$RepositoryLanguageImpl extends _RepositoryLanguage {
+  const _$RepositoryLanguageImpl(
       {this.name, @JsonKey(name: 'urlParam') this.urlParam})
       : super._();
 
-  factory _$_RepositoryLanguage.fromJson(Map<String, dynamic> json) =>
-      _$$_RepositoryLanguageFromJson(json);
+  factory _$RepositoryLanguageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RepositoryLanguageImplFromJson(json);
 
   @override
   final String? name;
@@ -126,30 +128,29 @@ class _$_RepositoryLanguage extends _RepositoryLanguage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RepositoryLanguage &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.urlParam, urlParam));
+            other is _$RepositoryLanguageImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.urlParam, urlParam) ||
+                other.urlParam == urlParam));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(urlParam));
+  int get hashCode => Object.hash(runtimeType, name, urlParam);
 
   @JsonKey(ignore: true)
   @override
-  _$$_RepositoryLanguageCopyWith<_$_RepositoryLanguage> get copyWith =>
-      __$$_RepositoryLanguageCopyWithImpl<_$_RepositoryLanguage>(
+  @pragma('vm:prefer-inline')
+  _$$RepositoryLanguageImplCopyWith<_$RepositoryLanguageImpl> get copyWith =>
+      __$$RepositoryLanguageImplCopyWithImpl<_$RepositoryLanguageImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RepositoryLanguageToJson(
+    return _$$RepositoryLanguageImplToJson(
       this,
     );
   }
@@ -159,11 +160,11 @@ abstract class _RepositoryLanguage extends RepositoryLanguage {
   const factory _RepositoryLanguage(
           {final String? name,
           @JsonKey(name: 'urlParam') final String? urlParam}) =
-      _$_RepositoryLanguage;
+      _$RepositoryLanguageImpl;
   const _RepositoryLanguage._() : super._();
 
   factory _RepositoryLanguage.fromJson(Map<String, dynamic> json) =
-      _$_RepositoryLanguage.fromJson;
+      _$RepositoryLanguageImpl.fromJson;
 
   @override
   String? get name;
@@ -172,7 +173,7 @@ abstract class _RepositoryLanguage extends RepositoryLanguage {
   String? get urlParam;
   @override
   @JsonKey(ignore: true)
-  _$$_RepositoryLanguageCopyWith<_$_RepositoryLanguage> get copyWith =>
+  _$$RepositoryLanguageImplCopyWith<_$RepositoryLanguageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -196,20 +197,23 @@ mixin _$RepositorySearch {
 abstract class $RepositorySearchCopyWith<$Res> {
   factory $RepositorySearchCopyWith(
           RepositorySearch value, $Res Function(RepositorySearch) then) =
-      _$RepositorySearchCopyWithImpl<$Res>;
+      _$RepositorySearchCopyWithImpl<$Res, RepositorySearch>;
+  @useResult
   $Res call(
       {List<Repository>? items, int? totalCount, bool? incompleteResults});
 }
 
 /// @nodoc
-class _$RepositorySearchCopyWithImpl<$Res>
+class _$RepositorySearchCopyWithImpl<$Res, $Val extends RepositorySearch>
     implements $RepositorySearchCopyWith<$Res> {
   _$RepositorySearchCopyWithImpl(this._value, this._then);
 
-  final RepositorySearch _value;
   // ignore: unused_field
-  final $Res Function(RepositorySearch) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? items = freezed,
@@ -217,60 +221,59 @@ class _$RepositorySearchCopyWithImpl<$Res>
     Object? incompleteResults = freezed,
   }) {
     return _then(_value.copyWith(
-      items: items == freezed
+      items: freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<Repository>?,
-      totalCount: totalCount == freezed
+      totalCount: freezed == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      incompleteResults: incompleteResults == freezed
+      incompleteResults: freezed == incompleteResults
           ? _value.incompleteResults
           : incompleteResults // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_RepositorySearchCopyWith<$Res>
+abstract class _$$RepositorySearchImplCopyWith<$Res>
     implements $RepositorySearchCopyWith<$Res> {
-  factory _$$_RepositorySearchCopyWith(
-          _$_RepositorySearch value, $Res Function(_$_RepositorySearch) then) =
-      __$$_RepositorySearchCopyWithImpl<$Res>;
+  factory _$$RepositorySearchImplCopyWith(_$RepositorySearchImpl value,
+          $Res Function(_$RepositorySearchImpl) then) =
+      __$$RepositorySearchImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<Repository>? items, int? totalCount, bool? incompleteResults});
 }
 
 /// @nodoc
-class __$$_RepositorySearchCopyWithImpl<$Res>
-    extends _$RepositorySearchCopyWithImpl<$Res>
-    implements _$$_RepositorySearchCopyWith<$Res> {
-  __$$_RepositorySearchCopyWithImpl(
-      _$_RepositorySearch _value, $Res Function(_$_RepositorySearch) _then)
-      : super(_value, (v) => _then(v as _$_RepositorySearch));
+class __$$RepositorySearchImplCopyWithImpl<$Res>
+    extends _$RepositorySearchCopyWithImpl<$Res, _$RepositorySearchImpl>
+    implements _$$RepositorySearchImplCopyWith<$Res> {
+  __$$RepositorySearchImplCopyWithImpl(_$RepositorySearchImpl _value,
+      $Res Function(_$RepositorySearchImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_RepositorySearch get _value => super._value as _$_RepositorySearch;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? items = freezed,
     Object? totalCount = freezed,
     Object? incompleteResults = freezed,
   }) {
-    return _then(_$_RepositorySearch(
-      items: items == freezed
+    return _then(_$RepositorySearchImpl(
+      items: freezed == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<Repository>?,
-      totalCount: totalCount == freezed
+      totalCount: freezed == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      incompleteResults: incompleteResults == freezed
+      incompleteResults: freezed == incompleteResults
           ? _value.incompleteResults
           : incompleteResults // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -280,20 +283,21 @@ class __$$_RepositorySearchCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RepositorySearch extends _RepositorySearch {
-  const _$_RepositorySearch(
+class _$RepositorySearchImpl extends _RepositorySearch {
+  const _$RepositorySearchImpl(
       {final List<Repository>? items, this.totalCount, this.incompleteResults})
       : _items = items,
         super._();
 
-  factory _$_RepositorySearch.fromJson(Map<String, dynamic> json) =>
-      _$$_RepositorySearchFromJson(json);
+  factory _$RepositorySearchImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RepositorySearchImplFromJson(json);
 
   final List<Repository>? _items;
   @override
   List<Repository>? get items {
     final value = _items;
     if (value == null) return null;
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -309,15 +313,15 @@ class _$_RepositorySearch extends _RepositorySearch {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RepositorySearch &&
+            other is _$RepositorySearchImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
-            const DeepCollectionEquality()
-                .equals(other.totalCount, totalCount) &&
-            const DeepCollectionEquality()
-                .equals(other.incompleteResults, incompleteResults));
+            (identical(other.totalCount, totalCount) ||
+                other.totalCount == totalCount) &&
+            (identical(other.incompleteResults, incompleteResults) ||
+                other.incompleteResults == incompleteResults));
   }
 
   @JsonKey(ignore: true)
@@ -325,17 +329,19 @@ class _$_RepositorySearch extends _RepositorySearch {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_items),
-      const DeepCollectionEquality().hash(totalCount),
-      const DeepCollectionEquality().hash(incompleteResults));
+      totalCount,
+      incompleteResults);
 
   @JsonKey(ignore: true)
   @override
-  _$$_RepositorySearchCopyWith<_$_RepositorySearch> get copyWith =>
-      __$$_RepositorySearchCopyWithImpl<_$_RepositorySearch>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$RepositorySearchImplCopyWith<_$RepositorySearchImpl> get copyWith =>
+      __$$RepositorySearchImplCopyWithImpl<_$RepositorySearchImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RepositorySearchToJson(
+    return _$$RepositorySearchImplToJson(
       this,
     );
   }
@@ -345,11 +351,11 @@ abstract class _RepositorySearch extends RepositorySearch {
   const factory _RepositorySearch(
       {final List<Repository>? items,
       final int? totalCount,
-      final bool? incompleteResults}) = _$_RepositorySearch;
+      final bool? incompleteResults}) = _$RepositorySearchImpl;
   const _RepositorySearch._() : super._();
 
   factory _RepositorySearch.fromJson(Map<String, dynamic> json) =
-      _$_RepositorySearch.fromJson;
+      _$RepositorySearchImpl.fromJson;
 
   @override
   List<Repository>? get items;
@@ -359,7 +365,7 @@ abstract class _RepositorySearch extends RepositorySearch {
   bool? get incompleteResults;
   @override
   @JsonKey(ignore: true)
-  _$$_RepositorySearchCopyWith<_$_RepositorySearch> get copyWith =>
+  _$$RepositorySearchImplCopyWith<_$RepositorySearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -401,7 +407,8 @@ mixin _$Repository {
 abstract class $RepositoryCopyWith<$Res> {
   factory $RepositoryCopyWith(
           Repository value, $Res Function(Repository) then) =
-      _$RepositoryCopyWithImpl<$Res>;
+      _$RepositoryCopyWithImpl<$Res, Repository>;
+  @useResult
   $Res call(
       {String? name,
       String? fullName,
@@ -430,13 +437,16 @@ abstract class $RepositoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RepositoryCopyWithImpl<$Res> implements $RepositoryCopyWith<$Res> {
+class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
+    implements $RepositoryCopyWith<$Res> {
   _$RepositoryCopyWithImpl(this._value, this._then);
 
-  final Repository _value;
   // ignore: unused_field
-  final $Res Function(Repository) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -462,123 +472,126 @@ class _$RepositoryCopyWithImpl<$Res> implements $RepositoryCopyWith<$Res> {
     Object? parent = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName: fullName == freezed
+      fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
-      private: private == freezed
+      private: freezed == private
           ? _value.private
           : private // ignore: cast_nullable_to_non_nullable
               as bool?,
-      owner: owner == freezed
+      owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as User?,
-      htmlUrl: htmlUrl == freezed
+      htmlUrl: freezed == htmlUrl
           ? _value.htmlUrl
           : htmlUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      fork: fork == freezed
+      fork: freezed == fork
           ? _value.fork
           : fork // ignore: cast_nullable_to_non_nullable
               as bool?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      homepage: homepage == freezed
+      homepage: freezed == homepage
           ? _value.homepage
           : homepage // ignore: cast_nullable_to_non_nullable
               as String?,
-      size: size == freezed
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as double?,
-      stargazersCount: stargazersCount == freezed
+      stargazersCount: freezed == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      language: language == freezed
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
-      languageColor: languageColor == freezed
+      languageColor: freezed == languageColor
           ? _value.languageColor
           : languageColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      forksCount: forksCount == freezed
+      forksCount: freezed == forksCount
           ? _value.forksCount
           : forksCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      archived: archived == freezed
+      archived: freezed == archived
           ? _value.archived
           : archived // ignore: cast_nullable_to_non_nullable
               as bool?,
-      openIssuesCount: openIssuesCount == freezed
+      openIssuesCount: freezed == openIssuesCount
           ? _value.openIssuesCount
           : openIssuesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      topics: topics == freezed
+      topics: freezed == topics
           ? _value.topics
           : topics // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      defaultBranch: defaultBranch == freezed
+      defaultBranch: freezed == defaultBranch
           ? _value.defaultBranch
           : defaultBranch // ignore: cast_nullable_to_non_nullable
               as String?,
-      subscribersCount: subscribersCount == freezed
+      subscribersCount: freezed == subscribersCount
           ? _value.subscribersCount
           : subscribersCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      parent: parent == freezed
+      parent: freezed == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as Repository?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserCopyWith<$Res>? get owner {
     if (_value.owner == null) {
       return null;
     }
 
     return $UserCopyWith<$Res>(_value.owner!, (value) {
-      return _then(_value.copyWith(owner: value));
+      return _then(_value.copyWith(owner: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RepositoryCopyWith<$Res>? get parent {
     if (_value.parent == null) {
       return null;
     }
 
     return $RepositoryCopyWith<$Res>(_value.parent!, (value) {
-      return _then(_value.copyWith(parent: value));
+      return _then(_value.copyWith(parent: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_RepositoryCopyWith<$Res>
+abstract class _$$RepositoryImplCopyWith<$Res>
     implements $RepositoryCopyWith<$Res> {
-  factory _$$_RepositoryCopyWith(
-          _$_Repository value, $Res Function(_$_Repository) then) =
-      __$$_RepositoryCopyWithImpl<$Res>;
+  factory _$$RepositoryImplCopyWith(
+          _$RepositoryImpl value, $Res Function(_$RepositoryImpl) then) =
+      __$$RepositoryImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? name,
       String? fullName,
@@ -609,15 +622,14 @@ abstract class _$$_RepositoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RepositoryCopyWithImpl<$Res> extends _$RepositoryCopyWithImpl<$Res>
-    implements _$$_RepositoryCopyWith<$Res> {
-  __$$_RepositoryCopyWithImpl(
-      _$_Repository _value, $Res Function(_$_Repository) _then)
-      : super(_value, (v) => _then(v as _$_Repository));
+class __$$RepositoryImplCopyWithImpl<$Res>
+    extends _$RepositoryCopyWithImpl<$Res, _$RepositoryImpl>
+    implements _$$RepositoryImplCopyWith<$Res> {
+  __$$RepositoryImplCopyWithImpl(
+      _$RepositoryImpl _value, $Res Function(_$RepositoryImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Repository get _value => super._value as _$_Repository;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -642,88 +654,88 @@ class __$$_RepositoryCopyWithImpl<$Res> extends _$RepositoryCopyWithImpl<$Res>
     Object? subscribersCount = freezed,
     Object? parent = freezed,
   }) {
-    return _then(_$_Repository(
-      name: name == freezed
+    return _then(_$RepositoryImpl(
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName: fullName == freezed
+      fullName: freezed == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String?,
-      private: private == freezed
+      private: freezed == private
           ? _value.private
           : private // ignore: cast_nullable_to_non_nullable
               as bool?,
-      owner: owner == freezed
+      owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as User?,
-      htmlUrl: htmlUrl == freezed
+      htmlUrl: freezed == htmlUrl
           ? _value.htmlUrl
           : htmlUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      fork: fork == freezed
+      fork: freezed == fork
           ? _value.fork
           : fork // ignore: cast_nullable_to_non_nullable
               as bool?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      homepage: homepage == freezed
+      homepage: freezed == homepage
           ? _value.homepage
           : homepage // ignore: cast_nullable_to_non_nullable
               as String?,
-      size: size == freezed
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as double?,
-      stargazersCount: stargazersCount == freezed
+      stargazersCount: freezed == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      language: language == freezed
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
-      languageColor: languageColor == freezed
+      languageColor: freezed == languageColor
           ? _value.languageColor
           : languageColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      forksCount: forksCount == freezed
+      forksCount: freezed == forksCount
           ? _value.forksCount
           : forksCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      archived: archived == freezed
+      archived: freezed == archived
           ? _value.archived
           : archived // ignore: cast_nullable_to_non_nullable
               as bool?,
-      openIssuesCount: openIssuesCount == freezed
+      openIssuesCount: freezed == openIssuesCount
           ? _value.openIssuesCount
           : openIssuesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      topics: topics == freezed
+      topics: freezed == topics
           ? _value._topics
           : topics // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      defaultBranch: defaultBranch == freezed
+      defaultBranch: freezed == defaultBranch
           ? _value.defaultBranch
           : defaultBranch // ignore: cast_nullable_to_non_nullable
               as String?,
-      subscribersCount: subscribersCount == freezed
+      subscribersCount: freezed == subscribersCount
           ? _value.subscribersCount
           : subscribersCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      parent: parent == freezed
+      parent: freezed == parent
           ? _value.parent
           : parent // ignore: cast_nullable_to_non_nullable
               as Repository?,
@@ -733,8 +745,8 @@ class __$$_RepositoryCopyWithImpl<$Res> extends _$RepositoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Repository extends _Repository {
-  const _$_Repository(
+class _$RepositoryImpl extends _Repository {
+  const _$RepositoryImpl(
       {this.name,
       this.fullName,
       this.private,
@@ -759,8 +771,8 @@ class _$_Repository extends _Repository {
       : _topics = topics,
         super._();
 
-  factory _$_Repository.fromJson(Map<String, dynamic> json) =>
-      _$$_RepositoryFromJson(json);
+  factory _$RepositoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RepositoryImplFromJson(json);
 
   @override
   final String? name;
@@ -801,6 +813,7 @@ class _$_Repository extends _Repository {
   List<String>? get topics {
     final value = _topics;
     if (value == null) return null;
+    if (_topics is EqualUnmodifiableListView) return _topics;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -818,75 +831,82 @@ class _$_Repository extends _Repository {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Repository &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.fullName, fullName) &&
-            const DeepCollectionEquality().equals(other.private, private) &&
-            const DeepCollectionEquality().equals(other.owner, owner) &&
-            const DeepCollectionEquality().equals(other.htmlUrl, htmlUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.fork, fork) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.homepage, homepage) &&
-            const DeepCollectionEquality().equals(other.size, size) &&
-            const DeepCollectionEquality()
-                .equals(other.stargazersCount, stargazersCount) &&
-            const DeepCollectionEquality().equals(other.language, language) &&
-            const DeepCollectionEquality()
-                .equals(other.languageColor, languageColor) &&
-            const DeepCollectionEquality()
-                .equals(other.forksCount, forksCount) &&
-            const DeepCollectionEquality().equals(other.archived, archived) &&
-            const DeepCollectionEquality()
-                .equals(other.openIssuesCount, openIssuesCount) &&
+            other is _$RepositoryImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.private, private) || other.private == private) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.fork, fork) || other.fork == fork) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.homepage, homepage) ||
+                other.homepage == homepage) &&
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.stargazersCount, stargazersCount) ||
+                other.stargazersCount == stargazersCount) &&
+            (identical(other.language, language) ||
+                other.language == language) &&
+            (identical(other.languageColor, languageColor) ||
+                other.languageColor == languageColor) &&
+            (identical(other.forksCount, forksCount) ||
+                other.forksCount == forksCount) &&
+            (identical(other.archived, archived) ||
+                other.archived == archived) &&
+            (identical(other.openIssuesCount, openIssuesCount) ||
+                other.openIssuesCount == openIssuesCount) &&
             const DeepCollectionEquality().equals(other._topics, _topics) &&
-            const DeepCollectionEquality()
-                .equals(other.defaultBranch, defaultBranch) &&
-            const DeepCollectionEquality()
-                .equals(other.subscribersCount, subscribersCount) &&
-            const DeepCollectionEquality().equals(other.parent, parent));
+            (identical(other.defaultBranch, defaultBranch) ||
+                other.defaultBranch == defaultBranch) &&
+            (identical(other.subscribersCount, subscribersCount) ||
+                other.subscribersCount == subscribersCount) &&
+            (identical(other.parent, parent) || other.parent == parent));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(fullName),
-        const DeepCollectionEquality().hash(private),
-        const DeepCollectionEquality().hash(owner),
-        const DeepCollectionEquality().hash(htmlUrl),
-        const DeepCollectionEquality().hash(description),
-        const DeepCollectionEquality().hash(fork),
-        const DeepCollectionEquality().hash(createdAt),
-        const DeepCollectionEquality().hash(updatedAt),
-        const DeepCollectionEquality().hash(homepage),
-        const DeepCollectionEquality().hash(size),
-        const DeepCollectionEquality().hash(stargazersCount),
-        const DeepCollectionEquality().hash(language),
-        const DeepCollectionEquality().hash(languageColor),
-        const DeepCollectionEquality().hash(forksCount),
-        const DeepCollectionEquality().hash(archived),
-        const DeepCollectionEquality().hash(openIssuesCount),
+        name,
+        fullName,
+        private,
+        owner,
+        htmlUrl,
+        description,
+        fork,
+        createdAt,
+        updatedAt,
+        homepage,
+        size,
+        stargazersCount,
+        language,
+        languageColor,
+        forksCount,
+        archived,
+        openIssuesCount,
         const DeepCollectionEquality().hash(_topics),
-        const DeepCollectionEquality().hash(defaultBranch),
-        const DeepCollectionEquality().hash(subscribersCount),
-        const DeepCollectionEquality().hash(parent)
+        defaultBranch,
+        subscribersCount,
+        parent
       ]);
 
   @JsonKey(ignore: true)
   @override
-  _$$_RepositoryCopyWith<_$_Repository> get copyWith =>
-      __$$_RepositoryCopyWithImpl<_$_Repository>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$RepositoryImplCopyWith<_$RepositoryImpl> get copyWith =>
+      __$$RepositoryImplCopyWithImpl<_$RepositoryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RepositoryToJson(
+    return _$$RepositoryImplToJson(
       this,
     );
   }
@@ -914,11 +934,11 @@ abstract class _Repository extends Repository {
       final List<String>? topics,
       final String? defaultBranch,
       final int? subscribersCount,
-      final Repository? parent}) = _$_Repository;
+      final Repository? parent}) = _$RepositoryImpl;
   const _Repository._() : super._();
 
   factory _Repository.fromJson(Map<String, dynamic> json) =
-      _$_Repository.fromJson;
+      _$RepositoryImpl.fromJson;
 
   @override
   String? get name;
@@ -964,7 +984,7 @@ abstract class _Repository extends Repository {
   Repository? get parent;
   @override
   @JsonKey(ignore: true)
-  _$$_RepositoryCopyWith<_$_Repository> get copyWith =>
+  _$$RepositoryImplCopyWith<_$RepositoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -989,7 +1009,8 @@ mixin _$Token {
 /// @nodoc
 abstract class $TokenCopyWith<$Res> {
   factory $TokenCopyWith(Token value, $Res Function(Token) then) =
-      _$TokenCopyWithImpl<$Res>;
+      _$TokenCopyWithImpl<$Res, Token>;
+  @useResult
   $Res call(
       {TokenType? type,
       String? basicToken,
@@ -1000,13 +1021,16 @@ abstract class $TokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TokenCopyWithImpl<$Res> implements $TokenCopyWith<$Res> {
+class _$TokenCopyWithImpl<$Res, $Val extends Token>
+    implements $TokenCopyWith<$Res> {
   _$TokenCopyWithImpl(this._value, this._then);
 
-  final Token _value;
   // ignore: unused_field
-  final $Res Function(Token) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? type = freezed,
@@ -1017,39 +1041,41 @@ class _$TokenCopyWithImpl<$Res> implements $TokenCopyWith<$Res> {
     Object? scope = freezed,
   }) {
     return _then(_value.copyWith(
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TokenType?,
-      basicToken: basicToken == freezed
+      basicToken: freezed == basicToken
           ? _value.basicToken
           : basicToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      personalToken: personalToken == freezed
+      personalToken: freezed == personalToken
           ? _value.personalToken
           : personalToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      accessToken: accessToken == freezed
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      tokenType: tokenType == freezed
+      tokenType: freezed == tokenType
           ? _value.tokenType
           : tokenType // ignore: cast_nullable_to_non_nullable
               as String?,
-      scope: scope == freezed
+      scope: freezed == scope
           ? _value.scope
           : scope // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
-  factory _$$_TokenCopyWith(_$_Token value, $Res Function(_$_Token) then) =
-      __$$_TokenCopyWithImpl<$Res>;
+abstract class _$$TokenImplCopyWith<$Res> implements $TokenCopyWith<$Res> {
+  factory _$$TokenImplCopyWith(
+          _$TokenImpl value, $Res Function(_$TokenImpl) then) =
+      __$$TokenImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {TokenType? type,
       String? basicToken,
@@ -1060,14 +1086,14 @@ abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
-    implements _$$_TokenCopyWith<$Res> {
-  __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then)
-      : super(_value, (v) => _then(v as _$_Token));
+class __$$TokenImplCopyWithImpl<$Res>
+    extends _$TokenCopyWithImpl<$Res, _$TokenImpl>
+    implements _$$TokenImplCopyWith<$Res> {
+  __$$TokenImplCopyWithImpl(
+      _$TokenImpl _value, $Res Function(_$TokenImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Token get _value => super._value as _$_Token;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? type = freezed,
@@ -1077,28 +1103,28 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
     Object? tokenType = freezed,
     Object? scope = freezed,
   }) {
-    return _then(_$_Token(
-      type: type == freezed
+    return _then(_$TokenImpl(
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TokenType?,
-      basicToken: basicToken == freezed
+      basicToken: freezed == basicToken
           ? _value.basicToken
           : basicToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      personalToken: personalToken == freezed
+      personalToken: freezed == personalToken
           ? _value.personalToken
           : personalToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      accessToken: accessToken == freezed
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      tokenType: tokenType == freezed
+      tokenType: freezed == tokenType
           ? _value.tokenType
           : tokenType // ignore: cast_nullable_to_non_nullable
               as String?,
-      scope: scope == freezed
+      scope: freezed == scope
           ? _value.scope
           : scope // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -1108,8 +1134,8 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Token extends _Token {
-  const _$_Token(
+class _$TokenImpl extends _Token {
+  const _$TokenImpl(
       {this.type,
       this.basicToken,
       this.personalToken,
@@ -1118,8 +1144,8 @@ class _$_Token extends _Token {
       this.scope})
       : super._();
 
-  factory _$_Token.fromJson(Map<String, dynamic> json) =>
-      _$$_TokenFromJson(json);
+  factory _$TokenImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TokenImplFromJson(json);
 
   @override
   final TokenType? type;
@@ -1140,40 +1166,36 @@ class _$_Token extends _Token {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Token &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.basicToken, basicToken) &&
-            const DeepCollectionEquality()
-                .equals(other.personalToken, personalToken) &&
-            const DeepCollectionEquality()
-                .equals(other.accessToken, accessToken) &&
-            const DeepCollectionEquality().equals(other.tokenType, tokenType) &&
-            const DeepCollectionEquality().equals(other.scope, scope));
+            other is _$TokenImpl &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.basicToken, basicToken) ||
+                other.basicToken == basicToken) &&
+            (identical(other.personalToken, personalToken) ||
+                other.personalToken == personalToken) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.tokenType, tokenType) ||
+                other.tokenType == tokenType) &&
+            (identical(other.scope, scope) || other.scope == scope));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(basicToken),
-      const DeepCollectionEquality().hash(personalToken),
-      const DeepCollectionEquality().hash(accessToken),
-      const DeepCollectionEquality().hash(tokenType),
-      const DeepCollectionEquality().hash(scope));
+  int get hashCode => Object.hash(runtimeType, type, basicToken, personalToken,
+      accessToken, tokenType, scope);
 
   @JsonKey(ignore: true)
   @override
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
-      __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
+      __$$TokenImplCopyWithImpl<_$TokenImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenToJson(
+    return _$$TokenImplToJson(
       this,
     );
   }
@@ -1186,10 +1208,10 @@ abstract class _Token extends Token {
       final String? personalToken,
       final String? accessToken,
       final String? tokenType,
-      final String? scope}) = _$_Token;
+      final String? scope}) = _$TokenImpl;
   const _Token._() : super._();
 
-  factory _Token.fromJson(Map<String, dynamic> json) = _$_Token.fromJson;
+  factory _Token.fromJson(Map<String, dynamic> json) = _$TokenImpl.fromJson;
 
   @override
   TokenType? get type;
@@ -1205,7 +1227,7 @@ abstract class _Token extends Token {
   String? get scope;
   @override
   @JsonKey(ignore: true)
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
+  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1240,7 +1262,8 @@ mixin _$TrendingRepository {
 abstract class $TrendingRepositoryCopyWith<$Res> {
   factory $TrendingRepositoryCopyWith(
           TrendingRepository value, $Res Function(TrendingRepository) then) =
-      _$TrendingRepositoryCopyWithImpl<$Res>;
+      _$TrendingRepositoryCopyWithImpl<$Res, TrendingRepository>;
+  @useResult
   $Res call(
       {String? author,
       String? name,
@@ -1256,14 +1279,16 @@ abstract class $TrendingRepositoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrendingRepositoryCopyWithImpl<$Res>
+class _$TrendingRepositoryCopyWithImpl<$Res, $Val extends TrendingRepository>
     implements $TrendingRepositoryCopyWith<$Res> {
   _$TrendingRepositoryCopyWithImpl(this._value, this._then);
 
-  final TrendingRepository _value;
   // ignore: unused_field
-  final $Res Function(TrendingRepository) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? author = freezed,
@@ -1279,61 +1304,62 @@ class _$TrendingRepositoryCopyWithImpl<$Res>
     Object? builtBy = freezed,
   }) {
     return _then(_value.copyWith(
-      author: author == freezed
+      author: freezed == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      language: language == freezed
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
-      languageColor: languageColor == freezed
+      languageColor: freezed == languageColor
           ? _value.languageColor
           : languageColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      stars: stars == freezed
+      stars: freezed == stars
           ? _value.stars
           : stars // ignore: cast_nullable_to_non_nullable
               as int?,
-      forks: forks == freezed
+      forks: freezed == forks
           ? _value.forks
           : forks // ignore: cast_nullable_to_non_nullable
               as int?,
-      currentPeriodStars: currentPeriodStars == freezed
+      currentPeriodStars: freezed == currentPeriodStars
           ? _value.currentPeriodStars
           : currentPeriodStars // ignore: cast_nullable_to_non_nullable
               as int?,
-      builtBy: builtBy == freezed
+      builtBy: freezed == builtBy
           ? _value.builtBy
           : builtBy // ignore: cast_nullable_to_non_nullable
               as List<TrendingUser>?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TrendingRepositoryCopyWith<$Res>
+abstract class _$$TrendingRepositoryImplCopyWith<$Res>
     implements $TrendingRepositoryCopyWith<$Res> {
-  factory _$$_TrendingRepositoryCopyWith(_$_TrendingRepository value,
-          $Res Function(_$_TrendingRepository) then) =
-      __$$_TrendingRepositoryCopyWithImpl<$Res>;
+  factory _$$TrendingRepositoryImplCopyWith(_$TrendingRepositoryImpl value,
+          $Res Function(_$TrendingRepositoryImpl) then) =
+      __$$TrendingRepositoryImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? author,
       String? name,
@@ -1349,16 +1375,14 @@ abstract class _$$_TrendingRepositoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TrendingRepositoryCopyWithImpl<$Res>
-    extends _$TrendingRepositoryCopyWithImpl<$Res>
-    implements _$$_TrendingRepositoryCopyWith<$Res> {
-  __$$_TrendingRepositoryCopyWithImpl(
-      _$_TrendingRepository _value, $Res Function(_$_TrendingRepository) _then)
-      : super(_value, (v) => _then(v as _$_TrendingRepository));
+class __$$TrendingRepositoryImplCopyWithImpl<$Res>
+    extends _$TrendingRepositoryCopyWithImpl<$Res, _$TrendingRepositoryImpl>
+    implements _$$TrendingRepositoryImplCopyWith<$Res> {
+  __$$TrendingRepositoryImplCopyWithImpl(_$TrendingRepositoryImpl _value,
+      $Res Function(_$TrendingRepositoryImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_TrendingRepository get _value => super._value as _$_TrendingRepository;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? author = freezed,
@@ -1373,48 +1397,48 @@ class __$$_TrendingRepositoryCopyWithImpl<$Res>
     Object? currentPeriodStars = freezed,
     Object? builtBy = freezed,
   }) {
-    return _then(_$_TrendingRepository(
-      author: author == freezed
+    return _then(_$TrendingRepositoryImpl(
+      author: freezed == author
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      language: language == freezed
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
-      languageColor: languageColor == freezed
+      languageColor: freezed == languageColor
           ? _value.languageColor
           : languageColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      stars: stars == freezed
+      stars: freezed == stars
           ? _value.stars
           : stars // ignore: cast_nullable_to_non_nullable
               as int?,
-      forks: forks == freezed
+      forks: freezed == forks
           ? _value.forks
           : forks // ignore: cast_nullable_to_non_nullable
               as int?,
-      currentPeriodStars: currentPeriodStars == freezed
+      currentPeriodStars: freezed == currentPeriodStars
           ? _value.currentPeriodStars
           : currentPeriodStars // ignore: cast_nullable_to_non_nullable
               as int?,
-      builtBy: builtBy == freezed
+      builtBy: freezed == builtBy
           ? _value._builtBy
           : builtBy // ignore: cast_nullable_to_non_nullable
               as List<TrendingUser>?,
@@ -1424,8 +1448,8 @@ class __$$_TrendingRepositoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TrendingRepository extends _TrendingRepository {
-  const _$_TrendingRepository(
+class _$TrendingRepositoryImpl extends _TrendingRepository {
+  const _$TrendingRepositoryImpl(
       {this.author,
       this.name,
       this.avatar,
@@ -1440,8 +1464,8 @@ class _$_TrendingRepository extends _TrendingRepository {
       : _builtBy = builtBy,
         super._();
 
-  factory _$_TrendingRepository.fromJson(Map<String, dynamic> json) =>
-      _$$_TrendingRepositoryFromJson(json);
+  factory _$TrendingRepositoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TrendingRepositoryImplFromJson(json);
 
   @override
   final String? author;
@@ -1471,6 +1495,7 @@ class _$_TrendingRepository extends _TrendingRepository {
   List<TrendingUser>? get builtBy {
     final value = _builtBy;
     if (value == null) return null;
+    if (_builtBy is EqualUnmodifiableListView) return _builtBy;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1481,23 +1506,24 @@ class _$_TrendingRepository extends _TrendingRepository {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrendingRepository &&
-            const DeepCollectionEquality().equals(other.author, author) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.avatar, avatar) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.language, language) &&
-            const DeepCollectionEquality()
-                .equals(other.languageColor, languageColor) &&
-            const DeepCollectionEquality().equals(other.stars, stars) &&
-            const DeepCollectionEquality().equals(other.forks, forks) &&
-            const DeepCollectionEquality()
-                .equals(other.currentPeriodStars, currentPeriodStars) &&
+            other is _$TrendingRepositoryImpl &&
+            (identical(other.author, author) || other.author == author) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.language, language) ||
+                other.language == language) &&
+            (identical(other.languageColor, languageColor) ||
+                other.languageColor == languageColor) &&
+            (identical(other.stars, stars) || other.stars == stars) &&
+            (identical(other.forks, forks) || other.forks == forks) &&
+            (identical(other.currentPeriodStars, currentPeriodStars) ||
+                other.currentPeriodStars == currentPeriodStars) &&
             const DeepCollectionEquality().equals(other._builtBy, _builtBy));
   }
 
@@ -1505,27 +1531,28 @@ class _$_TrendingRepository extends _TrendingRepository {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(author),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(avatar),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(language),
-      const DeepCollectionEquality().hash(languageColor),
-      const DeepCollectionEquality().hash(stars),
-      const DeepCollectionEquality().hash(forks),
-      const DeepCollectionEquality().hash(currentPeriodStars),
+      author,
+      name,
+      avatar,
+      url,
+      description,
+      language,
+      languageColor,
+      stars,
+      forks,
+      currentPeriodStars,
       const DeepCollectionEquality().hash(_builtBy));
 
   @JsonKey(ignore: true)
   @override
-  _$$_TrendingRepositoryCopyWith<_$_TrendingRepository> get copyWith =>
-      __$$_TrendingRepositoryCopyWithImpl<_$_TrendingRepository>(
+  @pragma('vm:prefer-inline')
+  _$$TrendingRepositoryImplCopyWith<_$TrendingRepositoryImpl> get copyWith =>
+      __$$TrendingRepositoryImplCopyWithImpl<_$TrendingRepositoryImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrendingRepositoryToJson(
+    return _$$TrendingRepositoryImplToJson(
       this,
     );
   }
@@ -1544,11 +1571,11 @@ abstract class _TrendingRepository extends TrendingRepository {
           final int? forks,
           @JsonKey(name: 'currentPeriodStars') final int? currentPeriodStars,
           @JsonKey(name: 'builtBy') final List<TrendingUser>? builtBy}) =
-      _$_TrendingRepository;
+      _$TrendingRepositoryImpl;
   const _TrendingRepository._() : super._();
 
   factory _TrendingRepository.fromJson(Map<String, dynamic> json) =
-      _$_TrendingRepository.fromJson;
+      _$TrendingRepositoryImpl.fromJson;
 
   @override
   String? get author;
@@ -1577,7 +1604,7 @@ abstract class _TrendingRepository extends TrendingRepository {
   List<TrendingUser>? get builtBy;
   @override
   @JsonKey(ignore: true)
-  _$$_TrendingRepositoryCopyWith<_$_TrendingRepository> get copyWith =>
+  _$$TrendingRepositoryImplCopyWith<_$TrendingRepositoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1604,7 +1631,8 @@ mixin _$TrendingUser {
 abstract class $TrendingUserCopyWith<$Res> {
   factory $TrendingUserCopyWith(
           TrendingUser value, $Res Function(TrendingUser) then) =
-      _$TrendingUserCopyWithImpl<$Res>;
+      _$TrendingUserCopyWithImpl<$Res, TrendingUser>;
+  @useResult
   $Res call(
       {String? username,
       String? name,
@@ -1617,13 +1645,16 @@ abstract class $TrendingUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrendingUserCopyWithImpl<$Res> implements $TrendingUserCopyWith<$Res> {
+class _$TrendingUserCopyWithImpl<$Res, $Val extends TrendingUser>
+    implements $TrendingUserCopyWith<$Res> {
   _$TrendingUserCopyWithImpl(this._value, this._then);
 
-  final TrendingUser _value;
   // ignore: unused_field
-  final $Res Function(TrendingUser) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? username = freezed,
@@ -1634,52 +1665,54 @@ class _$TrendingUserCopyWithImpl<$Res> implements $TrendingUserCopyWith<$Res> {
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      username: username == freezed
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      repo: repo == freezed
+      repo: freezed == repo
           ? _value.repo
           : repo // ignore: cast_nullable_to_non_nullable
               as TrendingRepository?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TrendingRepositoryCopyWith<$Res>? get repo {
     if (_value.repo == null) {
       return null;
     }
 
     return $TrendingRepositoryCopyWith<$Res>(_value.repo!, (value) {
-      return _then(_value.copyWith(repo: value));
+      return _then(_value.copyWith(repo: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_TrendingUserCopyWith<$Res>
+abstract class _$$TrendingUserImplCopyWith<$Res>
     implements $TrendingUserCopyWith<$Res> {
-  factory _$$_TrendingUserCopyWith(
-          _$_TrendingUser value, $Res Function(_$_TrendingUser) then) =
-      __$$_TrendingUserCopyWithImpl<$Res>;
+  factory _$$TrendingUserImplCopyWith(
+          _$TrendingUserImpl value, $Res Function(_$TrendingUserImpl) then) =
+      __$$TrendingUserImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? username,
       String? name,
@@ -1693,16 +1726,14 @@ abstract class _$$_TrendingUserCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TrendingUserCopyWithImpl<$Res>
-    extends _$TrendingUserCopyWithImpl<$Res>
-    implements _$$_TrendingUserCopyWith<$Res> {
-  __$$_TrendingUserCopyWithImpl(
-      _$_TrendingUser _value, $Res Function(_$_TrendingUser) _then)
-      : super(_value, (v) => _then(v as _$_TrendingUser));
+class __$$TrendingUserImplCopyWithImpl<$Res>
+    extends _$TrendingUserCopyWithImpl<$Res, _$TrendingUserImpl>
+    implements _$$TrendingUserImplCopyWith<$Res> {
+  __$$TrendingUserImplCopyWithImpl(
+      _$TrendingUserImpl _value, $Res Function(_$TrendingUserImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_TrendingUser get _value => super._value as _$_TrendingUser;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? username = freezed,
@@ -1712,28 +1743,28 @@ class __$$_TrendingUserCopyWithImpl<$Res>
     Object? repo = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$_TrendingUser(
-      username: username == freezed
+    return _then(_$TrendingUserImpl(
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      repo: repo == freezed
+      repo: freezed == repo
           ? _value.repo
           : repo // ignore: cast_nullable_to_non_nullable
               as TrendingRepository?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -1743,13 +1774,13 @@ class __$$_TrendingUserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TrendingUser extends _TrendingUser {
-  const _$_TrendingUser(
+class _$TrendingUserImpl extends _TrendingUser {
+  const _$TrendingUserImpl(
       {this.username, this.name, this.url, this.avatar, this.repo, this.type})
       : super._();
 
-  factory _$_TrendingUser.fromJson(Map<String, dynamic> json) =>
-      _$$_TrendingUserFromJson(json);
+  factory _$TrendingUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TrendingUserImplFromJson(json);
 
   @override
   final String? username;
@@ -1770,37 +1801,33 @@ class _$_TrendingUser extends _TrendingUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrendingUser &&
-            const DeepCollectionEquality().equals(other.username, username) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.avatar, avatar) &&
-            const DeepCollectionEquality().equals(other.repo, repo) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            other is _$TrendingUserImpl &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            (identical(other.repo, repo) || other.repo == repo) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(username),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(avatar),
-      const DeepCollectionEquality().hash(repo),
-      const DeepCollectionEquality().hash(type));
+  int get hashCode =>
+      Object.hash(runtimeType, username, name, url, avatar, repo, type);
 
   @JsonKey(ignore: true)
   @override
-  _$$_TrendingUserCopyWith<_$_TrendingUser> get copyWith =>
-      __$$_TrendingUserCopyWithImpl<_$_TrendingUser>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$TrendingUserImplCopyWith<_$TrendingUserImpl> get copyWith =>
+      __$$TrendingUserImplCopyWithImpl<_$TrendingUserImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrendingUserToJson(
+    return _$$TrendingUserImplToJson(
       this,
     );
   }
@@ -1813,11 +1840,11 @@ abstract class _TrendingUser extends TrendingUser {
       final String? url,
       final String? avatar,
       final TrendingRepository? repo,
-      final String? type}) = _$_TrendingUser;
+      final String? type}) = _$TrendingUserImpl;
   const _TrendingUser._() : super._();
 
   factory _TrendingUser.fromJson(Map<String, dynamic> json) =
-      _$_TrendingUser.fromJson;
+      _$TrendingUserImpl.fromJson;
 
   @override
   String? get username;
@@ -1833,7 +1860,7 @@ abstract class _TrendingUser extends TrendingUser {
   String? get type;
   @override
   @JsonKey(ignore: true)
-  _$$_TrendingUserCopyWith<_$_TrendingUser> get copyWith =>
+  _$$TrendingUserImplCopyWith<_$TrendingUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1857,18 +1884,22 @@ mixin _$UserSearch {
 abstract class $UserSearchCopyWith<$Res> {
   factory $UserSearchCopyWith(
           UserSearch value, $Res Function(UserSearch) then) =
-      _$UserSearchCopyWithImpl<$Res>;
+      _$UserSearchCopyWithImpl<$Res, UserSearch>;
+  @useResult
   $Res call({List<User>? items, int? totalCount, bool? incompleteResults});
 }
 
 /// @nodoc
-class _$UserSearchCopyWithImpl<$Res> implements $UserSearchCopyWith<$Res> {
+class _$UserSearchCopyWithImpl<$Res, $Val extends UserSearch>
+    implements $UserSearchCopyWith<$Res> {
   _$UserSearchCopyWithImpl(this._value, this._then);
 
-  final UserSearch _value;
   // ignore: unused_field
-  final $Res Function(UserSearch) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? items = freezed,
@@ -1876,58 +1907,58 @@ class _$UserSearchCopyWithImpl<$Res> implements $UserSearchCopyWith<$Res> {
     Object? incompleteResults = freezed,
   }) {
     return _then(_value.copyWith(
-      items: items == freezed
+      items: freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<User>?,
-      totalCount: totalCount == freezed
+      totalCount: freezed == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      incompleteResults: incompleteResults == freezed
+      incompleteResults: freezed == incompleteResults
           ? _value.incompleteResults
           : incompleteResults // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserSearchCopyWith<$Res>
+abstract class _$$UserSearchImplCopyWith<$Res>
     implements $UserSearchCopyWith<$Res> {
-  factory _$$_UserSearchCopyWith(
-          _$_UserSearch value, $Res Function(_$_UserSearch) then) =
-      __$$_UserSearchCopyWithImpl<$Res>;
+  factory _$$UserSearchImplCopyWith(
+          _$UserSearchImpl value, $Res Function(_$UserSearchImpl) then) =
+      __$$UserSearchImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<User>? items, int? totalCount, bool? incompleteResults});
 }
 
 /// @nodoc
-class __$$_UserSearchCopyWithImpl<$Res> extends _$UserSearchCopyWithImpl<$Res>
-    implements _$$_UserSearchCopyWith<$Res> {
-  __$$_UserSearchCopyWithImpl(
-      _$_UserSearch _value, $Res Function(_$_UserSearch) _then)
-      : super(_value, (v) => _then(v as _$_UserSearch));
+class __$$UserSearchImplCopyWithImpl<$Res>
+    extends _$UserSearchCopyWithImpl<$Res, _$UserSearchImpl>
+    implements _$$UserSearchImplCopyWith<$Res> {
+  __$$UserSearchImplCopyWithImpl(
+      _$UserSearchImpl _value, $Res Function(_$UserSearchImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_UserSearch get _value => super._value as _$_UserSearch;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? items = freezed,
     Object? totalCount = freezed,
     Object? incompleteResults = freezed,
   }) {
-    return _then(_$_UserSearch(
-      items: items == freezed
+    return _then(_$UserSearchImpl(
+      items: freezed == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<User>?,
-      totalCount: totalCount == freezed
+      totalCount: freezed == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      incompleteResults: incompleteResults == freezed
+      incompleteResults: freezed == incompleteResults
           ? _value.incompleteResults
           : incompleteResults // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -1937,20 +1968,21 @@ class __$$_UserSearchCopyWithImpl<$Res> extends _$UserSearchCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserSearch extends _UserSearch {
-  const _$_UserSearch(
+class _$UserSearchImpl extends _UserSearch {
+  const _$UserSearchImpl(
       {final List<User>? items, this.totalCount, this.incompleteResults})
       : _items = items,
         super._();
 
-  factory _$_UserSearch.fromJson(Map<String, dynamic> json) =>
-      _$$_UserSearchFromJson(json);
+  factory _$UserSearchImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserSearchImplFromJson(json);
 
   final List<User>? _items;
   @override
   List<User>? get items {
     final value = _items;
     if (value == null) return null;
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1966,15 +1998,15 @@ class _$_UserSearch extends _UserSearch {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserSearch &&
+            other is _$UserSearchImpl &&
             const DeepCollectionEquality().equals(other._items, _items) &&
-            const DeepCollectionEquality()
-                .equals(other.totalCount, totalCount) &&
-            const DeepCollectionEquality()
-                .equals(other.incompleteResults, incompleteResults));
+            (identical(other.totalCount, totalCount) ||
+                other.totalCount == totalCount) &&
+            (identical(other.incompleteResults, incompleteResults) ||
+                other.incompleteResults == incompleteResults));
   }
 
   @JsonKey(ignore: true)
@@ -1982,17 +2014,18 @@ class _$_UserSearch extends _UserSearch {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_items),
-      const DeepCollectionEquality().hash(totalCount),
-      const DeepCollectionEquality().hash(incompleteResults));
+      totalCount,
+      incompleteResults);
 
   @JsonKey(ignore: true)
   @override
-  _$$_UserSearchCopyWith<_$_UserSearch> get copyWith =>
-      __$$_UserSearchCopyWithImpl<_$_UserSearch>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$UserSearchImplCopyWith<_$UserSearchImpl> get copyWith =>
+      __$$UserSearchImplCopyWithImpl<_$UserSearchImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserSearchToJson(
+    return _$$UserSearchImplToJson(
       this,
     );
   }
@@ -2002,11 +2035,11 @@ abstract class _UserSearch extends UserSearch {
   const factory _UserSearch(
       {final List<User>? items,
       final int? totalCount,
-      final bool? incompleteResults}) = _$_UserSearch;
+      final bool? incompleteResults}) = _$UserSearchImpl;
   const _UserSearch._() : super._();
 
   factory _UserSearch.fromJson(Map<String, dynamic> json) =
-      _$_UserSearch.fromJson;
+      _$UserSearchImpl.fromJson;
 
   @override
   List<User>? get items;
@@ -2016,7 +2049,7 @@ abstract class _UserSearch extends UserSearch {
   bool? get incompleteResults;
   @override
   @JsonKey(ignore: true)
-  _$$_UserSearchCopyWith<_$_UserSearch> get copyWith =>
+  _$$UserSearchImplCopyWith<_$UserSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2055,7 +2088,8 @@ mixin _$User {
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res>;
+      _$UserCopyWithImpl<$Res, User>;
+  @useResult
   $Res call(
       {String? login,
       String? avatarUrl,
@@ -2080,13 +2114,16 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
+class _$UserCopyWithImpl<$Res, $Val extends User>
+    implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
-  final User _value;
   // ignore: unused_field
-  final $Res Function(User) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? login = freezed,
@@ -2111,95 +2148,97 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? watchingCount = freezed,
   }) {
     return _then(_value.copyWith(
-      login: login == freezed
+      login: freezed == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatarUrl: avatarUrl == freezed
+      avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      htmlUrl: htmlUrl == freezed
+      htmlUrl: freezed == htmlUrl
           ? _value.htmlUrl
           : htmlUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as UserType?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      company: company == freezed
+      company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      blog: blog == freezed
+      blog: freezed == blog
           ? _value.blog
           : blog // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
+      location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      bio: bio == freezed
+      bio: freezed == bio
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String?,
-      publicRepos: publicRepos == freezed
+      publicRepos: freezed == publicRepos
           ? _value.publicRepos
           : publicRepos // ignore: cast_nullable_to_non_nullable
               as int?,
-      publicGists: publicGists == freezed
+      publicGists: freezed == publicGists
           ? _value.publicGists
           : publicGists // ignore: cast_nullable_to_non_nullable
               as int?,
-      followers: followers == freezed
+      followers: freezed == followers
           ? _value.followers
           : followers // ignore: cast_nullable_to_non_nullable
               as int?,
-      following: following == freezed
+      following: freezed == following
           ? _value.following
           : following // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      starredRepositoriesCount: starredRepositoriesCount == freezed
+      starredRepositoriesCount: freezed == starredRepositoriesCount
           ? _value.starredRepositoriesCount
           : starredRepositoriesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      repositoriesCount: repositoriesCount == freezed
+      repositoriesCount: freezed == repositoriesCount
           ? _value.repositoriesCount
           : repositoriesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      issuesCount: issuesCount == freezed
+      issuesCount: freezed == issuesCount
           ? _value.issuesCount
           : issuesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      watchingCount: watchingCount == freezed
+      watchingCount: freezed == watchingCount
           ? _value.watchingCount
           : watchingCount // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
-      __$$_UserCopyWithImpl<$Res>;
+abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$UserImplCopyWith(
+          _$UserImpl value, $Res Function(_$UserImpl) then) =
+      __$$UserImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? login,
       String? avatarUrl,
@@ -2224,14 +2263,13 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$$_UserCopyWith<$Res> {
-  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
-      : super(_value, (v) => _then(v as _$_User));
+class __$$UserImplCopyWithImpl<$Res>
+    extends _$UserCopyWithImpl<$Res, _$UserImpl>
+    implements _$$UserImplCopyWith<$Res> {
+  __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_User get _value => super._value as _$_User;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? login = freezed,
@@ -2255,84 +2293,84 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? issuesCount = freezed,
     Object? watchingCount = freezed,
   }) {
-    return _then(_$_User(
-      login: login == freezed
+    return _then(_$UserImpl(
+      login: freezed == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatarUrl: avatarUrl == freezed
+      avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      htmlUrl: htmlUrl == freezed
+      htmlUrl: freezed == htmlUrl
           ? _value.htmlUrl
           : htmlUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as UserType?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      company: company == freezed
+      company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      blog: blog == freezed
+      blog: freezed == blog
           ? _value.blog
           : blog // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
+      location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      bio: bio == freezed
+      bio: freezed == bio
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String?,
-      publicRepos: publicRepos == freezed
+      publicRepos: freezed == publicRepos
           ? _value.publicRepos
           : publicRepos // ignore: cast_nullable_to_non_nullable
               as int?,
-      publicGists: publicGists == freezed
+      publicGists: freezed == publicGists
           ? _value.publicGists
           : publicGists // ignore: cast_nullable_to_non_nullable
               as int?,
-      followers: followers == freezed
+      followers: freezed == followers
           ? _value.followers
           : followers // ignore: cast_nullable_to_non_nullable
               as int?,
-      following: following == freezed
+      following: freezed == following
           ? _value.following
           : following // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      starredRepositoriesCount: starredRepositoriesCount == freezed
+      starredRepositoriesCount: freezed == starredRepositoriesCount
           ? _value.starredRepositoriesCount
           : starredRepositoriesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      repositoriesCount: repositoriesCount == freezed
+      repositoriesCount: freezed == repositoriesCount
           ? _value.repositoriesCount
           : repositoriesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      issuesCount: issuesCount == freezed
+      issuesCount: freezed == issuesCount
           ? _value.issuesCount
           : issuesCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      watchingCount: watchingCount == freezed
+      watchingCount: freezed == watchingCount
           ? _value.watchingCount
           : watchingCount // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -2342,8 +2380,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User extends _User {
-  const _$_User(
+class _$UserImpl extends _User {
+  const _$UserImpl(
       {this.login,
       this.avatarUrl,
       this.htmlUrl,
@@ -2366,7 +2404,8 @@ class _$_User extends _User {
       this.watchingCount})
       : super._();
 
-  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
+  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserImplFromJson(json);
 
   @override
   final String? login;
@@ -2415,72 +2454,80 @@ class _$_User extends _User {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_User &&
-            const DeepCollectionEquality().equals(other.login, login) &&
-            const DeepCollectionEquality().equals(other.avatarUrl, avatarUrl) &&
-            const DeepCollectionEquality().equals(other.htmlUrl, htmlUrl) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.company, company) &&
-            const DeepCollectionEquality().equals(other.blog, blog) &&
-            const DeepCollectionEquality().equals(other.location, location) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.bio, bio) &&
-            const DeepCollectionEquality()
-                .equals(other.publicRepos, publicRepos) &&
-            const DeepCollectionEquality()
-                .equals(other.publicGists, publicGists) &&
-            const DeepCollectionEquality().equals(other.followers, followers) &&
-            const DeepCollectionEquality().equals(other.following, following) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(
-                other.starredRepositoriesCount, starredRepositoriesCount) &&
-            const DeepCollectionEquality()
-                .equals(other.repositoriesCount, repositoriesCount) &&
-            const DeepCollectionEquality()
-                .equals(other.issuesCount, issuesCount) &&
-            const DeepCollectionEquality()
-                .equals(other.watchingCount, watchingCount));
+            other is _$UserImpl &&
+            (identical(other.login, login) || other.login == login) &&
+            (identical(other.avatarUrl, avatarUrl) ||
+                other.avatarUrl == avatarUrl) &&
+            (identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.company, company) || other.company == company) &&
+            (identical(other.blog, blog) || other.blog == blog) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.publicRepos, publicRepos) ||
+                other.publicRepos == publicRepos) &&
+            (identical(other.publicGists, publicGists) ||
+                other.publicGists == publicGists) &&
+            (identical(other.followers, followers) ||
+                other.followers == followers) &&
+            (identical(other.following, following) ||
+                other.following == following) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(
+                    other.starredRepositoriesCount, starredRepositoriesCount) ||
+                other.starredRepositoriesCount == starredRepositoriesCount) &&
+            (identical(other.repositoriesCount, repositoriesCount) ||
+                other.repositoriesCount == repositoriesCount) &&
+            (identical(other.issuesCount, issuesCount) ||
+                other.issuesCount == issuesCount) &&
+            (identical(other.watchingCount, watchingCount) ||
+                other.watchingCount == watchingCount));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(login),
-        const DeepCollectionEquality().hash(avatarUrl),
-        const DeepCollectionEquality().hash(htmlUrl),
-        const DeepCollectionEquality().hash(type),
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(company),
-        const DeepCollectionEquality().hash(blog),
-        const DeepCollectionEquality().hash(location),
-        const DeepCollectionEquality().hash(email),
-        const DeepCollectionEquality().hash(bio),
-        const DeepCollectionEquality().hash(publicRepos),
-        const DeepCollectionEquality().hash(publicGists),
-        const DeepCollectionEquality().hash(followers),
-        const DeepCollectionEquality().hash(following),
-        const DeepCollectionEquality().hash(createdAt),
-        const DeepCollectionEquality().hash(updatedAt),
-        const DeepCollectionEquality().hash(starredRepositoriesCount),
-        const DeepCollectionEquality().hash(repositoriesCount),
-        const DeepCollectionEquality().hash(issuesCount),
-        const DeepCollectionEquality().hash(watchingCount)
+        login,
+        avatarUrl,
+        htmlUrl,
+        type,
+        name,
+        company,
+        blog,
+        location,
+        email,
+        bio,
+        publicRepos,
+        publicGists,
+        followers,
+        following,
+        createdAt,
+        updatedAt,
+        starredRepositoriesCount,
+        repositoriesCount,
+        issuesCount,
+        watchingCount
       ]);
 
   @JsonKey(ignore: true)
   @override
-  _$$_UserCopyWith<_$_User> get copyWith =>
-      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+      __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserToJson(
+    return _$$UserImplToJson(
       this,
     );
   }
@@ -2507,10 +2554,10 @@ abstract class _User extends User {
       final int? starredRepositoriesCount,
       final int? repositoriesCount,
       final int? issuesCount,
-      final int? watchingCount}) = _$_User;
+      final int? watchingCount}) = _$UserImpl;
   const _User._() : super._();
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
+  factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
   String? get login;
@@ -2554,5 +2601,6 @@ abstract class _User extends User {
   int? get watchingCount;
   @override
   @JsonKey(ignore: true)
-  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
+  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

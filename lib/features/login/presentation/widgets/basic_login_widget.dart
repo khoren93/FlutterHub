@@ -33,7 +33,7 @@ class BasicLoginWidget extends StatelessWidget {
     return Text(
       S.current.loginBasicTitle,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headline5,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 }
@@ -46,11 +46,12 @@ class UsernameInput extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         return state.whenOrNull(
-              basic: (status, username, password, message) => TextFormField(
+              basic: (status, isValid, username, password, message) =>
+                  TextFormField(
                 key: const Key('login_usernameInput_textField'),
                 decoration: InputDecoration(
                   labelText: S.current.loginBasicLoginHint,
-                  errorText: username.invalid ? 'invalid username' : null,
+                  errorText: username.isNotValid ? 'invalid username' : null,
                 ),
                 onChanged: (value) =>
                     context.read<LoginCubit>().onUsernameChanged(value),
@@ -70,12 +71,13 @@ class PasswordInput extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         return state.whenOrNull(
-              basic: (status, username, password, message) => TextFormField(
+              basic: (status, isValid, username, password, message) =>
+                  TextFormField(
                 key: const Key('login_passwordInput_textField'),
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: S.current.loginBasicPasswordHint,
-                  errorText: password.invalid ? 'invalid password' : null,
+                  errorText: password.isNotValid ? 'invalid password' : null,
                 ),
                 onChanged: (value) =>
                     context.read<LoginCubit>().onPasswordChanged(value),

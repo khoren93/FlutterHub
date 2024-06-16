@@ -12,20 +12,18 @@ abstract class Failure extends Equatable {
   List<Object?> get props => [];
 
   String messageText() {
-    switch (runtimeType) {
-      case _$_ServerFailure:
-        return (this as ServerFailure).message ?? '';
-      default:
-        return kUnexpectedError;
+    if (this is ServerFailure) {
+      return (this as ServerFailure).message ?? '';
+    } else {
+      return kUnexpectedError;
     }
   }
 
   String documentationUrlText() {
-    switch (runtimeType) {
-      case _$_ServerFailure:
-        return (this as ServerFailure).documentationUrl ?? '';
-      default:
-        return kUnexpectedError;
+    if (this is ServerFailure) {
+      return (this as ServerFailure).documentationUrl ?? '';
+    } else {
+      return kUnexpectedError;
     }
   }
 }

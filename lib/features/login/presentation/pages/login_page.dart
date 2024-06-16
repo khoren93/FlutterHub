@@ -45,10 +45,10 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       ),
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
-          if (state.status.isSubmissionSuccess) {
+          if (state.status.isSuccess) {
             Navigator.of(context).pop();
           }
-          if (state.status.isSubmissionFailure) {
+          if (state.status.isFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message ?? kUnknownServerError),
