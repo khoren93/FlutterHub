@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Setup Java environment in order to build the Android app.
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3.4.1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: 11
           distribution: temurin
@@ -28,10 +28,10 @@ jobs:
         run: flutter pub get
 
       - name: Verify formatting
-        run: flutter format .
+        run: dart format .
 
       - name: Analyze project source
-        run: flutter analyze
+        run: dart analyze
 
       - name: Run tests
         run: flutter test
