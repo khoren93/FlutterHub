@@ -11,7 +11,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../cubit/languages_cubit.dart';
 
 class LanguagesPage extends StatefulWidget {
-  const LanguagesPage({Key? key}) : super(key: key);
+  const LanguagesPage({super.key});
 
   @override
   State<LanguagesPage> createState() => _LanguagesPageState();

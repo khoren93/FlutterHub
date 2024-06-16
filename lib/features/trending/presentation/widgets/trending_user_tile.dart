@@ -6,11 +6,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TrendingUserTile extends StatelessWidget {
   const TrendingUserTile({
-    Key? key,
+    super.key,
     required this.item,
     this.onTap,
     this.onRepositoryTap,
-  }) : super(key: key);
+  });
 
   final TrendingUser item;
   final Function(TrendingUser)? onTap;

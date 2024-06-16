@@ -3,11 +3,7 @@ import 'package:flutterhub/features/core/domain/entities/models.dart';
 import 'package:flutterhub/features/core/presentation/widgets/grid_item.dart';
 
 class UserTile extends StatelessWidget {
-  const UserTile({
-    Key? key,
-    required this.item,
-    this.onTap,
-  }) : super(key: key);
+  const UserTile({super.key, required this.item, this.onTap});
 
   final User item;
   final Function(User)? onTap;

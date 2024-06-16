@@ -8,8 +8,8 @@ import 'login_button.dart';
 
 class BasicLoginWidget extends StatelessWidget {
   const BasicLoginWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class BasicLoginWidget extends StatelessWidget {
 }
 
 class UsernameInput extends StatelessWidget {
-  const UsernameInput({Key? key}) : super(key: key);
+  const UsernameInput({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class UsernameInput extends StatelessWidget {
 }
 
 class PasswordInput extends StatelessWidget {
-  const PasswordInput({Key? key}) : super(key: key);
+  const PasswordInput({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -85,11 +85,11 @@ Widget networkImage(
 
 class ImagePreviewPage extends StatefulWidget {
   const ImagePreviewPage({
-    Key? key,
+    super.key,
     required this.imageUrls,
     this.initialPage = 0,
     this.heroTag,
-  }) : super(key: key);
+  });
 
   final List<String> imageUrls;
   final int initialPage;
@@ -129,7 +129,7 @@ class _ImagePreviewPageState extends State<ImagePreviewPage> {
                 axis: Axis.vertical,
                 child: PhotoViewGallery.builder(
                   backgroundDecoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.background,
+                    color: Theme.of(context).colorScheme.surface,
                   ),
                   itemCount: widget.imageUrls.length,
                   pageController: pageController,
@@ -160,11 +160,10 @@ RectTween _createRectTween(Rect? begin, Rect? end) {
 
 class RadialExpansion extends StatelessWidget {
   const RadialExpansion({
-    Key? key,
+    super.key,
     required this.maxRadius,
     this.child,
-  })  : clipRectSize = 2.0 * (maxRadius / math.sqrt2),
-        super(key: key);
+  }) : clipRectSize = 2.0 * (maxRadius / math.sqrt2);
 
   final double maxRadius;
   final double clipRectSize;

@@ -5,14 +5,14 @@ import 'network_image.dart';
 
 class GridItem extends StatelessWidget {
   const GridItem({
-    Key? key,
+    super.key,
     this.imageUrl,
     this.heroTag,
     this.icon,
     this.title,
     this.subtitle,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final String? imageUrl;
   final String? heroTag;

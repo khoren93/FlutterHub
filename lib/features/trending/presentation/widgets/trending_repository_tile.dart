@@ -7,12 +7,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TrendingRepositoryTile extends StatelessWidget {
   const TrendingRepositoryTile({
-    Key? key,
+    super.key,
     required this.item,
     required this.timePeriod,
     this.onTap,
     this.onUserTap,
-  }) : super(key: key);
+  });
 
   final TrendingRepository item;
   final String timePeriod;

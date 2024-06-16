@@ -4,7 +4,7 @@ enum PersonalTokenValidationError { empty }
 
 class PersonalToken extends FormzInput<String, PersonalTokenValidationError> {
   const PersonalToken.pure() : super.pure('');
-  const PersonalToken.dirty([String value = '']) : super.dirty(value);
+  const PersonalToken.dirty([super.value = '']) : super.dirty();
 
   @override
   PersonalTokenValidationError? validator(String? value) {

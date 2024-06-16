@@ -5,7 +5,7 @@ import '../../../../generated/l10n.dart';
 import 'login_button.dart';
 
 class OAuthLoginWidget extends StatelessWidget {
-  const OAuthLoginWidget({Key? key}) : super(key: key);
+  const OAuthLoginWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

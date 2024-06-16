@@ -13,7 +13,7 @@ import '../widgets/basic_login_widget.dart';
 import '../widgets/personal_login_widget.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();

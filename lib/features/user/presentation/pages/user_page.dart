@@ -16,7 +16,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../cubit/user_cubit.dart';
 
 class UserPage extends StatefulWidget {
-  const UserPage({Key? key, required this.arguments}) : super(key: key);
+  const UserPage({super.key, required this.arguments});
   final Object? arguments;
 
   @override

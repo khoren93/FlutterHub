@@ -11,7 +11,7 @@ import '../widgets/theme_mode_switch.dart';
 import '../widgets/theme_selector.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();

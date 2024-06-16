@@ -17,7 +17,7 @@ import 'l10n/localizations.dart';
 import 'utils/scroll_behavior.dart';
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();

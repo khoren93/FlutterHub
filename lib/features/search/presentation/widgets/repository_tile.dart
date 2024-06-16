@@ -6,11 +6,7 @@ import 'package:flutterhub/features/core/presentation/widgets/network_image.dart
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RepositoryTile extends StatelessWidget {
-  const RepositoryTile({
-    Key? key,
-    required this.item,
-    this.onTap,
-  }) : super(key: key);
+  const RepositoryTile({super.key, required this.item, this.onTap});
 
   final Repository item;
   final Function(Repository)? onTap;

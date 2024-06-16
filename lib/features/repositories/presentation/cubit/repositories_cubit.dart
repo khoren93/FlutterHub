@@ -59,6 +59,7 @@ class RepositoriesCubit extends Cubit<RepositoriesState> {
     }
     try {
       final page = pageForItems(isRefresh, oldItems);
+      debugPrint('page: $page');
       final Either<Failure, List<Repository>> result = await usecase(params);
       result.fold(
         (l) => emit(RepositoriesState.reposFetchError(

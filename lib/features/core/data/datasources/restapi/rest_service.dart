@@ -36,9 +36,9 @@ final githubClient = ChopperClient(
     UsersService.create(),
   ],
   interceptors: [
-    AuthInterceptor(),
+    const AuthInterceptor(),
     HttpLoggingInterceptor(),
-    RateLimitInterceptor(),
+    const RateLimitInterceptor(),
   ],
 );
 
@@ -62,16 +62,21 @@ final trendingClient = ChopperClient(
 
 /// This class is used to authenticate the user.
 /// It is used by the [AuthInterceptor] to add the token to the request.
-class AuthInterceptor extends RequestInterceptor {
+class AuthInterceptor implements Interceptor {
+  const AuthInterceptor();
+
   @override
-  FutureOr<Request> onRequest(Request request) async {
+  FutureOr<Response<BodyType>> intercept<BodyType>(Chain<BodyType> chain) {
     Token? token = appStore.token;
     if (token?.token != null) {
-      var headers = Map<String, String>.from(request.headers);
-      headers['Authorization'] = token?.token ?? '';
-      return request.copyWith(headers: headers);
+      final request = applyHeader(
+        chain.request,
+        'Authorization',
+        token?.token ?? '',
+      );
+      return chain.proceed(request);
     }
-    return request;
+    return chain.proceed(chain.request);
   }
 }
 
@@ -88,9 +93,13 @@ class AppAuthenticator extends Authenticator {
 }
 
 /// This class is used to handle the rate limit.
-class RateLimitInterceptor extends ResponseInterceptor {
+class RateLimitInterceptor implements Interceptor {
+  const RateLimitInterceptor();
+
   @override
-  Future<Response> onResponse(Response response) async {
+  FutureOr<Response<BodyType>> intercept<BodyType>(
+      Chain<BodyType> chain) async {
+    final Response<BodyType> response = await chain.proceed(chain.request);
     final headers = response.headers;
     appStore.rateLimit = RateLimit(
       limit: int.tryParse(headers['x-ratelimit-limit'] ?? '') ?? 0,

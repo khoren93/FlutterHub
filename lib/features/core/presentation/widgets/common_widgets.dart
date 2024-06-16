@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterhub/configs/constants.dart';
 
 class ContainerX extends StatelessWidget {
-  const ContainerX({Key? key, this.child}) : super(key: key);
+  const ContainerX({super.key, this.child});
 
   final Widget? child;
   @override

@@ -7,7 +7,7 @@ import '../cubit/login_cubit.dart';
 import 'login_button.dart';
 
 class PersonalLoginWidget extends StatelessWidget {
-  const PersonalLoginWidget({Key? key}) : super(key: key);
+  const PersonalLoginWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class PersonalLoginWidget extends StatelessWidget {
 }
 
 class TokenInput extends StatelessWidget {
-  const TokenInput({Key? key}) : super(key: key);
+  const TokenInput({super.key});
 
   @override
   Widget build(BuildContext context) {

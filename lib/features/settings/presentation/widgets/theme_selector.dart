@@ -16,9 +16,7 @@ const double _kWidthOfScrollItem = 71.6;
 //
 // The theme is controlled via the passed in ThemeController.
 class ThemeSelector extends StatefulWidget {
-  const ThemeSelector({
-    Key? key,
-  }) : super(key: key);
+  const ThemeSelector({super.key});
 
   @override
   State<ThemeSelector> createState() => _ThemeSelectorState();

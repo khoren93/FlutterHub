@@ -4,11 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LanguageTile extends StatelessWidget {
   const LanguageTile({
-    Key? key,
+    super.key,
     required this.item,
     this.selected = false,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final RepositoryLanguage item;
   final bool selected;

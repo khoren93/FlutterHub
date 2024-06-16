@@ -5,10 +5,10 @@ import 'package:flutterhub/generated/l10n.dart';
 
 class LanguageHeaderWidget extends StatelessWidget {
   const LanguageHeaderWidget({
-    Key? key,
+    super.key,
     required this.context,
     required this.language,
-  }) : super(key: key);
+  });
 
   final BuildContext context;
   final RepositoryLanguage? language;

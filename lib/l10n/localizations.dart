@@ -7,7 +7,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:timeago/timeago.dart';
 
 class MyRefreshLocalizations extends RefreshLocalizations {
-  MyRefreshLocalizations(Locale locale) : super(locale);
+  MyRefreshLocalizations(super.locale);
 
   @override
   Map<String, RefreshString> values = {

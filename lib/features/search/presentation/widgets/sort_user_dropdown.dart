@@ -65,7 +65,7 @@ extension SortTypeExtension on SortUserType {
 }
 
 class SortUserDropDown extends StatefulWidget {
-  const SortUserDropDown({Key? key, this.onChanged}) : super(key: key);
+  const SortUserDropDown({super.key, this.onChanged});
 
   final Function(SortUserType?)? onChanged;
 

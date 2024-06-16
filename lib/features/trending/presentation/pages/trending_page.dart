@@ -21,7 +21,7 @@ import '../widgets/trending_repository_tile.dart';
 import '../widgets/trending_user_tile.dart';
 
 class TrendingPage extends StatefulWidget {
-  const TrendingPage({Key? key}) : super(key: key);
+  const TrendingPage({super.key});
 
   @override
   State<TrendingPage> createState() => _TrendingPageState();

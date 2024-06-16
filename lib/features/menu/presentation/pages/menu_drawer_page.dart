@@ -15,8 +15,8 @@ import '../widgets/menu_tile.dart';
 
 class MenuDrawerPage extends StatefulWidget {
   const MenuDrawerPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<MenuDrawerPage> createState() => _MenuDrawerPageState();

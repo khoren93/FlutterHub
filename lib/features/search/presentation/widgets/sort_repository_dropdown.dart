@@ -65,7 +65,7 @@ extension SortTypeExtension on SortRepositoryType {
 }
 
 class SortRepositoryDropDown extends StatefulWidget {
-  const SortRepositoryDropDown({Key? key, this.onChanged}) : super(key: key);
+  const SortRepositoryDropDown({super.key, this.onChanged});
 
   final Function(SortRepositoryType?)? onChanged;
 

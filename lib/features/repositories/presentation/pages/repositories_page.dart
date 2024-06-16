@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterhub/features/repositories/domain/entities/repositories_type.dart';
-import 'package:flutterhub/features/repositories/domain/repositories/repositories_repository.dart';
 import 'package:flutterhub/features/repositories/presentation/cubit/repositories_cubit.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../../utils/app_router.dart';
 import '../../../core/domain/entities/models.dart';
 import '../../../core/presentation/widgets/empty_widget.dart';
-import '../../../search/presentation/cubit/search_cubit.dart';
 import '../../../search/presentation/widgets/repository_tile.dart';
-import '../../../search/presentation/widgets/sort_repository_dropdown.dart';
-import '../../../search/presentation/widgets/sort_user_dropdown.dart';
-import '../../../search/presentation/widgets/user_tile.dart';
 
 class RepositoriesPage extends StatefulWidget {
-  const RepositoriesPage({Key? key, required this.type}) : super(key: key);
+  const RepositoriesPage({super.key, required this.type});
   final RepositoriesType type;
 
   @override
@@ -100,10 +95,10 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
     return emptyRepositoriesWidget();
   }
 
-  Widget _buildEmptyUsersWidget() {
-    endLoadAnimation(isRefresh: true);
-    return emptyUsersWidget();
-  }
+  // Widget _buildEmptyUsersWidget() {
+  //   endLoadAnimation(isRefresh: true);
+  //   return emptyUsersWidget();
+  // }
 
   Widget _buildFailureWidget(String? message, String? url) {
     endLoadAnimation(isFailure: true);
@@ -122,32 +117,32 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
     );
   }
 
-  Widget _buildUsersList(
-      BuildContext context, List<User> items, bool hasNextPage) {
-    endLoadAnimation(isRefresh: true, hasNextPage: hasNextPage);
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 250,
-      ),
-      itemCount: items.length,
-      itemBuilder: (context, index) => UserTile(
-        item: items[index],
-        onTap: (item) => _onUserSelected(context, item),
-      ),
-    );
-  }
+  // Widget _buildUsersList(
+  //     BuildContext context, List<User> items, bool hasNextPage) {
+  //   endLoadAnimation(isRefresh: true, hasNextPage: hasNextPage);
+  //   return GridView.builder(
+  //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+  //       maxCrossAxisExtent: 250,
+  //     ),
+  //     itemCount: items.length,
+  //     itemBuilder: (context, index) => UserTile(
+  //       item: items[index],
+  //       onTap: (item) => _onUserSelected(context, item),
+  //     ),
+  //   );
+  // }
 
-  _onSortRepositorySelected(BuildContext context, SortRepositoryType? sort) {
-    // order = sort?.orderValue;
-    // this.sort = sort?.sortValue;
-    _onRefresh(context);
-  }
+  // _onSortRepositorySelected(BuildContext context, SortRepositoryType? sort) {
+  //   // order = sort?.orderValue;
+  //   // this.sort = sort?.sortValue;
+  //   _onRefresh(context);
+  // }
 
-  _onSortUserSelected(BuildContext context, SortUserType? sort) {
-    // order = sort?.orderValue;
-    // this.sort = sort?.sortValue;
-    _onRefresh(context);
-  }
+  // _onSortUserSelected(BuildContext context, SortUserType? sort) {
+  //   // order = sort?.orderValue;
+  //   // this.sort = sort?.sortValue;
+  //   _onRefresh(context);
+  // }
 
   _onRepositorySelected(BuildContext context, Repository item) {
     Navigator.of(context).pushNamed(
@@ -156,10 +151,10 @@ class _RepositoriesPageState extends State<RepositoriesPage> {
     );
   }
 
-  _onUserSelected(BuildContext context, User item) {
-    Navigator.of(context).pushNamed(
-      AppRoutes.user,
-      arguments: item.login,
-    );
-  }
+  // _onUserSelected(BuildContext context, User item) {
+  //   Navigator.of(context).pushNamed(
+  //     AppRoutes.user,
+  //     arguments: item.login,
+  //   );
+  // }
 }

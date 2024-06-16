@@ -17,7 +17,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../cubit/repository_cubit.dart';
 
 class RepositoryPage extends StatefulWidget {
-  const RepositoryPage({Key? key, required this.arguments}) : super(key: key);
+  const RepositoryPage({super.key, required this.arguments});
   final Object? arguments;
 
   @override

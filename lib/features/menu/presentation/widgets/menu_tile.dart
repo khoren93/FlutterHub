@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class MenuTile extends StatelessWidget {
   const MenuTile(
     this.context, {
-    Key? key,
+    super.key,
     this.leading,
     this.title,
     this.trailing,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final BuildContext context;
   final IconData? leading;

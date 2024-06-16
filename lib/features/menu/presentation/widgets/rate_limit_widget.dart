@@ -9,9 +9,7 @@ import '../../../../configs/app_store.dart';
 import '../../../../generated/l10n.dart';
 
 class RateLimitWidget extends StatefulWidget {
-  const RateLimitWidget({
-    Key? key,
-  }) : super(key: key);
+  const RateLimitWidget({super.key});
 
   @override
   State<RateLimitWidget> createState() => _RateLimitWidgetState();
